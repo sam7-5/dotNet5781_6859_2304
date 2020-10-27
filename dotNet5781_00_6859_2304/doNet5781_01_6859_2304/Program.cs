@@ -28,11 +28,11 @@ namespace doNet5781_01_6859_2304
             Console.WriteLine("4) print all the buses");
             Console.WriteLine("5) exit");
 
-            switch(Console.Read())
+            switch(Console.ReadLine())
             {
                 case "1":
-                //add
-                return true;
+                    Bus.addBus(busList);
+                    return true;
 
                 case "2":
                 //choose

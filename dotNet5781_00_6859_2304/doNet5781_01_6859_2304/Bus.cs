@@ -11,6 +11,9 @@ namespace doNet5781_01_6859_2304
         private int km;
         private int tank;
 
+        // ctor with 2 arguments
+        public void Bus(string newId, DateTime newDate, int newKm = 0, int newTank = 0 ) { busId = newId; dateInit = newDate;}
+
         public void SetBusId(string newId) { busId = newId; }
         public void SetDate(DateTime newDate) { dateInit = newDate; }
         public void SetKm(int newKm) { km = newKm; }
@@ -21,12 +24,11 @@ namespace doNet5781_01_6859_2304
         public int GetKm() { return km; }
         public int GetTank() { return tank; }
 
-        public static void addBus(DateTime Date, string Id)
+        public static void addBus(LinkedList<Bus> buslist )
         {
-            Bus bus = new Bus();
-            bus.SetDate(Date);
-            bus.SetBusId(Id);
-
+            DateTime date = Console.ReadLine();
+            String newBusId = Console.ReadLine();
+            buslist.AddLast(new Bus(newBusId, date));
         }
         public static Bus ChooseBus(string Id, LinkedList<Bus> busList)
         {
