@@ -12,7 +12,17 @@ namespace doNet5781_01_6859_2304
         private int tank;
 
         // ctor with 2 arguments
-        public void Bus(string newId, DateTime newDate, int newKm = 0, int newTank = 0 ) { busId = newId; dateInit = newDate;}
+        public Bus(string newId, DateTime newDate, int newKm = 0, int newTank = 0 ) { busId = newId; dateInit = newDate;}
+
+        // properties
+
+        public string BUS_ID
+        {
+            get { return busId; }
+            set { busId = value; }
+        }
+        // Bus kavEgged = new Bus { BUS_ID = "123-456-789" }; // utilisation de properties
+        //int x = int.Parse("123-456-789");
 
         public void SetBusId(string newId) { busId = newId; }
         public void SetDate(DateTime newDate) { dateInit = newDate; }
@@ -26,7 +36,8 @@ namespace doNet5781_01_6859_2304
 
         public static void addBus(LinkedList<Bus> buslist )
         {
-            DateTime date = Console.ReadLine();
+            DateTime date;
+            bool res = DateTime.TryParse(Console.ReadLine(), out date);
             String newBusId = Console.ReadLine();
             buslist.AddLast(new Bus(newBusId, date));
         }

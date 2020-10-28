@@ -19,7 +19,7 @@ namespace doNet5781_01_6859_2304
         public static LinkedList<Bus> busList = new LinkedList<Bus>();
 
         private static bool MainMenu()
-            {
+        {
             Console.Clear();
             Console.WriteLine("Choose an option:");
             Console.WriteLine("1) add a bus to the bus list");
@@ -28,29 +28,30 @@ namespace doNet5781_01_6859_2304
             Console.WriteLine("4) print all the buses");
             Console.WriteLine("5) exit");
 
-            switch(Console.ReadLine())
+            switch (Console.ReadLine())
             {
                 case "1":
                     Bus.addBus(busList);
                     return true;
 
                 case "2":
-                //choose
-                return true;
-               
+                    //choose
+                    return true;
+
                 case "3":
-                //treatement
-                return true;
-                
+                    //treatement
+                    return true;
+
                 case "4":
-                // print
-                return true;
+                    // print
+                    return true;
 
                 case "5":
-                return false;
+                    return false;
 
                 default:
-                return true;
+                    return true;
             }
+        }
     }
 } 
