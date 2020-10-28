@@ -1,0 +1,6 @@
+C:\Users\shmouel\source\repos\doNet5781_01_6859_2304\doNet5781_01_6859_2304_00\bin\Debug\doNet5781_01_6859_2304_00.exe.config
+C:\Users\shmouel\source\repos\doNet5781_01_6859_2304\doNet5781_01_6859_2304_00\bin\Debug\doNet5781_01_6859_2304_00.exe
+C:\Users\shmouel\source\repos\doNet5781_01_6859_2304\doNet5781_01_6859_2304_00\bin\Debug\doNet5781_01_6859_2304_00.pdb
+C:\Users\shmouel\source\repos\doNet5781_01_6859_2304\doNet5781_01_6859_2304_00\obj\Debug\doNet5781_01_6859_2304_00.csproj.CoreCompileInputs.cache
+C:\Users\shmouel\source\repos\doNet5781_01_6859_2304\doNet5781_01_6859_2304_00\obj\Debug\doNet5781_01_6859_2304_00.exe
+C:\Users\shmouel\source\repos\doNet5781_01_6859_2304\doNet5781_01_6859_2304_00\obj\Debug\doNet5781_01_6859_2304_00.pdb
