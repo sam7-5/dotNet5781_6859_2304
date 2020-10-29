@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections.Generic;  //why?
+using System.Linq;                     //why?
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks;            //why?
 
 namespace doNet5781_01_6859_2304
 {
@@ -50,16 +50,16 @@ namespace doNet5781_01_6859_2304
                     switch (Console.ReadLine())
                     {
                         case "1":
-                            Bus.treatmentRefuel(BusId);
+                            Bus.treatmentRefuel(BusId, busList);
                             break;
                         case "2":
-                            Bus.treatmentRevision(BusId);
+                            Bus.treatmentRevision(BusId, busList);
                             break;
                     }
                     return true;
 
                 case "4":
-                    Bus.PrintAll();
+                    Bus.PrintAll(busList);
                     return true;
 
                 case "5":
