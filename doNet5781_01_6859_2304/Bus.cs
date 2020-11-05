@@ -1,121 +1,96 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace doNet5781_01_6859_2304
+namespace Assignment1
 {
     public class Bus
     {
-        private string busId;        //pk + foncé?
-        private DateTime dateInit;
-        private int km;
-        private int tank;
+        const int FULLTANK = 1200;
+        public readonly DateTime StartDate;
+        private string license;
+        private int km; // km traveled
+        private int fuel = FULLTANK; // fuel capacity
+        private DateTime checkUp;
 
-        // ctor with 2 arguments
-        public Bus(string newId, DateTime newDate, int newKm = 0, int newTank = 0 /*pk new?*/) { busId = newId; dateInit = newDate; }
+        public int Km { get => km; set => km = value; }
+        public int Fuel { get => fuel; set => fuel = value; }
+        public DateTime Checkup { get => checkUp; set => checkUp = value; }
 
-        // properties
-
-        public string BUS_ID
+        // ctor
+        public Bus()
         {
-            get { return busId; }
-            set { busId = value; }
-        }
-        // Bus kavEgged = new Bus { BUS_ID = "123-456-789" }; // utilisation de properties
-        //int x = int.Parse("123-456-789");
-
-        public void SetBusId(string newId) { busId = newId; }  //pk pas utilise properties?
-        public void SetDate(DateTime newDate) { dateInit = newDate; }
-        public void SetKm(int newKm) { km = newKm; }
-        public void SetTank(int newTank) { tank = newTank; }
-
-        public string GetId() { return busId; }
-        public DateTime GetDate() { return dateInit; }
-        public int GetKm() { return km; }
-        public int GetTank() { return tank; }
-
-        public static void addBus(LinkedList<Bus> buslist)
-        {
-            DateTime date;
-            bool res = DateTime.TryParse(Console.ReadLine(), out date);
-            String newBusId = Console.ReadLine();
-            buslist.AddLast(new Bus(newBusId, date, 0, 1200));
-        }
-        public static void ChooseBus(string Id, LinkedList<Bus> busList)
-        {
-
-            bool flag = false;
-            Random r = new Random();
-            int busDistance = r.Next(0, 1200);
-
-            foreach (Bus bb in busList)
+            Console.Write("Starting date: ");
+            bool result = DateTime.TryParse(Console.ReadLine(), out StartDate);
+            if (result == false)
             {
+                throw new Exception("invalid DateTime string format");
+            }
+            Console.Write("License number: ");
+            License = Console.ReadLine();
+        }
 
-                if (Id == bb.BUS_ID)
+        public string License
+        {
+            get
+            {
+                string first, middle, last;
+                if (license.Length == 7)
                 {
-                    flag = true;
-                    if(bb.GetKm()==20000)
-                    {
-                        treatmentRevision(bb.BUS_ID, busList);
-                    }
-
-                    if(bb.GetKm()+busDistance>20000)
-                    {
-                        Console.WriteLine("dangerous bus go for a bus revision");
-                        return;
-                    }
-
-                  
-                    if(bb.GetTank()-busDistance<= 0)
-                    {
-                        Console.WriteLine("you don't have enough fuel for this trip");
-                        return;
-                    }
-
-                    bb.tank = bb.GetTank() - busDistance;
-                    bb.km = bb.GetKm() + busDistance;
+                    // xx-xxx-xx
+                    first = license.Substring(0, 2);
+                    middle = license.Substring(2, 3);
+                    last = license.Substring(5, 2);
+                    return string.Format("{0}-{1}-{2}", first, middle, last);
+                }
+                else
+                {
+                    // xxx-xx-xxx
+                    first = license.Substring(0, 3);
+                    middle = license.Substring(3, 2);
+                    last = license.Substring(5, 3);
+                    return string.Format("{0}-{1}-{2}", first, middle, last);
                 }
             }
-            if (flag == false)
+
+            private set
             {
-                Console.WriteLine("ERROR id doesn't exist");
-            }
-        }
-        public static void treatmentRefuel(string Id, LinkedList<Bus> busList)
-        {
-            foreach (Bus bb in busList)
-            {
-                if (Id == bb.BUS_ID)
+                if ((StartDate.Year < 2018 && value.Length == 7) || (StartDate.Year >= 2018 && value.Length == 8))
                 {
-                    bb.tank = 1200;
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        if (value[i] < '0' || value[i] > '9')
+                            throw new Exception("license not valid");
+                    }
+                    license = value;
                 }
-
-            }
-
-        }
-        public static void treatmentRevision(string Id, LinkedList<Bus> busList)
-        {
-            foreach (Bus bb in busList)
-            {
-                if (Id == bb.BUS_ID)
+                else
                 {
-                    DateTime currentDate = DateTime.Now;
-                    bb.dateInit = currentDate;
-                    bb.km = 0;
+                    throw new Exception("license not valid");
                 }
-
             }
         }
-        public static void PrintAll(LinkedList<Bus> busList)
+
+        public int Refuel()
         {
-            foreach (Bus bb in busList)
-            {
-               // Console.WriteLine({ 0}-3,{1}-3,bb.GetKm(),bb.BUS_ID);
+            int fuelToAdd = FULLTANK - Fuel;
 
+            if (fuelToAdd > 0)
+            {
+                Fuel = FULLTANK;
+                return fuelToAdd;
             }
+            return 0;
         }
+
+        public void Maintain()
+        {
+            checkUp = DateTime.Now;
+        }
+
+        public override string ToString()
+        {
+            return String.Format("license: {0,-10}, starting date: {1}, km: {2}", License, StartDate.Date, Km);
+        }
+
     }
+
 }

@@ -1,73 +1,153 @@
 ﻿using System;
-using System.Collections.Generic;  //why?
-using System.Linq;                     //why?
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using System.Threading.Tasks;            //why?
+using System.Threading.Tasks;
 
-namespace doNet5781_01_6859_2304
+namespace Assignment1
 {
     class Program
     {
+        static Random r = new Random(DateTime.Now.Millisecond);
         static void Main(string[] args)
         {
-            bool showMenu = true;
-            while (showMenu)
-            {
-                showMenu = MainMenu();
-            }
+            Actions action;
+            List<Bus> buses = new List<Bus>();
+            bool result;
 
+            do
+            {
+                Console.WriteLine("Choose an action from:");
+                foreach (Actions act in (Actions[])Enum.GetValues(typeof(Actions))) // prq typeof ?
+                {
+                    Console.WriteLine("\t" + act);
+                }
+                Console.Write("\nYour choice: ");
+                result = Enum.TryParse(Console.ReadLine(), out action);
+                if (!result)
+                {
+                    Console.WriteLine("no such option\n");
+                    continue;
+                }
+
+                switch (action)
+                {
+                    case Actions.ADD:
+                        try
+                        {
+                            buses.Add(new Bus());
+                        }
+                        catch (Exception exception)
+                        {
+                            Console.WriteLine(exception.Message);
+                        }
+                        foreach (Bus bus in buses)
+                        {
+                            Console.WriteLine(bus);
+                        }
+
+                        break;
+
+                    case Actions.FIND:
+                        try
+                        {
+                            FindBus(buses, Console.ReadLine());
+                        }
+                        catch (Exception exception)
+                        {
+                            Console.WriteLine(exception.Message);
+                        }
+                        foreach (Bus bus in buses)
+                        {
+                            Console.WriteLine(bus);
+                        }
+
+                        break;
+
+                    case Actions.REFUEL:
+                        try
+                        {
+                            RefuelBus(buses, Console.ReadLine());
+                        }
+                        catch (Exception exception)
+                        {
+                            Console.WriteLine(exception.Message);
+                        }
+                        foreach (Bus bus in buses)
+                        {
+                            Console.WriteLine(bus);
+                        }
+
+                        break;
+                    case Actions.MAINTENANCE:
+
+
+                        break;
+                    default:
+                        break;
+                }
+
+            } while (action != Actions.EXIT);
         }
 
-        public static LinkedList<Bus> busList = new LinkedList<Bus>();
-
-        private static bool MainMenu()
+        private static void RefuelBus(List<Bus> buses, string license)
         {
-            Console.Clear();
-            Console.WriteLine("Choose an option:");
-            Console.WriteLine("1) add a bus to the bus list");
-            Console.WriteLine("2) choose a bus to travel");
-            Console.WriteLine("3) treatement of a bus");
-            Console.WriteLine("4) print all the buses");
-            Console.WriteLine("5) exit");
+            Console.Write("\nEnter the bus license to refuel: ");
 
-            String BusId;
-
-            switch (Console.ReadLine())
+            if (!(buses.Exists(bus => (bus.License == license))))
             {
-                case "1":
-                    Bus.addBus(busList);
-                    return true;
-
-                case "2":
-                    BusId = Console.ReadLine();
-                    Bus.ChooseBus(BusId, busList);
-                    return true;
-
-                case "3":
-                    BusId = Console.ReadLine();
-                    Console.WriteLine("1) Refuel");
-                    Console.WriteLine("2) Revision");
-                    switch (Console.ReadLine())
-                    {
-                        case "1":
-                            Bus.treatmentRefuel(BusId, busList);
-                            break;
-                        case "2":
-                            Bus.treatmentRevision(BusId, busList);
-                            break;
-                    }
-                    return true;
-
-                case "4":
-                    Bus.PrintAll(busList);
-                    return true;
-
-                case "5":
-                    return false;
-
-                default:
-                    return true;
+                throw new Exception("\nThe bus doesn't exist !");
             }
+
+            Bus busToCheck = buses.Find(bus => (bus.License == license));
+
+            busToCheck.Refuel();
+        }
+
+        private static void MaintenanceBus(List<Bus> buses, string license)
+        {
+            Console.Write("\nEnter the bus license to check up: ");
+
+            if (!(buses.Exists(bus => (bus.License == license))))
+            {
+                throw new Exception("\nThe bus doesn't exist !");
+            }
+
+            Bus busToCheck = buses.Find(bus => (bus.License == license));
+
+
+        }
+        private static void FindBus(List<Bus> buses, string license)
+        {
+            Console.Write("\nEnter the bus license to search: ");
+
+            if (!(buses.Exists(bus => (bus.License == license))))
+            {
+                throw new Exception("\nThe bus doesn't exist !");
+            }
+
+            Bus busToCheck = buses.Find(bus => (bus.License == license));
+            int kmToTravel = r.Next(1, 200); // we suppose that a travel is no more than 200 km
+
+            if (!(CanTravel(busToCheck, kmToTravel)))
+            {
+                throw new Exception("\nThe bus can not travel !\nYou must do a check up");
+            }
+            else // we can travel !
+            {
+                busToCheck.Km += kmToTravel;
+                busToCheck.Fuel -= kmToTravel;
+            }
+        }
+
+        // better placed in the Bus.cs File
+        private static bool CanTravel(Bus bus, int kmToTravel)
+        {
+            var date = DateTime.Now.Year;
+
+            if (date - bus.StartDate.Year >= 1 || bus.Km >= 20000 || bus.Fuel <= 0) // to much time on the road !
+                return false;
+            return true;
         }
     }
 }
