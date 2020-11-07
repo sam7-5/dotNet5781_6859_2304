@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dotNet5781_02_6859_2304
+namespace assignement1
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
+    
+        public enum Area { General, North, South, Center, Jerusalem };
 
-        }
-    }
+    
 }
-

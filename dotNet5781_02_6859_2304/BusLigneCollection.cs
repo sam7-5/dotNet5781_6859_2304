@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_6859_2304
 {
-    class Program
+    class BusLigneCollection
     {
-        static void Main(string[] args)
-        {
+        //addBus;
+        //    DeleteBus;
+        //    FindBus;
+        //    PrintBusLignes;
 
-        }
     }
 }
-
