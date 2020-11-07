@@ -18,7 +18,7 @@ namespace Assignment1
             do
             {
                 Console.WriteLine("Choose an action from:");
-                foreach (Actions act in (Actions[])Enum.GetValues(typeof(Actions))) // prq typeof ?
+                foreach (Actions act in (Actions[])Enum.GetValues(typeof(Actions))) //in action?
                 {
                     Console.WriteLine("\t" + act);
                 }
