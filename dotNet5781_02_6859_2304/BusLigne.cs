@@ -10,12 +10,21 @@ namespace dotNet5781_02_6859_2304
 {
     class BusLigne
     {
+        static public Random r = new Random(DateTime.Now.Millisecond);
+
         List<BusStationLigne> busStationLignes = new List<BusStationLigne>();
-        string ligneId;
+        int ligneId;
         BusStationLigne FirstStation;
         BusStationLigne LastStation;
         Area place;
 
+        BusLigne(BusStationLigne First, BusStationLigne Last, Area wplace)
+        {
+
+            ligneId = r.Next(100000, 999999);
+            FirstStation = First; LastStation = Last; place = wplace;
+        }
+        BusLigne(int Id, BusStationLigne First, BusStationLigne Last, Area wplace) { ligneId = Id; FirstStation = First; LastStation = Last; place = wplace; }
         public override string ToString()
         {
             return "Ligne number:  " + ligneId + "first station:  "
@@ -44,7 +53,7 @@ namespace dotNet5781_02_6859_2304
         void deleteStationmiddle(BusStationLigne bus)
         {
             int size = busStationLignes.Count();
-            busStationLignes.RemoveAt(size/2);              
+            busStationLignes.RemoveAt(size / 2);
         }
         void deleteStationEnd(BusStationLigne bus)
         {
@@ -65,16 +74,16 @@ namespace dotNet5781_02_6859_2304
         int DistanceBetweenStations(BusStationLigne bus1, BusStationLigne bus2)
         {
 
-            int index1 = busStationLignes.IndexOf(bus1);
+           
             int count1 = 0;
-            foreach (BusStationLigne item in busStationLignes.Take(index1))
+            foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(bus1)))
             {
                 count1 += item.DistancePreviousStations;
             }
 
-            int index2 = busStationLignes.IndexOf(bus1);
+       
             int count2 = 0;
-            foreach (BusStationLigne item in busStationLignes.Take(index2))
+            foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(bus2)))
             {
                 count2 += item.DistancePreviousStations;
             }
@@ -82,5 +91,18 @@ namespace dotNet5781_02_6859_2304
 
             return Math.Abs(count2 - count1);
         }
+
+        BusLigne subLigne(BusStationLigne bus1, BusStationLigne bus2)
+        {
+            BusLigne Sublist = new BusLigne(bus1, bus2, this.place);
+
+            Sublist.busStationLignes = 
+                busStationLignes.GetRange(busStationLignes.IndexOf(bus1), busStationLignes.IndexOf(bus2));
+
+            return Sublist;
+        }
+
     }
+
+
 }
