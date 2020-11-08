@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_6859_2304
 {
-    class BusLigne
+    class BusLigne : IComparable
     {
         static public Random r = new Random(DateTime.Now.Millisecond);
 
@@ -91,6 +91,26 @@ namespace dotNet5781_02_6859_2304
 
             return Math.Abs(count2 - count1);
         }
+        int TimeBetweenStations(BusStationLigne bus1, BusStationLigne bus2)
+        {
+
+
+            int count1 = 0;
+            foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(bus1)))
+            {
+                count1 += item.TimePreviousStations;
+            }
+
+
+            int count2 = 0;
+            foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(bus2)))
+            {
+                count2 += item.TimePreviousStations;
+            }
+
+
+            return Math.Abs(count2 - count1);
+        }
 
         BusLigne subLigne(BusStationLigne bus1, BusStationLigne bus2)
         {
@@ -102,6 +122,23 @@ namespace dotNet5781_02_6859_2304
             return Sublist;
         }
 
+        public int CompareTo(object obj)  //compare total time between 2 lignes
+        { 
+            BusLigne bus = (BusLigne)obj;
+            int time1 = bus.TimeBetweenStations(bus.FirstStation, bus.LastStation);
+            int time2 = this.TimeBetweenStations(this.FirstStation, this.LastStation);
+
+            if (time1 > time2)
+                return 1;
+
+            else if (time1 == time2)
+                return 0;
+
+            else if (time1 < time2)
+                return -1;
+
+            return 9999;
+        }
     }
 
 
