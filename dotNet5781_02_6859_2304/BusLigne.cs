@@ -63,9 +63,7 @@ namespace dotNet5781_02_6859_2304
 
         bool Exist(BusStationLigne bus)
         {
-            //*** j'ai racourci ici ***//
-            //bool check = busStationLignes.Contains(bus);
-            if (busStationLignes.Contains(bus)/*check*/)
+            if (busStationLignes.Contains(bus))
                 return true;
             return false;
         }
@@ -128,7 +126,7 @@ namespace dotNet5781_02_6859_2304
             else if (time1 < time2)
                 return -1;
 
-            return 9999; //*** prq ce return ? ***//
+            return 9999;
         }
     }
 }

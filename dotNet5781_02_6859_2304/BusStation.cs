@@ -29,7 +29,7 @@ namespace dotNet5781_02_6859_2304
         {
             get { return Latitude; }
 
-            set => Latitude = value; //*** pourquoi pas de nb aleatoire ? ***//
+            set => Latitude = (r.NextDouble() * (33.3 - 31.0)) + 31.0;
         }
 
         protected double Longitude;
