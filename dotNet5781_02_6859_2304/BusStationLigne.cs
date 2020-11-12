@@ -15,8 +15,6 @@ namespace dotNet5781_02_6859_2304
         public readonly int TimePreviousStations; //in minutes
         public int time { get; }
 
-
-
         //ctors according to inheritance
         public BusStationLigne(string key,int Distance, int Time ) : base(key)
         {

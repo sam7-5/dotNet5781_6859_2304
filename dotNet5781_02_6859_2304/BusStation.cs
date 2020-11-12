@@ -9,8 +9,6 @@ namespace dotNet5781_02_6859_2304
     class BusStation
     {
         static public Random r = new Random(DateTime.Now.Millisecond);
-
-
         private string BusStationKey;
 
         public string Key        //snippet prop
@@ -23,7 +21,6 @@ namespace dotNet5781_02_6859_2304
                     BusStationKey = value;
                 else
                     Console.WriteLine("ERROR bus station key format invalid "); //peut etre mettre dans main  pour redemander valeur
-
             }
         }
 
@@ -32,7 +29,7 @@ namespace dotNet5781_02_6859_2304
         {
             get { return Latitude; }
 
-            set => Latitude = value;
+            set => Latitude = value; //*** pourquoi pas de nb aleatoire ? ***//
         }
 
         protected double Longitude;
@@ -42,23 +39,23 @@ namespace dotNet5781_02_6859_2304
             set => Longitude = (r.NextDouble() * (35.5 - 34.3)) + 34.3;
         }
 
-
         protected readonly string adresse;
 
-        public string adres
+        public string adress
         {
             get { return adresse; }
-     
         }
 
-
-        public BusStation(string key)          //ctor 
+        //----------- ctor ------------//
+        public BusStation(string key) 
         {
             Key = key;
             Lat = (r.NextDouble() * (33.3 - 31.0)) + 31.0;
             Longi = (r.NextDouble() * (35.5 - 34.3)) + 34.3;
         }
-        public BusStation(string key, string adresse1)        //ctor  with adress if given one
+
+        // ctor overloading
+        public BusStation(string key, string adresse1)
         {
             Key = key;
             Lat = (r.NextDouble() * (33.3 - 31.0)) + 31.0;
@@ -68,7 +65,6 @@ namespace dotNet5781_02_6859_2304
 
         public override string ToString()
         {
-
             return "Bus Station Code: " + BusStationKey + ",  " +
             Latitude + "°N  " + Longitude + "°E  ";
         }

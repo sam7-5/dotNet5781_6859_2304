@@ -1,5 +1,4 @@
-﻿using assignement1;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -20,7 +19,6 @@ namespace dotNet5781_02_6859_2304
 
         BusLigne(BusStationLigne First, BusStationLigne Last, Area wplace)
         {
-
             ligneId = r.Next(100000, 999999);
             FirstStation = First; LastStation = Last; place = wplace;
         }
@@ -38,7 +36,6 @@ namespace dotNet5781_02_6859_2304
         void addStationEnd(BusStationLigne bus)
         {
             busStationLignes.Add(bus);              //default insert at the end
-
         }
         void addStationMiddle(BusStationLigne bus)
         {
@@ -63,51 +60,42 @@ namespace dotNet5781_02_6859_2304
 
         bool Exist(BusStationLigne bus)
         {
-            bool check = busStationLignes.Contains(bus);
-
-            if (check)
+            //*** j'ai racourci ici ***//
+            //bool check = busStationLignes.Contains(bus);
+            if (busStationLignes.Contains(bus)/*check*/)
                 return true;
-
             return false;
         }
 
         int DistanceBetweenStations(BusStationLigne bus1, BusStationLigne bus2)
         {
-
-           
             int count1 = 0;
             foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(bus1)))
             {
                 count1 += item.DistancePreviousStations;
             }
 
-       
             int count2 = 0;
             foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(bus2)))
             {
                 count2 += item.DistancePreviousStations;
             }
 
-
             return Math.Abs(count2 - count1);
         }
         int TimeBetweenStations(BusStationLigne bus1, BusStationLigne bus2)
         {
-
-
             int count1 = 0;
             foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(bus1)))
             {
                 count1 += item.TimePreviousStations;
             }
 
-
             int count2 = 0;
             foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(bus2)))
             {
                 count2 += item.TimePreviousStations;
             }
-
 
             return Math.Abs(count2 - count1);
         }
@@ -137,9 +125,7 @@ namespace dotNet5781_02_6859_2304
             else if (time1 < time2)
                 return -1;
 
-            return 9999;
+            return 9999; //*** prq ce return ? ***//
         }
     }
-
-
 }
