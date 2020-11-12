@@ -15,9 +15,12 @@ namespace dotNet5781_02_6859_2304
         List<BusStationLigne> busStationLignes = new List<BusStationLigne>();
         int ligneId;
         BusStationLigne FirstStation;
+        public int First { get; }
         BusStationLigne LastStation;
+        public int Last { get; }
         Area place;
 
+        
         BusLigne(BusStationLigne First, BusStationLigne Last, Area wplace)
         {
 

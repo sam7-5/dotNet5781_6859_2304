@@ -9,11 +9,23 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_6859_2304
 {
-    class BusLigneCollection:IEnumerable
+    class BusLigneCollection: IEnumerable,IEnumerator
     {
         List<BusLigne> mylist;
 
+        public object Current => throw new NotImplementedException();
+
         public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool MoveNext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Reset()
         {
             throw new NotImplementedException();
         }
@@ -22,35 +34,44 @@ namespace dotNet5781_02_6859_2304
         {
             try
             {
-
-
                 if (mylist.Contains(ligne))
                 {
-                    if (/*inversede ligne*/)
+                    if (mylist.ElementAt(mylist.IndexOf(ligne)).First==ligne.Last)   //doute si ya besoin
                     {
-                        int i = mylist.IndexOf(ligne);
-                        //  mylist.Find(i);
+                        mylist.Add(ligne);
+                        //  throw new ArgumentOutOfRangeException("this ligne already exist");
 
                     }
                     else throw new ArgumentOutOfRangeException("this ligne already exist (and it is not the one in the opposite way)");
-
-
                 }
-                else throw new ArgumentOutOfRangeException("this ligne doesn't exist");
+                else
+                    mylist.Add(ligne);
             }
+
+            catch (Exception ex)   //no exception!
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        void DeleteLigne(BusLigne ligne) //ajout si ligne exist dans l'autre sens
+        {
+         try
+            {
+                if (!mylist.Contains(ligne))
+                    throw new ArgumentOutOfRangeException("this ligne doesn't exist");
+
+            }
+
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-
-
             }
 
-            mylist.Add(ligne);
-        }
-        void DeleteLigne(BusLigne ligne)
-        {
             mylist.Remove(ligne);
         }
+
+        
 
     }
 }
