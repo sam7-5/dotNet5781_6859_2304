@@ -19,6 +19,15 @@ namespace dotNet5781_02_6859_2304
         public int Last { get; }
         Area place;
 
+        // ctor without args
+        // make 40 station of bus
+        public BusLigne()
+        {
+            for (int i = 0; i < 40; i++)
+            {
+                busStationLignes.Add(new BusStationLigne());
+            }
+        }
         
         BusLigne(BusStationLigne First, BusStationLigne Last, Area wplace)
         {

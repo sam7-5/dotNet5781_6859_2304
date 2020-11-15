@@ -8,7 +8,6 @@ namespace dotNet5781_02_6859_2304
 {
     class BusStationLigne : BusStation  //inheritance
     {
-
         public readonly int DistancePreviousStations; //in metres
         public int distance { get; }
 
@@ -27,9 +26,11 @@ namespace dotNet5781_02_6859_2304
             TimePreviousStations = Time;
         }
 
-        public BusStationLigne()
+        public BusStationLigne() : base()
         {
-            // random fields to implemente
+            // we assume no more than 3KM between stations and no more than 10 minutes
+            DistancePreviousStations = r.Next(500,3000);
+            TimePreviousStations = r.Next(1,10);
         }
 
     }

@@ -18,16 +18,9 @@ namespace dotNet5781_02_6859_2304
         static public Random r = new Random(DateTime.Now.Millisecond);
         public BusLigneCollection()
         {
-            BusLigne[] arr = null;
-
             for (int i = 0; i < 10; i++)
             {
-                // we suppose a distance is no more than 99 km an time between station no more than 25 minutes
-                //---- ??? ----//
-                //---- Probleme avec le ctor de Busline: je ne sais pas cbien d'argument mettre pour quil marche ----//
-                //---- ??? ----//
-                //arr[i] = new BusLigne(/*(r.Next(100000, 999999).ToString()),*/r.Next(10, 99), r.Next(1,25));
-                //mylist.Add(new BusLigne());
+                mylist.Add(new BusLigne());
             }
         }
         //---- Fin Essai ----//
@@ -88,8 +81,5 @@ namespace dotNet5781_02_6859_2304
 
             mylist.Remove(ligne);
         }
-
-        
-
     }
 }

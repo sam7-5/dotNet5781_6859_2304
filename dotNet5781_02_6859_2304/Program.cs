@@ -10,6 +10,7 @@ namespace dotNet5781_02_6859_2304
     {
         static void Main(string[] args)
         {
+            BusLigneCollection BusCollec = new BusLigneCollection();
             Actions action;
             bool result;
             Console.WriteLine("Welcome to the Bus Station manager !" + "\n");
@@ -32,12 +33,16 @@ namespace dotNet5781_02_6859_2304
                 switch (action)
                 {
                     case Actions.ADD:
+                        Console.WriteLine("enter");
                         break;
 
                     case Actions.DELETE:
+                        Console.WriteLine("enter the number of the bus line to delete: ");
                         break;
 
                     case Actions.SEARCH:
+                        Console.WriteLine("enter the number of the bus line to search: ");
+
                         break;
 
                     default:
