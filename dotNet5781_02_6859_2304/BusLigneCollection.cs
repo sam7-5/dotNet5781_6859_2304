@@ -30,7 +30,6 @@ namespace dotNet5781_02_6859_2304
                 //mylist.Add(new BusLigne());
             }
         }
-
         //---- Fin Essai ----//
         public object Current => throw new NotImplementedException();
 
