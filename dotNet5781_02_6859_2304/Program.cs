@@ -45,7 +45,6 @@ namespace dotNet5781_02_6859_2304
                 }
 
             } while (action != Actions.EXIT);
-
         }
     }
 }

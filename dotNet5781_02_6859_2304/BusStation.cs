@@ -68,5 +68,13 @@ namespace dotNet5781_02_6859_2304
             return "Bus Station Code: " + BusStationKey + ",  " +
             Latitude + "°N  " + Longitude + "°E  ";
         }
+
+        public BusStation()
+        {
+            // random fields to implemente
+            BusStationKey = r.Next(100000, 999999).ToString();
+            Latitude = (r.NextDouble() * (33.3 - 31.0)) + 31.0;
+            Longitude = (r.NextDouble() * (35.5 - 34.3)) + 34.3;
+        }
     }
 }

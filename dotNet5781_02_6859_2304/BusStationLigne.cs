@@ -26,5 +26,11 @@ namespace dotNet5781_02_6859_2304
             DistancePreviousStations = Distance;
             TimePreviousStations = Time;
         }
+
+        public BusStationLigne()
+        {
+            // random fields to implemente
+        }
+
     }
 }
