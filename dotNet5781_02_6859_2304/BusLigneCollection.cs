@@ -28,8 +28,8 @@ namespace dotNet5781_02_6859_2304
                 //---- ??? ----//
                 //arr[i] = new BusLigne(/*(r.Next(100000, 999999).ToString()),*/r.Next(10, 99), r.Next(1,25));
                 //mylist.Add(new BusLigne());
+            }
         }
-
         //---- Fin Essai ----//
         public object Current => throw new NotImplementedException();
 
