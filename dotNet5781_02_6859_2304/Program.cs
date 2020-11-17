@@ -32,26 +32,32 @@ namespace dotNet5781_02_6859_2304
 
                 switch (action)
                 {
-                    case Actions.ADD:
+                    case Actions.ADD_LINE:
                         Console.WriteLine("enter the bus number to add: ");
                         // input bus line
                         // busCollec.AddLigne();
-
                         break;
 
-                    case Actions.DELETE:
+                    case Actions.ADD_STATION:
+                        break;
+
+                    case Actions.DELETE_LINE:
                         Console.WriteLine("enter the number of the bus line to delete: ");
                         // bus line input
                         //busCollec.DeleteLigne();
                         break;
 
-                    case Actions.SEARCH:
-                        Console.WriteLine("enter the number of the bus line to search: ");
-                        
-
+                    case Actions.DELETE_STATION:
                         break;
-                    case Actions.PRINT:
-                        // print all the bus ligne
+
+                    case Actions.SEARCH_DIRECT_LINE:
+                        Console.WriteLine("enter the number of the bus line to search: ");
+                        break;
+
+                    case Actions.PRINT_ALL_LINES:
+                        break;
+
+                    case Actions.PRINT_STATIONS:
                         break;
 
                     default:

@@ -9,36 +9,24 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_6859_2304
 {
-    class BusLigneCollection: IEnumerable,IEnumerator
+    class BusLigneCollection: IEnumerable
     {
-        List<BusLigne> mylist;
+        private List<BusLigne> mylist;
 
-        //---- Debut Essai ----//
         // ctor to fill 10 bus with random values //
         static public Random r = new Random(DateTime.Now.Millisecond);
         public BusLigneCollection()
         {
+            mylist = new List<BusLigne>();
+
             for (int i = 0; i < 10; i++)
             {
                 mylist.Add(new BusLigne());
             }
         }
-        //---- Fin Essai ----//
-        public object Current => throw new NotImplementedException();
-
         public IEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();
-        }
-
-        public bool MoveNext()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Reset()
-        {
-            throw new NotImplementedException();
+            return mylist.GetEnumerator();
         }
 
         public void AddLigne(BusLigne ligne)
