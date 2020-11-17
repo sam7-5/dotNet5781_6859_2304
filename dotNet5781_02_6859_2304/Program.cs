@@ -35,14 +35,14 @@ namespace dotNet5781_02_6859_2304
                     case Actions.ADD:
                         Console.WriteLine("enter the bus number to add: ");
                         // input bus line
-                        // busCollec.AddLigne();
+                         busCollec.AddLigne();
 
                         break;
 
                     case Actions.DELETE:
                         Console.WriteLine("enter the number of the bus line to delete: ");
                         // bus line input
-                        //busCollec.DeleteLigne();
+                        busCollec.DeleteLigne();
                         break;
 
                     case Actions.SEARCH:
