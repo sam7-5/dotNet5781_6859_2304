@@ -39,17 +39,50 @@ namespace dotNet5781_02_6859_2304
                         break;
 
                     case Actions.ADD_STATION:
+                        Console.WriteLine("enter the bus line id: ");
+                        string idlin = Console.ReadLine();
+
+                        Console.WriteLine("enter the bus new station id: ");
+                        string idstat = Console.ReadLine();
+
+                        Console.WriteLine("enter distance from last station: ");
+                        int dis = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("enter time from last station: ");
+                        int tim = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("enter at begining (1) middle (2) or end (3)?: ");
+                        int choice = Convert.ToInt32(Console.ReadLine());
+                        busCollec.addStation(idlin, idstat, dis, tim, choice);
                         break;
 
                     case Actions.DELETE_LINE:
                         Console.WriteLine("enter the number of the bus line to delete: ");
                         string id1 = Console.ReadLine();
-                        busCollec.DeleteLigne();
+                        busCollec.DeleteLigne(id1);
+                        break;
+
+                    case Actions.DELETE_STATION:
+                        Console.WriteLine("enter the bus line id: ");
+                        string idlin1 = Console.ReadLine();
+
+                        Console.WriteLine("enter the bus station id to delete: ");
+                        string idstat1 = Console.ReadLine();
+
+                        busCollec.DeleteStation(idlin1, idstat1);
                         break;
 
                     case Actions.SEARCH_DIRECT_LINE:
+                        Console.WriteLine("enter the number of the departure bus station : ");
+                        string depart = Console.ReadLine();
+                        Console.WriteLine("enter the number of the arrival bus station : ");
+                        string arrival = Console.ReadLine();
+
+                        busCollec.searchDirectLine(depart, arrival);
+                        break;
+
+                    case Actions.SEARCH_LINE_NUMBER:
                         Console.WriteLine("enter the number of the bus line to search: ");
-                         string id = Console.ReadLine();
+                        string id = Console.ReadLine();
                         busCollec.searchLines(id);
                         break;
 
@@ -57,6 +90,7 @@ namespace dotNet5781_02_6859_2304
                         busCollec.PrintLines();
                         break;
                     case Actions.PRINT_STATIONS:
+                        busCollec.PrintStations();
                         break;
 
                     default:

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_6859_2304
 {
-    class BusLigneCollection: IEnumerable
+    class BusLigneCollection : IEnumerable
     {
         private List<BusLigne> mylist;
 
@@ -35,7 +35,7 @@ namespace dotNet5781_02_6859_2304
             {
                 if (mylist.Contains(ligne))
                 {
-                    if (mylist.ElementAt(mylist.IndexOf(ligne)).First==ligne.Last)   //doute si ya besoin
+                    if (mylist.ElementAt(mylist.IndexOf(ligne)).First == ligne.Last)   //doute si ya besoin
                     {
                         mylist.Add(ligne);
                         //  throw new ArgumentOutOfRangeException("this ligne already exist");
@@ -52,22 +52,59 @@ namespace dotNet5781_02_6859_2304
                 Console.WriteLine(ex.Message);
             }
         }
-
-        public void DeleteLigne(BusLigne ligne) //ajout si ligne exist dans l'autre sens
+        public void addStation(string lineId, string stationKey, int distance, int time, int choice)
         {
-         try
+            try
             {
-                if (!mylist.Contains(ligne))
-                    throw new ArgumentOutOfRangeException("this ligne doesn't exist");
+                BusLigne result = mylist.Find(x => x.Id == lineId);
+                BusStationLigne stationLigne = new BusStationLigne(stationKey, distance, time);
+                if (choice == 1)
+                {
+                    result.addStationBegin(stationLigne);
+                }
+                if (choice == 2)
+                {
+                    result.addStationMiddle(stationLigne);
+                }
+                if (choice == 3)
+                {
+                    result.addStationEnd(stationLigne);
+                }
+            }
+            catch (ArgumentNullException arg)
+            {
+                Console.WriteLine(arg.Message);
             }
 
-            catch (Exception ex)
+        }
+
+        public void DeleteLigne(string line) //pas compris si ligne exist dans l'autre sens
+        {
+            try
             {
-                Console.WriteLine(ex.Message);
+                BusLigne result = mylist.Find(x => x.Id == line);
+                mylist.Remove(result);
             }
 
-            mylist.Remove(ligne);
-     
+            catch (ArgumentNullException arg)
+            {
+                Console.WriteLine(arg.Message);
+            }
+
+
+
+        }
+        public void DeleteStation(string lineId, string stationKey)
+        {
+            try
+            {
+                BusLigne result = mylist.Find(x => x.Id == lineId);
+                result.deleteStation(stationKey);
+            }
+            catch (ArgumentNullException arg)
+            {
+                Console.WriteLine(arg.Message);
+            }
         }
 
         public void PrintLines()      //all bus lines
@@ -81,17 +118,34 @@ namespace dotNet5781_02_6859_2304
 
         public void PrintStations()      //list of all bus station with line numbers that passes it trough 
         {
-
+            foreach (BusLigne bus  in mylist)
+            {
+                bus.printStations();
+            }
         }
 
-        public void searchLines(string id )
+        public void searchLines(string busStationid)
+        {
+            foreach (BusLigne item in mylist)
+            {
+               bool found= item.Search(busStationid);
+                if(found)
+                {
+                    Console.WriteLine(item.Id,"  ");
+                  
+                }
+                
+            }
+        }
+        
+
+        public void searchDirectLine(string departId,string arivalId)
         {
 
         }
+       
     }
 }
 
-    // method to implemente:
-    // print
-    // search
+//index
 

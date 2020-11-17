@@ -8,19 +8,19 @@ namespace dotNet5781_02_6859_2304
 {
     class BusStationLigne : BusStation  //inheritance
     {
-        public readonly int DistancePreviousStations; //in metres
-        public int distance { get; }
+        public  int DistancePreviousStations; //in metres
+        public int distance { get; set; }
 
-        public readonly int TimePreviousStations; //in minutes
-        public int time { get; }
+        public  int TimePreviousStations; //in minutes
+        public int time { get; set; }
 
         //ctors according to inheritance
-         BusStationLigne(string key,int Distance, int Time ) : base(key)
+        public BusStationLigne(string key,int Distance, int Time ) : base(key)
         {
             DistancePreviousStations = Distance;
             TimePreviousStations = Time;
         }
-         BusStationLigne(string key, string adresse1, int Distance, int Time) : base(key, adresse1)
+     public    BusStationLigne(string key, string adresse1, int Distance, int Time) : base(key, adresse1)
         {
             DistancePreviousStations = Distance;
             TimePreviousStations = Time;
@@ -39,6 +39,6 @@ namespace dotNet5781_02_6859_2304
             DistancePreviousStations = r.Next(500, 3000);
             TimePreviousStations = r.Next(1, 10);
         }
-
+      
     }
 }

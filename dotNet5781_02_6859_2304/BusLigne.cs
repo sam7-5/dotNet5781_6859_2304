@@ -13,6 +13,7 @@ namespace dotNet5781_02_6859_2304
 
         List<BusStationLigne> busStationLignes = new List<BusStationLigne>();
         int ligneId;
+        public string Id { get; }
         BusStationLigne FirstStation;
         public int First { get; }
         BusStationLigne LastStation;
@@ -50,36 +51,54 @@ namespace dotNet5781_02_6859_2304
                 + FirstStation + "Last station:  " + LastStation + "Area:  " + place + busStationLignes.ToString();
         }
 
-        void addStationBegin(BusStationLigne bus)
+        public void addStationBegin(BusStationLigne bus)
         {
             busStationLignes.Insert(0, bus);
         }
-        void addStationEnd(BusStationLigne bus)
+        public void addStationEnd(BusStationLigne bus)
         {
             busStationLignes.Add(bus);              //default insert at the end
         }
-        void addStationMiddle(BusStationLigne bus)
+        public void addStationMiddle(BusStationLigne bus)
         {
             int size = busStationLignes.Count();
             busStationLignes.Insert(size / 2, bus);
         }
 
-        void deleteStationBegin(BusStationLigne bus)
-        {
-            busStationLignes.RemoveAt(0);
-        }
-        void deleteStationmiddle(BusStationLigne bus)
-        {
-            int size = busStationLignes.Count();
-            busStationLignes.RemoveAt(size / 2);
-        }
-        void deleteStationEnd(BusStationLigne bus)
-        {
-            int size = busStationLignes.Count();
-            busStationLignes.RemoveAt(size);
-        }
+        //public void deleteStationBegin(BusStationLigne bus)
+        //{
+        //    busStationLignes.RemoveAt(0);
+        //}
+        //public void deleteStationmiddle(BusStationLigne bus)
+        //{
+        //    int size = busStationLignes.Count();
+        //    busStationLignes.RemoveAt(size / 2);
+        //}
+        //public void deleteStationEnd(BusStationLigne bus)
+        //{
+        //    int size = busStationLignes.Count();
+        //    busStationLignes.RemoveAt(size);
+        // }
 
-        bool Exist(BusStationLigne bus)
+        public void deleteStation(string stationKey)
+        {
+            try
+            {
+                BusStationLigne result = busStationLignes.Find(x => x.Key == stationKey);
+
+                int index = busStationLignes.IndexOf(result);
+                BusStationLigne update = busStationLignes.ElementAt(index + 1);
+                update.distance = result.DistancePreviousStations + update.DistancePreviousStations;
+                update.time = result.TimePreviousStations + update.TimePreviousStations;
+
+                busStationLignes.Remove(result);
+            }
+            catch (ArgumentNullException arg)
+            {
+                Console.WriteLine(arg.Message);
+            }
+        }
+        public bool Exist(BusStationLigne bus)
         {
             if (busStationLignes.Contains(bus))
                 return true;
@@ -145,6 +164,32 @@ namespace dotNet5781_02_6859_2304
                 return -1;
 
             return 9999;
+        }
+        public bool Search(string busStationId)
+        {
+
+            try
+            {
+                BusStationLigne result = busStationLignes.Find(x => x.Key == busStationId);
+
+                return true;
+            }
+
+            catch (ArgumentNullException arg)
+            {
+                Console.WriteLine(arg.Message);
+            }
+            return false;
+        }
+        public void printStations()
+        {
+            foreach (BusStationLigne station in busStationLignes)
+            {
+                station.ToString();
+                Console.WriteLine();
+                string stationKey = station.Key;
+
+            }
         }
     }
 }
