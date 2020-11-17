@@ -36,6 +36,7 @@ namespace dotNet5781_02_6859_2304
                         Console.WriteLine("enter the bus number to add: ");
                         string BusId = Console.ReadLine();
                         busCollec.AddLigne(new BusLigne(BusId));
+                        break;
 
                     case Actions.ADD_STATION:
                         break;
@@ -48,13 +49,14 @@ namespace dotNet5781_02_6859_2304
 
                     case Actions.SEARCH_DIRECT_LINE:
                         Console.WriteLine("enter the number of the bus line to search: ");
-                        int id = Convert.ToInt32(Console.ReadLine());
-                        busCollec.SearchLignes(id);
+                         string id = Console.ReadLine();
+                        busCollec.searchLines(id);
+                        break;
 
                     case Actions.PRINT_ALL_LINES:
+                        busCollec.PrintLines();
                         break;
-                    case Actions.PRINT:
-                        // print all the bus ligne
+                    case Actions.PRINT_STATIONS:
                         break;
 
                     default:

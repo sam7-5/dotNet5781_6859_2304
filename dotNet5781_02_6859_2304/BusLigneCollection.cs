@@ -79,7 +79,12 @@ namespace dotNet5781_02_6859_2304
             }
         }
 
-        public void Print()      //list of all bus station with line numbers that passes it trough 
+        public void PrintStations()      //list of all bus station with line numbers that passes it trough 
+        {
+
+        }
+
+        public void searchLines(string id )
         {
 
         }
