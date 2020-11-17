@@ -67,8 +67,24 @@ namespace dotNet5781_02_6859_2304
             }
 
             mylist.Remove(ligne);
+     
+        }
+
+        public void PrintLines()      //all bus lines
+        {
+            foreach (BusLigne item in mylist)
+            {
+                item.ToString();
+                Console.WriteLine("\n");
+            }
+        }
+
+        public void Print()      //list of all bus station with line numbers that passes it trough 
+        {
+
         }
     }
+}
 
     // method to implemente:
     // print
