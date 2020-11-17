@@ -41,7 +41,7 @@ namespace dotNet5781_02_6859_2304
             throw new NotImplementedException();
         }
 
-        void AddLigne(BusLigne ligne)
+        public void AddLigne(BusLigne ligne)
         {
             try
             {
@@ -65,13 +65,12 @@ namespace dotNet5781_02_6859_2304
             }
         }
 
-        void DeleteLigne(BusLigne ligne) //ajout si ligne exist dans l'autre sens
+        public void DeleteLigne(BusLigne ligne) //ajout si ligne exist dans l'autre sens
         {
          try
             {
                 if (!mylist.Contains(ligne))
                     throw new ArgumentOutOfRangeException("this ligne doesn't exist");
-
             }
 
             catch (Exception ex)
@@ -82,4 +81,8 @@ namespace dotNet5781_02_6859_2304
             mylist.Remove(ligne);
         }
     }
+
+    // method to implemente:
+    // print
+    // search
 }
