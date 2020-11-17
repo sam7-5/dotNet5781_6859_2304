@@ -15,12 +15,12 @@ namespace dotNet5781_02_6859_2304
         public int time { get; }
 
         //ctors according to inheritance
-        public BusStationLigne(string key,int Distance, int Time ) : base(key)
+         BusStationLigne(string key,int Distance, int Time ) : base(key)
         {
             DistancePreviousStations = Distance;
             TimePreviousStations = Time;
         }
-        public BusStationLigne(string key, string adresse1, int Distance, int Time) : base(key, adresse1)
+         BusStationLigne(string key, string adresse1, int Distance, int Time) : base(key, adresse1)
         {
             DistancePreviousStations = Distance;
             TimePreviousStations = Time;
@@ -31,6 +31,13 @@ namespace dotNet5781_02_6859_2304
             // we assume no more than 3KM between stations and no more than 10 minutes
             DistancePreviousStations = r.Next(500,3000);
             TimePreviousStations = r.Next(1,10);
+        }
+
+        public BusStationLigne(string id) : base(id)
+        {
+            // we assume no more than 3KM between stations and no more than 10 minutes
+            DistancePreviousStations = r.Next(500, 3000);
+            TimePreviousStations = r.Next(1, 10);
         }
 
     }

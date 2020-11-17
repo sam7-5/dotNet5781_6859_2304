@@ -28,13 +28,22 @@ namespace dotNet5781_02_6859_2304
                 busStationLignes.Add(new BusStationLigne());
             }
         }
-        
+
+        public BusLigne(string busid)
+        {
+            busStationLignes.Add(new BusStationLigne(busid));
+        }
+
         BusLigne(BusStationLigne First, BusStationLigne Last, Area wplace)
         {
             ligneId = r.Next(100000, 999999);
             FirstStation = First; LastStation = Last; place = wplace;
         }
-        BusLigne(int Id, BusStationLigne First, BusStationLigne Last, Area wplace) { ligneId = Id; FirstStation = First; LastStation = Last; place = wplace; }
+
+        BusLigne(int Id, BusStationLigne First, BusStationLigne Last, Area wplace)
+        {
+            ligneId = Id; FirstStation = First; LastStation = Last; place = wplace;
+        }
         public override string ToString()
         {
             return "Ligne number:  " + ligneId + "first station:  "
@@ -114,14 +123,14 @@ namespace dotNet5781_02_6859_2304
         {
             BusLigne Sublist = new BusLigne(bus1, bus2, this.place);
 
-            Sublist.busStationLignes = 
+            Sublist.busStationLignes =
                 busStationLignes.GetRange(busStationLignes.IndexOf(bus1), busStationLignes.IndexOf(bus2));
 
             return Sublist;
         }
 
         public int CompareTo(object obj)  //compare total time between 2 lignes
-        { 
+        {
             BusLigne bus = (BusLigne)obj;
             int time1 = bus.TimeBetweenStations(bus.FirstStation, bus.LastStation);
             int time2 = this.TimeBetweenStations(this.FirstStation, this.LastStation);
