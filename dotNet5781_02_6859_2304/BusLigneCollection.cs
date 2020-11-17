@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_6859_2304
 {
-    class BusLigneCollection: IEnumerable,IEnumerator
+    class BusLigneCollection : IEnumerable, IEnumerator
     {
         List<BusLigne> mylist;
 
@@ -31,6 +31,11 @@ namespace dotNet5781_02_6859_2304
             throw new NotImplementedException();
         }
 
+        public void SearchLignes(int stationId)
+        {
+
+
+        }
         public bool MoveNext()
         {
             throw new NotImplementedException();
@@ -47,7 +52,7 @@ namespace dotNet5781_02_6859_2304
             {
                 if (mylist.Contains(ligne))
                 {
-                    if (mylist.ElementAt(mylist.IndexOf(ligne)).First==ligne.Last)   //doute si ya besoin
+                    if (mylist.ElementAt(mylist.IndexOf(ligne)).First == ligne.Last)   //doute si ya besoin
                     {
                         mylist.Add(ligne);
                         //  throw new ArgumentOutOfRangeException("this ligne already exist");
@@ -67,7 +72,7 @@ namespace dotNet5781_02_6859_2304
 
         public void DeleteLigne(BusLigne ligne) //ajout si ligne exist dans l'autre sens
         {
-         try
+            try
             {
                 if (!mylist.Contains(ligne))
                     throw new ArgumentOutOfRangeException("this ligne doesn't exist");
@@ -79,6 +84,20 @@ namespace dotNet5781_02_6859_2304
             }
 
             mylist.Remove(ligne);
+        }
+
+        public void PrintLines()      //all bus lines
+        {
+            foreach (BusLigne item in mylist)
+            {
+                item.ToString();
+                Console.WriteLine("\n");
+            }
+        }
+
+        public void Print()      //list of all bus station with line numbers that passes it trough 
+        {
+
         }
     }
 
