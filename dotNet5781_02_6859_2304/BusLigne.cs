@@ -98,30 +98,34 @@ namespace dotNet5781_02_6859_2304
                 Console.WriteLine(arg.Message);
             }
         }
-        public bool Exist(BusStationLigne bus)
+        public bool Exist(string bus)
         {
-            if (busStationLignes.Contains(bus))
+            BusStationLigne result = busStationLignes.Find(x => x.Key == bus);
+            if (busStationLignes.Contains(result))
                 return true;
             return false;
         }
 
-        int DistanceBetweenStations(BusStationLigne bus1, BusStationLigne bus2)
+        public int DistanceBetweenStations(string bus1, string bus2)
         {
+            BusStationLigne result1 = busStationLignes.Find(x => x.Key == bus1);
             int count1 = 0;
-            foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(bus1)))
+            foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(result1)))
             {
                 count1 += item.DistancePreviousStations;
             }
 
+            BusStationLigne result2 = busStationLignes.Find(x => x.Key == bus2);
+
             int count2 = 0;
-            foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(bus2)))
+            foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(result2)))
             {
                 count2 += item.DistancePreviousStations;
             }
 
             return Math.Abs(count2 - count1);
         }
-        int TimeBetweenStations(BusStationLigne bus1, BusStationLigne bus2)
+        public int TimeBetweenStations(BusStationLigne bus1, BusStationLigne bus2)
         {
             int count1 = 0;
             foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(bus1)))
@@ -183,12 +187,13 @@ namespace dotNet5781_02_6859_2304
         }
         public void printStations()
         {
+
             foreach (BusStationLigne station in busStationLignes)
             {
                 station.ToString();
                 Console.WriteLine();
                 string stationKey = station.Key;
-
+                BusLigneCollection.searchLines(stationKey);
             }
         }
     }

@@ -83,7 +83,7 @@ namespace dotNet5781_02_6859_2304
                     case Actions.SEARCH_LINE_NUMBER:
                         Console.WriteLine("enter the number of the bus line to search: ");
                         string id = Console.ReadLine();
-                        busCollec.searchLines(id);
+                        BusLigneCollection.searchLines(id);
                         break;
 
                     case Actions.PRINT_ALL_LINES:

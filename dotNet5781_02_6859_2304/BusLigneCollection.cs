@@ -11,8 +11,29 @@ namespace dotNet5781_02_6859_2304
 {
     class BusLigneCollection : IEnumerable
     {
-        private List<BusLigne> mylist;
+        static private List<BusLigne> mylist;
+        public BusLigne this[int index]
+        {
+            get
+            {
+                try
+                {
+                    BusLigne pp = mylist.ElementAt(index);
+                    return pp;
 
+
+                }
+                catch (ArgumentOutOfRangeException arg)
+                {
+                    Console.WriteLine(arg.Message);
+                }
+                return null;
+            }
+            set
+            {
+                mylist.Insert(index, value);
+            }
+        } //index
         // ctor to fill 10 bus with random values //
         static public Random r = new Random(DateTime.Now.Millisecond);
         public BusLigneCollection()
@@ -115,35 +136,40 @@ namespace dotNet5781_02_6859_2304
                 Console.WriteLine("\n");
             }
         }
-
         public void PrintStations()      //list of all bus station with line numbers that passes it trough 
         {
-            foreach (BusLigne bus  in mylist)
+            foreach (BusLigne bus in mylist)
             {
                 bus.printStations();
+
             }
         }
 
-        public void searchLines(string busStationid)
+        static public void searchLines(string busStationid)//all lines id that passes by this stations
         {
             foreach (BusLigne item in mylist)
             {
-               bool found= item.Search(busStationid);
-                if(found)
+                bool found = item.Search(busStationid);
+                if (found)
                 {
-                    Console.WriteLine(item.Id,"  ");
-                  
+                    Console.WriteLine(item.Id, "  ");
+
                 }
-                
+
             }
         }
-        
-
-        public void searchDirectLine(string departId,string arivalId)
+        public void searchDirectLine(string departId, string arivalId)
         {
+            foreach (BusLigne line in mylist)
+            {
+                if (line.Exist(departId) && line.Exist(arivalId))
+                {
+                    Console.WriteLine("you can take line: {0} it will take : {1} minutes",line.Id, line.DistanceBetweenStations(departId, arivalId));
+                }
 
+            }
         }
-       
+
     }
 }
 
