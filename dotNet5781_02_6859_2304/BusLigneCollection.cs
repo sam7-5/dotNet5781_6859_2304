@@ -68,7 +68,7 @@ namespace dotNet5781_02_6859_2304
                     mylist.Add(ligne);
             }
 
-            catch (Exception ex)   //no exception!
+            catch (ArgumentOutOfRangeException ex)   
             {
                 Console.WriteLine(ex.Message);
             }
@@ -173,5 +173,5 @@ namespace dotNet5781_02_6859_2304
     }
 }
 
-//index
+
 
