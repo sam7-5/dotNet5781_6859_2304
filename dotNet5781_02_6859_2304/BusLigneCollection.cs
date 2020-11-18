@@ -93,10 +93,10 @@ namespace dotNet5781_02_6859_2304
             {
                 BusLigne result = mylist.Find(x => x.Id.ToString() == lineId);
                 BusStationLigne stationLigne = new BusStationLigne(stationKey, distance, time);
-                if (choice == 0)
-                {
-                    result.addStationNew(stationLigne);
-                }
+                //if (choice == 0)
+                //{
+                //    result.addStationNew(stationLigne);
+                //}
                 if (choice == 1)
                 {
                     result.addStationBegin(stationLigne);

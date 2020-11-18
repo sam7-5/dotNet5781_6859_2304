@@ -13,11 +13,28 @@ namespace dotNet5781_02_6859_2304
         static public List<string> existBus = new List<string>();
         List<BusStationLigne> busStationLignes = new List<BusStationLigne>();
         int ligneId;
-        public int Id { get; set; }
+
+        public int Id
+        {
+            get { return ligneId; }
+            set { ligneId = value; }
+        }
+
+       // public int Id { get; set; }
         BusStationLigne FirstStation;
-        public int First { get; set; }
+        public BusStationLigne First
+        {
+            get { return FirstStation; }
+            set { FirstStation = value; }
+        }
+        //public int First { get; set; }
         public BusStationLigne LastStation;
-        public int Last { get; set; }
+       // public int Last { get; set; }
+        public BusStationLigne Last
+        {
+            get { return LastStation; }
+            set { LastStation = value; }
+        }
         Area place;
 
         // ctor without args
