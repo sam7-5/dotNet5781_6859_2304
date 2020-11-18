@@ -44,6 +44,20 @@ namespace dotNet5781_02_6859_2304
             {
                 mylist.Add(new BusLigne());
             }
+            for (int i = 0; i < 10; i++)
+            {
+                string temp = BusLigne.existBus.ElementAt(40 - i);
+                //  BusStationLigne result = mylist.foreach(BusLigne busLigne )
+                foreach (BusLigne item in mylist)
+                {
+                    if (item.find(temp) != null)
+                    {
+                        BusStationLigne result = item.find(temp);
+                        mylist.ElementAt(i).addStationEnd(result);
+                    }
+                }
+
+            }
         }
         public IEnumerator GetEnumerator()
         {
@@ -68,7 +82,7 @@ namespace dotNet5781_02_6859_2304
                     mylist.Add(ligne);
             }
 
-            catch (ArgumentOutOfRangeException ex)   
+            catch (ArgumentOutOfRangeException ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -77,8 +91,12 @@ namespace dotNet5781_02_6859_2304
         {
             try
             {
-                BusLigne result = mylist.Find(x => x.Id == lineId);
+                BusLigne result = mylist.Find(x => x.Id.ToString() == lineId);
                 BusStationLigne stationLigne = new BusStationLigne(stationKey, distance, time);
+                if (choice == 0)
+                {
+                    result.addStationNew(stationLigne);
+                }
                 if (choice == 1)
                 {
                     result.addStationBegin(stationLigne);
@@ -103,7 +121,7 @@ namespace dotNet5781_02_6859_2304
         {
             try
             {
-                BusLigne result = mylist.Find(x => x.Id == line);
+                BusLigne result = mylist.Find(x => x.Id.ToString() == line);
                 mylist.Remove(result);
             }
 
@@ -119,7 +137,7 @@ namespace dotNet5781_02_6859_2304
         {
             try
             {
-                BusLigne result = mylist.Find(x => x.Id == lineId);
+                BusLigne result = mylist.Find(x => x.Id.ToString() == lineId);
                 result.deleteStation(stationKey);
             }
             catch (ArgumentNullException arg)
@@ -152,7 +170,7 @@ namespace dotNet5781_02_6859_2304
                 bool found = item.Search(busStationid);
                 if (found)
                 {
-                    Console.WriteLine(item.Id, "  ");
+                    Console.WriteLine( item.Id.ToString(), "  ");
 
                 }
 
@@ -164,7 +182,7 @@ namespace dotNet5781_02_6859_2304
             {
                 if (line.Exist(departId) && line.Exist(arivalId))
                 {
-                    Console.WriteLine("you can take line: {0} it will take : {1} minutes",line.Id, line.DistanceBetweenStations(departId, arivalId));
+                    Console.WriteLine("you can take line: {0} it will take : {1} minutes", line.Id, line.DistanceBetweenStations(departId, arivalId));
                 }
 
             }

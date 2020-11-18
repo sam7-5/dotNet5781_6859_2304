@@ -10,28 +10,33 @@ namespace dotNet5781_02_6859_2304
     class BusLigne : IComparable
     {
         static public Random r = new Random(DateTime.Now.Millisecond);
-
+        static public List<string> existBus = new List<string>();
         List<BusStationLigne> busStationLignes = new List<BusStationLigne>();
         int ligneId;
-        public string Id { get; }
+        public int Id { get; set; }
         BusStationLigne FirstStation;
-        public int First { get; }
-        BusStationLigne LastStation;
-        public int Last { get; }
+        public int First { get; set; }
+        public BusStationLigne LastStation;
+        public int Last { get; set; }
         Area place;
 
         // ctor without args
         // make 40 station of bus
         public BusLigne()
         {
+            string temp;
             for (int i = 0; i < 40; i++)
             {
-                busStationLignes.Add(new BusStationLigne());
+                temp = Convert.ToString(r.Next(100000, 999999));
+                existBus.Add(temp);
+                busStationLignes.Add(new BusStationLigne(temp));
             }
+
         }
 
         public BusLigne(string busid)
         {
+
             busStationLignes.Add(new BusStationLigne(busid));
         }
 
@@ -40,7 +45,12 @@ namespace dotNet5781_02_6859_2304
             ligneId = r.Next(100000, 999999);
             FirstStation = First; LastStation = Last; place = wplace;
         }
-
+        public BusLigne(int Id, BusStationLigne First, BusStationLigne Last)
+        {
+            ligneId = Id; FirstStation = First; LastStation = Last;
+            busStationLignes.Add(FirstStation);
+            busStationLignes.Add(LastStation);
+        }
         BusLigne(int Id, BusStationLigne First, BusStationLigne Last, Area wplace)
         {
             ligneId = Id; FirstStation = First; LastStation = Last; place = wplace;
@@ -50,7 +60,10 @@ namespace dotNet5781_02_6859_2304
             return "Ligne number:  " + ligneId + "first station:  "
                 + FirstStation + "Last station:  " + LastStation + "Area:  " + place + busStationLignes.ToString();
         }
-
+        public void addStationNew(BusStationLigne bus)
+        {
+            busStationLignes.Add(bus);
+        }
         public void addStationBegin(BusStationLigne bus)
         {
             busStationLignes.Insert(0, bus);
@@ -184,6 +197,22 @@ namespace dotNet5781_02_6859_2304
                 Console.WriteLine(arg.Message);
             }
             return false;
+        }
+        public BusStationLigne find(string busStationId)
+        {
+
+            try
+            {
+                BusStationLigne result = busStationLignes.Find(x => x.Key == busStationId);
+
+                return result;
+            }
+
+            catch (ArgumentNullException arg)
+            {
+                Console.WriteLine(arg.Message);
+            }
+            return null;
         }
         public void printStations()
         {

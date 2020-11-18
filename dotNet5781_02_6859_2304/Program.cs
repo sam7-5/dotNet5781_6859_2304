@@ -33,9 +33,19 @@ namespace dotNet5781_02_6859_2304
                 switch (action)
                 {
                     case Actions.ADD_LINE:
-                        Console.WriteLine("enter the bus number to add: ");
-                        string BusId = Console.ReadLine();
-                        busCollec.AddLigne(new BusLigne(BusId));
+                        Console.WriteLine("enter the bus line number to add: ");
+                        int BusId = int.Parse(Console.ReadLine());
+                        Console.WriteLine("enter the bus depart station id: ");
+                        string idde = Console.ReadLine();
+                        Console.WriteLine("enter the bus last station id: ");
+                        string idar = Console.ReadLine();
+                        Console.WriteLine("enter distance from last station: ");
+                        int dis0 = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("enter time from last station: ");
+                        int tim0 = Convert.ToInt32(Console.ReadLine());
+
+                        busCollec.AddLigne(new BusLigne(BusId, new BusStationLigne( idde,0,0), new BusStationLigne(idar, dis0, tim0)));
+                       
                         break;
 
                     case Actions.ADD_STATION:
