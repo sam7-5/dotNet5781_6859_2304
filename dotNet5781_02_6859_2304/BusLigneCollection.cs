@@ -33,7 +33,7 @@ namespace dotNet5781_02_6859_2304
             {
                 mylist.Insert(index, value);
             }
-        } //index
+        } //indexer
         // ctor to fill 10 bus with random values //
         static public Random r = new Random(DateTime.Now.Millisecond);
         public BusLigneCollection()
@@ -47,7 +47,7 @@ namespace dotNet5781_02_6859_2304
             for (int i = 0; i < 10; i++)
             {
                 string temp = BusLigne.existBus.ElementAt(40 - i);
-                //  BusStationLigne result = mylist.foreach(BusLigne busLigne )
+           
                 foreach (BusLigne item in mylist)
                 {
                     if (item.find(temp) != null)
@@ -93,10 +93,7 @@ namespace dotNet5781_02_6859_2304
             {
                 BusLigne result = mylist.Find(x => x.Id.ToString() == lineId);
                 BusStationLigne stationLigne = new BusStationLigne(stationKey, distance, time);
-                //if (choice == 0)
-                //{
-                //    result.addStationNew(stationLigne);
-                //}
+       
                 if (choice == 1)
                 {
                     result.addStationBegin(stationLigne);
@@ -150,16 +147,18 @@ namespace dotNet5781_02_6859_2304
         {
             foreach (BusLigne item in mylist)
             {
-                item.ToString();
+                Console.WriteLine(item.ToString());
+               item.ToStringBusStation();
+               
                 Console.WriteLine("\n");
             }
         }
-        public void PrintStations()      //list of all bus station with line numbers that passes it trough 
+        public void PrintStations()      //list of all bus stations with line numbers that passes it trough 
         {
             foreach (BusLigne bus in mylist)
             {
                 bus.printStations();
-
+                Console.WriteLine();
             }
         }
 

@@ -91,7 +91,7 @@ namespace dotNet5781_02_6859_2304
                         break;
 
                     case Actions.SEARCH_LINE_NUMBER:
-                        Console.WriteLine("enter the number of the bus line to search: ");
+                        Console.WriteLine("enter the id of the station i will tell you which lines passes through it: ");
                         string id = Console.ReadLine();
                         BusLigneCollection.searchLines(id);
                         break;

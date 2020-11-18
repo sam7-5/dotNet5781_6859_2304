@@ -29,16 +29,16 @@ namespace dotNet5781_02_6859_2304
         public BusStationLigne() : base()
         {
             // we assume no more than 3KM between stations and no more than 10 minutes
-            DistancePreviousStations = r.Next(500,3000);
-            TimePreviousStations = r.Next(1,10);
+            DistancePreviousStations = r.Next(500, 3000);
+            TimePreviousStations = r.Next(1, 10);
         }
 
-    public BusStationLigne(string id) : base(id)
-    {
-        // we assume no more than 3KM between stations and no more than 10 minutes
-        DistancePreviousStations = r.Next(500, 3000);
-        TimePreviousStations = r.Next(1, 10);
-    }
+        public BusStationLigne(string id) : base(id)
+        {
+            // we assume no more than 3KM between stations and no more than 10 minutes
+            DistancePreviousStations = r.Next(500, 3000);
+            TimePreviousStations = r.Next(1, 10);
+        }
 
-}
+    }
 }

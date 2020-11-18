@@ -20,16 +20,16 @@ namespace dotNet5781_02_6859_2304
             set { ligneId = value; }
         }
 
-       // public int Id { get; set; }
+
         BusStationLigne FirstStation;
         public BusStationLigne First
         {
             get { return FirstStation; }
             set { FirstStation = value; }
         }
-        //public int First { get; set; }
+
         public BusStationLigne LastStation;
-       // public int Last { get; set; }
+
         public BusStationLigne Last
         {
             get { return LastStation; }
@@ -37,16 +37,20 @@ namespace dotNet5781_02_6859_2304
         }
         Area place;
 
-        // ctor without args
         // make 40 station of bus
         public BusLigne()
         {
             string temp;
             for (int i = 0; i < 40; i++)
             {
-                temp = Convert.ToString(r.Next(100000, 999999));
+                ligneId = r.Next(10, 999);
+                temp = Convert.ToString(ligneId);
                 existBus.Add(temp);
-                busStationLignes.Add(new BusStationLigne(temp));
+
+                FirstStation = new BusStationLigne(r.Next(100000, 999999).ToString(), r.Next(), r.Next());
+                LastStation = new BusStationLigne(r.Next(100000, 999999).ToString(), r.Next(), r.Next());
+                busStationLignes.Add(FirstStation);
+                busStationLignes.Add(LastStation);
             }
 
         }
@@ -72,10 +76,19 @@ namespace dotNet5781_02_6859_2304
         {
             ligneId = Id; FirstStation = First; LastStation = Last; place = wplace;
         }
+        public void ToStringBusStation()
+        {
+            foreach (BusStationLigne item in busStationLignes)
+            {
+                Console.WriteLine(item.ToString());
+
+            }
+
+        }
         public override string ToString()
         {
-            return "Ligne number:  " + ligneId + "first station:  "
-                + FirstStation + "Last station:  " + LastStation + "Area:  " + place + busStationLignes.ToString();
+            return "Ligne number:  " + Id + "\nfirst station:  "
+                + First + "\nLast station:  " + Last + "\nArea:  " + place + "\n";
         }
         public void addStationNew(BusStationLigne bus)
         {
@@ -95,20 +108,6 @@ namespace dotNet5781_02_6859_2304
             busStationLignes.Insert(size / 2, bus);
         }
 
-        //public void deleteStationBegin(BusStationLigne bus)
-        //{
-        //    busStationLignes.RemoveAt(0);
-        //}
-        //public void deleteStationmiddle(BusStationLigne bus)
-        //{
-        //    int size = busStationLignes.Count();
-        //    busStationLignes.RemoveAt(size / 2);
-        //}
-        //public void deleteStationEnd(BusStationLigne bus)
-        //{
-        //    int size = busStationLignes.Count();
-        //    busStationLignes.RemoveAt(size);
-        // }
 
         public void deleteStation(string stationKey)
         {
@@ -130,10 +129,18 @@ namespace dotNet5781_02_6859_2304
         }
         public bool Exist(string bus)
         {
-            BusStationLigne result = busStationLignes.Find(x => x.Key == bus);
-            if (busStationLignes.Contains(result))
+            try
+            {
+                BusStationLigne result = busStationLignes.Find(x => x.Key == bus);
                 return true;
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             return false;
+
         }
 
         public int DistanceBetweenStations(string bus1, string bus2)
@@ -202,17 +209,15 @@ namespace dotNet5781_02_6859_2304
         public bool Search(string busStationId)
         {
 
-            try
-            {
-                BusStationLigne result = busStationLignes.Find(x => x.Key == busStationId);
 
-                return true;
-            }
-
-            catch (ArgumentNullException arg)
+            foreach (BusStationLigne item in busStationLignes)
             {
-                Console.WriteLine(arg.Message);
+                if (item.Key == busStationId)
+                {
+                    return true;
+                }
             }
+         
             return false;
         }
         public BusStationLigne find(string busStationId)
@@ -236,8 +241,8 @@ namespace dotNet5781_02_6859_2304
 
             foreach (BusStationLigne station in busStationLignes)
             {
-                station.ToString();
-                Console.WriteLine();
+                Console.WriteLine("\r\n" + station.ToString());
+
                 string stationKey = station.Key;
                 BusLigneCollection.searchLines(stationKey);
             }
