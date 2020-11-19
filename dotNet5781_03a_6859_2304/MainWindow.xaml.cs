@@ -23,6 +23,30 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            dotNet5781_02_6859_2304.BusLigneCollection busCollec = new dotNet5781_02_6859_2304.BusLigneCollection();
+            cbBusLines.ItemsSource = busCollec;
+            cbBusLines.DisplayMemberPath = " BusLineNum ";
+            cbBusLines.SelectedIndex = 0;
+
         }
+        private dotNet5781_02_6859_2304.BusLigne currentDisplayBusLine;
+
+        private void ShowBusLine(int index)
+        {
+            currentDisplayBusLine = busCollec[index].First();
+            UpGrid.DataContext = currentDisplayBusLine;
+            lbBusLineStations.DataContext = currentDisplayBusLine.Id;
+        }
+
+        private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ShowBusLine((cbBusLines.SelectedValue as busCollec).BusLineNum);
+        }
+
+       
     }
 }
+
+
+
+
