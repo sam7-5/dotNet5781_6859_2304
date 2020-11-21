@@ -1,0 +1,30 @@
+﻿<Window x:Class="dotNet5781_03a_6859_2304.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotNet5781_03a_6859_2304"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid Height="auto" Grid.Row="0" Width="auto" Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="400*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions >
+            <Label Content="bus line number:" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="48"/>
+            <Label Content="Area:" Grid.Column="2" HorizontalAlignment="Center" Margin="0,3,0,0" VerticalAlignment="Top" Width="200" Height="45"/>
+            <ComboBox x:Name="cbBusLines" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="200" Height="48" SelectionChanged="cbBusLines_SelectionChanged"/>
+            <TextBox x:Name="tbArea" Grid.Column="3" Text="{Binding Path=Area}" TextWrapping="Wrap" Margin="0,0,10,10"/>
+            <ListBox Name="lbBusLineStations"  Grid.ColumnSpan="4" Margin="10,48,10,0" Grid.RowSpan="2" ItemsSource="{Binding}" SelectionChanged="lbBusLineStations_SelectionChanged"/>
+
+
+        </Grid>
+    </Grid>
+</Window>
