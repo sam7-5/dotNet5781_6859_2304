@@ -39,6 +39,5 @@ namespace dotNet5781_02_6859_2304
             DistancePreviousStations = r.Next(500, 3000);
             TimePreviousStations = r.Next(1, 10);
         }
-
     }
 }

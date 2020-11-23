@@ -6,6 +6,8 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace dotNet5781_02_6859_2304
 {
@@ -18,10 +20,15 @@ namespace dotNet5781_02_6859_2304
             {
                 try
                 {
-                    BusLine pp = mylist.ElementAt(index);
+                    //BusLine pp = mylist.ElementAt(index);
+                    //mylist.Find();
                     return pp;
 
 
+                }
+                catch (notFoundedBusLineException ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
                 catch (ArgumentOutOfRangeException arg)
                 {

@@ -11,8 +11,8 @@ namespace dotNet5781_02_6859_2304
     {
         static public Random r = new Random(DateTime.Now.Millisecond);
         static public List<string> existBus = new List<string>();
-        List<BusStationLine> busStationLignes = new List<BusStationLine>();
-        int ligneId;
+        private List<BusStationLine> busStationLignes = new List<BusStationLine>();
+        private int ligneId;
 
         public int Id
         {
@@ -20,6 +20,13 @@ namespace dotNet5781_02_6859_2304
             set { ligneId = value; }
         }
 
+        public List<BusStationLine> Stations
+        {
+            get
+            {
+                return busStationLignes;
+            }
+        }
 
         BusStationLine FirstStation;
         public BusStationLine First
