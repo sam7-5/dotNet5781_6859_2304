@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using dotNet5781_02_6859_2304;
 
 namespace dotNet5781_03a_6859_2304
 {
@@ -20,24 +21,22 @@ namespace dotNet5781_03a_6859_2304
     /// </summary>
     public partial class MainWindow : Window
     {
-        static private dotNet5781_02_6859_2304.BusLigne currentDisplayBusLine;
+       private BusLine currentDisplayBusLine;
+       private BusLineCollection busLigneCollection;
         public MainWindow()
         {
             InitializeComponent();
-            dotNet5781_02_6859_2304.BusLigneCollection busLigneCollection = new dotNet5781_02_6859_2304.BusLigneCollection();
-
+            busLigneCollection = new dotNet5781_02_6859_2304.BusLineCollection();
             cbBusLines.ItemsSource = busLigneCollection;
-            cbBusLines.DisplayMemberPath = " BusLineNum ";
+            cbBusLines.DisplayMemberPath = "BusLineNum";
             cbBusLines.SelectedIndex = 0;
             showBusLines(cbBusLines.SelectedIndex);
-            void showBusLines(int Index)
+            void showBusLines(int index)
             {
                 currentDisplayBusLine = busLigneCollection[index];
                 UpGrid.DataContext = currentDisplayBusLine;
                 lbBusLineStations.DataContext = currentDisplayBusLine.Stations;
-
             }
-
         }
 
         private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)

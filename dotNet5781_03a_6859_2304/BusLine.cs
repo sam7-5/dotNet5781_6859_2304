@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_6859_2304
 {
-    class BusLigne : IComparable
+    class BusLine : IComparable
     {
         static public Random r = new Random(DateTime.Now.Millisecond);
         static public List<string> existBus = new List<string>();
-        List<BusStationLigne> busStationLignes = new List<BusStationLigne>();
+        List<BusStationLine> busStationLignes = new List<BusStationLine>();
         int ligneId;
 
         public int Id
@@ -21,16 +21,16 @@ namespace dotNet5781_02_6859_2304
         }
 
 
-        BusStationLigne FirstStation;
-        public BusStationLigne First
+        BusStationLine FirstStation;
+        public BusStationLine First
         {
             get { return FirstStation; }
             set { FirstStation = value; }
         }
 
-        public BusStationLigne LastStation;
+        public BusStationLine LastStation;
 
-        public BusStationLigne Last
+        public BusStationLine Last
         {
             get { return LastStation; }
             set { LastStation = value; }
@@ -38,7 +38,7 @@ namespace dotNet5781_02_6859_2304
         Area place;
 
         // make 40 station of bus
-        public BusLigne()
+        public BusLine()
         {
             string temp;
             for (int i = 0; i < 40; i++)
@@ -47,38 +47,38 @@ namespace dotNet5781_02_6859_2304
                 temp = Convert.ToString(ligneId);
                 existBus.Add(temp);
 
-                FirstStation = new BusStationLigne(r.Next(100000, 999999).ToString(), r.Next(), r.Next());
-                LastStation = new BusStationLigne(r.Next(100000, 999999).ToString(), r.Next(), r.Next());
+                FirstStation = new BusStationLine(r.Next(100000, 999999).ToString(), r.Next(), r.Next());
+                LastStation = new BusStationLine(r.Next(100000, 999999).ToString(), r.Next(), r.Next());
                 busStationLignes.Add(FirstStation);
                 busStationLignes.Add(LastStation);
             }
 
         }
 
-        public BusLigne(string busid)
+        public BusLine(string busid)
         {
 
-            busStationLignes.Add(new BusStationLigne(busid));
+            busStationLignes.Add(new BusStationLine(busid));
         }
 
-        BusLigne(BusStationLigne First, BusStationLigne Last, Area wplace)
+        BusLine(BusStationLine First, BusStationLine Last, Area wplace)
         {
             ligneId = r.Next(100000, 999999);
             FirstStation = First; LastStation = Last; place = wplace;
         }
-        public BusLigne(int Id, BusStationLigne First, BusStationLigne Last)
+        public BusLine(int Id, BusStationLine First, BusStationLine Last)
         {
             ligneId = Id; FirstStation = First; LastStation = Last;
             busStationLignes.Add(FirstStation);
             busStationLignes.Add(LastStation);
         }
-        BusLigne(int Id, BusStationLigne First, BusStationLigne Last, Area wplace)
+        BusLine(int Id, BusStationLine First, BusStationLine Last, Area wplace)
         {
             ligneId = Id; FirstStation = First; LastStation = Last; place = wplace;
         }
         public void ToStringBusStation()
         {
-            foreach (BusStationLigne item in busStationLignes)
+            foreach (BusStationLine item in busStationLignes)
             {
                 Console.WriteLine(item.ToString());
 
@@ -90,19 +90,19 @@ namespace dotNet5781_02_6859_2304
             return "Ligne number:  " + Id + "\nfirst station:  "
                 + First + "\nLast station:  " + Last + "\nArea:  " + place + "\n";
         }
-        public void addStationNew(BusStationLigne bus)
+        public void addStationNew(BusStationLine bus)
         {
             busStationLignes.Add(bus);
         }
-        public void addStationBegin(BusStationLigne bus)
+        public void addStationBegin(BusStationLine bus)
         {
             busStationLignes.Insert(0, bus);
         }
-        public void addStationEnd(BusStationLigne bus)
+        public void addStationEnd(BusStationLine bus)
         {
             busStationLignes.Add(bus);              //default insert at the end
         }
-        public void addStationMiddle(BusStationLigne bus)
+        public void addStationMiddle(BusStationLine bus)
         {
             int size = busStationLignes.Count();
             busStationLignes.Insert(size / 2, bus);
@@ -113,10 +113,10 @@ namespace dotNet5781_02_6859_2304
         {
             try
             {
-                BusStationLigne result = busStationLignes.Find(x => x.Key == stationKey);
+                BusStationLine result = busStationLignes.Find(x => x.Key == stationKey);
 
                 int index = busStationLignes.IndexOf(result);
-                BusStationLigne update = busStationLignes.ElementAt(index + 1);
+                BusStationLine update = busStationLignes.ElementAt(index + 1);
                 update.distance = result.DistancePreviousStations + update.DistancePreviousStations;
                 update.time = result.TimePreviousStations + update.TimePreviousStations;
 
@@ -131,7 +131,7 @@ namespace dotNet5781_02_6859_2304
         {
             try
             {
-                BusStationLigne result = busStationLignes.Find(x => x.Key == bus);
+                BusStationLine result = busStationLignes.Find(x => x.Key == bus);
                 return true;
             }
             catch (ArgumentNullException ex)
@@ -145,33 +145,33 @@ namespace dotNet5781_02_6859_2304
 
         public int DistanceBetweenStations(string bus1, string bus2)
         {
-            BusStationLigne result1 = busStationLignes.Find(x => x.Key == bus1);
+            BusStationLine result1 = busStationLignes.Find(x => x.Key == bus1);
             int count1 = 0;
-            foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(result1)))
+            foreach (BusStationLine item in busStationLignes.Take(busStationLignes.IndexOf(result1)))
             {
                 count1 += item.DistancePreviousStations;
             }
 
-            BusStationLigne result2 = busStationLignes.Find(x => x.Key == bus2);
+            BusStationLine result2 = busStationLignes.Find(x => x.Key == bus2);
 
             int count2 = 0;
-            foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(result2)))
+            foreach (BusStationLine item in busStationLignes.Take(busStationLignes.IndexOf(result2)))
             {
                 count2 += item.DistancePreviousStations;
             }
 
             return Math.Abs(count2 - count1);
         }
-        public int TimeBetweenStations(BusStationLigne bus1, BusStationLigne bus2)
+        public int TimeBetweenStations(BusStationLine bus1, BusStationLine bus2)
         {
             int count1 = 0;
-            foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(bus1)))
+            foreach (BusStationLine item in busStationLignes.Take(busStationLignes.IndexOf(bus1)))
             {
                 count1 += item.TimePreviousStations;
             }
 
             int count2 = 0;
-            foreach (BusStationLigne item in busStationLignes.Take(busStationLignes.IndexOf(bus2)))
+            foreach (BusStationLine item in busStationLignes.Take(busStationLignes.IndexOf(bus2)))
             {
                 count2 += item.TimePreviousStations;
             }
@@ -179,9 +179,9 @@ namespace dotNet5781_02_6859_2304
             return Math.Abs(count2 - count1);
         }
 
-        BusLigne subLigne(BusStationLigne bus1, BusStationLigne bus2)
+        BusLine subLigne(BusStationLine bus1, BusStationLine bus2)
         {
-            BusLigne Sublist = new BusLigne(bus1, bus2, this.place);
+            BusLine Sublist = new BusLine(bus1, bus2, this.place);
 
             Sublist.busStationLignes =
                 busStationLignes.GetRange(busStationLignes.IndexOf(bus1), busStationLignes.IndexOf(bus2));
@@ -191,7 +191,7 @@ namespace dotNet5781_02_6859_2304
 
         public int CompareTo(object obj)  //compare total time between 2 lignes
         {
-            BusLigne bus = (BusLigne)obj;
+            BusLine bus = (BusLine)obj;
             int time1 = bus.TimeBetweenStations(bus.FirstStation, bus.LastStation);
             int time2 = this.TimeBetweenStations(this.FirstStation, this.LastStation);
 
@@ -210,7 +210,7 @@ namespace dotNet5781_02_6859_2304
         {
 
 
-            foreach (BusStationLigne item in busStationLignes)
+            foreach (BusStationLine item in busStationLignes)
             {
                 if (item.Key == busStationId)
                 {
@@ -220,12 +220,12 @@ namespace dotNet5781_02_6859_2304
          
             return false;
         }
-        public BusStationLigne find(string busStationId)
+        public BusStationLine find(string busStationId)
         {
 
             try
             {
-                BusStationLigne result = busStationLignes.Find(x => x.Key == busStationId);
+                BusStationLine result = busStationLignes.Find(x => x.Key == busStationId);
 
                 return result;
             }
@@ -239,12 +239,12 @@ namespace dotNet5781_02_6859_2304
         public void printStations()
         {
 
-            foreach (BusStationLigne station in busStationLignes)
+            foreach (BusStationLine station in busStationLignes)
             {
                 Console.WriteLine("\r\n" + station.ToString());
 
                 string stationKey = station.Key;
-                BusLigneCollection.searchLines(stationKey);
+                BusLineCollection.searchLines(stationKey);
             }
         }
     }

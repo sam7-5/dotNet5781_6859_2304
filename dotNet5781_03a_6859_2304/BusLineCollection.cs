@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_6859_2304
 {
-    class BusLigneCollection : IEnumerable
+    class BusLineCollection : IEnumerable
     {
-        static private List<BusLigne> mylist;
-        public BusLigne this[int index]
+        static private List<BusLine> mylist;
+        public BusLine this[int index]
         {
             get
             {
                 try
                 {
-                    BusLigne pp = mylist.ElementAt(index);
+                    BusLine pp = mylist.ElementAt(index);
                     return pp;
 
 
@@ -36,23 +36,23 @@ namespace dotNet5781_02_6859_2304
         } //indexer
         // ctor to fill 10 bus with random values //
         static public Random r = new Random(DateTime.Now.Millisecond);
-        public BusLigneCollection()
+        public BusLineCollection()
         {
-            mylist = new List<BusLigne>();
+            mylist = new List<BusLine>();
 
             for (int i = 0; i < 10; i++)
             {
-                mylist.Add(new BusLigne());
+                mylist.Add(new BusLine());
             }
             for (int i = 0; i < 10; i++)
             {
-                string temp = BusLigne.existBus.ElementAt(40 - i);
+                string temp = BusLine.existBus.ElementAt(40 - i);
            
-                foreach (BusLigne item in mylist)
+                foreach (BusLine item in mylist)
                 {
                     if (item.find(temp) != null)
                     {
-                        BusStationLigne result = item.find(temp);
+                        BusStationLine result = item.find(temp);
                         mylist.ElementAt(i).addStationEnd(result);
                     }
                 }
@@ -64,7 +64,7 @@ namespace dotNet5781_02_6859_2304
             return mylist.GetEnumerator();
         }
 
-        public void AddLigne(BusLigne ligne)
+        public void AddLigne(BusLine ligne)
         {
             try
             {
@@ -91,8 +91,8 @@ namespace dotNet5781_02_6859_2304
         {
             try
             {
-                BusLigne result = mylist.Find(x => x.Id.ToString() == lineId);
-                BusStationLigne stationLigne = new BusStationLigne(stationKey, distance, time);
+                BusLine result = mylist.Find(x => x.Id.ToString() == lineId);
+                BusStationLine stationLigne = new BusStationLine(stationKey, distance, time);
        
                 if (choice == 1)
                 {
@@ -118,7 +118,7 @@ namespace dotNet5781_02_6859_2304
         {
             try
             {
-                BusLigne result = mylist.Find(x => x.Id.ToString() == line);
+                BusLine result = mylist.Find(x => x.Id.ToString() == line);
                 mylist.Remove(result);
             }
 
@@ -134,7 +134,7 @@ namespace dotNet5781_02_6859_2304
         {
             try
             {
-                BusLigne result = mylist.Find(x => x.Id.ToString() == lineId);
+                BusLine result = mylist.Find(x => x.Id.ToString() == lineId);
                 result.deleteStation(stationKey);
             }
             catch (ArgumentNullException arg)
@@ -145,7 +145,7 @@ namespace dotNet5781_02_6859_2304
 
         public void PrintLines()      //all bus lines
         {
-            foreach (BusLigne item in mylist)
+            foreach (BusLine item in mylist)
             {
                 Console.WriteLine(item.ToString());
                item.ToStringBusStation();
@@ -155,7 +155,7 @@ namespace dotNet5781_02_6859_2304
         }
         public void PrintStations()      //list of all bus stations with line numbers that passes it trough 
         {
-            foreach (BusLigne bus in mylist)
+            foreach (BusLine bus in mylist)
             {
                 bus.printStations();
                 Console.WriteLine();
@@ -164,7 +164,7 @@ namespace dotNet5781_02_6859_2304
 
         static public void searchLines(string busStationid)//all lines id that passes by this stations
         {
-            foreach (BusLigne item in mylist)
+            foreach (BusLine item in mylist)
             {
                 bool found = item.Search(busStationid);
                 if (found)
@@ -177,7 +177,7 @@ namespace dotNet5781_02_6859_2304
         }
         public void searchDirectLine(string departId, string arivalId)
         {
-            foreach (BusLigne line in mylist)
+            foreach (BusLine line in mylist)
             {
                 if (line.Exist(departId) && line.Exist(arivalId))
                 {
