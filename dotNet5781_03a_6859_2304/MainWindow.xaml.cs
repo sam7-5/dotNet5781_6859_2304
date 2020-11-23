@@ -21,8 +21,8 @@ namespace dotNet5781_03a_6859_2304
     /// </summary>
     public partial class MainWindow : Window
     {
-       private BusLine currentDisplayBusLine;
-       private BusLineCollection busLigneCollection;
+        private BusLine currentDisplayBusLine;
+        private BusLineCollection busLigneCollection;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,18 +30,18 @@ namespace dotNet5781_03a_6859_2304
             cbBusLines.ItemsSource = busLigneCollection;
             cbBusLines.DisplayMemberPath = "BusLineNum";
             cbBusLines.SelectedIndex = 0;
-            showBusLines(cbBusLines.SelectedIndex);
-            void showBusLines(int index)
-            {
-                currentDisplayBusLine = busLigneCollection[index];
-                UpGrid.DataContext = currentDisplayBusLine;
-                lbBusLineStations.DataContext = currentDisplayBusLine.Stations;
-            }
+            showBusLines((cbBusLines.SelectedValue as BusLine).Id);
         }
 
+        private void showBusLines(int index)
+        {
+            currentDisplayBusLine = busLigneCollection[index];
+            UpGrid.DataContext = currentDisplayBusLine;
+            lbBusLineStations.DataContext = currentDisplayBusLine.Stations;
+        }
         private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ShowBusLine((cbBusLines.SelectedValue as BusLine).BusLineNum);
+            showBusLines((cbBusLines.SelectedValue as BusLine).Id);
 
         }
 

@@ -18,8 +18,13 @@ namespace dotNet5781_02_6859_2304
             {
                 try
                 {
-                    BusLine pp = mylist.ElementAt(index);
-                    return pp;
+                    BusLine busLine = mylist.Find((x) => x.Id == index);
+                    if (busLine == null)
+                    {
+                        throw new notFoundedBusLineException();
+                    }
+                    else
+                        return busLine;
 
 
                 }
@@ -47,7 +52,7 @@ namespace dotNet5781_02_6859_2304
             for (int i = 0; i < 10; i++)
             {
                 string temp = BusLine.existBus.ElementAt(40 - i);
-           
+
                 foreach (BusLine item in mylist)
                 {
                     if (item.find(temp) != null)
@@ -93,7 +98,7 @@ namespace dotNet5781_02_6859_2304
             {
                 BusLine result = mylist.Find(x => x.Id.ToString() == lineId);
                 BusStationLine stationLigne = new BusStationLine(stationKey, distance, time);
-       
+
                 if (choice == 1)
                 {
                     result.addStationBegin(stationLigne);
@@ -148,8 +153,8 @@ namespace dotNet5781_02_6859_2304
             foreach (BusLine item in mylist)
             {
                 Console.WriteLine(item.ToString());
-               item.ToStringBusStation();
-               
+                item.ToStringBusStation();
+
                 Console.WriteLine("\n");
             }
         }
@@ -169,7 +174,7 @@ namespace dotNet5781_02_6859_2304
                 bool found = item.Search(busStationid);
                 if (found)
                 {
-                    Console.WriteLine( item.Id.ToString(), "  ");
+                    Console.WriteLine(item.Id.ToString(), "  ");
 
                 }
 
