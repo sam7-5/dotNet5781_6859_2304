@@ -42,7 +42,6 @@ namespace dotNet5781_03a_6859_2304
         private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             showBusLines((cbBusLines.SelectedValue as BusLine).Id);
-
         }
 
         private void lbBusLineStations_SelectionChanged(object sender, SelectionChangedEventArgs e)

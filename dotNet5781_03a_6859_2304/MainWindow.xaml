@@ -20,11 +20,12 @@
             </Grid.ColumnDefinitions >
             <Label Content="bus line number:" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="48"/>
             <Label Content="Area:" Grid.Column="2" HorizontalAlignment="Center" Margin="0,3,0,0" VerticalAlignment="Top" Width="200" Height="45"/>
-            <ComboBox x:Name="cbBusLines" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="200" Height="48" SelectionChanged="cbBusLines_SelectionChanged"/>
+            <ComboBox x:Name="cbBusLines" Grid.Column="1" VerticalAlignment="Top" Width="200" Height="48" SelectionChanged="cbBusLines_SelectionChanged"/>
             <TextBox x:Name="tbArea" Grid.Column="3" Text="{Binding Path=Area}" TextWrapping="Wrap" Margin="0,0,10,10"/>
             <ListBox Name="lbBusLineStations"  Grid.ColumnSpan="4" Margin="10,48,10,0" Grid.RowSpan="2" ItemsSource="{Binding}" SelectionChanged="lbBusLineStations_SelectionChanged"/>
 
 
-        </Grid>
+        </Grid>
+
     </Grid>
 </Window>
