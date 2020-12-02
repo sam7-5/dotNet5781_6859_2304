@@ -66,7 +66,7 @@ namespace dotNet5781_02_6859_2304
         public override string ToString()
         {
             return "Bus Station Code: " + BusStationKey + ",  " +
-            Latitude + "°N  " + Longitude + "°E  ";
+            Latitude + "°N  " + Longitude + "°E     ";
         }
 
         public BusStation()

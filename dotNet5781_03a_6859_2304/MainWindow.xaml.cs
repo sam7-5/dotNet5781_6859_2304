@@ -26,9 +26,12 @@ namespace dotNet5781_03a_6859_2304
         public MainWindow()
         {
             InitializeComponent();
+            Uri iconUri = new Uri("youtube.ico", UriKind.RelativeOrAbsolute);
+            this.Icon = BitmapFrame.Create(iconUri);
+
             busLigneCollection = new BusLineCollection();
             cbBusLines.ItemsSource = busLigneCollection;
-            cbBusLines.DisplayMemberPath = "BusLineNum";
+            cbBusLines.DisplayMemberPath = "Id";
             cbBusLines.SelectedIndex = 0;
             showBusLines((cbBusLines.SelectedValue as BusLine).Id);
         }
@@ -43,10 +46,15 @@ namespace dotNet5781_03a_6859_2304
         {
             showBusLines((cbBusLines.SelectedValue as BusLine).Id);
         }
-
         private void lbBusLineStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // ListBox.DataContextProperty = cbBusLines[ComboBox.SelectedIndexProperty].index;
+
+        }
+
+        private void tbArea_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
+
 }
