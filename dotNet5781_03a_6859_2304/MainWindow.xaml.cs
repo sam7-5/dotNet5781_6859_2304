@@ -26,8 +26,9 @@ namespace dotNet5781_03a_6859_2304
         public MainWindow()
         {
             InitializeComponent();
-            Uri iconUri = new Uri("youtube.ico", UriKind.RelativeOrAbsolute);
-            this.Icon = BitmapFrame.Create(iconUri);
+            //--- personalized icon ---//
+            //Uri iconUri = new Uri("youtube.ico", UriKind.RelativeOrAbsolute);
+            //this.Icon = BitmapFrame.Create(iconUri);
 
             busLigneCollection = new BusLineCollection();
             cbBusLines.ItemsSource = busLigneCollection;

@@ -22,10 +22,7 @@ namespace dotNet5781_02_6859_2304
 
         public List<BusStationLine> Stations
         {
-            get
-            {
-                return busStationLignes;
-            }
+            get { return busStationLignes; }
         }
 
         BusStationLine FirstStation;
@@ -59,12 +56,10 @@ namespace dotNet5781_02_6859_2304
                 busStationLignes.Add(FirstStation);
                 busStationLignes.Add(LastStation);
             }
-
         }
 
         public BusLine(string busid)
         {
-
             busStationLignes.Add(new BusStationLine(busid));
         }
 
@@ -88,9 +83,7 @@ namespace dotNet5781_02_6859_2304
             foreach (BusStationLine item in busStationLignes)
             {
                 Console.WriteLine(item.ToString());
-
             }
-
         }
         public override string ToString()
         {
@@ -114,8 +107,6 @@ namespace dotNet5781_02_6859_2304
             int size = busStationLignes.Count();
             busStationLignes.Insert(size / 2, bus);
         }
-
-
         public void deleteStation(string stationKey)
         {
             try
@@ -147,7 +138,6 @@ namespace dotNet5781_02_6859_2304
             }
 
             return false;
-
         }
 
         public int DistanceBetweenStations(string bus1, string bus2)
@@ -215,8 +205,6 @@ namespace dotNet5781_02_6859_2304
         }
         public bool Search(string busStationId)
         {
-
-
             foreach (BusStationLine item in busStationLignes)
             {
                 if (item.Key == busStationId)
@@ -224,12 +212,11 @@ namespace dotNet5781_02_6859_2304
                     return true;
                 }
             }
-         
+
             return false;
         }
         public BusStationLine find(string busStationId)
         {
-
             try
             {
                 BusStationLine result = busStationLignes.Find(x => x.Key == busStationId);
@@ -245,7 +232,6 @@ namespace dotNet5781_02_6859_2304
         }
         public void printStations()
         {
-
             foreach (BusStationLine station in busStationLignes)
             {
                 Console.WriteLine("\r\n" + station.ToString());
