@@ -20,23 +20,23 @@ namespace dotNet5781_02_6859_2304
                 if (value.Length <= 6 && value.Length > 0)
                     BusStationKey = value;
                 else
-                    Console.WriteLine("ERROR bus station key format invalid "); //peut etre mettre dans main  pour redemander valeur
+                    Console.WriteLine("ERROR bus station key format invalid ");
             }
         }
 
         protected double Latitude;
-        public double Lat            //snippet propfull
+        public double Lat
         {
             get { return Latitude; }
 
-            set => Latitude = (r.NextDouble() * (33.3 - 31.0)) + 31.0;
+            set => Latitude = Math.Round((r.NextDouble() * (33.3 - 31.0)) + 31.0,6);
         }
 
         protected double Longitude;
         public double Longi
         {
             get { return Longitude; }
-            set => Longitude = (r.NextDouble() * (35.5 - 34.3)) + 34.3;
+            set => Longitude = Math.Round((r.NextDouble() * (35.5 - 34.3)) + 34.3,6);
         }
 
         protected readonly string adresse;
@@ -73,8 +73,8 @@ namespace dotNet5781_02_6859_2304
         {
             // random fields to implemente
             BusStationKey = r.Next(100000, 999999).ToString();
-            Latitude = (r.NextDouble() * (33.3 - 31.0)) + 31.0;
-            Longitude = (r.NextDouble() * (35.5 - 34.3)) + 34.3;
+            Latitude = Math.Round((r.NextDouble() * (33.3 - 31.0)) + 31.0, 6);
+            Longitude = Math.Round((r.NextDouble() * (35.5 - 34.3)) + 34.3, 6);
         }
     }
 }
