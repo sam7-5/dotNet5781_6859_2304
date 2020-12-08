@@ -19,19 +19,28 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0"
                      Text="id: " />
                 <TextBlock Grid.Column="1"
-                    Text="{Binding Path=id}" />
+                    Text="{Binding Path=License}" />
                 <TextBlock Grid.Column="2"
-                    Text="           " />
-                <Button Grid.Column="3"
+                     Text="      " />
+                <TextBlock Grid.Column="3"
+                     Text="km: " />
+                <TextBlock Grid.Column="4"
+                    Text="{Binding Path=Kilometrage}" />
+                <TextBlock Grid.Column="5"
+                     Text="      " />
+                <Button Grid.Column="6"
                        Content="refuel"
                      Click="Click_Refuel" />
-                <Rectangle Grid.Column="4"
-                    Width="4" Height="auto"  />
-                <Button Grid.Column="5"
+                <TextBlock Grid.Column="7"
+                     Text="      " />
+                <Button Grid.Column="8"
                        Content="new trip"
                      Click="Click_Travel" />
             </Grid>
@@ -44,7 +53,7 @@
         </Grid.RowDefinitions>
         <ListBox ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}"/>
         <Button Content="add bus" Click="Click_AddBus" HorizontalAlignment="Left" Margin="70,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="111" Background="Red" Height="67"/>
-        <!--  <Button Content="Button" Click="Click_Travel" HorizontalAlignment="Left" Margin="361,55,0,0" Grid.Row="1" VerticalAlignment="Top" Width="65"/> -->
+     
     </Grid>
 
 

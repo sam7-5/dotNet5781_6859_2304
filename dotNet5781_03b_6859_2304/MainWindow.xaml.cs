@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace dotNet5781_03b_6859_2304
 {
     /// <summary>
@@ -29,14 +30,13 @@ namespace dotNet5781_03b_6859_2304
         {
             InitializeComponent();
             DataContext = _myCollection;
-           
-            //List<Bus> buses = new List<Bus>();
-            //buses = Bus.CreateListOfBuses();
-            //foreach (var item in buses)
-            //{
-            //    _myCollection.Add(item);
-            //}
-            //   _myCollection.Add(new Bus("123456789"));
+            List<Bus> buses= Bus.CreateListOfBuses();
+
+            foreach (var item in buses)
+            {
+                _myCollection.Add(item);
+              
+            }
         }
 
         private void Click_AddBus(object sender, RoutedEventArgs e)
