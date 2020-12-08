@@ -18,11 +18,11 @@ namespace dotNet5781_03b_6859_2304
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
-    }
+    //public partial class MainWindow : Window
+    //{
+    //    public MainWindow()
+    //    {
+    //        InitializeComponent();
+    //    }
+    //}
 }
