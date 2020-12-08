@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,23 +23,36 @@ namespace dotNet5781_03b_6859_2304
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ObservableCollection<Bus> _myCollection = new ObservableCollection<Bus>();
+
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = _myCollection;
+            _myCollection.Add(new Bus());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Click_AddBus(object sender, RoutedEventArgs e)
         {
             addWin win = new addWin();
             win.Show();
         }
 
-        private void buses_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void Click_Refuel(object sender, RoutedEventArgs e)
         {
-            bus bus1 = new bus();
-            ListViewItem list = new ListViewItem();
-                
+            refuel refuel1 = new refuel();
+            refuel1.Show();
         }
-       
+        private void Click_Travel(object sender, RoutedEventArgs e)
+        {
+            travel travel1 = new travel();
+            travel1.Show();
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

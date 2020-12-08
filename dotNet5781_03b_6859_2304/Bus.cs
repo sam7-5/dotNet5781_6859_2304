@@ -12,6 +12,7 @@ namespace dotNet5781_03b_6859_2304
     class Bus
     {
         // since the company begin to use the bus, not the constructon of the bus !
+        
         public DateTime StartDate { get; set; }
 
         public int TotalKilometrage
