@@ -20,17 +20,27 @@ namespace dotNet5781_03b_6859_2304
         {
             var buses = new List<Bus>();
 
-            var b1 = new Bus(random.Next(1000000, 99999999).ToString(), random.Next(0, MAX_KM), new DateTime(2017,1 ,1), FULL_TANK );
+            buses.Add(new Bus() { License = random.Next(1000000, 99999999).ToString(), Kilometrage = random.Next(0, MAX_KM), DateLastCheck = new DateTime(2017, 1, 1), FuelTank = FULL_TANK });
+            buses.Add(new Bus() { License = random.Next(1000000, 99999999).ToString(), Kilometrage = MAX_KM - 1000, DateLastCheck = DateTime.Now, FuelTank = FULL_TANK });
+            buses.Add(new Bus() { License = random.Next(1000000, 99999999).ToString(), Kilometrage = random.Next(0, MAX_KM), DateLastCheck = DateTime.Now, FuelTank = 400 });
+
+
+            /*
+            var b1 = new Bus(random.Next(1000000, 99999999).ToString(), random.Next(0, MAX_KM), new DateTime(2017, 1, 1), FULL_TANK);
             var b2 = new Bus(random.Next(1000000, 99999999).ToString(), MAX_KM - 1000, DateTime.Now, FULL_TANK);
             var b3 = new Bus(random.Next(1000000, 99999999).ToString(), random.Next(0, MAX_KM), DateTime.Now, 500);
-
+            
             buses.Add(b1);
             buses.Add(b2);
             buses.Add(b3);
 
+            */
+
             for (int i = 0; i < 7; i++)
             {
-                buses.Add(new Bus(random.Next(1000000, 99999999).ToString(), random.Next(0, MAX_KM), DateTime.Now, FULL_TANK));
+                //buses.Add(new Bus(random.Next(1000000, 99999999).ToString(), random.Next(0, MAX_KM), DateTime.Now, FULL_TANK));
+                buses.Add(item: new Bus() { License = random.Next(1000000, 99999999).ToString(), Kilometrage = random.Next(0, MAX_KM), StartDate = DateTime.Now, FuelTank = FULL_TANK });
+
             }
             return buses;
         }
@@ -95,7 +105,7 @@ namespace dotNet5781_03b_6859_2304
 
         // Kilometrage since last check up
         public int Kilometrage
-        { 
+        {
             get
             {
                 return Kilometrage;
@@ -135,7 +145,8 @@ namespace dotNet5781_03b_6859_2304
         }
 
         // ctors
-        public Bus(string license , int km = 0)
+        /*
+        public Bus(string license, int km = 0)
         {
             License = license;
             Kilometrage = km;
@@ -143,13 +154,14 @@ namespace dotNet5781_03b_6859_2304
             FuelTank = FULL_TANK;
         }
 
-        public Bus(string license, int km, DateTime startDate, int fuel )
+        public Bus(string license, int km, DateTime startDate, int fuel)
         {
             License = license;
             Kilometrage = km;
             StartDate = startDate;
             FuelTank = fuel;
         }
+        */
 
         public void Refuel()
         {
