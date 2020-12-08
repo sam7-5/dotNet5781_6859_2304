@@ -23,13 +23,20 @@ namespace dotNet5781_03b_6859_2304
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollection<Bus> _myCollection = new ObservableCollection<Bus>();
+        private static ObservableCollection<Bus> _myCollection = new ObservableCollection<Bus>();
 
         public MainWindow()
         {
             InitializeComponent();
             DataContext = _myCollection;
-            _myCollection.Add(new Bus());
+           
+            //List<Bus> buses = new List<Bus>();
+            //buses = Bus.CreateListOfBuses();
+            //foreach (var item in buses)
+            //{
+            //    _myCollection.Add(item);
+            //}
+            //   _myCollection.Add(new Bus("123456789"));
         }
 
         private void Click_AddBus(object sender, RoutedEventArgs e)
@@ -41,8 +48,7 @@ namespace dotNet5781_03b_6859_2304
 
         private void Click_Refuel(object sender, RoutedEventArgs e)
         {
-            refuel refuel1 = new refuel();
-            refuel1.Show();
+           
         }
         private void Click_Travel(object sender, RoutedEventArgs e)
         {

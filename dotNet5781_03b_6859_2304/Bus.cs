@@ -162,16 +162,16 @@ namespace dotNet5781_03b_6859_2304
     }
 
     
-    class Test
-    {
-        static void Main()
-        {
-            var buses = Bus.CreateListOfBuses();
+    //class Test
+    //{
+    //    static void Main()
+    //    {
+    //        var buses = Bus.CreateListOfBuses();
 
-            foreach (var bus in buses)
-            {
-                Console.WriteLine(bus.ToString());
-            }
-        }
-    }
+    //        foreach (var bus in buses)
+    //        {
+    //            Console.WriteLine(bus.ToString());
+    //        }
+    //    }
+    //}
 }
