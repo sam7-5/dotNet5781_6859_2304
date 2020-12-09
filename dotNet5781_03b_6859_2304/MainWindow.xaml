@@ -22,6 +22,8 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0"
                      Text="id: " />
@@ -43,6 +45,9 @@
                 <Button Grid.Column="8"
                        Content="new trip"
                      Click="Click_Travel" />
+                <TextBlock Grid.Column="9"
+                     Text="      " />
+
             </Grid>
         </DataTemplate>
     </Window.Resources>
@@ -51,9 +56,15 @@
             <RowDefinition Height="242*"/>
             <RowDefinition Height="87*"/>
         </Grid.RowDefinitions>
-        <ListBox ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}"/>
+        <ListBox x:Name="lbBus" MouseDoubleClick="DoubleClick_BusSettings" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}"/>
         <Button Content="add bus" Click="Click_AddBus" HorizontalAlignment="Left" Margin="70,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="111" Background="Red" Height="67"/>
-     
+
+        <ProgressBar x:Name="pp" HorizontalAlignment="Left" Height="10"  Margin="527,41,0,0" Grid.Row="1"  VerticalAlignment="Center" Width="100"  Value="25" ValueChanged="ProgressBar_ValueChanged" >
+            <ProgressBar.Foreground>
+                <SolidColorBrush Color="#FFEA0808" Opacity="0.7"/>
+            </ProgressBar.Foreground>
+        </ProgressBar>
+
     </Grid>
 
 
