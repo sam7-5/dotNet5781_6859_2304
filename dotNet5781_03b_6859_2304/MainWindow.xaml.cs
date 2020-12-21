@@ -35,7 +35,6 @@ namespace dotNet5781_03b_6859_2304
             foreach (var item in buses)
             {
                 _myCollection.Add(item);
-
             }
         }
 
@@ -43,17 +42,14 @@ namespace dotNet5781_03b_6859_2304
         {
             addWin win = new addWin();
             win.Show();
+
         }
-
-
         private void DoubleClick_BusSettings(object sender, RoutedEventArgs e)
         {
-            
             BusSettings settings = new BusSettings();
             settings.DataContext = _myCollection;
             settings.Show();
         }
-
 
 
         private void Click_Refuel(object sender, RoutedEventArgs e)
@@ -63,6 +59,7 @@ namespace dotNet5781_03b_6859_2304
             btn.IsEnabled = false;
             tidluk(currentuser, 3000, btn);
         }
+
         private void tidluk(Bus lineData, int time, Button btn)
         {
             List<Object> lst = new List<object> { lineData, time, btn };
@@ -87,7 +84,7 @@ namespace dotNet5781_03b_6859_2304
             //bar.Value=5;
             Thread.Sleep(value);
 
-            e.Result = lst[2];          
+            e.Result = lst[2];
         }
         private void Tidluk_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -105,19 +102,22 @@ namespace dotNet5781_03b_6859_2304
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            ContentControl content = new ContentControl();
         }
 
-        private void ProgressBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void lbBus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //ProgressBar bar = new ProgressBar();
-            //bar.IsEnabled = true;
-            //bar.Maximum = 10;
-            //bar.Value=5;
-            //bar.Background = Brushes.Red;
-            
-         //   bar.IsIndeterminate = true;
-         
+
         }
+
+        // private void ProgressBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        //   {
+        //ProgressBar bar = new ProgressBar();
+        //bar.IsEnabled = true;
+        //bar.Maximum = 10;
+        //bar.Value=5;
+        //bar.Background = Brushes.Red;            
+        //   bar.IsIndeterminate = true;        
+        //  }
     }
 }

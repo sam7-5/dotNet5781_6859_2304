@@ -24,12 +24,18 @@ namespace dotNet5781_03b_6859_2304
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+           
+            
         }
 
         private void dateInputNewBus_TextChanged(object sender, TextChangedEventArgs e)
         {
+          
+        }
 
+        private void idInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           
         }
     }
 }
