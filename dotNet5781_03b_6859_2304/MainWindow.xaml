@@ -9,51 +9,56 @@
     <Window.Resources>
         <DataTemplate x:Key="MyDataTemplate"
  DataType="local:MyData">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0"
-                     Text="id: " />
-                <TextBlock Grid.Column="1"
-                    Text="{Binding Path=License}" />
-                <TextBlock Grid.Column="2"
-                     Text="      " />
-                <TextBlock Grid.Column="3"
-                     Text="km: " />
-                <TextBlock Grid.Column="4"
-                    Text="{Binding Path=Kilometrage}" />
-                <TextBlock Grid.Column="5"
-                     Text="      " />
-                <Button Grid.Column="6"
-                       Content="refuel"
-                     Click="Click_Refuel" />
-                <TextBlock Grid.Column="7"
-                     Text="      " />
-                <Button Grid.Column="8"
-                       Content="new trip"
-                     Click="Click_Travel" />
-            </Grid>
+            
+            <StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="50" />
+                  
+                        
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"
+                         Text="id: " />
+                    <TextBlock  Grid.Column="1"
+                        Text="{Binding Path=License}" />
+
+                    <TextBlock  Grid.Column="2"
+                         Text="km: " />
+                    <TextBlock  Grid.Column="3"
+                        Text="{Binding Path=Kilometrage}" />
+               
+                    <Button  Margin ="0 0 10 0" Grid.Column="4"
+                           Content="refuel"
+                         Click="Click_Refuel" />
+                
+                    <Button  Grid.Column="5"
+                           Content="new trip"
+                         Click="Click_Travel" />
+                 
+                </Grid>
+            </StackPanel>
         </DataTemplate>
     </Window.Resources>
-    <Grid >
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="242*"/>
             <RowDefinition Height="87*"/>
         </Grid.RowDefinitions>
-        <ListBox ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}"/>
-        <Button Content="add bus" Click="Click_AddBus" HorizontalAlignment="Left" Margin="70,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="111" Background="Red" Height="67"/>
-     
+        
+        <ListBox x:Name="lbBus" MouseDoubleClick="DoubleClick_BusSettings" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}" 
+                 SelectionChanged="lbBus_SelectionChanged"/>
+        
+        <Button Content="add bus" Click="Click_AddBus" HorizontalAlignment="Left" Margin="70,0,0,0"
+                Grid.Row="1" VerticalAlignment="Center" Width="111" Background="Red" Height="67"/>
+    
     </Grid>
 
 
