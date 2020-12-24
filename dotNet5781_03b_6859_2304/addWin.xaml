@@ -18,9 +18,9 @@
 
         </Grid.RowDefinitions>
         <TextBlock x:Name="title" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Height="67" Width="800" RenderTransformOrigin="0.538,0.656" Panel.ZIndex="-5" TextAlignment="Center" FontFamily="Arial Black" FontSize="16"><Run Language="fr-fr" Text="enter bus data:"/></TextBlock>
-        <TextBlock HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" Width="114" Margin="0,32,0,0"><Run Language="fr-fr" Text="enter bus id"/></TextBlock>
+        <TextBlock HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" Width="166" Margin="0,32,0,0"><Run Text="enter bus id (number only):"/><Run Language="fr-fr" /></TextBlock>
         <TextBox x:Name="idInput" HorizontalAlignment="Center" Margin="0,66,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"  Width="164" Height="28" TextChanged="idInput_TextChanged"/>
-        <DatePicker x:Name="dateInputNewBus"  HorizontalAlignment="Center" Margin="0,30,0,0" Grid.Row="2" VerticalAlignment="Top" Height="24" Width="166" Language="english"    Text="choose a date"    >
+        <DatePicker x:Name="dateInputNewBus"  HorizontalAlignment="Center" Margin="0,30,0,0" Grid.Row="2" VerticalAlignment="Top" Height="24" Width="166" Language="english"    Text="choose a date" >
 
         </DatePicker>
 
