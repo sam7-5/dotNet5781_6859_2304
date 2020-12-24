@@ -15,28 +15,61 @@ namespace dotNet5781_03b_6859_2304
         static readonly int MAX_KM = 20000;
         static private Random random = new Random(DateTime.Now.Millisecond);
 
+        //public Bus(string license, int km, DateTime startDate, int fuel)
+        //{
+        //    License = license;
+        //    Kilometrage = km;
+        //    StartDate = startDate;
+        //    FuelTank = fuel;
+        //}
+
         // return a list of ten buses with 3 aith problem
         static public List<Bus> CreateListOfBuses()
         {
             var buses = new List<Bus>();
 
-            buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(), m_kilometrage = random.Next(0, MAX_KM), DateLastCheck = new DateTime(2017, 1, 1), m_fuelTank = FULL_TANK });
-            buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(), m_kilometrage = MAX_KM - 1000, DateLastCheck = DateTime.Now, m_fuelTank = FULL_TANK });
-            buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(), m_kilometrage = random.Next(0, MAX_KM), DateLastCheck = DateTime.Now, m_fuelTank = 400 });
+            buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(),
+                m_kilometrage = random.Next(0, MAX_KM), DateLastCheck = new DateTime(2017, 1, 1), m_fuelTank = FULL_TANK });
+
+            buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(), 
+                m_kilometrage = MAX_KM - 1000, DateLastCheck = DateTime.Now, m_fuelTank = FULL_TANK });
+
+            buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(),
+                m_kilometrage = random.Next(0, MAX_KM), DateLastCheck = DateTime.Now, m_fuelTank = 400 });
 
 
             for (int i = 0; i < 7; i++)
             {
-                buses.Add(item: new Bus() { m_license = random.Next(1000000, 99999999).ToString(), m_kilometrage = random.Next(0, MAX_KM), StartDate = DateTime.Now, m_fuelTank = FULL_TANK });
+                buses.Add(item: new Bus() { m_license = random.Next(1000000, 99999999).ToString(),
+                    m_kilometrage = random.Next(0, MAX_KM), StartDate = DateTime.Now, m_fuelTank = FULL_TANK });
             }
             return buses;
         }
 
         // the date the bus is in the bus company
-        public DateTime StartDate { get; set; }
+        private DateTime m_startDate;
+        public DateTime StartDate
+        {
+            get
+            {
+                return m_startDate; 
+
+            }
+
+            set { m_startDate = value; }
+        }
+
+
+
+       
+
+        
+
+
 
         // how much fuel we have in the tank: travel capacity
         private int m_fuelTank;
+
         public int FuelTank
         {
             get
@@ -90,7 +123,9 @@ namespace dotNet5781_03b_6859_2304
                 }
             }
         }
-        public DateTime DateLastCheck { get; set; }
+
+        public DateTime DateLastCheck 
+        { get; set; }
 
         // Kilometrage since last check up
         private int m_kilometrage;
@@ -138,6 +173,7 @@ namespace dotNet5781_03b_6859_2304
         {
             m_fuelTank = FULL_TANK;
         }
+
         public void Maintain()
         {
             DateLastCheck = DateTime.Now;
