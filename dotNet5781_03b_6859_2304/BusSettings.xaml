@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:dotNet5781_03b_6859_2304"
         mc:Ignorable="d"
         Title="BusSettings" Height="450" Width="800">
-    <Window.Resources>
-        <DataTemplate x:Key="MyDataTemplate" DataType="local:MyData">
-            <Grid>
+   
+    <Grid>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -29,17 +29,17 @@
         <TextBlock HorizontalAlignment="Left" Margin="239,0,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Center" Width="110"><Run Language="fr-fr" Text="gas state:"/></TextBlock>
 
 
-                <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="35,0,0,0"  TextWrapping="Wrap" VerticalAlignment="Center" Width="97" Text="{Binding Path=Kilometrage}" />
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="35,24,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=Kilometrage}"/>
-                <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="34,0,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding Path=Kilometrage}" />
-                <TextBlock Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="36,20,0,0" Grid.Row="3"  TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Text="{Binding Path=Kilometrage}"/>
-                <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="34,21,0,0" Grid.Row="4"  TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=Kilometrage}"/>
-                <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="36,0,0,0" Grid.Row="5"  TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding Path=Kilometrage}"/>
-    </Grid>
-        </DataTemplate>
-    </Window.Resources>
-
-    <Grid>
-        <ListBox x:Name="lbBus"  ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="35,0,0,0"  
+                           TextWrapping="Wrap" VerticalAlignment="Center" Width="97" Text="{Binding Path=License}" />
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="35,24,0,0"
+                   Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=Kilometrage}"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="34,0,0,0" 
+                           Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding Path=StartDate}" />
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="36,20,0,0"
+                           Grid.Row="3"  TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Text="{Binding Path=Kilometrage}"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="34,21,0,0" Grid.Row="4" 
+                           TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=DateLastCheck}"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="36,0,0,0" Grid.Row="5"  
+                           TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding Path=FuelTank}"/>
     </Grid>
 </Window>

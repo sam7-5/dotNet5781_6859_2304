@@ -9,36 +9,37 @@
     <Window.Resources>
         <DataTemplate x:Key="MyDataTemplate"
  DataType="local:MyData">
+            
             <StackPanel>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="50" />
                   
                         
                     </Grid.ColumnDefinitions>
-                    <TextBlock Margin="0 0 0 0 " Grid.Column="0"
+                    <TextBlock Grid.Column="0"
                          Text="id: " />
-                    <TextBlock Grid.Column="1"
+                    <TextBlock  Grid.Column="1"
                         Text="{Binding Path=License}" />
 
-                    <TextBlock Margin="10 0 0 0 " Grid.Column="2"
+                    <TextBlock  Grid.Column="2"
                          Text="km: " />
-                    <TextBlock Margin="0 0 0 0 " Grid.Column="3"
+                    <TextBlock  Grid.Column="3"
                         Text="{Binding Path=Kilometrage}" />
                
-                    <Button Margin="10 0 0 0 " Grid.Column="4"
+                    <Button  Margin ="0 0 10 0" Grid.Column="4"
                            Content="refuel"
                          Click="Click_Refuel" />
                 
-                    <Button Margin="10 0 0 0 " Grid.Column="5"
+                    <Button  Grid.Column="5"
                            Content="new trip"
                          Click="Click_Travel" />
                  
@@ -51,8 +52,12 @@
             <RowDefinition Height="242*"/>
             <RowDefinition Height="87*"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="lbBus" MouseDoubleClick="DoubleClick_BusSettings" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}" SelectionChanged="lbBus_SelectionChanged"/>
-        <Button Content="add bus" Click="Click_AddBus" HorizontalAlignment="Left" Margin="70,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="111" Background="Red" Height="67"/>
+        
+        <ListBox x:Name="lbBus" MouseDoubleClick="DoubleClick_BusSettings" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}" 
+                 SelectionChanged="lbBus_SelectionChanged"/>
+        
+        <Button Content="add bus" Click="Click_AddBus" HorizontalAlignment="Left" Margin="70,0,0,0"
+                Grid.Row="1" VerticalAlignment="Center" Width="111" Background="Red" Height="67"/>
     
     </Grid>
 
