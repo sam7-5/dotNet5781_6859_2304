@@ -22,17 +22,16 @@ namespace dotNet5781_03b_6859_2304
             InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
-        }
 
         private void enter(object sender, KeyEventArgs e)
         {
-            if(e.Key==Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 this.Close();
             }
+            int temp = int.Parse(this.distance.Text);
         }
+
     }
 }
