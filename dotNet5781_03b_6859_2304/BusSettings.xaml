@@ -5,41 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03b_6859_2304"
         mc:Ignorable="d"
-        Title="BusSettings" Height="450" Width="800">
-   
-    <Grid>
-        
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="239,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="fr-fr" Text="Bus License:"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="239,32,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"><Run Text="kilometrage:"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="239,31,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"><Run Language="fr-fr" Text="start date:"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="239,0,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center" Width="110"><Run Language="fr-fr" Text="last treatment in km:"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="239,0,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="129"><Run Language="fr-fr" Text="date of last treatment:"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="239,0,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Center" Width="110"><Run Language="fr-fr" Text="gas state:"/></TextBlock>
+        Title="BusSettings" Height="280" Width="300">
+    
+    <Border Padding ="10">
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
+                <TextBlock Background ="#eee" Margin="0 10 15 10" Text="Bus License:"/>
+                <TextBlock Background ="#eee" Grid.Row ="1" Margin = "0 10 15 10 " Text="kilometrage:"/>
+                <TextBlock Background ="#eee" Grid.Row ="2" Margin = "0 10 15 10 " Text="start date:"/>
+                <TextBlock Background ="#eee" Grid.Row ="3" Margin = "0 10 15 10" Text="last treatment in km:"/>
+                <TextBlock Background ="#eee" Grid.Row ="4" Margin = "0 10 15 10" Text="date of last treatment:"/>
+                <TextBlock Background ="#eee" Grid.Row ="5" Margin = "0 10 15 10" Text="gas state:"/>
+            
 
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="35,0,0,0"  
-                           TextWrapping="Wrap" VerticalAlignment="Center" Width="97" Text="{Binding Path=License}" />
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="35,24,0,0"
-                   Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=Kilometrage}"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="34,0,0,0" 
-                           Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding Path=StartDate}" />
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="36,20,0,0"
-                           Grid.Row="3"  TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Text="{Binding Path=Kilometrage}"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="34,21,0,0" Grid.Row="4" 
-                           TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=DateLastCheck}"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="36,0,0,0" Grid.Row="5"  
-                           TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding Path=FuelTank}"/>
-    </Grid>
+                <TextBlock Grid.Column="1" Margin="0 10 0 0"
+                           Text="{Binding Path=License}" />
+                <TextBlock Grid.Column="1" Margin="0 10 0 0"
+                           Grid.Row="1" Text="{Binding Path=Kilometrage}"/>
+                <TextBlock Grid.Column="1" Margin="0 10 0 0" 
+                           Grid.Row="2" Text="{Binding Path=StartDate}" />
+                <TextBlock Grid.Column="1" Margin="0 10 0 0"
+                           Grid.Row="3" Text="{Binding Path=Kilometrage}"/>
+                <TextBlock Grid.Column="1" Margin="0 10 0 0"
+                           Grid.Row="4" Text="{Binding Path=DateLastCheck}"/>
+                <TextBlock Grid.Column="1" Margin="0 10 0 0"
+                           Grid.Row="5" Text="{Binding Path=FuelTank}"/>
+            </Grid>
+        </StackPanel>
+    </Border>
 </Window>
