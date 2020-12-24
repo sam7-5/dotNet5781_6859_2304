@@ -170,19 +170,6 @@ namespace dotNet5781_03b_6859_2304
             return false;
         }
 
-        // ctors
-        
-        //public Bus(string license, int km = 0)
-        //{
-        //    License = license;
-        //    Kilometrage = km;
-        //    StartDate = DateTime.Now;
-        //    FuelTank = FULL_TANK;
-        //}
-
-        
-       
-
         public void Refuel()
         {
             m_fuelTank = FULL_TANK;
@@ -193,17 +180,4 @@ namespace dotNet5781_03b_6859_2304
             DateLastCheck = DateTime.Now;
         }
     }
-
-    
-    //class Test
-    //{
-    //    static void Main()
-    //    {
-    //        var buses = Bus.CreateListOfBuses();
-    //        foreach (var bus in buses)
-    //        {
-    //            Console.WriteLine(bus.ToString());
-    //        }
-    //    }
-    //}
 }

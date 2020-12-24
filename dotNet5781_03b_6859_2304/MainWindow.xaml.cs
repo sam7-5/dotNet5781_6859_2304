@@ -46,12 +46,6 @@ namespace dotNet5781_03b_6859_2304
         }
         private void DoubleClick_BusSettings(object sender, RoutedEventArgs e)
         {
-            /* Button btn = sender as Button;
-             Bus bus1 = btn.DataContext as Bus;
-            
-            var truc = sender as Bus;
-            Bus bus1 = truc;
-            */
             BusSettings settings = new BusSettings();
             settings.DataContext = lbBus.SelectedItem;
             settings.Show();
