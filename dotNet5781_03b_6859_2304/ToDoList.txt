@@ -3,4 +3,5 @@
 2b.bug id
 3. ajout bus => maj fenetre principale
 4. jauge trip + essence (thread)
+4b.compteur maintain
 5. design 
