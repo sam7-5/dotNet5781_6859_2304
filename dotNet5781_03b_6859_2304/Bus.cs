@@ -154,6 +154,7 @@ namespace dotNet5781_03b_6859_2304
         }
         public void Maintain()
         {
+            m_kilometrage = 0;
             DateLastCheck = DateTime.Now;
         }
     }

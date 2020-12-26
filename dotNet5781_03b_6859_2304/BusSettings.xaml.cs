@@ -34,5 +34,12 @@ namespace dotNet5781_03b_6859_2304
         {
             this.DataContext =_contentLoaded ;
         }
+
+        private void maintain_Click(object sender, RoutedEventArgs e)
+        {
+            Bus bus = DataContext as Bus;
+            bus.Maintain();
+
+        }
     }
 }
