@@ -40,8 +40,17 @@ namespace dotNet5781_03b_6859_2304
             set { m_startDate = value; }
         }
 
+
+
+       
+
+        
+
+
+
         // how much fuel we have in the tank: travel capacity
         private int m_fuelTank;
+
         public int FuelTank
         {
             get
@@ -56,7 +65,6 @@ namespace dotNet5781_03b_6859_2304
                 }
             }
         }
-
         private string m_license;
         public string License
         {
@@ -69,7 +77,7 @@ namespace dotNet5781_03b_6859_2304
                     first = m_license.Substring(0, 2);
                     middle = m_license.Substring(2, 3);
                     last = m_license.Substring(5, 2);
-                    return string.Format("{0}-{1}-{2}", first, middle, last);
+                    return string.Format("{0}-{1}-{2}", first, last, middle);
                 }
                 // xxx-xx-xxx
                 else
@@ -77,7 +85,7 @@ namespace dotNet5781_03b_6859_2304
                     first = m_license.Substring(0, 3);
                     middle = m_license.Substring(3, 2);
                     last = m_license.Substring(5, 3);
-                    return string.Format("{0}-{1}-{2}", first, middle, last);
+                    return string.Format("{0}-{1}-{2}", first, last, middle);
                 }
             }
 
