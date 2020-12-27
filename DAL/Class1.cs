@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class leDebutCestDure
+    public class dal 
     {
     }
 }
