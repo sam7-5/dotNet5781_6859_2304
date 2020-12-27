@@ -28,7 +28,17 @@ namespace dotNet5781_03b_6859_2304
         }
 
         // the date the bus is in the bus company
-        public DateTime StartDate { get; set; }
+        private DateTime m_startDate;
+        public DateTime StartDate
+        {
+            get
+            {
+                return m_startDate; 
+
+            }
+
+            set { m_startDate = value; }
+        }
 
         // how much fuel we have in the tank: travel capacity
         private int m_fuelTank;
@@ -46,6 +56,7 @@ namespace dotNet5781_03b_6859_2304
                 }
             }
         }
+
         private string m_license;
         public string License
         {
@@ -58,7 +69,7 @@ namespace dotNet5781_03b_6859_2304
                     first = m_license.Substring(0, 2);
                     middle = m_license.Substring(2, 3);
                     last = m_license.Substring(5, 2);
-                    return string.Format("{0}-{1}-{2}", first, last, middle);
+                    return string.Format("{0}-{1}-{2}", first, middle, last);
                 }
                 // xxx-xx-xxx
                 else
@@ -66,7 +77,7 @@ namespace dotNet5781_03b_6859_2304
                     first = m_license.Substring(0, 3);
                     middle = m_license.Substring(3, 2);
                     last = m_license.Substring(5, 3);
-                    return string.Format("{0}-{1}-{2}", first, last, middle);
+                    return string.Format("{0}-{1}-{2}", first, middle, last);
                 }
             }
 
@@ -129,29 +140,11 @@ namespace dotNet5781_03b_6859_2304
             return false;
         }
 
-        // ctors
-        /*
-        public Bus(string license, int km = 0)
-        {
-            License = license;
-            Kilometrage = km;
-            StartDate = DateTime.Now;
-            FuelTank = FULL_TANK;
-        }
-
-        public Bus(string license, int km, DateTime startDate, int fuel)
-        {
-            License = license;
-            Kilometrage = km;
-            StartDate = startDate;
-            FuelTank = fuel;
-        }
-        */
-
         public void Refuel()
         {
             m_fuelTank = FULL_TANK;
         }
+
         public void Maintain()
         {
             m_kilometrage = 0;

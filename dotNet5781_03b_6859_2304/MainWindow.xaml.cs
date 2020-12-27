@@ -40,12 +40,14 @@ namespace dotNet5781_03b_6859_2304
 
         private void Click_AddBus(object sender, RoutedEventArgs e)
         {
+            // create a new "addWin" window
             addWin win = new addWin();
             win.Show();
 
         }
         private void DoubleClick_BusSettings(object sender, RoutedEventArgs e)
         {
+            // create a "BusSettings" window
             BusSettings settings = new BusSettings();
             settings.DataContext = lbBus.SelectedItem;
             settings.Show();

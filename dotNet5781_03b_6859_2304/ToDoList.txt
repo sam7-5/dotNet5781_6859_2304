@@ -1,6 +1,6 @@
 ﻿1. bug date dans bus settings => DONE !
 2. maj des caracteristiques du bus apres saisie ds travel=> done! (thread)
-2b.bug id
+2b.bug id => DONE ! dimanche 27 dec. 10H00
 3. ajout bus => maj fenetre principale
 4. jauge trip + essence (thread)
 4b.compteur maintain
