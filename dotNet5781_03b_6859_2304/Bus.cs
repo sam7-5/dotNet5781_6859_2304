@@ -4,72 +4,34 @@ using System.Text;
 
 namespace dotNet5781_03b_6859_2304
 {
-    // TO DO LIST:
-    //  1. ctor of Bus( string id , int km) self puts date and set fuel to max capacity => DONE !
-    //  2. method that return make a list of 10 bus, CHECK the exercise ! => DONE !
-    //  3. boolean method : does the bus can travel ? => DONE !
-    //  4. refuel and maintain method => DONE !
     class Bus
     {
         static readonly int FULL_TANK = 1200;
         static readonly int MAX_KM = 20000;
         static private Random random = new Random(DateTime.Now.Millisecond);
 
-        //public Bus(string license, int km, DateTime startDate, int fuel)
-        //{
-        //    License = license;
-        //    Kilometrage = km;
-        //    StartDate = startDate;
-        //    FuelTank = fuel;
-        //}
-
         // return a list of ten buses with 3 aith problem
         static public List<Bus> CreateListOfBuses()
         {
             var buses = new List<Bus>();
 
-            buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(),
-                m_kilometrage = random.Next(0, MAX_KM), DateLastCheck = new DateTime(2017, 1, 1), m_fuelTank = FULL_TANK });
-
-            buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(), 
-                m_kilometrage = MAX_KM - 1000, DateLastCheck = DateTime.Now, m_fuelTank = FULL_TANK });
-
-            buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(),
-                m_kilometrage = random.Next(0, MAX_KM), DateLastCheck = DateTime.Now, m_fuelTank = 400 });
+            buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(), m_kilometrage = random.Next(0, MAX_KM), StartDate = new DateTime(2016,1,1), DateLastCheck = new DateTime(2017, 1, 1), m_fuelTank = FULL_TANK });
+            buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(), m_kilometrage = MAX_KM - 1000, StartDate = DateTime.Now, DateLastCheck = DateTime.Now, m_fuelTank = FULL_TANK });
+            buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(), m_kilometrage = random.Next(0, MAX_KM), StartDate = DateTime.Now, DateLastCheck = DateTime.Now, m_fuelTank = 400 });
 
 
             for (int i = 0; i < 7; i++)
             {
-                buses.Add(item: new Bus() { m_license = random.Next(1000000, 99999999).ToString(),
-                    m_kilometrage = random.Next(0, MAX_KM), StartDate = DateTime.Now, m_fuelTank = FULL_TANK });
+                buses.Add(item: new Bus() { m_license = random.Next(1000000, 99999999).ToString(), m_kilometrage = random.Next(0, MAX_KM), StartDate = DateTime.Now, DateLastCheck = DateTime.Now, m_fuelTank = FULL_TANK });
             }
             return buses;
         }
 
         // the date the bus is in the bus company
-        private DateTime m_startDate;
-        public DateTime StartDate
-        {
-            get
-            {
-                return m_startDate; 
-
-            }
-
-            set { m_startDate = value; }
-        }
-
-
-
-       
-
-        
-
-
+        public DateTime StartDate { get; set; }
 
         // how much fuel we have in the tank: travel capacity
         private int m_fuelTank;
-
         public int FuelTank
         {
             get
@@ -123,9 +85,7 @@ namespace dotNet5781_03b_6859_2304
                 }
             }
         }
-
-        public DateTime DateLastCheck 
-        { get; set; }
+        public DateTime DateLastCheck { get; set; }
 
         // Kilometrage since last check up
         private int m_kilometrage;
@@ -169,13 +129,32 @@ namespace dotNet5781_03b_6859_2304
             return false;
         }
 
+        // ctors
+        /*
+        public Bus(string license, int km = 0)
+        {
+            License = license;
+            Kilometrage = km;
+            StartDate = DateTime.Now;
+            FuelTank = FULL_TANK;
+        }
+
+        public Bus(string license, int km, DateTime startDate, int fuel)
+        {
+            License = license;
+            Kilometrage = km;
+            StartDate = startDate;
+            FuelTank = fuel;
+        }
+        */
+
         public void Refuel()
         {
             m_fuelTank = FULL_TANK;
         }
-
         public void Maintain()
         {
+            m_kilometrage = 0;
             DateLastCheck = DateTime.Now;
         }
     }

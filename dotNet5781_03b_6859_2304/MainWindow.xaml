@@ -53,11 +53,10 @@
             <RowDefinition Height="87*"/>
         </Grid.RowDefinitions>
         
-        <ListBox x:Name="lbBus" MouseDoubleClick="DoubleClick_BusSettings" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}" 
-                 SelectionChanged="lbBus_SelectionChanged"/>
+        <ListBox x:Name="lbBus" MouseDoubleClick="DoubleClick_BusSettings" ItemsSource="{Binding}" ItemTemplate="{StaticResource MyDataTemplate}" />
         
         <Button Content="add bus" Click="Click_AddBus" HorizontalAlignment="Left" Margin="70,0,0,0"
-                Grid.Row="1" VerticalAlignment="Center" Width="111" Background="Red" Height="67"/>
+                Grid.Row="1" VerticalAlignment="Center" Width="111" Background="#FF9A9797" Height="67"/>
     
     </Grid>
 

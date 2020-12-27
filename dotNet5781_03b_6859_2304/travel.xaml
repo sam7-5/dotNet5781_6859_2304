@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03b_6859_2304"
         mc:Ignorable="d"
-        Title="travel" Height="152" Width="221" KeyDown="enter">
-    <Grid Margin="0,0,0,-6">
+        Title="travel" Height="152" Width="221" >
+    <Grid Margin="0,0,0,-6" KeyDown="Grid_KeyDown">
         <TextBlock HorizontalAlignment="Center" Margin="0,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"><Run Text="enter distance "/><Run Language="fr-fr" Text="to travel"/></TextBlock>
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="150"><Run Language="fr-fr" Text="to confirm press enter"/></TextBlock>
-        <TextBox x:Name="distance"  HorizontalAlignment="Center" Margin="0,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="distance"  HorizontalAlignment="Center" Margin="0,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" />
 
     </Grid>
 </Window>

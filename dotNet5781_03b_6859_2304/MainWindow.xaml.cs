@@ -98,6 +98,11 @@ namespace dotNet5781_03b_6859_2304
         {
             travel travel1 = new travel();
             travel1.Show();
+
+            Button btn = sender as Button;
+            Bus currentuser = btn.DataContext as Bus;
+            // string aa = currentuser;
+            travel1.DataContext = currentuser;
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -105,10 +110,7 @@ namespace dotNet5781_03b_6859_2304
             ContentControl content = new ContentControl();
         }
 
-        private void lbBus_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
 
         // private void ProgressBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         //   {

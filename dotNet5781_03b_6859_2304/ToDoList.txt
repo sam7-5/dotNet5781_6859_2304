@@ -1,0 +1,7 @@
+﻿1. bug date dans bus settings => DONE !
+2. maj des caracteristiques du bus apres saisie ds travel=> done! (thread)
+2b.bug id
+3. ajout bus => maj fenetre principale
+4. jauge trip + essence (thread)
+4b.compteur maintain
+5. design 
