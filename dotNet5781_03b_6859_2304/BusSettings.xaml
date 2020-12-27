@@ -26,10 +26,9 @@
                 <TextBlock Background ="#eee" Margin="0 10 15 10" Text="Bus License:"/>
                 <TextBlock Background ="#eee" Grid.Row ="1" Margin = "0 10 15 10 " Text="kilometrage:"/>
                 <TextBlock Background ="#eee" Grid.Row ="2" Margin = "0 10 15 10 " Text="start date:"/>
-                <TextBlock Background ="#eee" Grid.Row ="3" Margin = "0 10 15 10" Text="date of last treatmen:"/>
+                <TextBlock Background ="#eee" Grid.Row ="3" Margin = "0 10 15 10" Text="date of last treatment:"/>
                 <TextBlock Background ="#eee" Grid.Row ="4" Margin = "0 10 15 10" Text="gas state:"/>
             
-
                 <TextBlock Grid.Column="1" Margin="0 10 0 0"
                            Text="{Binding Path=License}" />
                 <TextBlock Grid.Column="1" Margin="0 10 0 0"
