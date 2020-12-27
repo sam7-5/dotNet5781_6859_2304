@@ -32,7 +32,7 @@
                     <TextBlock  Grid.Column="2"
                          Text="km: " />
                     <TextBlock  Grid.Column="3"
-                        Text="{Binding Path=Kilometrage}" />
+                        Text="{Binding Path=Kilometrage ,Mode=OneWay}" />
                
                     <Button  Margin ="0 0 10 0" Grid.Column="4"
                            Content="refuel"
