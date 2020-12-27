@@ -8,5 +8,6 @@ namespace DS
 {
     public class Class1
     {
+        BE.Class1 be = new BE.Class1();
     }
 }

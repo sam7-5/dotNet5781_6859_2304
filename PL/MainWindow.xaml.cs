@@ -23,6 +23,8 @@ namespace PL
         public MainWindow()
         {
             InitializeComponent();
+            Bl.Class1 bl = new Bl.Class1();
+            BE.Class1 be = new BE.Class1();
         }
     }
 }
