@@ -6,12 +6,22 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Line
+    public class Line
     {
-        int Id;
-        int Code;
-        Area Area;
-        int FirstStation;
-        int LastStation;
+        #region
+        private int id;
+        private int code;
+        private Area area;
+        private int firstStation;
+        private int lastStation;
+        #endregion
+
+        #region properties
+        public int Id { get => id; set { id = value; } }
+        public int Code { get => code; set { code = value; } }
+        public Area Area { get => area; set { area = value; } }
+        public int FirstStation { get => firstStation; set { firstStation = value; } }
+        public int LastStation { get => lastStation; set { lastStation = value; } }
+        #endregion
     }
 }

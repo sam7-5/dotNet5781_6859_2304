@@ -6,12 +6,22 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Bus
+    public class Bus
     {
-        int LicenseNum;
-        DateTime FromDate;
-        double TotalTrip;
-        double FuelRemain;
-        busStatus Status;
+        #region
+        private int licenseNum;
+        private DateTime fromDate;
+        private double totalTrip;
+        private double fuelRemain;
+        private busStatus status;
+        #endregion
+
+        #region properties
+        public int LicenseNum { get => licenseNum; set { licenseNum = value; } }
+        public DateTime FromDate { get => fromDate; set { fromDate = value; } }
+        public double TotalTrip { get => totalTrip; set { totalTrip = value; } }
+        public double FuelRemain { get => fuelRemain; set { fuelRemain = value; } }
+        public busStatus Status { get => status; set { status = value; } }
+        #endregion
     }
 }
