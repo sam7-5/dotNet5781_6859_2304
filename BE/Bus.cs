@@ -13,7 +13,7 @@ namespace BE
         private DateTime fromDate;
         private double totalTrip;
         private double fuelRemain;
-        private busStatus status;
+        private Enums.BusStatus status;
         #endregion
 
         #region properties
@@ -21,7 +21,7 @@ namespace BE
         public DateTime FromDate { get => fromDate; set { fromDate = value; } }
         public double TotalTrip { get => totalTrip; set { totalTrip = value; } }
         public double FuelRemain { get => fuelRemain; set { fuelRemain = value; } }
-        public busStatus Status { get => status; set { status = value; } }
+        public Enums.BusStatus Status { get => status; set { status = value; } }
         #endregion
     }
 }
