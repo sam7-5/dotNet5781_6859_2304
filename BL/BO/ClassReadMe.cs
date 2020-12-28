@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace BL.BO
 {
-    interface IDAL
-    { /*
-     -doit etre public
-
-        */
+    class ClassReadMe
+    {
+        
     }
 }
