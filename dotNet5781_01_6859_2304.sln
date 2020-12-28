@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNet5781_03a_6859_2304", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNet5781_03b_6859_2304", "dotNet5781_03b_6859_2304\dotNet5781_03b_6859_2304.csproj", "{0CCE3B18-06BB-42EF-B323-FF150EE270F4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotNet5781_PR_6859_2304", "dotNet5781_PR_6859_2304", "{48979476-6C26-4580-9F77-94A112E2F3B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
