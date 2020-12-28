@@ -42,9 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdjacentStations.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Bus.cs" />
     <Compile Include="BusOnTrip.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="LineTrip.cs" />
     <Compile Include="LineStation.cs" />
