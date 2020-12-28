@@ -8,5 +8,6 @@ namespace DAL
 {
     interface IDAL
     {
+
     }
 }
