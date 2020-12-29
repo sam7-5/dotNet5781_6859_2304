@@ -69,6 +69,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PO\AdjacentStations.cs" />
+    <Compile Include="PO\Bus.cs" />
+    <Compile Include="PO\BusOnTrip.cs" />
+    <Compile Include="PO\ClassReadMe.cs" />
+    <Compile Include="PO\Enums.cs" />
+    <Compile Include="PO\Line.cs" />
+    <Compile Include="PO\LineStation.cs" />
+    <Compile Include="PO\LineTrip.cs" />
+    <Compile Include="PO\Station.cs" />
+    <Compile Include="PO\Trip.cs" />
+    <Compile Include="PO\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
