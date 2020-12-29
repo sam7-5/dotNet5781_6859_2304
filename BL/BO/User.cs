@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BE
+namespace BL.BO
 {
     /// <summary>
     ///  two types of users: 1. admin 2. user

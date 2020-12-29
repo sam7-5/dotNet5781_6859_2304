@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BE
+namespace PL.PO
 {
     /// <summary>
     /// base element for: Line, Line station, Trip ...
