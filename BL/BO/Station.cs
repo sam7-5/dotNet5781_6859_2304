@@ -17,5 +17,6 @@ namespace BL.BO
         public double Longitude { get; set; } // Nort South
         public double Lattitude { get; set; } // Est West
         #endregion
+
     }
 }

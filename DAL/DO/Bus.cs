@@ -8,7 +8,7 @@ namespace DAL.DO
 {
     public class Bus
     {
-        #region
+        #region fields
         private int licenseNum;
         private DateTime fromDate;
         private double totalTrip;
@@ -23,5 +23,7 @@ namespace DAL.DO
         public double FuelRemain { get => fuelRemain; set { fuelRemain = value; } }
         public Enums.BusStatus Status { get => status; set { status = value; } }
         #endregion
+
+        private static List<Bus> listBuses() { }
     }
 }

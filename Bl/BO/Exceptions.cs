@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace BL.BO
 {
-    public class Class1 : IDAL
+    public class myExceptions : Exception
     {
-        //BE.Class1 be = new BE.Class1();
-        
     }
 }

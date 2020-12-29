@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    interface IDAL
-    { /*
-     -doit etre public
-
-        */
+    interface IDAL // default public
+    {
+        
     }
 }

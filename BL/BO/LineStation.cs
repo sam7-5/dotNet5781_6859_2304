@@ -8,7 +8,7 @@ namespace BL.BO
 {
     public class LineStation
     {
-        #region
+        #region fields
         private int lineId;
         private int station;
         private int lineStationIndex;
