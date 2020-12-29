@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PL.PO
+namespace UI.PO
 {
     /// <summary>
     ///  two types of users: 1. admin 2. user
