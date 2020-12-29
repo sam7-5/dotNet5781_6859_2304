@@ -11,4 +11,3 @@ C:\Users\alexandre\Source\Repos\sam9875\dotNet5781_6859_2304\doNet5781_01_6859_2
 C:\Users\alexandre\Source\Repos\sam9875\dotNet5781_6859_2304\doNet5781_01_6859_2304\obj\Debug\dotNet5781_01_6859_2304.csproj.CoreCompileInputs.cache
 C:\Users\alexandre\Source\Repos\sam9875\dotNet5781_6859_2304\doNet5781_01_6859_2304\obj\Debug\doNet5781_01_6859_2304.exe
 C:\Users\alexandre\Source\Repos\sam9875\dotNet5781_6859_2304\doNet5781_01_6859_2304\obj\Debug\doNet5781_01_6859_2304.pdb
-C:\Users\shmouel\source\repos\doNet5781_01_6859_2304\doNet5781_01_6859_2304\obj\Debug\dotNet5781_01_6859_2304.csprojAssemblyReference.cache
