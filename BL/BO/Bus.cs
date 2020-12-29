@@ -8,7 +8,7 @@ namespace BE
 {
     public class Bus
     {
-        #region
+        #region fields
         private int licenseNum;
         private DateTime fromDate;
         private double totalTrip;
