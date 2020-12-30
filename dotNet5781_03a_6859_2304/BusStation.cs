@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dotNet5781_02_6859_2304
 {
@@ -29,14 +25,14 @@ namespace dotNet5781_02_6859_2304
         {
             get { return Latitude; }
 
-            set => Latitude = Math.Round((r.NextDouble() * (33.3 - 31.0)) + 31.0,6);
+            set => Latitude = Math.Round((r.NextDouble() * (33.3 - 31.0)) + 31.0, 6);
         }
 
         protected double Longitude;
         public double Longi
         {
             get { return Longitude; }
-            set => Longitude = Math.Round((r.NextDouble() * (35.5 - 34.3)) + 34.3,6);
+            set => Longitude = Math.Round((r.NextDouble() * (35.5 - 34.3)) + 34.3, 6);
         }
 
         protected readonly string adresse;
@@ -47,7 +43,7 @@ namespace dotNet5781_02_6859_2304
         }
 
         //----------- ctor ------------//
-        public BusStation(string key) 
+        public BusStation(string key)
         {
             Key = key;
             Lat = (r.NextDouble() * (33.3 - 31.0)) + 31.0;

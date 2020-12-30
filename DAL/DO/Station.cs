@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DAL.DO
+﻿namespace DAL.DO
 {
     /// <summary>
     /// base element for: Line, Line station, Trip ...
@@ -18,6 +12,6 @@ namespace DAL.DO
         public double Lattitude { get; set; } // Est West
         public string Address { get; set; }
         #endregion
-        
+
     }
 }

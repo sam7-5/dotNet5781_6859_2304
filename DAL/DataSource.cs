@@ -1,25 +1,18 @@
-﻿using System;
+﻿using DAL.DO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.DO;
 
 
 namespace DS
 {
     class DataSource
     {
-        #region static fields and methods
+       
         /// <summary>
         /// return a List of 50 Station with 5 properties
         /// </summary>
-       // internal List<Station> ListStations = new List<Station>();
-
-
-        internal DataSource()
-        {
-            List<Station> ListStations = new List<Station>
+        // internal List<Station> ListStations = new List<Station>();
+   
+        private List<Station> ListStations = new List<Station>
         {        
             #region Generate 50 stations
 
@@ -435,10 +428,8 @@ namespace DS
                 }
                 #endregion
         };
-        }
 
-        //public List<Station> GetStations() { return ListStations; }
-        #endregion
+        public List<Station> GetStations() { return ListStations; }
 
 
 

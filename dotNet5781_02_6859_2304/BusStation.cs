@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dotNet5781_02_6859_2304
 {
@@ -47,7 +43,7 @@ namespace dotNet5781_02_6859_2304
         }
 
         //----------- ctor ------------//
-        public BusStation(string key) 
+        public BusStation(string key)
         {
             Key = key;
             Lat = (r.NextDouble() * (33.3 - 31.0)) + 31.0;

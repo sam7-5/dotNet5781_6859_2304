@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dotNet5781_02_6859_2304
 {
@@ -217,7 +214,7 @@ namespace dotNet5781_02_6859_2304
                     return true;
                 }
             }
-         
+
             return false;
         }
         public BusStationLigne find(string busStationId)

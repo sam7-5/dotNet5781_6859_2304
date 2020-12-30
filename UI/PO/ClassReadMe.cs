@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UI.PO
+﻿namespace UI.PO
 {
     class ClassReadMe
     {
-        
+
     }
 }

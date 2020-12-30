@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dotNet5781_02_6859_2304
 {
@@ -44,8 +40,8 @@ namespace dotNet5781_02_6859_2304
                         Console.WriteLine("enter time from last station: ");
                         int tim0 = Convert.ToInt32(Console.ReadLine());
 
-                        busCollec.AddLigne(new BusLigne(BusId, new BusStationLigne( idde,0,0), new BusStationLigne(idar, dis0, tim0)));
-                       
+                        busCollec.AddLigne(new BusLigne(BusId, new BusStationLigne(idde, 0, 0), new BusStationLigne(idar, dis0, tim0)));
+
                         break;
 
                     case Actions.ADD_STATION:

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DAL.DO
+﻿namespace DAL.DO
 {
     /// <summary>
     ///  two types of users: 1. admin 2. user
@@ -14,7 +8,7 @@ namespace DAL.DO
         /* menahel has no access to users info*/
         #region properties
         public string UserName { get; set; }
-        public string Password { get; set;}
+        public string Password { get; set; }
         public bool Admin { get; set; }
         #endregion
     }
