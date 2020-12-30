@@ -4,7 +4,7 @@ namespace DAL.DO
 {
     public class BusOnTrip
     {
-        #region
+        #region fields
         private int id;
         private int licenseNum;
         private int lineId;
