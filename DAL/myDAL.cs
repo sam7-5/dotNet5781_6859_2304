@@ -11,7 +11,7 @@ namespace DAL
     {
         DS.DataSource dataSource = new DS.DataSource();
 
-        public IEnumerable<Station> GetStations() => dataSource;
+        public IEnumerable<Station> GetStations() => dataSource.ListStations;
 
     }
 }

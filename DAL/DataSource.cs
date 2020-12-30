@@ -14,16 +14,17 @@ namespace DS
         /// <summary>
         /// return a List of 50 Station with 5 properties
         /// </summary>
-       // internal List<Station> ListStations = new List<Station>();
+        // internal List<Station> ListStations = new List<Station>();
 
+        internal List<Station> ListStations;
 
         internal DataSource()
         {
-            List<Station> ListStations = new List<Station>
+          ListStations = new List<Station>
         {        
             #region Generate 50 stations
 
-        new Station
+            new Station
             {
                 Code = 73,
                 Name = "שדרות גולדה מאיר/המשורר אצ''ג",
@@ -31,7 +32,7 @@ namespace DS
                 Lattitude = 31.825302,
                 Longitude = 35.188624
             },
-                new Station
+            new Station
                 {
                     Code = 76,
                     Name = "בית ספר צור באהר בנות/אלמדינה אלמונוורה",
