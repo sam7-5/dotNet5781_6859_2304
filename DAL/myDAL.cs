@@ -7,7 +7,7 @@ using DAL.DO;
 
 namespace DAL
 {
-    public class myDAL
+    public class myDAL 
     {
         DS.DataSource dataSource = new DS.DataSource();
 

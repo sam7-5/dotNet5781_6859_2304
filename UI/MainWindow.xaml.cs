@@ -20,13 +20,12 @@ namespace UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        BL.Class1 b1 = new BL.Class1();
-        
-      //  BE.Class1 be = new BE.Class1();
+        static BL.myBL b1;
         public MainWindow()
         {
             InitializeComponent();
-            
+            b1 = new BL.myBL();
+
         }
     }
 }
