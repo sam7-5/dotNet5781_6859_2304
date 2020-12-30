@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace dotNet5781_03b_6859_2304
 {
@@ -15,7 +14,7 @@ namespace dotNet5781_03b_6859_2304
         {
             var buses = new List<Bus>();
 
-            buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(), m_kilometrage = random.Next(0, MAX_KM), StartDate = new DateTime(2016,1,1), DateLastCheck = new DateTime(2017, 1, 1), m_fuelTank = FULL_TANK });
+            buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(), m_kilometrage = random.Next(0, MAX_KM), StartDate = new DateTime(2016, 1, 1), DateLastCheck = new DateTime(2017, 1, 1), m_fuelTank = FULL_TANK });
             buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(), m_kilometrage = MAX_KM - 1000, StartDate = DateTime.Now, DateLastCheck = DateTime.Now, m_fuelTank = FULL_TANK });
             buses.Add(new Bus() { m_license = random.Next(1000000, 99999999).ToString(), m_kilometrage = random.Next(0, MAX_KM), StartDate = DateTime.Now, DateLastCheck = DateTime.Now, m_fuelTank = 400 });
 
@@ -33,7 +32,7 @@ namespace dotNet5781_03b_6859_2304
         {
             get
             {
-                return m_startDate; 
+                return m_startDate;
 
             }
 

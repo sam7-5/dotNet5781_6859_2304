@@ -6,19 +6,16 @@ namespace DS
 {
     class DataSource
     {
-       
+        internal List<Station> ListStations;
+
         /// <summary>
         /// return a List of 50 Station with 5 properties
         /// </summary>
-        // internal List<Station> ListStations = new List<Station>();
-
-        internal List<Station> ListStations;
-
         internal DataSource()
         {
-          ListStations = new List<Station>
-        {        
-            #region Generate 50 stations
+            ListStations = new List<Station>
+            {        
+                #region Generate 50 stations
 
             new Station
             {
@@ -431,13 +428,7 @@ namespace DS
                     Longitude = 35.206158
                 }
                 #endregion
-        };
+            };
         }
-
-        //public List<Station> GetStations() { return ListStations; }
-        #endregion
-
-
-
     }
 }
