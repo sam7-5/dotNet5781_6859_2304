@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    public class myBL: IBL
+    public class myBL
     {
        
         public DAL.myDAL myDataAcess = new DAL.myDAL();

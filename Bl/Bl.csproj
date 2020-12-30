@@ -46,13 +46,14 @@
     <Compile Include="BO\BusOnTrip.cs" />
     <Compile Include="BO\ClassReadMe.cs" />
     <Compile Include="BO\Enums.cs" />
+    <Compile Include="BO\Exceptions.cs" />
     <Compile Include="BO\Line.cs" />
     <Compile Include="BO\LineStation.cs" />
     <Compile Include="BO\LineTrip.cs" />
     <Compile Include="BO\Station.cs" />
     <Compile Include="BO\Trip.cs" />
     <Compile Include="BO\User.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="myBL.cs" />
     <Compile Include="IBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

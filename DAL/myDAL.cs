@@ -7,7 +7,7 @@ using DAL.DO;
 
 namespace DAL
 {
-    public class myDAL : IDAL
+    public class myDAL 
     {
         #region static fields and methods
         /// <summary>

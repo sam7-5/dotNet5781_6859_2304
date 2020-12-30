@@ -40,14 +40,6 @@ namespace dotNet5781_03b_6859_2304
             set { m_startDate = value; }
         }
 
-
-
-       
-
-        
-
-
-
         // how much fuel we have in the tank: travel capacity
         private int m_fuelTank;
 
