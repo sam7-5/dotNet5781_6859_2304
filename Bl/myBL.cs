@@ -7,6 +7,6 @@ namespace BL
 {
     public class myBL
     {
-            DLA
+            
     }
 }
