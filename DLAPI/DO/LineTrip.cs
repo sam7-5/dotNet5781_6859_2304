@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DAL.DO
+namespace DO
 {
     public class LineTrip
     {

@@ -8,5 +8,11 @@ namespace DLAPI
 {
     public class Class1
     {
+        
+        DS.DataSource dataSource = new DS.DataSource();
+
+        public IEnumerable<Station> GetStations() => dataSource.GetAllStations();
+        public IEnumerable<Bus> GetBuses() => dataSource.GetAllBuses();
+
     }
 }

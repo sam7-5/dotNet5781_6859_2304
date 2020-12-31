@@ -1,10 +1,12 @@
-﻿using DAL.DO;
-using System;
+﻿using System;
 using System.Collections.Generic;
-
-
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DO;
 namespace DS
 {
+
     class DataSource
     {
         private List<Station> listStations;
@@ -442,9 +444,10 @@ namespace DS
 
             for (int i = 0; i < 10; i++)
             {
-                listBuses.Add(new Bus {License = ("12345678"+i).ToString(), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
+                listBuses.Add(new Bus { License = ("12345678" + i).ToString(), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
             }
             return listBuses;
         }
     }
+
 }

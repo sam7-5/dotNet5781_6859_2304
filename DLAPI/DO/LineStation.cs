@@ -1,4 +1,4 @@
-﻿namespace DAL.DO
+﻿namespace DO
 {
     public class LineStation
     {

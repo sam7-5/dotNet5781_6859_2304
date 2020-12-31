@@ -1,4 +1,4 @@
-﻿namespace DAL.DO
+﻿namespace DO
 {
     /// <summary>
     ///  two types of users: 1. admin 2. user

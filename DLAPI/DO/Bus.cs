@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DAL.DO
+namespace DO
 {
     public class Bus
     {

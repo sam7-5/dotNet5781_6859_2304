@@ -1,4 +1,4 @@
-﻿namespace DAL.DO
+﻿namespace DO
 {
     /// <summary>
     /// base element for: Line, Line station, Trip ...
