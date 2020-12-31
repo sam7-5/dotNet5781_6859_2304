@@ -5,9 +5,7 @@ namespace dotNet5781_03b_6859_2304
 {
     class Bus
     {
-        static readonly int FULL_TANK = 1200;
-        static readonly int MAX_KM = 20000;
-        static private Random random = new Random(DateTime.Now.Millisecond);
+      
 
         // return a list of ten buses with 3 aith problem
         static public List<Bus> CreateListOfBuses()
@@ -25,6 +23,10 @@ namespace dotNet5781_03b_6859_2304
             }
             return buses;
         }
+
+        static readonly int FULL_TANK = 1200;
+        static readonly int MAX_KM = 20000;
+        static private Random random = new Random(DateTime.Now.Millisecond);
 
         // the date the bus is in the bus company
         private DateTime m_startDate;
