@@ -4,20 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DO;
+
 namespace DS
 {
-
-    class DataSource
+    public static class DataSource
     {
-        private List<Station> listStations;
-        private List<Bus> listBuses;
+        public static List<Station> listStations;
+        public static List<Bus> listBuses;
+
+        static DataSource()
+        {
+            InitAllLists();
+        }
 
         /// <summary>
         /// return a List of 50 Station with 5 properties
+        /// return 10 available buses
         /// </summary>
-        internal List<Station> GetAllStations()
+        static void InitAllLists()
         {
-            return listStations = new List<Station>
+            listStations = new List<Station>
             {        
                 #region Generate 50 stations
 
@@ -433,21 +439,12 @@ namespace DS
                 }
                 #endregion
             };
-        }
 
-        /// <summary>
-        /// return 10 available buses
-        ///</summary>
-        internal List<Bus> GetAllBuses()
-        {
             listBuses = new List<Bus>();
-
             for (int i = 0; i < 10; i++)
             {
                 listBuses.Add(new Bus { License = ("12345678" + i).ToString(), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
             }
-            return listBuses;
         }
     }
-
 }
