@@ -1,4 +1,5 @@
 ﻿using DAL.DO;
+using System;
 using System.Collections.Generic;
 
 
@@ -6,15 +7,15 @@ namespace DS
 {
     class DataSource
     {
-        internal List<Station> ListStations;
-
+        private List<Station> listStations;
+        private List<Bus> listBuses;
 
         /// <summary>
         /// return a List of 50 Station with 5 properties
         /// </summary>
-        internal DataSource()
+        internal List<Station> GetAllStations()
         {
-            ListStations = new List<Station>
+            return listStations = new List<Station>
             {        
                 #region Generate 50 stations
 
@@ -430,6 +431,20 @@ namespace DS
                 }
                 #endregion
             };
+        }
+
+        /// <summary>
+        /// return 10 available buses
+        ///</summary>
+        internal List<Bus> GetAllBuses()
+        {
+            listBuses = new List<Bus>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                listBuses.Add(new Bus {License = ("12345678"+i).ToString(), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
+            }
+            return listBuses;
         }
     }
 }
