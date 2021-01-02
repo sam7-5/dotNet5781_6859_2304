@@ -10,10 +10,7 @@ namespace DS
     public static class DataSource
     {
         private static List<Station> listStations;
-        private static object listBuses;
-
-        //public static List<Station> listStations;
-        //public static List<Bus> listBuses;
+        private static List<Bus> listBuses;
 
         static DataSource()
         {
@@ -446,7 +443,8 @@ namespace DS
             listBuses = new List<Bus>();
             for (int i = 0; i < 10; i++)
             {
-                object p = listBuses.Add(new Bus { License = ("12345678" + i).ToString(), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
+                listBuses.Add(new Bus { License = ("12345678" + i).ToString(), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
+                
             }
         }
     }

@@ -14,7 +14,7 @@ namespace DO
         private List<Trip> trips;
         private List<AdjacentStations> adjacentStations;
 
-        Station()
+        public Station()
         {
             OnTripBuses = new List<BusOnTrip>();
             lines = new List<Line>();

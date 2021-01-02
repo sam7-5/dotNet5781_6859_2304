@@ -7,7 +7,7 @@ namespace DO
     {
         private static List<Bus> buses=new List<Bus>();
         private List<BusOnTrip> busOnTrips;
-        Bus()
+        public Bus()
         {
             busOnTrips = new List<BusOnTrip>();
         }
