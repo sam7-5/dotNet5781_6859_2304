@@ -1,4 +1,4 @@
-﻿namespace BL.BO
+﻿namespace BO
 {
     /// <summary>
     ///  two types of users: 1. admin 2. user

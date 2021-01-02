@@ -8,6 +8,15 @@
         private int lineStationIndex;
         private int prevStation;
         private int nextStation;
+
+        public LineStation(int lineId, int station, int lineStationIndex, int prevStation, int nextStation)
+        {
+            LineId = lineId;
+            Station = station;
+            LineStationIndex = lineStationIndex;
+            PrevStation = prevStation;
+            NextStation = nextStation;
+        }
         #endregion
 
         #region properties

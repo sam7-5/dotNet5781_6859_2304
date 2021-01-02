@@ -1,4 +1,4 @@
-﻿namespace BL.BO
+﻿namespace BO
 {
     public class Line
     {

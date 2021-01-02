@@ -9,7 +9,7 @@ namespace DLAPI
     public class Class1
     {
         
-        DS.DataSource dataSource = new DS.DataSource();
+   
 
 
     }

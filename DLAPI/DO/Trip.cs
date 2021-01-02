@@ -12,6 +12,17 @@ namespace DO
         private TimeSpan inAt;
         private int outStation;
         private TimeSpan outAt;
+
+        public Trip(int id, string userName, int lineId, int idStation, TimeSpan inAt, int outStation, TimeSpan outAt)
+        {
+            Id = id;
+            UserName = userName;
+            LineId = lineId;
+            IdStation = idStation;
+            InAt = inAt;
+            OutStation = outStation;
+            OutAt = outAt;
+        }
         #endregion
 
         #region properties

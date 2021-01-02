@@ -10,6 +10,15 @@ namespace DO
         private TimeSpan startAt;
         private TimeSpan frequency;
         private TimeSpan finishAt;
+
+        public LineTrip(int id, int lineId, TimeSpan startAt, TimeSpan frequency, TimeSpan finishAt)
+        {
+            Id = id;
+            LineId = lineId;
+            StartAt = startAt;
+            Frequency = frequency;
+            FinishAt = finishAt;
+        }
         #endregion
         #region properties
         private int Id { get => id; set { id = value; } }

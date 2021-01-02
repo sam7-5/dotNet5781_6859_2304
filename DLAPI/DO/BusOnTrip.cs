@@ -13,6 +13,18 @@ namespace DO
         private int prevStation;
         private TimeSpan prevStationAT;
         private TimeSpan nextStationAt;
+
+        public BusOnTrip(int id, int licenseNum, int lineId, TimeSpan plannedTakeOff, TimeSpan actualTakeOff, int prevStation, TimeSpan prevStationAT, TimeSpan nextStationAt)
+        {
+            Id = id;
+            LicenseNum = licenseNum;
+            LineId = lineId;
+            PlannedTakeOff = plannedTakeOff;
+            ActualTakeOff = actualTakeOff;
+            PrevStation = prevStation;
+            PrevStationAT = prevStationAT;
+            NextStationAt = nextStationAt;
+        }
         #endregion
 
         #region properties

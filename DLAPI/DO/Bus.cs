@@ -5,6 +5,22 @@ namespace DO
 {
     public class Bus
     {
+        private static List<Bus> buses=new List<Bus>();
+        private List<BusOnTrip> busOnTrips;
+        Bus()
+        {
+            busOnTrips = new List<BusOnTrip>();
+        }
+
+        public Bus(string license, DateTime fromDate, double kilometrage, double fuelRemain, Enums.BusStatus status)
+        {
+            License = license;
+            FromDate = fromDate;
+            Kilometrage = kilometrage;
+            FuelRemain = fuelRemain;
+            Status = status;
+        }
+
         #region fields
         private string m_license;
         private DateTime fromDate;
