@@ -1,8 +1,11 @@
-﻿namespace DO
+﻿using System.Collections.Generic;
+
+namespace DO
 {
     public class Line
     {
-        #region
+        #region attributes
+        private List<LineTrip> linesOnTrip;
         private int id;
         private int code;
         private Enums.Area area;
@@ -17,5 +20,7 @@
         public int FirstStation { get => firstStation; set { firstStation = value; } }
         public int LastStation { get => lastStation; set { lastStation = value; } }
         #endregion
+
+        Line() { this.linesOnTrip = new List<LineTrip>(); }
     }
 }

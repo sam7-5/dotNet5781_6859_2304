@@ -4,7 +4,7 @@ namespace DO
 {
     public class LineTrip
     {
-        #region
+        #region attributes
         private int id;
         private int lineId;
         private TimeSpan startAt;
