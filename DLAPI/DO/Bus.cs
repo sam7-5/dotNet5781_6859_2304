@@ -12,7 +12,7 @@ namespace DO
             busOnTrips = new List<BusOnTrip>();
         }
 
-        public Bus(string license, DateTime fromDate, double kilometrage, double fuelRemain, Enums.BusStatus status)
+        public Bus(string license, DateTime fromDate, double kilometrage, double fuelRemain, Enums.BusStatus status) 
         {
             License = license;
             FromDate = fromDate;
