@@ -7,6 +7,13 @@ namespace BL
 {
     public class myBL
     {
-            
+        getbus()
+        {
+            try
+
+
+                throw
+            getbus
+        }
     }
 }

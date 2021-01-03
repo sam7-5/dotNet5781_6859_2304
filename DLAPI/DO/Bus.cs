@@ -5,14 +5,13 @@ namespace DO
 {
     public class Bus
     {
-        private static List<Bus> buses=new List<Bus>();
         private List<BusOnTrip> busOnTrips;
         public Bus()
         {
             busOnTrips = new List<BusOnTrip>();
         }
 
-        public Bus(string license, DateTime fromDate, double kilometrage, double fuelRemain, Enums.BusStatus status)
+        public Bus(int license, DateTime fromDate, double kilometrage, double fuelRemain, Enums.BusStatus status)
         {
             License = license;
             FromDate = fromDate;
@@ -22,16 +21,16 @@ namespace DO
         }
 
         #region fields
-        private string m_license;
-        private DateTime fromDate;
+
         private double m_kilometrage;
         private double fuelRemain;
         private Enums.BusStatus status;
         #endregion
 
         #region properties
-        public string License
-        {
+        public int License
+        { get; set;
+            /*
             get
             {
                 string first, middle, last;
@@ -53,8 +52,9 @@ namespace DO
                 }
                 m_license = value;
             }
+            */
         }
-        public DateTime FromDate { get => fromDate; set { fromDate = value; } }
+        public DateTime FromDate { get; set; }
         public double Kilometrage { get => m_kilometrage; set { m_kilometrage = value; } }
         public double FuelRemain { get => fuelRemain; set { fuelRemain = value; } }
         public Enums.BusStatus Status { get => status; set { status = value; } }

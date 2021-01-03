@@ -443,7 +443,7 @@ namespace DS
             listBuses = new List<Bus>();
             for (int i = 0; i < 10; i++)
             {
-                listBuses.Add(new Bus { License = ("12345678" + i).ToString(), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
+                listBuses.Add(new Bus { License = (12345678 + i), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
                 
             }
         }
