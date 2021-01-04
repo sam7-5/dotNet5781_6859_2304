@@ -56,11 +56,5 @@
     <Compile Include="IBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DS\DS.csproj">
-      <Project>{963fb0a3-8485-4556-a830-f07c1a4e867e}</Project>
-      <Name>DS</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

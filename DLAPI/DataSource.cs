@@ -7,12 +7,15 @@ using DO;
 
 namespace DS
 {
-    public static class DataSource
+    /*public static */
+    class DataSource
     {
-        private static List<Station> listStations;
-        private static List<Bus> listBuses;
+        /*private /*static*/
+        public List<Station> listStations;
+        /*private /*static*/
+        public List<Bus> listBuses;
 
-        static DataSource()
+        internal DataSource()
         {
             InitAllLists();
         }
@@ -21,7 +24,7 @@ namespace DS
         /// return a List of 50 Station with 5 properties
         /// return 10 available buses
         /// </summary>
-        static void InitAllLists()
+        internal void InitAllLists()
         {
             listStations = new List<Station>
             {        
@@ -444,7 +447,7 @@ namespace DS
             for (int i = 0; i < 10; i++)
             {
                 listBuses.Add(new Bus { License = (12345678 + i), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
-                
+
             }
         }
     }

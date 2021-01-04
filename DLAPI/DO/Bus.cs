@@ -5,7 +5,7 @@ namespace DO
 {
     public class Bus
     {
-        private List<BusOnTrip> busOnTrips;
+        public List<BusOnTrip> busOnTrips;
         public Bus()
         {
             busOnTrips = new List<BusOnTrip>();
