@@ -7,15 +7,12 @@ using DO;
 
 namespace DS
 {
-    /*public static */
-    class DataSource
+    public static class DataSource
     {
-        /*private /*static*/
-        public List<Station> listStations;
-        /*private /*static*/
-        public List<Bus> listBuses;
+        public static List<Station> listStations;
+        public static List<Bus> listBuses;
 
-        internal DataSource()
+        static DataSource()
         {
             InitAllLists();
         }
@@ -24,7 +21,7 @@ namespace DS
         /// return a List of 50 Station with 5 properties
         /// return 10 available buses
         /// </summary>
-        internal void InitAllLists()
+        static void InitAllLists()
         {
             listStations = new List<Station>
             {        
