@@ -7,15 +7,13 @@ using DO;
 
 namespace DS
 {
-    /*public static */
-    class DataSource
+    public static class DataSource
     {
-        /*private /*static*/
-        public List<Station> listStations;
-        /*private /*static*/
-        public List<Bus> listBuses;
+        public static List<Station> listStations;
+        public static List<Bus> listBuses;
+        public static List<Line> listLines; // a list of stations ...
 
-        internal DataSource()
+        static DataSource()
         {
             InitAllLists();
         }
@@ -24,7 +22,7 @@ namespace DS
         /// return a List of 50 Station with 5 properties
         /// return 10 available buses
         /// </summary>
-        internal void InitAllLists()
+        static void InitAllLists()
         {
             listStations = new List<Station>
             {        
@@ -449,6 +447,31 @@ namespace DS
                 listBuses.Add(new Bus { License = (12345678 + i), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
 
             }
+
+            #region line
+            listLines = new List<Line>();
+
+            var line1 = new List<Station>();
+            var line2 = new List<Station>();
+            var line3 = new List<Station>();
+            var line4 = new List<Station>();
+            var line5 = new List<Station>();
+
+            for (int i = 0; i < 50; i++)
+			{
+                if (i < 10) line1.Add(listStations.ElementAt(i));
+                if (i < 20) line2.Add(listStations.ElementAt(i));
+                if (i < 30) line3.Add(listStations.ElementAt(i));
+                if (i < 40) line4.Add(listStations.ElementAt(i));
+                if (i < 50) line5.Add(listStations.ElementAt(i));
+			}
+
+            listLines.Add(line1);
+            listLines.Add(line2);
+            listLines.Add(line3);
+            listLines.Add(line4);
+            listLines.Add(line5);
+            #endregion
         }
     }
 }
