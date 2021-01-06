@@ -1,9 +1,21 @@
 ﻿using System;
+using System.Xml.Serialization;
 
 namespace UI.PO
 {
+    [Serializable]
+    [XmlRoot(ElementName = "Unit")]
     public class Bus
     {
+        public Bus(int license, DateTime fromDate, double kilometrage, double fuelRemain, Enums.BusStatus status)
+        {
+            LicenseNum = license;
+            FromDate = fromDate;
+            TotalTrip = kilometrage;
+            FuelRemain = fuelRemain;
+            Status = status;
+        }
+
         #region
         private int licenseNum;
         private DateTime fromDate;

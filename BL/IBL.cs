@@ -1,6 +1,6 @@
 ﻿namespace BL
 {
-    interface IBL
+   public interface IBL
     {
     }
 }

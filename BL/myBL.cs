@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-using DS;
+//using DS;
 
 namespace BL
 {
     public class myBL
     {
-        getbus()
-        {
-            try
+        //    getbus()
+        //    {
+        //        try
 
 
-                throw
-            getbus
-        }
+        //            throw
+        //        getbus
+        //    }
+        //}
     }
 }
