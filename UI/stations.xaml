@@ -12,7 +12,7 @@
     <Page.Resources>
         <CollectionViewSource x:Key="lineViewSource"  d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
     </Page.Resources>
-    
+
     <Page.Background>
         <ImageBrush ImageSource="bus1.jpg" Opacity="0.5"/>
     </Page.Background>
@@ -33,17 +33,7 @@
             <Button Name="add_station" Content="add station" HorizontalAlignment="Left" Margin="31,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" Background="#FF49D44B"/>
             <Button Name="delete_station" Content="delete current station" Grid.Column="1" HorizontalAlignment="Left" Margin="24.8,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" RenderTransformOrigin="0.365,1.225" Background="#FFDC2E28"/>
         </Grid>
-
-        <DataGrid x:Name="ds_guestRequestDataGrid" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Visible"
-                  AlternatingRowBackground="AliceBlue" RowDetailsVisibilityMode="VisibleWhenSelected" ItemsSource="{Binding }" EnableRowVirtualization="True" Background="Transparent" AutoGenerateColumns="False" IsReadOnly="True" Height="auto" Padding="10" Grid.Row="1">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="nameColumn" MinWidth="100" Width="*" Header="Name" Binding="{Binding Name}"  IsReadOnly="True" />
-                <DataGridTextColumn x:Name="lastNameColumn" MinWidth="100" Width="*" Header="Last Name" Binding="{Binding LastName}" IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="dg_Email" Width="*" MinWidth="100" Header="Email" Binding="{Binding Mail.Address}" IsReadOnly="True" />
-                <DataGridTextColumn x:Name="guestRequestKeyColumn" MinWidth="100" Width="*" Header="Request Key" Binding="{Binding GuestRequestKey}" IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="statusColumn" Width="*" MinWidth="100" Header="Order Status" Binding="{Binding Status}" IsReadOnly="True"/>
-
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListBox HorizontalAlignment="Left" Height="382" Margin="10,9.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="229" Background="Transparent"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="261,9.8,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="498"/>
     </Grid>
 </Page>
