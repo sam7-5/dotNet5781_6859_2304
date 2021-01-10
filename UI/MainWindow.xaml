@@ -21,7 +21,6 @@
                 <ImageBrush ImageSource="Resources/bus1.jpg"/>
             </Grid.Background>
         </Grid>
-        <Button Name="user" Click="user_Click" Foreground="White" BorderBrush="White" Content="users" Background="Transparent" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="418,239,464.6,296.4"  Width="111" Height="35"/>
-        <Button Name="admin" Click="admin_Click"  Foreground="White" BorderBrush="White" Content="Administration" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="853,504,29.6,31.4" Width="111" Height="35" Background="Transparent"/>
+        <Button Name="admin" Click="admin_Click"  Foreground="White" BorderBrush="White" Content="Administration" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="415,280,467.6,255.4" Width="111" Height="35" Background="Transparent"/>
     </Grid>
 </Window>
