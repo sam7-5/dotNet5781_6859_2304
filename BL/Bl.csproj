@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLFactory.cs" />
     <Compile Include="BO\AdjacentStations.cs" />
     <Compile Include="BO\Bus.cs" />
     <Compile Include="BO\BusOnTrip.cs" />
@@ -52,9 +53,15 @@
     <Compile Include="BO\Station.cs" />
     <Compile Include="BO\Trip.cs" />
     <Compile Include="BO\User.cs" />
-    <Compile Include="myBL.cs" />
+    <Compile Include="BLImp.cs" />
     <Compile Include="IBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DLAPI\DLAPI.csproj">
+      <Project>{9d683f2d-e442-46ac-9061-214eb324f276}</Project>
+      <Name>DLAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
