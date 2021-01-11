@@ -169,6 +169,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\BO.AdjacentStations.datasource" />
+    <None Include="Properties\DataSources\BO.Bus.datasource" />
+    <None Include="Properties\DataSources\BO.BusOnTrip.datasource" />
+    <None Include="Properties\DataSources\BO.Enums+Area.datasource" />
+    <None Include="Properties\DataSources\BO.Enums+BusStatus.datasource" />
+    <None Include="Properties\DataSources\BO.Enums.datasource" />
+    <None Include="Properties\DataSources\BO.Line.datasource" />
+    <None Include="Properties\DataSources\BO.LineStation.datasource" />
+    <None Include="Properties\DataSources\BO.LineTrip.datasource" />
+    <None Include="Properties\DataSources\BO.myExceptions.datasource" />
+    <None Include="Properties\DataSources\BO.Station.datasource" />
+    <None Include="Properties\DataSources\BO.Trip.datasource" />
+    <None Include="Properties\DataSources\BO.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -178,9 +191,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BL\BL.csproj">
+    <ProjectReference Include="..\BL\Bl.csproj">
       <Project>{591ab3eb-b1f8-41e0-9149-468dc43907c6}</Project>
-      <Name>BL</Name>
+      <Name>Bl</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

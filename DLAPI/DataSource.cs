@@ -448,6 +448,7 @@ namespace DS
 
             }
 
+            /*
             #region line
             listLines = new List<Line>();
 
@@ -472,6 +473,7 @@ namespace DS
             listLines.Add(line4);
             listLines.Add(line5);
             #endregion
+            */
         }
     }
 }

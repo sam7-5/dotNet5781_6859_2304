@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DLAPI
 {
-    class DLFactory
+    public static class DLFactory
     {
         /// <summary>
         /// The function creates Dal tier implementation object according to Dal type
@@ -22,6 +22,8 @@ namespace DLAPI
         /// <returns>Dal tier implementation object</returns>
         public static IDL GetDL()
         {
+            #region nextStep
+            /*
             // get dal implementation name from config.xml according to <data> element
             string dlType = DLConfig.DLName;
             // bring package name (dll file name) for the dal name (above) from the list of packages in config.xml
@@ -86,8 +88,10 @@ namespace DLAPI
             {
                 throw new DLConfigException($"Class {dlNameSpace}.{dlClass} is not a singleton", ex);
             }
+            */
+            #endregion
 
+            return DLAPI.DAL.Instance;
         }
     }
-
 }

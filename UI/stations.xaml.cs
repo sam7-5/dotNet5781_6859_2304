@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace UI
 {
     /// <summary>
@@ -23,6 +24,8 @@ namespace UI
         public stations()
         {
             InitializeComponent();
+            BL.IBL bl = BL.BLFactory.GetBL();
+            this.listOfStations.DataContext = bl.GetAllStations();
         }
     }
 }

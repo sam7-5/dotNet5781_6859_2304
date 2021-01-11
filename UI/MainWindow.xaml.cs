@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using BL;
 
 namespace UI
 {
@@ -7,11 +8,11 @@ namespace UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        static BL.myBL b1;
+        IBL bL = BL.BLFactory.GetBL();
         public MainWindow()
         {
             InitializeComponent();
-            b1 = new BL.myBL();
+            //b1 = new BL.BLImp();
 
         }
 

@@ -10,6 +10,7 @@
         public string Name { get; set; }
         public double Longitude { get; set; } // Nort South
         public double Lattitude { get; set; } // Est West
+        public string Address { get; set; }
         #endregion
 
     }

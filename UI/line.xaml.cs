@@ -23,6 +23,7 @@ namespace UI
         public line()
         {
             InitializeComponent();
+            
         }
     }
 }

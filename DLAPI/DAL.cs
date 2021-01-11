@@ -8,8 +8,15 @@ using DS;
 
 namespace DLAPI
 {
-    sealed class DAL: IDL // not to heritate
-    {                     // need to implemente singleton logic to DAL Class
+    sealed class DAL: IDL
+    {                   
+
+        #region Singleton
+        static readonly DAL instance = new DAL();
+        static DAL() { }// static ctor to ensure instance init is done just before first usage
+        DAL() { } // default => private
+        public static DAL Instance { get => instance; }// The public Instance property to use
+        #endregion
 
         // implement IDL with CRUD Logic
         // ======= INPORTANT : IMPLEMENTE STATIC CLONE TOOL ======= //
@@ -39,7 +46,7 @@ namespace DLAPI
         public void AddStation(DO.Station station)
         {
             if (DataSource.listStations.FirstOrDefault(st => st.Code == station.Code) != null)
-                ds.listStations.Add(station);
+                DataSource.listStations.Add(station);
             else
                 throw new NotImplementedException(); // not find
         }
@@ -69,9 +76,5 @@ namespace DLAPI
                 throw new NotImplementedException();
         }
         #endregion
-
-
-
-
     }
 }
