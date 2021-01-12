@@ -21,11 +21,48 @@ namespace UI
     /// </summary>
     public partial class stations : Page
     {
+        BO.Station station ;
         public stations()
         {
             InitializeComponent();
-            BL.IBL bl = BL.BLFactory.GetBL();
-            this.listOfStations.DataContext = bl.GetAllStations();
+            allStations.DataContext=BL.getAllStations.ToList();
+
         }
+
+        private void allStations_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            station = (allStations.SelectedItem as BO.Station);
+            // gridOneStudent.DataContext = curStu;
+            busPassesTrough.DataContext = station.getAllbusPassThrough.ToList();
+            nextStations.DataContext=station.getNextStations.ToList();
+            previousStations.DataContext = station.getPreviousStations.ToList();
+
+            if (station != null)
+            {
+                //list of courses of selected student
+                //RefreshAllRegisteredCoursesGrid();
+                //list of all courses (that selected student is not registered to it)
+                //RefreshAllNotRegisteredCoursesGrid();
+            }
+        }
+
+      
+
+        private void add_station_Click(object sender, RoutedEventArgs e)
+        {
+            addStation station = new addStation();
+            station.Show();
+        }
+
+        private void delete_station_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void update_station_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

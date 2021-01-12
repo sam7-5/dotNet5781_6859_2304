@@ -6,17 +6,18 @@
       xmlns:local="clr-namespace:UI"
         xmlns:BO="clr-namespace:BO;assembly=Bl"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="stations">
+       d:DesignHeight="450" d:DesignWidth="800"
+      Title="stations" >
 
     <Page.Resources>
-        <CollectionViewSource x:Key="stationViewSource"  d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
+        <CollectionViewSource x:Key="lineViewSource"  d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
+        <CollectionViewSource x:Key="adjacentStationsViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:AdjacentStations}, CreateList=True}"/>
     </Page.Resources>
 
     <Page.Background>
         <ImageBrush ImageSource="bus1.jpg" Opacity="0.5"/>
     </Page.Background>
-    <Grid>
+    <Grid DataContext="{StaticResource adjacentStationsViewSource}"   >
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -29,37 +30,67 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Name="update_station" Content="update current station" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" Grid.Row="1" Margin="27.4,10,0,10.2" Width="211" Height="23" Grid.RowSpan="2" Background="#FFD9C51B" />
-            <Button Name="add_station" Content="add station" HorizontalAlignment="Left" Margin="31,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" Background="#FF49D44B"/>
-            <Button Name="delete_station" Content="delete current station" Grid.Column="1" HorizontalAlignment="Left" Margin="24.8,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" RenderTransformOrigin="0.365,1.225" Background="#FFDC2E28"/>
-        </Grid>
-        <Grid Grid.Row ="1" DataContext="{StaticResource stationViewSource}">
-            <Grid x:Name="stationDetails" HorizontalAlignment="Center" Margin="25,25,25,25" VerticalAlignment="Top" Height="125" Width="200">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Label Content="Code:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-                <TextBox x:Name="codeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                <Label Content="Lattitude:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-                <TextBox x:Name="lattitudeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Lattitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                <Label Content="Longitude:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-                <TextBox x:Name="longitudeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Longitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                <Label Content="Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-                <TextBox x:Name="nameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            </Grid>
-            <Grid Grid.Column="0" Grid.Row="1">
-            <ListView x:Name="listOfStations" HorizontalAlignment="Left" Margin="25,25,25,25" Width="250" Opacity="0.4" ItemsSource="{Binding}">
-
-            </ListView>
-            </Grid>
+            <Button Name="update_station" Content="update current station" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" Grid.Row="1" Margin="27.4,10,0,10.2" Width="211" Height="23" Grid.RowSpan="2" Background="#FFD9C51B" Click="update_station_Click" />
+            <Button Name="add_station" Content="add station" HorizontalAlignment="Left" Margin="31,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" Background="#FF49D44B" Click="add_station_Click"/>
+            <Button Name="delete_station" Content="delete current station" Grid.Column="1" HorizontalAlignment="Left" Margin="24.8,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" RenderTransformOrigin="0.365,1.225" Background="#FFDC2E28" Click="delete_station_Click"/>
         </Grid>
 
+        <ListBox x:Name="allStations" HorizontalAlignment="Left" Height="382" Margin="10,9.8,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="229" Background="Transparent" Foreground="#FFF9F6F6"  FontSize="20" SelectionMode="Single" SelectedItem="" ItemsSource="{Binding Source={StaticResource lineViewSource}}" MouseLeftButtonDown="allStations_MouseLeftButtonDown"   >
+            <ListBox.ItemTemplate>
+                <DataTemplate >
+                    <Border Name="border" BorderBrush="White" BorderThickness="1"  Padding="5" Margin="5" Width="204">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=Name}" />
+                            <TextBlock Text="{Binding Path=code}"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+       <Rectangle Fill="Transparent" HorizontalAlignment="Left" Height="100" Margin="291,9.8,0,0" Grid.Row="1" Stroke="#FFF4F0F0" VerticalAlignment="Top" Width="498" StrokeThickness="4"  />
+        <Rectangle Fill="Transparent" HorizontalAlignment="Left" Height="182" Margin="291,128.8,0,0" Grid.Row="1" Stroke="#FFF4F0F0" StrokeThickness="4" VerticalAlignment="Top" Width="498"/>
+        <Rectangle Fill="Transparent" HorizontalAlignment="Left" Height="81" Margin="291,315.8,0,0" Grid.Row="1" Stroke="#FFF4F0F0" StrokeThickness="4" VerticalAlignment="Top" Width="498"/>
+        <Label Content="stations after:" HorizontalAlignment="Left" Margin="310,138.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="170" Foreground="#FFF9F6F6"  FontSize="20" RenderTransformOrigin="0.496,0.101"/>
+        <Label Content="stations before:" HorizontalAlignment="Left" Margin="577,138.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164" Foreground="#FFF9F6F6"  FontSize="20"/>
+        <ListBox x:Name="busPassesTrough" HorizontalAlignment="Left" Height="33" Margin="310,345.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="466" ItemsSource="{Binding }"/>
+        <Label Content="bus lines that passes through:" HorizontalAlignment="Left" Margin="310,310.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="280" Height="35" Foreground="#FFFCF9F9" FontSize="20"/>
+        <Label Content="number:" HorizontalAlignment="Left" Margin="310,23.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="97" Foreground="#FFF9F6F6"  FontSize="20"/>
+        <Label Content="longitude:" HorizontalAlignment="Left" Margin="538,22.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="112" Foreground="#FFF9F6F6"  FontSize="20" RenderTransformOrigin="0.256,0.448"/>
+        <Label Content="name:" HorizontalAlignment="Left" Margin="310,59.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="97" Foreground="#FFF9F6F6"  FontSize="20"/>
+        <Label Content="latitude:" HorizontalAlignment="Left" Margin="538,62.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Foreground="#FFF9F6F6"  FontSize="20" RenderTransformOrigin="0.979,0.285"/>
+        <TextBlock HorizontalAlignment="Left" Margin="412,27.8,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Code}" VerticalAlignment="Top" Height="37" Width="97" Foreground="Red"  FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="412,64.8,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Name }" VerticalAlignment="Top" RenderTransformOrigin="0.143,0.756" Height="24" Width="97" Foreground="Red"  FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="655,23.8,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Longitude}" VerticalAlignment="Top" Height="36" Width="104" Foreground="Red"  FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="651,66.8,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Lattitude}" VerticalAlignment="Top" RenderTransformOrigin="-0.147,0.681" Height="37" Width="108" Foreground="Red"  FontSize="20"/>
+        <ListBox x:Name="nextStations" HorizontalAlignment="Left" Height="102" Margin="310,180.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="222" ItemsSource="{Binding Source={StaticResource adjacentStationsViewSource}}">
+            <ListBox.ItemTemplate>
+                <DataTemplate >
+                    <Border Name="border" BorderBrush="MediumPurple" BorderThickness="2"  Padding="2" Margin="5" Width="50">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=Station1}" />
+                            <TextBlock Text="{Binding Path=Station2}"/>
+                            <TextBlock Text="{Binding Path=Distance}" />
+                            <TextBlock Text="{Binding Path=Time}"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox x:Name="previousStations" HorizontalAlignment="Left" Height="100" Margin="577,180.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164" ItemsSource="{Binding Source={StaticResource adjacentStationsViewSource}}">
+            <ListBox.ItemTemplate>
+                <DataTemplate >
+                    <Border Name="border" BorderBrush="MediumPurple" BorderThickness="2"  Padding="2" Margin="5" Width="50" >
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=Station1}" />
+                            <TextBlock Text="{Binding Path=Station2}"/>
+                            <TextBlock Text="{Binding Path=Distance}" />
+                            <TextBlock Text="{Binding Path=Time}"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>
