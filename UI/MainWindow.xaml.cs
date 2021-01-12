@@ -8,6 +8,7 @@ namespace UI
     /// </summary>
     public partial class MainWindow : Window
     {
+     
         IBL bL = BL.BLFactory.GetBL();
         public MainWindow()
         {
@@ -26,6 +27,6 @@ namespace UI
         {
             new admin().ShowDialog();
         }
-       
+
     }
 }

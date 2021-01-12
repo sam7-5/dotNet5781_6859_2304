@@ -19,9 +19,41 @@ namespace UI
     /// </summary>
     public partial class addStation : Window
     {
+         BO.Station station;
+        BL.IBL bl;
         public addStation()
         {
             InitializeComponent();
+            station = new BO.Station();
+            this.DataContext = station;
+            BL.IBL bl = BL.BLFactory.GetBL();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            System.Windows.Data.CollectionViewSource stationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("stationViewSource")));
+            // Charger les données en définissant la propriété CollectionViewSource.Source :
+            // stationViewSource.Source = [source de données générique]
+        }
+
+        private void bkbaddStation_Click(object sender, RoutedEventArgs e)
+        {
+            try 
+            {
+              //  bl.AddStation(station);
+              
+                station = new BO.Station();
+                this.DataContext = station;
+            } 
+            catch (Exception ex) //change it!!
+            { 
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.Close();
+            }
         }
     }
 }

@@ -30,26 +30,13 @@ namespace UI
 
         }
 
-        private void allStations_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-          
-
-            
-          //  if (station != null)
-         //   {
-              //  nextStations.DataContext = station.getNextStations.ToList();
-              //   previousStations.DataContext = station.getPreviousStations.ToList();
-              //  busPassesTrough.DataContext = station.getAllbusPassThrough.ToList();
-           // }
-
-        }
-
 
 
         private void add_station_Click(object sender, RoutedEventArgs e)
         {
             addStation station = new addStation();
             station.Show();
+            allStations.DataContext = bl.GetAllStations();
         }
 
         private void delete_station_Click(object sender, RoutedEventArgs e)
@@ -59,11 +46,11 @@ namespace UI
 
         private void update_station_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                if (station != null)
-                    bl.UpdateStation(station);
-            }
+            //try
+            //{
+            //    if (station != null)
+            //        bl.UpdateStation(station);
+            //}
             //catch (BO.BadStationIdException ex)
             //{
             //    MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
