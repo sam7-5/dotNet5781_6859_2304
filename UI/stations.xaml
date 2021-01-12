@@ -6,18 +6,19 @@
       xmlns:local="clr-namespace:UI"
         xmlns:BO="clr-namespace:BO;assembly=Bl"
       mc:Ignorable="d" 
-       d:DesignHeight="450" d:DesignWidth="800"
-      Title="stations" >
+       d:DesignHeight="450"
+      Title="stations" Width="800" >
 
-    <Page.Resources>
+    <!--<Page.Resources>
         <CollectionViewSource x:Key="lineViewSource"  d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
         <CollectionViewSource x:Key="adjacentStationsViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:AdjacentStations}, CreateList=True}"/>
-    </Page.Resources>
+    </Page.Resources>-->
 
     <Page.Background>
         <ImageBrush ImageSource="bus1.jpg" Opacity="0.5"/>
     </Page.Background>
-    <Grid DataContext="{StaticResource adjacentStationsViewSource}"   >
+    <Grid    >
+        <!--DataContext="{StaticResource adjacentStationsViewSource}"-->
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -35,10 +36,10 @@
             <Button Name="delete_station" Content="delete current station" Grid.Column="1" HorizontalAlignment="Left" Margin="24.8,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" RenderTransformOrigin="0.365,1.225" Background="#FFDC2E28" Click="delete_station_Click"/>
         </Grid>
 
-        <ListBox x:Name="allStations" HorizontalAlignment="Left" Height="382" Margin="10,9.333,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="255" Background="Transparent" Foreground="#FFF9F6F6"  FontSize="15" SelectionMode="Single" SelectedItem="" ItemsSource="{Binding}" MouseLeftButtonDown="allStations_MouseLeftButtonDown"   >
+        <ListBox x:Name="allStations" HorizontalAlignment="Left" Height="382" Margin="10,9.333,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="255" Background="Transparent" Foreground="#FFF9F6F6"  FontSize="15" SelectionMode="Single" SelectedItem="" ItemsSource="{Binding}" MouseLeftButtonDown="allStations_MouseLeftButtonDown" SelectionChanged="allStations_SelectionChanged"   >
             <ListBox.ItemTemplate>
                 <DataTemplate >
-                    <Border Name="border" BorderBrush="White" BorderThickness="1"  Padding="5" Margin="5" Width="250">
+                    <Border Name="border" BorderBrush="#FFDDDD84" BorderThickness="1"  Padding="5" Margin="5" Width="250">
                         <StackPanel>
                             <TextBlock Text="{Binding Path=Name}" />
                             <TextBlock Text="{Binding Path=Code}"/>
@@ -63,12 +64,13 @@
             <Label Content="longitude:" HorizontalAlignment="Left" Margin="256,20,0,0" VerticalAlignment="Top" Width="112" Foreground="#FFF9F6F6"  FontSize="20" RenderTransformOrigin="0.256,0.448"/>
             <Label Content="name:" HorizontalAlignment="Left" Margin="26,20,0,0" VerticalAlignment="Top" Width="97" Foreground="#FFF9F6F6"  FontSize="20"/>
             <Label Content="latitude:" HorizontalAlignment="Left" Margin="256,62,0,0" VerticalAlignment="Top" Width="95" Foreground="#FFF9F6F6"  FontSize="20" RenderTransformOrigin="0.979,0.285" Height="38"/>
-            <TextBox HorizontalAlignment="Left" Margin="123,67,0,0" TextWrapping="Wrap" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Height="23" Width="97" Foreground="Red"  FontSize="20"/>
-            <TextBox HorizontalAlignment="Left" Margin="123,29,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true }" VerticalAlignment="Top" RenderTransformOrigin="0.143,0.756" Height="24" Width="97" Foreground="Red"  FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Margin="368,20,0,0" TextWrapping="Wrap" Text="{Binding Longitude}" VerticalAlignment="Top" Height="36" Width="104" Foreground="Red"  FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Margin="369,67,0,-4" TextWrapping="Wrap" Text="{Binding Lattitude}" VerticalAlignment="Top" RenderTransformOrigin="-0.147,0.681" Height="37" Width="108" Foreground="Red"  FontSize="20"/>
+            <TextBox HorizontalAlignment="Left" Margin="123,62,0,0" TextWrapping="Wrap" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Height="28" Width="128" Foreground="Black"  FontSize="12"/>
+            <TextBox HorizontalAlignment="Left" Margin="123,20,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true }" VerticalAlignment="Top" RenderTransformOrigin="0.143,0.756" Height="33" Width="128" Foreground="Black"  FontSize="12"/>
+            <TextBlock HorizontalAlignment="Left" Margin="368,20,0,0" TextWrapping="Wrap" Text="{Binding Longitude}" VerticalAlignment="Top" Height="36" Width="104" Foreground="#FFDDDD84"  FontSize="20"/>
+            <TextBlock HorizontalAlignment="Left" Margin="369,67,0,-4" TextWrapping="Wrap" Text="{Binding Lattitude}" VerticalAlignment="Top" RenderTransformOrigin="-0.147,0.681" Height="37" Width="108" Foreground="#FFDDDD84"  FontSize="20"/>
         </Grid>
-        <ListBox x:Name="nextStations" HorizontalAlignment="Left" Height="102" Margin="310,180.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="222" ItemsSource="{Binding Source={StaticResource adjacentStationsViewSource}}">
+        <ListBox x:Name="nextStations" HorizontalAlignment="Left" Height="102" Margin="310,180.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="222" >
+            <!--ItemsSource="{Binding Source={StaticResource adjacentStationsViewSource}}"-->
             <ListBox.ItemTemplate>
                 <DataTemplate >
                     <Border Name="border" BorderBrush="MediumPurple" BorderThickness="2"  Padding="2" Margin="5" Width="50">
@@ -83,7 +85,8 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <ListBox x:Name="previousStations" HorizontalAlignment="Left" Height="100" Margin="577,180.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164" ItemsSource="{Binding Source={StaticResource adjacentStationsViewSource}}">
+        <ListBox x:Name="previousStations" HorizontalAlignment="Left" Height="100" Margin="577,180.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164" >
+            <!--ItemsSource="{Binding Source={StaticResource adjacentStationsViewSource}}"-->
             <ListBox.ItemTemplate>
                 <DataTemplate >
                     <Border Name="border" BorderBrush="MediumPurple" BorderThickness="2"  Padding="2" Margin="5" Width="50" >

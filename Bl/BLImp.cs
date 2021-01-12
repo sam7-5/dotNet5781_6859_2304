@@ -8,9 +8,6 @@ using BO;
 using System.Collections.Generic;
 
 
-//-------------------------------------------------------//
-//  !!! we considere BL/BO as DL/DO for testing only !!! 
-//-------------------------------------------------------//
 namespace BL
 {
     class BLImp : IBL

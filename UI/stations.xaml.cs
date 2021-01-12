@@ -22,7 +22,7 @@ namespace UI
     public partial class stations : Page
     {
         BL.IBL bl = BL.BLFactory.GetBL();
-
+        BO.Station station;
         public stations()
         {
             InitializeComponent();
@@ -32,16 +32,15 @@ namespace UI
 
         private void allStations_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            station = (allStations.SelectedItem as BO.Station);
-            gridOneStation.DataContext = station;
+          
 
-            /*
-            if (station != null)
-            {
+            
+          //  if (station != null)
+         //   {
               //  nextStations.DataContext = station.getNextStations.ToList();
               //   previousStations.DataContext = station.getPreviousStations.ToList();
               //  busPassesTrough.DataContext = station.getAllbusPassThrough.ToList();
-            }
+           // }
 
         }
 
@@ -60,16 +59,22 @@ namespace UI
 
         private void update_station_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    if (station != null)
-            //        BL.UpdateStudentPersonalDetails(station);
-            //}
+            try
+            {
+                if (station != null)
+                    bl.UpdateStation(station);
+            }
             //catch (BO.BadStationIdException ex)
             //{
             //    MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
             //}
         }
 
+        private void allStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            station = (allStations.SelectedItem as BO.Station);
+            gridOneStation.DataContext = station;
+        }
     }
 }
+            
