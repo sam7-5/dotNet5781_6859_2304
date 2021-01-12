@@ -50,14 +50,14 @@ namespace DLAPI
             else
                 throw new NotImplementedException(); // not find
         }
-        public void UpdateStation(DO.Station station)
+        public void UpdateStation(DO.Station stationToAdd)
         {
-            DO.Station stationToUpdate = DataSource.listStations.Find(st => st.Code == station.Code);
+            DO.Station station = DataSource.listStations.Find(st => st.Code == stationToAdd.Code);
 
-            if (stationToUpdate != null)
+            if (station != null)
             {
                 DataSource.listStations.Remove(station);
-                DataSource.listStations.Add(stationToUpdate/*.Clone()*/);
+                DataSource.listStations.Add(stationToAdd/*.Clone()*/);
             }
             else
                 throw new NotImplementedException();

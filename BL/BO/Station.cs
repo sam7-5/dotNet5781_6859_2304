@@ -15,7 +15,7 @@
 
         public override string ToString()/* => this.ToStringProperty();*/
         {
-            return string.Format("{0} {1}", Name, Code);
+            return string.Format($"{Name} {Code}");
         }
     }
 }

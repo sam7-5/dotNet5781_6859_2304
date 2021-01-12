@@ -37,17 +37,27 @@ namespace BL
             return stationBO;
         }
 
+        // DONE
         public void AddStation(Station station)
         {
-            throw new NotImplementedException();
+            DO.Station stationDO = new DO.Station();
+            #region copying properties
+            stationDO.Code = station.Code;
+            stationDO.Address = station.Address;
+            stationDO.Lattitude = station.Lattitude;
+            stationDO.Longitude = station.Longitude;
+            stationDO.Name = station.Name;
+            #endregion
+            dl.AddStation(stationDO);
         }
 
+        // BONUS
         public void DeleteStation(int stationCode)
         {
             throw new NotImplementedException();
         }
 
-        // DONE ?
+        // DONE
         public IEnumerable<Station> GetAllStations()
         {
             return from stationDO in dl.GetAllStations()
