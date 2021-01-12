@@ -21,11 +21,12 @@ namespace UI
     /// </summary>
     public partial class stations : Page
     {
-        BO.Station station;
+        BL.IBL bl = BL.BLFactory.GetBL();
+
         public stations()
         {
             InitializeComponent();
-          //  allStations.DataContext = BL.getAllStations.ToList();
+            allStations.DataContext = bl.GetAllStations();
 
         }
 
@@ -34,6 +35,7 @@ namespace UI
             station = (allStations.SelectedItem as BO.Station);
             gridOneStation.DataContext = station;
 
+            /*
             if (station != null)
             {
               //  nextStations.DataContext = station.getNextStations.ToList();

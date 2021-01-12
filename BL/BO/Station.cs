@@ -13,5 +13,9 @@
         public string Address { get; set; }
         #endregion
 
+        public override string ToString()/* => this.ToStringProperty();*/
+        {
+            return string.Format("{0} {1}", Name, Code);
+        }
     }
 }

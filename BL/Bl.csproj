@@ -51,9 +51,11 @@
     <Compile Include="BO\LineStation.cs" />
     <Compile Include="BO\LineTrip.cs" />
     <Compile Include="BO\Station.cs" />
+    <Compile Include="BO\Tools.cs" />
     <Compile Include="BO\Trip.cs" />
     <Compile Include="BO\User.cs" />
     <Compile Include="BLImp.cs" />
+    <Compile Include="DeepCopyUtilities.cs" />
     <Compile Include="IBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
