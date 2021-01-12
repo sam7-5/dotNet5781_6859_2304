@@ -21,22 +21,24 @@ namespace UI
     /// </summary>
     public partial class stations : Page
     {
-        BO.Station station ;
+        BL.IBL bl = BL.BLFactory.GetBL();
+
         public stations()
         {
             InitializeComponent();
-            allStations.DataContext=BL.getAllStations.ToList();
+            allStations.DataContext = bl.GetAllStations();
 
         }
 
         private void allStations_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            station = (allStations.SelectedItem as BO.Station);
+            //station = (allStations.SelectedItem as BO.Station);
             // gridOneStudent.DataContext = curStu;
-            busPassesTrough.DataContext = station.getAllbusPassThrough.ToList();
-            nextStations.DataContext=station.getNextStations.ToList();
-            previousStations.DataContext = station.getPreviousStations.ToList();
+            //busPassesTrough.DataContext = station.getAllbusPassThrough.ToList();
+            //nextStations.DataContext=station.getNextStations.ToList();
+            //previousStations.DataContext = station.getPreviousStations.ToList();
 
+            /*
             if (station != null)
             {
                 //list of courses of selected student
@@ -44,6 +46,7 @@ namespace UI
                 //list of all courses (that selected student is not registered to it)
                 //RefreshAllNotRegisteredCoursesGrid();
             }
+            */
         }
 
       

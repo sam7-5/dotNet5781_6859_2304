@@ -35,20 +35,20 @@
             <Button Name="delete_station" Content="delete current station" Grid.Column="1" HorizontalAlignment="Left" Margin="24.8,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" RenderTransformOrigin="0.365,1.225" Background="#FFDC2E28" Click="delete_station_Click"/>
         </Grid>
 
-        <ListBox x:Name="allStations" HorizontalAlignment="Left" Height="382" Margin="10,9.8,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="229" Background="Transparent" Foreground="#FFF9F6F6"  FontSize="20" SelectionMode="Single" SelectedItem="" ItemsSource="{Binding Source={StaticResource lineViewSource}}" MouseLeftButtonDown="allStations_MouseLeftButtonDown"   >
+        <ListBox x:Name="allStations" HorizontalAlignment="Left" Height="382" Margin="10,9.333,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="255" Background="Transparent" Foreground="#FFF9F6F6"  FontSize="15" SelectionMode="Single" SelectedItem="" ItemsSource="{Binding}" MouseLeftButtonDown="allStations_MouseLeftButtonDown"   >
             <ListBox.ItemTemplate>
                 <DataTemplate >
-                    <Border Name="border" BorderBrush="White" BorderThickness="1"  Padding="5" Margin="5" Width="204">
+                    <Border Name="border" BorderBrush="White" BorderThickness="1"  Padding="5" Margin="5" Width="250">
                         <StackPanel>
                             <TextBlock Text="{Binding Path=Name}" />
-                            <TextBlock Text="{Binding Path=code}"/>
+                            <TextBlock Text="{Binding Path=Code}"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
-       <Rectangle Fill="Transparent" HorizontalAlignment="Left" Height="100" Margin="291,9.8,0,0" Grid.Row="1" Stroke="#FFF4F0F0" VerticalAlignment="Top" Width="498" StrokeThickness="4"  />
+        <Rectangle Fill="Transparent" HorizontalAlignment="Left" Height="100" Margin="291,9.8,0,0" Grid.Row="1" Stroke="#FFF4F0F0" VerticalAlignment="Top" Width="498" StrokeThickness="4"  />
         <Rectangle Fill="Transparent" HorizontalAlignment="Left" Height="182" Margin="291,128.8,0,0" Grid.Row="1" Stroke="#FFF4F0F0" StrokeThickness="4" VerticalAlignment="Top" Width="498"/>
         <Rectangle Fill="Transparent" HorizontalAlignment="Left" Height="81" Margin="291,315.8,0,0" Grid.Row="1" Stroke="#FFF4F0F0" StrokeThickness="4" VerticalAlignment="Top" Width="498"/>
         <Label Content="stations after:" HorizontalAlignment="Left" Margin="310,138.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="170" Foreground="#FFF9F6F6"  FontSize="20" RenderTransformOrigin="0.496,0.101"/>
