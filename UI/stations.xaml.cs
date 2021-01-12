@@ -32,24 +32,20 @@ namespace UI
 
         private void allStations_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //station = (allStations.SelectedItem as BO.Station);
-            // gridOneStudent.DataContext = curStu;
-            //busPassesTrough.DataContext = station.getAllbusPassThrough.ToList();
-            //nextStations.DataContext=station.getNextStations.ToList();
-            //previousStations.DataContext = station.getPreviousStations.ToList();
+            station = (allStations.SelectedItem as BO.Station);
+            gridOneStation.DataContext = station;
 
             /*
             if (station != null)
             {
-                //list of courses of selected student
-                //RefreshAllRegisteredCoursesGrid();
-                //list of all courses (that selected student is not registered to it)
-                //RefreshAllNotRegisteredCoursesGrid();
+              //  nextStations.DataContext = station.getNextStations.ToList();
+              //   previousStations.DataContext = station.getPreviousStations.ToList();
+              //  busPassesTrough.DataContext = station.getAllbusPassThrough.ToList();
             }
-            */
+
         }
 
-      
+
 
         private void add_station_Click(object sender, RoutedEventArgs e)
         {
@@ -64,7 +60,15 @@ namespace UI
 
         private void update_station_Click(object sender, RoutedEventArgs e)
         {
-
+            //try
+            //{
+            //    if (station != null)
+            //        BL.UpdateStudentPersonalDetails(station);
+            //}
+            //catch (BO.BadStationIdException ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
         }
 
     }
