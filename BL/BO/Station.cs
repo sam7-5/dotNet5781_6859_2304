@@ -13,5 +13,6 @@
         public string Address { get; set; }
         #endregion
 
+        public override string ToString() => this.ToStringProperty();
     }
 }

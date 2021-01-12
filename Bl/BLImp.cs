@@ -17,6 +17,29 @@ namespace BL
     {
         IDL dl = DLFactory.GetDL();
 
+        #region station
+
+        //DONE
+        BO.Station stationDoBoAdapter(DO.Station stationDO)
+        {
+            BO.Station stationBO = new BO.Station();
+            DO.Station stationToTest;
+            int stationCode = stationDO.Code;
+
+            try
+            {
+                stationToTest = dl.GetStation(stationCode);
+            }
+            catch (Exception/*DO.BadStationException*/)
+            {   
+                throw;
+            }
+
+            stationDO.CopyPropertiesTo(stationBO);
+
+            return stationBO;
+        }
+
         public void AddStation(Station station)
         {
             throw new NotImplementedException();
@@ -27,17 +50,28 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        // exception here to debug
+        // DONE ?
         public IEnumerable<Station> GetAllStations()
         {
-            return (IEnumerable<BO.Station>)(from stationDO in dl.GetAllStations()
+            return from stationDO in dl.GetAllStations()
                    orderby stationDO.Code
-                   select stationDO);
+                   select stationDoBoAdapter(stationDO);
         }
 
+        // DONE
         public Station GetStation(int stationCode)
         {
-            throw new NotImplementedException();
+            DO.Station stationDO;
+            try
+            {
+                stationDO = dl.GetStation(stationCode);
+            }
+            // to implemente...
+            catch (Exception)
+            {
+                throw;
+            }
+            return stationDoBoAdapter(stationDO);
         }
 
         public void UpdateStation(Station station)
@@ -49,5 +83,7 @@ namespace BL
         {
             throw new NotImplementedException();
         }
+        #endregion
+
     }
 }
