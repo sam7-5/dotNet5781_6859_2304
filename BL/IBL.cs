@@ -14,6 +14,7 @@ namespace BL
         void UpdateStation(BO.Station station);
         void UpdateStation(int stationCode, Action<BO.Station> update); // updt specific fields in Stqation
         void DeleteStation(int stationCode);
+
         #endregion
     }
 }
