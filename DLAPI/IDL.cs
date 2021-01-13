@@ -48,13 +48,11 @@ namespace DLAPI
         void DeleteLineStation(int lineId);
         #endregion
 
-        #region BusOnTrip
-        // to code...
-        #endregion
 
         #region AdjacentStations
-        // to code...
-        #endregion
 
+        #endregion 
+
+        #region
     }
 }
