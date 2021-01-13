@@ -120,7 +120,7 @@ namespace DLAPI
         #endregion
 
         #region LineStation
-        IEnumerable<DO.LineStation> GetAllLineStation()
+        public IEnumerable<DO.LineStation> GetAllLineStation()
         {
             return DataSource.listLineStations;
         }
@@ -161,11 +161,10 @@ namespace DLAPI
         #endregion
 
         #region AdjStation
-        IEnumerable<DO.AdjacentStations> GetAllAdjStation()
+        public IEnumerable<DO.AdjacentStations> GetAllAdjStation()
         {
             return DataSource.listAdjacentStations;
         }
-
         public DO.AdjacentStations GetAdjtStation(int station1, int station2)
         {
             return DataSource.listAdjacentStations.Find(st => st.Station1 == station1 && st.Station2 == station2);
@@ -175,7 +174,7 @@ namespace DLAPI
             if (DataSource.listAdjacentStations.Find(adjSt => adjSt.Station1 == AdjStation.Station1 && adjSt.Station2 == AdjStation.Station2) != null)
                 throw new NotImplementedException();
             else
-                (DataSource.listAdjacentStations.Add(AdjStation);
+                DataSource.listAdjacentStations.Add(AdjStation);
         }
         public void UpdateAdjStation(DO.AdjacentStations AdjStation)
         {
@@ -200,12 +199,11 @@ namespace DLAPI
             else
                 throw new NotImplementedException();
         }
-
         #endregion
 
         // to finish implement\tion
         #region LineTrip
-        IEnumerable<DO.LineTrip> GetAllLineTrip()
+        public IEnumerable<DO.LineTrip> GetAllLineTrip()
         {
             return DataSource.listLineTrip;
         }
@@ -231,6 +229,5 @@ namespace DLAPI
             throw new NotImplementedException();
         }
         #endregion
-
     }
 }
