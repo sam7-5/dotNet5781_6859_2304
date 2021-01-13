@@ -46,9 +46,9 @@ namespace DLAPI
         public void AddStation(DO.Station station)
         {
             if (DataSource.listStations.FirstOrDefault(st => st.Code == station.Code) != null)
-                DataSource.listStations.Add(station);
+                throw new NotImplementedException(); // already in
             else
-                throw new NotImplementedException(); // not find
+                DataSource.listStations.Add(station);
         }
         public void UpdateStation(DO.Station stationToAdd)
         {
@@ -85,9 +85,9 @@ namespace DLAPI
         public void AddLine(DO.Line line)
         {
             if (DataSource.listLines.FirstOrDefault(st => st.ID == line.ID) != null)
-                DataSource.listLines.Add(line);
+                throw new NotImplementedException();
             else
-                throw new NotImplementedException(); // not find
+                DataSource.listLines.Add(line);
         }
         public DO.Line GetLine(int lineId)
         {
@@ -122,42 +122,85 @@ namespace DLAPI
         #region LineStation
         IEnumerable<DO.LineStation> GetAllLineStation()
         {
-            return DataSource.listLineStation;
+            return DataSource.listLineStations;
         }
         public DO.LineStation GetLineStation(int lineId)
         {
-            return DataSource.listLineStation.Find(lst => lst.LineId == lineId);
+            return DataSource.listLineStations.Find(lst => lst.LineId == lineId);
         }
-        void AddLineStation(DO.LineStation lineStation)
+        public void AddLineStation(DO.LineStation lineStation)
         {
-            if (DataSource.listLineStation.FirstOrDefault(lst => lst.LineId == lineStation.LineId) != null)
-                DataSource.listLineStation.Add(lineStation);
-            else
+            if (DataSource.listLineStations.FirstOrDefault(lst => lst.LineId == lineStation.LineId) != null)
                 throw new NotImplementedException(); // not find
+            else
+                DataSource.listLineStations.Add(lineStation);
         }
-        void UpdateLineStation(DO.LineStation lineStation)
+        public void UpdateLineStation(DO.LineStation lineStation)
         {
-            DO.LineStation lineStation1 = DataSource.listLineStation.Find(lst => lst.LineId == lineStation.LineId);
+            DO.LineStation lineStation1 = DataSource.listLineStations.Find(lst => lst.LineId == lineStation.LineId);
             if (lineStation1 != null)
             {
-                DataSource.listLineStation.Remove(lineStation1);
-                DataSource.listLineStation.Add(lineStation);
+                DataSource.listLineStations.Remove(lineStation1);
+                DataSource.listLineStations.Add(lineStation);
             }
             else
                 throw new NotImplementedException();
         }
-        void UpdateLineStation(DO.LineStation line, Action<DO.LineStation> update)
+        public void UpdateLineStation(DO.LineStation line, Action<DO.LineStation> update)
         {
             throw new NotImplementedException();
         }
-        void DeleteLineStation(int lineId)
+        public void DeleteLineStation(int lineId)
         {
-            DO.LineStation lstToDlt = DataSource.listLineStation.Find(lst => lst.LineId == lineId);
+            DO.LineStation lstToDlt = DataSource.listLineStations.Find(lst => lst.LineId == lineId);
             if (lstToDlt != null)
-                DataSource.listLineStation.Remove(lstToDlt);
+                DataSource.listLineStations.Remove(lstToDlt);
             else
                 throw new NotImplementedException();
         }
+        #endregion
+
+        #region AdjStation
+        IEnumerable<DO.AdjacentStations> GetAllAdjStation()
+        {
+            return DataSource.listAdjacentStations;
+        }
+
+        public DO.AdjacentStations GetAdjtStation(int station1, int station2)
+        {
+            return DataSource.listAdjacentStations.Find(st => st.Station1 == station1 && st.Station2 == station2);
+        }
+        public void AddAdjacentStation(DO.AdjacentStations AdjStation)
+        {
+            if (DataSource.listAdjacentStations.Find(adjSt => adjSt.Station1 == AdjStation.Station1 && adjSt.Station2 == AdjStation.Station2) != null)
+                throw new NotImplementedException();
+            else
+                (DataSource.listAdjacentStations.Add(AdjStation);
+        }
+        public void UpdateAdjStation(DO.AdjacentStations AdjStation)
+        {
+            DO.AdjacentStations adjSt1 = DataSource.listAdjacentStations.Find(st => st.Station1 == AdjStation.Station1 && st.Station2 == AdjStation.Station2);
+            if (adjSt1 != null)
+            {
+                DataSource.listAdjacentStations.Remove(adjSt1);
+                DataSource.listAdjacentStations.Add(AdjStation);
+            }
+            else
+                throw new NotImplementedException();
+        }
+        public void UpdateAdjStation(DO.AdjacentStations AdjStation, Action<DO.LineStation> update)
+        {
+            throw new NotImplementedException();
+        }
+        public void DeleteAdjStation(int station1, int station2)
+        {
+            DO.AdjacentStations adjToDlt = DataSource.listAdjacentStations.Find(st => st.Station1 == station1 && st.Station2 == station2);
+            if (adjToDlt != null)
+                DataSource.listAdjacentStations.Remove(adjToDlt);
+            else
+                throw new NotImplementedException();
+        }
+
         #endregion
 
     }
