@@ -10,7 +10,6 @@ namespace DLAPI
 {
     sealed class DAL: IDL
     {                   
-
         #region Singleton
         static readonly DAL instance = new DAL();
         static DAL() { }// static ctor to ensure instance init is done just before first usage
