@@ -4,20 +4,14 @@ namespace BO
 {
     public class Bus
     {
-        #region fields
-        private int licenseNum;
-        private DateTime fromDate;
-        private double totalTrip;
-        private double fuelRemain;
-        private Enums.BusStatus status;
-        #endregion
+     
 
         #region properties
-        public int LicenseNum { get => licenseNum; set { licenseNum = value; } }
-        public DateTime FromDate { get => fromDate; set { fromDate = value; } }
-        public double TotalTrip { get => totalTrip; set { totalTrip = value; } }
-        public double FuelRemain { get => fuelRemain; set { fuelRemain = value; } }
-        public Enums.BusStatus Status { get => status; set { status = value; } }
+        public int LicenseNum { get; set; } 
+        public DateTime FromDate { get; set; }
+        public double TotalTrip { get; set; }
+        public double FuelRemain { get; set; }
+        public Enums.BusStatus Status { get; set; }
         #endregion
     }
 }
