@@ -4,21 +4,12 @@ namespace BO
 {
     public class Line
     {
-        #region
-        private int id;
-        private int code;
-        private Enums.Area area;
-        private int firstStation;
-        private int lastStation;
-        //public List<BO.Station> ListOfStation { get; set; }
-
-        #endregion
         #region properties
-        public int Id { get => id; set { id = value; } }
-        public int Code { get => code; set { code = value; } }
-        public Enums.Area Area { get => area; set { area = value; } }
-        public int FirstStation { get => firstStation; set { firstStation = value; } }
-        public int LastStation { get => lastStation; set { lastStation = value; } }
+        public int Id { get; set; }
+        public int Code { get; set; }
+        public Enums.Area Area { get; set; }
+        public int FirstStation { get; set; }
+        public int LastStation { get; set; }
         #endregion
     }
 }
