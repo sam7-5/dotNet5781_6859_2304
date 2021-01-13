@@ -100,6 +100,14 @@ namespace DS
                 },
                 new Station
                 {
+                    Code = 87,
+                    Name = "מגרש כדורסל/אלמדארס",
+                    Address = "רחוב:אלמדארס  עיר 5: ירושלים",
+                    Lattitude = 31.769898,
+                    Longitude = 35.23973
+                },
+                new Station
+                {
                     Code = 88,
                     Name = "בית ספר לבנות/בטן אלהוא",
                     Address = " רחוב:בטן אל הווא  עיר: ירושלים",
@@ -498,7 +506,7 @@ namespace DS
             // int iD, int code, Enums.Area area, int firstStation, int lastStation
             #region create 10 lines
             listLines.Add(new Line(1,546, Enums.Area.Center,75,78));
-            listLines.Add(new Line(2, 798, Enums.Area.Center,83,96));
+            listLines.Add(new Line(2, 798, Enums.Area.Center,83,97));
             listLines.Add(new Line(3, 213, Enums.Area.Eilat,102,106));
             listLines.Add(new Line(4,448, Enums.Area.Eilat,1485,1488));
             listLines.Add(new Line(5,565, Enums.Area.Galil,1510,1518));
@@ -506,7 +514,7 @@ namespace DS
             listLines.Add(new Line(7,324, Enums.Area.Golan,121,123));
             listLines.Add(new Line(8,492, Enums.Area.Golan,108,119));
             listLines.Add(new Line(9,759, Enums.Area.South,1490,1494));
-            listLines.Add(new Line(10,298, Enums.Area.South,1522,15244));
+            listLines.Add(new Line(10,298, Enums.Area.South,1522,1524));
             #endregion
 
 
@@ -558,8 +566,60 @@ namespace DS
             listAdjacentStations.Add(new AdjacentStations(1514, 1518,2,new TimeSpan(0,20,45)));
             #endregion
 
-
-
+            listLineStations = new List<LineStation>();
+            //int lineId, int station, int lineStationIndex, int prevStation, int nextStation
+            #region create line stations
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add(); 
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            listLineStations.Add();
+            #endregion
             /*
             #region line
             listLines = new List<Line>();
