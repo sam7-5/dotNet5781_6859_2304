@@ -41,7 +41,7 @@ namespace DLAPI
         // DONE !
         #region LineStation // difference with Station ?
         IEnumerable<DO.LineStation> GetAllLineStation();
-        DO.Line GetLineStation(int lineId);
+        DO.LineStation GetLineStation(int lineId);
         void AddLineStation(DO.LineStation lineStation);
         void UpdateLineStation(DO.LineStation lineStation);
         void UpdateLineStation(DO.LineStation line, Action<DO.LineStation> update);
@@ -58,6 +58,7 @@ namespace DLAPI
         void DeleteAdjStation(int station1, int station2);
         #endregion
 
+        // Almost Done, strange pb in DLobject: can't acess to Properties
         #region LineTrip
         IEnumerable<DO.LineTrip> GetAllLineTrip();
         DO.LineTrip GetLineTrip(int lineId);
