@@ -119,6 +119,22 @@ namespace DLAPI
         }
         #endregion
 
+        #region LineStation
+        IEnumerable<DO.LineStation> GetAllLineStation()
+        {
+            return DataSource.
+        }
+        DO.Line GetLineStation(int lineId)
+        { }
+        void AddLineStation(DO.LineStation lineStation)
+        { }
+        void UpdateLineStation(DO.LineStation lineStation)
+        { }
+        void UpdateLineStation(DO.LineStation line, Action<DO.LineStation> update)
+        { }
+        void DeleteLineStation(int lineId)
+        { }
+        #endregion
 
     }
 }

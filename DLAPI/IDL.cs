@@ -28,7 +28,7 @@ namespace DLAPI
         // to code...
         #endregion
 
-        // TO IMP. !
+        // IMP IN DLObjects DONE !
         #region Line
         IEnumerable<DO.Line> GetAllLines();
         DO.Line GetLine(int lineId);
@@ -50,9 +50,16 @@ namespace DLAPI
 
 
         #region AdjacentStations
+        IEnumerable<DO.AdjacentStations> GetAllAdjStation();
+        DO.AdjacentStations GetAdjtStation(int station1, int station2);
+        void AddAdjacentStation(DO.AdjacentStations AdjStation);
+        void UpdateAdjStation(DO.AdjacentStations AdjStation);
+        void UpdateAdjStation(DO.AdjacentStations AdjStation, Action<DO.LineStation> update);
+        void DeleteAdjStation(int lineId);
+        #endregion
 
-        #endregion 
+        #region LineTrip
 
-        #region
+        #endregion
     }
 }
