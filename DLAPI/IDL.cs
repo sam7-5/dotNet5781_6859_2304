@@ -14,6 +14,7 @@ namespace DLAPI
 
     public interface IDL
     {
+        // IMP IN DLObjects DONE !
         #region Station
         IEnumerable<DO.Station> GetAllStations();
         DO.Station GetStation(int stationCode);
@@ -27,12 +28,24 @@ namespace DLAPI
         // to code...
         #endregion
 
+        // TO IMP. !
         #region Line
-        // to code...
+        IEnumerable<DO.Line> GetAllLines();
+        DO.Line GetLine(int lineId);
+        void AddLine(DO.Line line);
+        void UpdateLine(DO.Line line);
+        void UpdateLine(DO.Line line, Action<DO.Line> update);
+        void DeleteLine(int lineId);
         #endregion
 
+        // TO IMP. !
         #region LineStation // difference with Station ?
-        // to code...
+        IEnumerable<DO.LineStation> GetAllLineStation();
+        DO.Line GetLineStation(int lineId);
+        void AddLineStation(DO.LineStation lineStation);
+        void UpdateLineStation(DO.LineStation lineStation);
+        void UpdateLineStation(DO.LineStation line, Action<DO.LineStation> update);
+        void DeleteLineStation(int lineId);
         #endregion
 
         #region BusOnTrip

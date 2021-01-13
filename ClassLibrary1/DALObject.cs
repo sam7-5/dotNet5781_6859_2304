@@ -76,5 +76,49 @@ namespace DLAPI
                 throw new NotImplementedException();
         }
         #endregion
+
+        #region Line
+        public IEnumerable<DO.Line> GetAllLines()
+        {
+            return DataSource.listLines;
+        }
+        public void AddLine(DO.Line line)
+        {
+            if (DataSource.listLines.FirstOrDefault(st => st.ID == line.ID) != null)
+                DataSource.listLines.Add(line);
+            else
+                throw new NotImplementedException(); // not find
+        }
+        public DO.Line GetLine(int lineId)
+        {
+            return DataSource.listLines.Find(ln => ln.ID == lineId);
+        }
+        public void UpdateLine(DO.Line line)
+        {
+            DO.Line line1 = DataSource.listLines.Find(ln => ln.ID == line.ID);
+
+            if (line1 != null)
+            {
+                DataSource.listLines.Remove(line1);
+                DataSource.listLines.Add(line/*.Clone()*/);
+            }
+            else
+                throw new NotImplementedException();
+        }
+        public void UpdateLine(DO.Line line, Action<DO.Line> update)
+        {
+            throw new NotImplementedException();
+        }
+        public void DeleteLine(int lineId)
+        {
+            DO.Line lineToDlt = DataSource.listLines.Find(ln => ln.ID == lineId);
+            if (lineToDlt != null)
+                DataSource.listLines.Remove(lineToDlt);
+            else
+                throw new NotImplementedException();
+        }
+        #endregion
+
+
     }
 }
