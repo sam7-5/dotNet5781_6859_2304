@@ -453,21 +453,72 @@ namespace DS
                 listBuses.Add(new Bus { License = (12345678 + i), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
             }
 
+
             listLines = new List<Line>();
             // int iD, int code, Enums.Area area, int firstStation, int lastStation
-            
-            listLines.Add(1,546, Enums.Area.Center);
-            listLines.Add(2,798, Enums.Area.Center);
-            listLines.Add(3,213, Enums.Area.Eilat);
-            listLines.Add(4,448, Enums.Area.Eilat);
-            listLines.Add(5,565, Enums.Area.Galil);
-            listLines.Add(6,753, Enums.Area.Galil);
-            listLines.Add(7,324, Enums.Area.Golan);
-            listLines.Add(8,492, Enums.Area.Golan);
-            listLines.Add(9,759, Enums.Area.South);
-            listLines.Add(10,298, Enums.Area.South);
+            #region create 10 lines
+            listLines.Add(new Line(1,546, Enums.Area.Center,75,78));
+            listLines.Add(new Line(2, 798, Enums.Area.Center,83,96));
+            listLines.Add(new Line(3, 213, Enums.Area.Eilat,102,106));
+            listLines.Add(new Line(4,448, Enums.Area.Eilat,1485,1488));
+            listLines.Add(new Line(5,565, Enums.Area.Galil,1510,1518));
+            listLines.Add(new Line(6,753, Enums.Area.Galil,88,97));
+            listLines.Add(new Line(7,324, Enums.Area.Golan,121,123));
+            listLines.Add(new Line(8,492, Enums.Area.Golan,108,119));
+            listLines.Add(new Line(9,759, Enums.Area.South,1490,1494));
+            listLines.Add(new Line(10,298, Enums.Area.South,1522,15244));
+            #endregion
 
-            
+
+
+            listAdjacentStations = new List<AdjacentStations>();
+            //   int station1, int station2, double distance, TimeSpan time
+            #region create adjacent stations
+            for (int i = 75; i < 78; i++)
+            {
+                listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 70.3, new TimeSpan(0, i-69, 18)));
+            }
+            for (int i = 83; i < 86; i++)
+            {
+                listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 70.3, new TimeSpan(0, i - 69, 12)));
+            }
+            for (int i = 88; i < 91; i++)
+            {
+                listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 70.4, new TimeSpan(0, i - 69, 32)));
+            }
+            for (int i = 93; i < 97; i++)
+            {
+                listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 80.8, new TimeSpan(0, i - 75, 18)));
+            }
+            for (int i = 102; i < 106; i++)
+            {
+                listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 90, new TimeSpan(0, i - 85, 32)));
+            }
+            for (int i = 108; i < 119; i++)
+            {
+                listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 100.3, new TimeSpan(0, i - 98, 45)));
+            }
+            for (int i = 1485; i < 1494; i++)
+            {
+                listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 1475, new TimeSpan(0, i - 1471, 26)));
+            }
+            for (int i = 1510; i < 1514; i++)
+            {
+                listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 1503, new TimeSpan(0, i - 1497, 10)));
+            }
+            for (int i = 1522; i < 1524; i++)
+            {
+                listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 1518, new TimeSpan(0, i - 1511, 11)));
+            }
+            for (int i = 121; i < 123; i++)
+            {
+                listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 118, new TimeSpan(0, i - 110, 14)));
+            }
+
+            listAdjacentStations.Add(new AdjacentStations(1514, 1518,2,new TimeSpan(0,20,45)));
+            #endregion
+
+
 
             /*
             #region line
