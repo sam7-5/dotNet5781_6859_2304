@@ -130,6 +130,14 @@ namespace DS
                     Lattitude = 31.765717,
                     Longitude = 35.247102
                 },
+                 new Station
+                {
+                    Code = 92,
+                    Name = "הוועד הלאומי/שמואל ווערס",
+                    Address = " רחוב:הוועד הלאומי: ירושלים ",
+                    Lattitude = 31.705717,
+                    Longitude = 35.247002
+                },
                 new Station
                 {
                     Code = 93,
@@ -177,6 +185,14 @@ namespace DS
                     Address = " רחוב:שדרות גולדה מאיר  עיר: ירושלים",
                     Lattitude = 31.8,
                     Longitude = 35.214106
+                },
+                new Station
+                {
+                    Code = 104,
+                    Name = "יהודה/ליידסטרום",
+                    Address = " רחוב: הרב יהודה ליידסטרום: ירושלים",
+                    Lattitude = 31.887646,
+                    Longitude = 35.321321
                 },
                 new Station
                 {
@@ -244,6 +260,14 @@ namespace DS
                     Lattitude = 31.796255,
                     Longitude = 35.211065
                 },
+                 new Station
+                {
+                    Code = 114,
+                    Name = "ישיבת/פרשבורג",
+                    Address = "  רחוב:קצנלנבוגן: ירושלים",
+                    Lattitude = 31.796359,
+                    Longitude = 35.210058
+                },
                 new Station
                 {
                     Code = 115,
@@ -267,6 +291,14 @@ namespace DS
                     Address = "  רחוב:הרב סורוצקין  עיר: ירושלים",
                     Lattitude = 31.799165,
                     Longitude = 35.206918
+                },
+                new Station
+                {
+                    Code = 118,
+                    Name = "מאמי/איפה הלכת",
+                    Address = "  רחוב:מאו פו פה דכונה: ירושלים",
+                    Lattitude = 31.791165,
+                    Longitude = 35.200018
                 },
                 new Station
                 {
@@ -312,6 +344,14 @@ namespace DS
                     Address = "רחוב:מעגלות הרב פרדס  עיר: ירושלים רציף  ",
                     Lattitude = 31.840279,
                     Longitude = 35.246272
+                },
+                new Station
+                {
+                    Code = 1489,
+                    Name = " ישיבת/אופקים ",
+                    Address = "רחוב:ישיבת אופקים: ירושלים רציף  ",
+                    Lattitude = 31.849856,
+                    Longitude = 35.241472
                 },
                 new Station
                 {
