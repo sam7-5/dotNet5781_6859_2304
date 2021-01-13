@@ -6,7 +6,7 @@ using DLAPI;
 using BO;
 //using DO;
 using System.Collections.Generic;
-
+using ClassLibrary1.DLAPI;
 
 namespace BL
 {

@@ -1,4 +1,5 @@
 ﻿using DO;
+using DS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace DLAPI
         #endregion
 
         // implement IDL with CRUD Logic
-        // ======= INPORTANT : IMPLEMENTE STATIC CLONE TOOL ======= //
+        // ======= IMPORTANT : IMPLEMENTE STATIC CLONE TOOL ======= //
         #region Station
         public DO.Station GetStation(int codeStation)
         {

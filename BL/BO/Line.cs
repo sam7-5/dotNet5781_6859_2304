@@ -1,4 +1,6 @@
-﻿namespace BO
+﻿using System.Collections.Generic;
+
+namespace BO
 {
     public class Line
     {
@@ -8,8 +10,9 @@
         private Enums.Area area;
         private int firstStation;
         private int lastStation;
-        #endregion
+        //public List<BO.Station> ListOfStation { get; set; }
 
+        #endregion
         #region properties
         public int Id { get => id; set { id = value; } }
         public int Code { get => code; set { code = value; } }

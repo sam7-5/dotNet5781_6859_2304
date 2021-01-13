@@ -32,26 +32,26 @@ namespace DO
             Address = address;
         }
 
-        internal IEnumerable<BusOnTrip> GetTrips()
-        {
-            return this.OnTripBuses;
-        }
-        internal IEnumerable<Line> GetLines()
-        {
-            return this.lines;
-        }
-        internal IEnumerable<LineStation> GetLineStation()
-        {
-            return this.lineStations;
-        }
-        internal IEnumerable<Trip> GetTrip()
-        {
-            return this.trips;
-        }
-        internal IEnumerable<AdjacentStations> GetAdjacentStations()
-        {
-            return this.adjacentStations;
-        }
+        //internal IEnumerable<BusOnTrip> GetTrips()
+        //{
+        //    return this.OnTripBuses;
+        //}
+        //internal IEnumerable<Line> GetLines()
+        //{
+        //    return this.lines;
+        //}
+        //internal IEnumerable<LineStation> GetLineStation()
+        //{
+        //    return this.lineStations;
+        //}
+        //internal IEnumerable<Trip> GetTrip()
+        //{
+        //    return this.trips;
+        //}
+        //internal IEnumerable<AdjacentStations> GetAdjacentStations()
+        //{
+        //    return this.adjacentStations;
+        //}
 
         #region properties
         public int Code { get; set; }
@@ -60,6 +60,5 @@ namespace DO
         public double Lattitude { get; set; } // Est West
         public string Address { get; set; }
         #endregion
-
     }
 }
