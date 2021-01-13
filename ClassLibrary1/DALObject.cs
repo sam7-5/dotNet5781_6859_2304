@@ -122,18 +122,42 @@ namespace DLAPI
         #region LineStation
         IEnumerable<DO.LineStation> GetAllLineStation()
         {
-            return DataSource.
+            return DataSource.listLineStation;
         }
-        DO.Line GetLineStation(int lineId)
-        { }
+        public DO.LineStation GetLineStation(int lineId)
+        {
+            return DataSource.listLineStation.Find(lst => lst.LineId == lineId);
+        }
         void AddLineStation(DO.LineStation lineStation)
-        { }
+        {
+            if (DataSource.listLineStation.FirstOrDefault(lst => lst.LineId == lineStation.LineId) != null)
+                DataSource.listLineStation.Add(lineStation);
+            else
+                throw new NotImplementedException(); // not find
+        }
         void UpdateLineStation(DO.LineStation lineStation)
-        { }
+        {
+            DO.LineStation lineStation1 = DataSource.listLineStation.Find(lst => lst.LineId == lineStation.LineId);
+            if (lineStation1 != null)
+            {
+                DataSource.listLineStation.Remove(lineStation1);
+                DataSource.listLineStation.Add(lineStation);
+            }
+            else
+                throw new NotImplementedException();
+        }
         void UpdateLineStation(DO.LineStation line, Action<DO.LineStation> update)
-        { }
+        {
+            throw new NotImplementedException();
+        }
         void DeleteLineStation(int lineId)
-        { }
+        {
+            DO.LineStation lstToDlt = DataSource.listLineStation.Find(lst => lst.LineId == lineId);
+            if (lstToDlt != null)
+                DataSource.listLineStation.Remove(lstToDlt);
+            else
+                throw new NotImplementedException();
+        }
         #endregion
 
     }

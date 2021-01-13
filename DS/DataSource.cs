@@ -12,6 +12,7 @@ namespace DS
         public static List<Station> listStations;
         public static List<Bus> listBuses;
         public static List<Line> listLines; // a list of stations ...
+        public static List<LineStation> listLineStation;
 
         static DataSource()
         {
