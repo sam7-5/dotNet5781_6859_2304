@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DLFactory.cs" />
     <Compile Include="DALObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
