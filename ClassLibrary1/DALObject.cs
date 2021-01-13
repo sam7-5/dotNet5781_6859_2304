@@ -203,5 +203,34 @@ namespace DLAPI
 
         #endregion
 
+        // to finish implement\tion
+        #region LineTrip
+        IEnumerable<DO.LineTrip> GetAllLineTrip()
+        {
+            return DataSource.listLineTrip;
+        }
+        public DO.LineTrip GetLineTrip(int lineId)
+        {
+            throw new NotImplementedException();
+            //return DataSource.listLineTrip.Find(lt => lt.Id == lineId);
+        }
+        public void AddLineTrip(DO.LineTrip line)
+        {
+            throw new NotImplementedException();
+        }
+        public void UpdateLineTrip(DO.LineTrip line)
+        {
+            throw new NotImplementedException();
+        }
+        public void UpdateLineTrip(DO.LineTrip line, Action<DO.LineTrip> update)
+        {
+            throw new NotImplementedException();
+        }
+        public void DeleteLineTrip(int lineId)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
     }
 }
