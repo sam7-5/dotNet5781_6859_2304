@@ -59,7 +59,12 @@ namespace DLAPI
         #endregion
 
         #region LineTrip
-
+        IEnumerable<DO.LineTrip> GetAllLineTrip();
+        DO.LineTrip GetLineTrip(int lineId);
+        void AddLineTrip(DO.LineTrip line);
+        void UpdateLineTrip(DO.LineTrip line);
+        void UpdateLineTrip(DO.LineTrip line, Action<DO.LineTrip> update);
+        void DeleteLineTrip(int lineId);
         #endregion
     }
 }
