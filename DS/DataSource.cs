@@ -11,8 +11,13 @@ namespace DS
     {
         public static List<Station> listStations;
         public static List<Bus> listBuses;
-        public static List<Line> listLines; // a list of stations ...
-
+        public static List<Line> listLines; 
+        public static List<AdjacentStations> listAdjacentStations;
+        public static List<User> listUsers;
+        public static List<Trip> listTrips;
+        public static List<LineStation> listLineStations;
+        public static List<LineTrip> listLineTrip;
+        public static List<BusOnTrip> listBusOnTrips;
 
         static DataSource()
         {
@@ -31,7 +36,7 @@ namespace DS
 
             new Station
             {
-                Code = 73,
+                Code = 75,
                 Name = "שדרות גולדה מאיר/המשורר אצ''ג",
                 Address = "רחוב:שדרות גולדה מאיר  עיר: ירושלים ",
                 Lattitude = 31.825302,
@@ -395,7 +400,7 @@ namespace DS
                   Code = 1522,
                   Name = "מוזיאון ישראל/רופין",
                   Address = "  רחוב:דרך רופין  עיר: ירושלים ",
-                  Lattitude = 31.774484,
+                  Lattitude = 31.774484,  
                   Longitude = 35.204882
               },
 
@@ -446,8 +451,23 @@ namespace DS
             for (int i = 0; i < 10; i++)
             {
                 listBuses.Add(new Bus { License = (12345678 + i), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
-
             }
+
+            listLines = new List<Line>();
+            // int iD, int code, Enums.Area area, int firstStation, int lastStation
+            
+            listLines.Add(1,546, Enums.Area.Center);
+            listLines.Add(2,798, Enums.Area.Center);
+            listLines.Add(3,213, Enums.Area.Eilat);
+            listLines.Add(4,448, Enums.Area.Eilat);
+            listLines.Add(5,565, Enums.Area.Galil);
+            listLines.Add(6,753, Enums.Area.Galil);
+            listLines.Add(7,324, Enums.Area.Golan);
+            listLines.Add(8,492, Enums.Area.Golan);
+            listLines.Add(9,759, Enums.Area.South);
+            listLines.Add(10,298, Enums.Area.South);
+
+            
 
             /*
             #region line
