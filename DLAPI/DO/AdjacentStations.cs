@@ -4,7 +4,7 @@ namespace DO
 {
     public class AdjacentStations
     {
-        public AdjacentStations(int station1, int station2, double distance, TimeSpan time)
+        public AdjacentStations(int station1, int station2, double distance,  TimeSpan time)
         {
             Station1 = station1;
             Station2 = station2;
