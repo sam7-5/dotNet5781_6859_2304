@@ -155,9 +155,67 @@ namespace BL
             throw new NotImplementedException();
         }
 
+        public IEnumerable<Station> GetAllLinesPassThrough(Station staion)
+        {
+            throw new NotImplementedException();
+        }
 
-
+        IEnumerable<int> IBL.GetAllLinesPassThrough(Station station)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
+
+
+        public IEnumerable<StationCustom> GetAllPrevCusStations(Station station)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<StationCustom> GetAllNextCusStations(Station station)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Station> GetAllStationsOfArea(Enums.Area area)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddStation(StationCustom station)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateStation(StationCustom station)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<StationCustom> GetAllCusStationOfLine(Line line)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<StationCustom> GetAllCusStationOfLine(int line)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteLine(Line line)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteStationOfLine(Line line, Station station)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+
 
     }
 }
