@@ -1,4 +1,4 @@
-﻿namespace BO
+﻿namespace BL.BO
 {
     public static class Enums
     {

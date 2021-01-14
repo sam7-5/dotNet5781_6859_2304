@@ -39,7 +39,7 @@ namespace UI
 
         private void bkbaddStation_Click(object sender, RoutedEventArgs e)
         {
-            try 
+            try
             {
               //  bl.AddStation(station);
               
@@ -48,7 +48,7 @@ namespace UI
                 bl.AddStation(station);
             } 
             catch (Exception ex) //change it!!
-            { 
+            {
                 MessageBox.Show(ex.Message);
             }
             finally

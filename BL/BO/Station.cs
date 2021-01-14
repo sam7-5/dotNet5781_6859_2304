@@ -1,4 +1,4 @@
-﻿namespace BO
+﻿namespace BL.BO
 {
     /// <summary>
     /// base element for: Line, Line station, Trip ...

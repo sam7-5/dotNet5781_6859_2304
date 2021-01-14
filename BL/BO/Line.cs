@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BO
+namespace BL.BO
 {
     public class Line
     {
