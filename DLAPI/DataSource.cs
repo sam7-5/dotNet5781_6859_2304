@@ -7,11 +7,11 @@ using DO;
 
 namespace DS
 {
-   internal static class DataSource
+    internal static class DataSource
     {
         public static List<Station> listStations;
         public static List<Bus> listBuses;
-        public static List<Line> listLines; 
+        public static List<Line> listLines;
         public static List<AdjacentStations> listAdjacentStations;
         public static List<User> listUsers;
         public static List<Trip> listTrips;
@@ -448,7 +448,7 @@ namespace DS
                   Code = 1522,
                   Name = "מוזיאון ישראל/רופין",
                   Address = "  רחוב:דרך רופין  עיר: ירושלים ",
-                  Lattitude = 31.774484,  
+                  Lattitude = 31.774484,
                   Longitude = 35.204882
               },
 
@@ -495,36 +495,27 @@ namespace DS
                 #endregion
             };
 
-            listBuses = new List<Bus>();
-            for (int i = 0; i < 10; i++)
-            {
-                listBuses.Add(new Bus { License = (12345678 + i), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
-            }
-
-
             listLines = new List<Line>();
             // int iD, int code, Enums.Area area, int firstStation, int lastStation
             #region create 10 lines
-            listLines.Add(new Line(1,546, Enums.Area.Center,75,78));
-            listLines.Add(new Line(2, 798, Enums.Area.Center,83,97));
-            listLines.Add(new Line(3, 213, Enums.Area.Eilat,102,106));
-            listLines.Add(new Line(4,448, Enums.Area.Eilat,1485,1488));
-            listLines.Add(new Line(5,565, Enums.Area.Galil,1510,1518));
-            listLines.Add(new Line(6,753, Enums.Area.Galil,88,97));
-            listLines.Add(new Line(7,324, Enums.Area.Golan,121,123));
-            listLines.Add(new Line(8,492, Enums.Area.Golan,108,119));
-            listLines.Add(new Line(9,759, Enums.Area.South,1490,1494));
-            listLines.Add(new Line(10,298, Enums.Area.South,1522,1524));
+            listLines.Add(new Line(1, 546, Enums.Area.Center, 75, 78));
+            listLines.Add(new Line(2, 798, Enums.Area.Center, 83, 97));
+            listLines.Add(new Line(3, 213, Enums.Area.Eilat, 102, 106));
+            listLines.Add(new Line(4, 448, Enums.Area.Eilat, 1485, 1488));
+            listLines.Add(new Line(5, 565, Enums.Area.Galil, 1510, 1518));
+            listLines.Add(new Line(6, 753, Enums.Area.Galil, 88, 97));
+            listLines.Add(new Line(7, 324, Enums.Area.Golan, 121, 123));
+            listLines.Add(new Line(8, 492, Enums.Area.Golan, 108, 119));
+            listLines.Add(new Line(9, 759, Enums.Area.South, 1490, 1494));
+            listLines.Add(new Line(10, 298, Enums.Area.South, 1522, 1524));
             #endregion
-
-
 
             listAdjacentStations = new List<AdjacentStations>();
             //   int station1, int station2, double distance, TimeSpan time
             #region create adjacent stations
             for (int i = 75; i < 78; i++)
             {
-                listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 70.3, new TimeSpan(0, i-69, 18)));
+                listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 70.3, new TimeSpan(0, i - 69, 18)));
             }
             for (int i = 83; i < 86; i++)
             {
@@ -563,91 +554,108 @@ namespace DS
                 listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 118, new TimeSpan(0, i - 110, 14)));
             }
 
-            listAdjacentStations.Add(new AdjacentStations(1514, 1518,2,new TimeSpan(0,20,45)));
+            listAdjacentStations.Add(new AdjacentStations(1514, 1518, 2, new TimeSpan(0, 20, 45)));
             #endregion
 
             listLineStations = new List<LineStation>();
             //int lineId, int station, int lineStationIndex, int prevStation, int nextStation
-            /*
+
             #region create line stations
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add(); 
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
-            listLineStations.Add();
+
+            listLineStations.Add(new LineStation(1, 75, 0, 0, 76));
+            listLineStations.Add(new LineStation(1, 76, 1, 75, 77));
+            listLineStations.Add(new LineStation(1, 77, 2, 76, 78));
+            listLineStations.Add(new LineStation(1, 78, 3, 77, 0));
+
+            listLineStations.Add(new LineStation(2, 83, 0, 0, 84));
+            listLineStations.Add(new LineStation(2, 84, 1, 83, 85));
+            listLineStations.Add(new LineStation(2, 85, 2, 84, 86));
+            listLineStations.Add(new LineStation(2, 86, 3, 85, 87));
+            listLineStations.Add(new LineStation(2, 87, 4, 86, 88));
+            listLineStations.Add(new LineStation(2, 88, 5, 87, 89));
+            listLineStations.Add(new LineStation(2, 89, 6, 88, 90));
+            listLineStations.Add(new LineStation(2, 90, 7, 89, 91));
+            listLineStations.Add(new LineStation(2, 91, 8, 90, 92));
+            listLineStations.Add(new LineStation(2, 92, 9, 91, 93));
+            listLineStations.Add(new LineStation(2, 93, 10, 92, 94));
+            listLineStations.Add(new LineStation(2, 94, 11, 93, 95));
+            listLineStations.Add(new LineStation(2, 95, 12, 94, 96));
+            listLineStations.Add(new LineStation(2, 96, 13, 95, 97));
+            listLineStations.Add(new LineStation(2, 97, 14, 96, 0));
+
+            listLineStations.Add(new LineStation(3, 102, 0, 0, 103));
+            listLineStations.Add(new LineStation(3, 103, 1, 102, 104));
+            listLineStations.Add(new LineStation(3, 104, 2, 103, 105));
+            listLineStations.Add(new LineStation(3, 105, 3, 104, 106));
+            listLineStations.Add(new LineStation(3, 106, 4, 105, 0));
+
+            listLineStations.Add(new LineStation(4, 1485, 0, 0, 1486));
+            listLineStations.Add(new LineStation(4, 1486, 1, 1485, 1487));
+            listLineStations.Add(new LineStation(4, 1487, 2, 1486, 1488));
+            listLineStations.Add(new LineStation(4, 1488, 3, 1487, 0));
+
+            listLineStations.Add(new LineStation(5, 1510, 0, 0, 1511));
+            listLineStations.Add(new LineStation(5, 1511, 1, 1510, 1512));
+            listLineStations.Add(new LineStation(5, 1512, 2, 1511, 1513));
+            listLineStations.Add(new LineStation(5, 1513, 3, 1512, 1514));
+            listLineStations.Add(new LineStation(5, 1514, 4, 1513, 1515));
+            listLineStations.Add(new LineStation(5, 1515, 5, 1514, 1516));
+            listLineStations.Add(new LineStation(5, 1516, 6, 1515, 1517));
+            listLineStations.Add(new LineStation(5, 1517, 7, 1516, 1518));
+            listLineStations.Add(new LineStation(5, 1518, 8, 1517, 0));
+
+            listLineStations.Add(new LineStation(6, 88, 0, 0, 89));
+            listLineStations.Add(new LineStation(6, 89, 1, 88, 90));
+            listLineStations.Add(new LineStation(6, 90, 2, 89, 91));
+            listLineStations.Add(new LineStation(6, 91, 3, 90, 92));
+            listLineStations.Add(new LineStation(6, 92, 4, 91, 93));
+            listLineStations.Add(new LineStation(6, 93, 5, 92, 94));
+            listLineStations.Add(new LineStation(6, 94, 6, 93, 95));
+            listLineStations.Add(new LineStation(6, 95, 7, 94, 96));
+            listLineStations.Add(new LineStation(6, 96, 8, 95, 97));
+            listLineStations.Add(new LineStation(6, 97, 9, 96, 0));
+
+            listLineStations.Add(new LineStation(7, 121, 0, 0, 122));
+            listLineStations.Add(new LineStation(7, 122, 1, 121, 123));
+            listLineStations.Add(new LineStation(7, 123, 2, 122, 0));
+
+            listLineStations.Add(new LineStation(8, 108, 0, 0, 109));
+            listLineStations.Add(new LineStation(8, 109, 1, 108, 110));
+            listLineStations.Add(new LineStation(8, 110, 2, 109, 111));
+            listLineStations.Add(new LineStation(8, 111, 3, 110, 112));
+            listLineStations.Add(new LineStation(8, 112, 4, 111, 113));
+            listLineStations.Add(new LineStation(8, 113, 5, 112, 114));
+            listLineStations.Add(new LineStation(8, 114, 6, 113, 115));
+            listLineStations.Add(new LineStation(8, 115, 7, 114, 116));
+            listLineStations.Add(new LineStation(8, 116, 8, 115, 117));
+            listLineStations.Add(new LineStation(8, 117, 9, 116, 118));
+            listLineStations.Add(new LineStation(8, 118, 10, 117, 119));
+            listLineStations.Add(new LineStation(8, 119, 11, 118, 0));
+
+            listLineStations.Add(new LineStation(9, 1490, 0, 0, 1491));
+            listLineStations.Add(new LineStation(9, 1491, 1, 1490, 1492));
+            listLineStations.Add(new LineStation(9, 1492, 2, 1491, 1493));
+            listLineStations.Add(new LineStation(9, 1493, 3, 1492, 1494));
+            listLineStations.Add(new LineStation(9, 1494, 4, 1493, 0));
+
+            listLineStations.Add(new LineStation(10, 1522, 0, 0, 1523));
+            listLineStations.Add(new LineStation(10, 1523, 1, 1522, 1524));
+            listLineStations.Add(new LineStation(10, 1524, 2, 1523, 0));
+
+
             #endregion
-            */
-            /*
-            #region line
-            listLines = new List<Line>();
 
-            var line1 = new List<Station>();
-            var line2 = new List<Station>();
-            var line3 = new List<Station>();
-            var line4 = new List<Station>();
-            var line5 = new List<Station>();
-
-            for (int i = 0; i < 50; i++)
-			{
-                if (i < 10) line1.Add(listStations.ElementAt(i));
-                if (i < 20) line2.Add(listStations.ElementAt(i));
-                if (i < 30) line3.Add(listStations.ElementAt(i));
-                if (i < 40) line4.Add(listStations.ElementAt(i));
-                if (i < 50) line5.Add(listStations.ElementAt(i));
-			}
-
-            listLines.Add(line1);
-            listLines.Add(line2);
-            listLines.Add(line3);
-            listLines.Add(line4);
-            listLines.Add(line5);
+            listLineTrip = new List<LineTrip>();
+            //int id, int lineId, TimeSpan startAt, TimeSpan frequency, TimeSpan finishAt
+            #region create line trip
+           // listLineTrip.Add(new LineTrip());
             #endregion
-            */
+
+            listBuses = new List<Bus>();
+            for (int i = 0; i < 10; i++)
+            {
+                listBuses.Add(new Bus { License = (12345678 + i), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
+            }
         }
     }
 }
