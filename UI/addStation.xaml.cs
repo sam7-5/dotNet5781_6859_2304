@@ -19,8 +19,8 @@ namespace UI
     /// </summary>
     public partial class addStation : Window
     {
-         BO.Station station;
-        BL.IBL bl;
+        BO.Station station;
+        BL.IBL bl;  
         public addStation()
         {
             InitializeComponent();
@@ -39,15 +39,20 @@ namespace UI
 
         private void bkbaddStation_Click(object sender, RoutedEventArgs e)
         {
-            try 
+            try
             {
-              //  bl.AddStation(station);
-              
+                //  bl.AddStation(station);
+
+                //bl.AddStudent(student); 
+                //student = new BE.Student(); 
+                //this.DataContext = student;
+
+                bl.AddStation(station);
                 station = new BO.Station();
                 this.DataContext = station;
-            } 
+            }
             catch (Exception ex) //change it!!
-            { 
+            {
                 MessageBox.Show(ex.Message);
             }
             finally

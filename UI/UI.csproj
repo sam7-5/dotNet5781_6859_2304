@@ -191,12 +191,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BL\Bl.csproj">
-      <Project>{591ab3eb-b1f8-41e0-9149-468dc43907c6}</Project>
-      <Name>Bl</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.8 %28x86 et x64%29</ProductName>
@@ -213,6 +207,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\bus1.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BL\Bl.csproj">
+      <Project>{591ab3eb-b1f8-41e0-9149-468dc43907c6}</Project>
+      <Name>Bl</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

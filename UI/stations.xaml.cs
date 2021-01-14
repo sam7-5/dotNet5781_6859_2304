@@ -60,7 +60,7 @@ namespace UI
         private void allStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             station = (allStations.SelectedItem as BO.Station);
-            gridOneStation.DataContext = station;
+            gridOneStation.DataContext = station; // = (allStations.SelectedItem as BO.Station);
         }
     }
 }
