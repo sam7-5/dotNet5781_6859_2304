@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace DLAPI
 {
-    internal sealed class DALObject: IDL
-    {                   
+    internal sealed class DALObject : IDL
+    {
         #region Singleton
         static readonly DALObject instance = new DALObject();
         static DALObject() { }// static ctor to ensure instance init is done just before first usage
@@ -69,7 +69,7 @@ namespace DLAPI
         public void DeleteStation(int stationCode)
         {
             DO.Station stationToDlt = DataSource.listStations.Find(st => st.Code == stationCode);
-           
+
             if (stationToDlt != null)
                 DataSource.listStations.Remove(stationToDlt);
             else
@@ -201,7 +201,6 @@ namespace DLAPI
         }
         #endregion
 
-        // to finish implement\tion
         #region LineTrip
         public IEnumerable<DO.LineTrip> GetAllLineTrip()
         {
@@ -209,16 +208,25 @@ namespace DLAPI
         }
         public DO.LineTrip GetLineTrip(int lineId)
         {
-            throw new NotImplementedException();
-            //return DataSource.listLineTrip.Find(lt => lt.Id == lineId);
+            return DataSource.listLineTrip.Find(lt => lt.Id == lineId);
         }
-        public void AddLineTrip(DO.LineTrip line)
+        public void AddLineTrip(DO.LineTrip lineTrip)
         {
-            throw new NotImplementedException();
+            if (DataSource.listLineTrip.Find(lt => lt.Id == lineTrip.Id) != null)
+                throw new NotImplementedException(); // already exist in our ds !
+            DataSource.listLineTrip.Add(lineTrip);
         }
-        public void UpdateLineTrip(DO.LineTrip line)
+        public void UpdateLineTrip(DO.LineTrip lineTrip)
         {
-            throw new NotImplementedException();
+            DO.LineTrip lineTrip1 = DataSource.listLineTrip.Find(lt => lt.Id == lineTrip.Id);
+            if (lineTrip1 != null)
+            {
+                DataSource.listLineTrip.Remove(lineTrip1);
+                DataSource.listLineTrip.Add(lineTrip);
+            }
+            else
+                throw new NotImplementedException();
+
         }
         public void UpdateLineTrip(DO.LineTrip line, Action<DO.LineTrip> update)
         {
@@ -226,7 +234,11 @@ namespace DLAPI
         }
         public void DeleteLineTrip(int lineId)
         {
-            throw new NotImplementedException();
+            DO.LineTrip lineTripToDlt = DataSource.listLineTrip.Find(lt => lt.Id == lineId);
+            if (lineTripToDlt != null)
+                DataSource.listLineTrip.Remove(lineTripToDlt);
+            else
+                throw new NotImplementedException();
         }
         #endregion
     }

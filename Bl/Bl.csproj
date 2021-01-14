@@ -60,13 +60,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\DALObject.csproj">
-      <Project>{2f92ce73-6b6f-4d50-98f1-d8e01a02af08}</Project>
-      <Name>DALObject</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DLAPI\DLAPI.csproj">
-      <Project>{9d683f2d-e442-46ac-9061-214eb324f276}</Project>
-      <Name>DLAPI</Name>
+    <ProjectReference Include="..\DLAPI\DAL.csproj">
+      <Project>{8534aa4e-2c42-4772-92c2-b7f184771ed4}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
