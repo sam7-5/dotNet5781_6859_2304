@@ -61,6 +61,7 @@ namespace UI
         {
             station = (allStations.SelectedItem as BO.Station);
             gridOneStation.DataContext = station; // = (allStations.SelectedItem as BO.Station);
+            previousStations.DataContext = bl.GetAllPrevCusStations(station);
         }
     }
 }
