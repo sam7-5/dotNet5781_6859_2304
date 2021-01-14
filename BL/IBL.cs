@@ -28,8 +28,6 @@ namespace BL
         IEnumerable<BO.StationCustom> GetAllCusStationOfLine(BO.Line line);
         IEnumerable<BO.StationCustom> GetAllCusStationOfLine(int line);
         void DeleteLine(BO.Line line);
-        void AddLine(BO.Line line);
-        void UpdateLine(BO.Line line);
         void DeleteStationOfLine(BO.Line line, BO.Station station);
         //-----------------------------------------------------------------//
         #endregion
