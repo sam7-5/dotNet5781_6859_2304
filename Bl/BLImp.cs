@@ -3,21 +3,19 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using DLAPI;
-//using BO;
-//using DO;
 using System.Collections.Generic;
 using BO;
 
 namespace BL
 {
-    class BLImp : IBL
+    internal class BLImp : IBL
     {
         IDL dl = DLFactory.GetDL();
 
         #region station
 
         //DONE
-       private BO.Station stationDoBoAdapter(DO.Station stationDO)
+        private BO.Station stationDoBoAdapter(DO.Station stationDO)
         {
             BO.Station stationBO = new BO.Station();
             DO.Station stationToTest;
@@ -38,20 +36,19 @@ namespace BL
         }
 
         // DONE
-        public void AddStation(Station station)
+        public void AddStation(BO.Station station)
         {
             DO.Station stationDO = new DO.Station();
-            #region copying properties
+
             stationDO.Code = station.Code;
             stationDO.Address = station.Address;
             stationDO.Lattitude = station.Lattitude;
             stationDO.Longitude = station.Longitude;
             stationDO.Name = station.Name;
-            #endregion
+
             dl.AddStation(stationDO);
         }
 
-        // BONUS
         public void DeleteStation(int stationCode)
         {
             throw new NotImplementedException();
@@ -81,17 +78,85 @@ namespace BL
             return stationDoBoAdapter(stationDO);
         }
 
-        public void UpdateStation(BO.Station station)
+        // DONE
+        public void UpdateStation(BO.Station stationBO)
+        {
+            DO.Station stationDO = new DO.Station();
+            stationBO.CopyPropertiesTo(stationDO);
+            try
+            {
+                dl.UpdateStation(stationDO);
+            }
+            catch (Exception)
+            {
+
+                throw; // fail to update the new station
+            }
+        }
+
+        public void UpdateStation(int stationCode, Action<Station> update)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateStation(int stationCode, Action<BO.Station> update)
+        #endregion
+
+        #region Line
+        // DONE
+        private BO.Line lineDoBoAdapter(DO.Line lineDO)
+        {
+            // we can add more func. by getting the lineDO.Id
+            BO.Line lineBO = new BO.Line();
+            lineDO.CopyPropertiesTo(lineBO);
+
+            return lineBO;
+        }
+
+        // DONE
+        public IEnumerable<Line> GetAllLines()
+        {
+            return from lDo in dl.GetAllLines()
+                   orderby lDo.Code
+                   select lineDoBoAdapter(lDo);
+        }
+
+        // DONE
+        public BO.Line GetLine(int lineId)
+        {
+            DO.Line lineDO;
+            try // if lineId exist in our ds
+            {
+                lineDO = dl.GetLine(lineId);
+            }
+            catch (Exception) // DO.exception to imp.
+            {
+                throw; // BO.exception
+            }
+            return lineDoBoAdapter(lineDO);
+        }
+
+        public void AddLine(Line line)
         {
             throw new NotImplementedException();
         }
 
-        
+        public void UpdateLine(Line line)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateLine(Line line, Action<Line> update)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteLine(int lineId)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
         #endregion
 
     }
