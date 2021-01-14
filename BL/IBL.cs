@@ -22,15 +22,6 @@ namespace BL
         //--------------------------//
         #endregion
 
-        #region line
-        //-----------------------------------------------------------------//
-        IEnumerable<BO.Line> GetAllLines();
-        IEnumerable<BO.StationCustom> GetAllCusStationOfLine(BO.Line line);
-        IEnumerable<BO.StationCustom> GetAllCusStationOfLine(int line);
-        void DeleteLine(BO.Line line);
-        void DeleteStationOfLine(BO.Line line, BO.Station station);
-        //-----------------------------------------------------------------//
-        #endregion
 
         #region Line
         IEnumerable<BO.Line> GetAllLines();
@@ -39,6 +30,13 @@ namespace BL
         void UpdateLine(BO.Line line);
         void UpdateLine(BO.Line line, Action<BO.Line> update);
         void DeleteLine(int lineId);
+        //-----------------------------------------------------------------//
+        IEnumerable<BO.Line> GetAllLines();
+        IEnumerable<BO.StationCustom> GetAllCusStationOfLine(BO.Line line);
+        IEnumerable<BO.StationCustom> GetAllCusStationOfLine(int line);
+        void DeleteLine(BO.Line line);
+        void DeleteStationOfLine(BO.Line line, BO.Station station);
+        //-----------------------------------------------------------------//
         #endregion
 
     }
