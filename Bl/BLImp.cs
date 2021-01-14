@@ -3,10 +3,10 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using DLAPI;
-using BO;
+//using BO;
 //using DO;
 using System.Collections.Generic;
-using ClassLibrary1.DLAPI;
+using BO;
 
 namespace BL
 {
@@ -17,7 +17,7 @@ namespace BL
         #region station
 
         //DONE
-        BO.Station stationDoBoAdapter(DO.Station stationDO)
+       private BO.Station stationDoBoAdapter(DO.Station stationDO)
         {
             BO.Station stationBO = new BO.Station();
             DO.Station stationToTest;
@@ -58,7 +58,7 @@ namespace BL
         }
 
         // DONE
-        public IEnumerable<Station> GetAllStations()
+        public IEnumerable<BO.Station> GetAllStations()
         {
             return from stationDO in dl.GetAllStations()
                    orderby stationDO.Code
@@ -81,15 +81,17 @@ namespace BL
             return stationDoBoAdapter(stationDO);
         }
 
-        public void UpdateStation(Station station)
+        public void UpdateStation(BO.Station station)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateStation(int stationCode, Action<Station> update)
+        public void UpdateStation(int stationCode, Action<BO.Station> update)
         {
             throw new NotImplementedException();
         }
+
+        
         #endregion
 
     }

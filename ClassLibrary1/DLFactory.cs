@@ -91,7 +91,7 @@ namespace DLAPI
             */
             #endregion
 
-            return DALObject.Instance;
+            //return DLAP.Instazz
 
            
         }
