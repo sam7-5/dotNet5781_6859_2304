@@ -4,6 +4,7 @@ namespace DO
 {
     public class LineTrip
     {
+        // ctor
         public LineTrip(int id, int lineId, TimeSpan startAt, TimeSpan frequency, TimeSpan finishAt)
         {
             Id = id;
@@ -13,13 +14,10 @@ namespace DO
             FinishAt = finishAt;
         }
 
-        #region properties
-        private int Id { get; set; }
-        private int LineId { get; set; }
-        private TimeSpan StartAt { get; set; }
-        private TimeSpan Frequency { get; set; }
-        private TimeSpan FinishAt { get; set; }
-        #endregion
-
+        public int Id { get; set; }
+        public int LineId { get; set; }
+        public TimeSpan StartAt { get; set; }
+        public TimeSpan Frequency { get; set; }
+        public TimeSpan FinishAt { get; set; }
     }
 }
