@@ -20,13 +20,13 @@ namespace UI
     public partial class addStation : Window
     {
         BO.Station station;
-        BL.IBL bl;  
+        BL.IBL bl = BL.BLFactory.GetBL();
         public addStation()
         {
             InitializeComponent();
             station = new BO.Station();
             this.DataContext = station;
-            BL.IBL bl = BL.BLFactory.GetBL();
+            //bl = BL.BLFactory.GetBL();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -41,16 +41,12 @@ namespace UI
         {
             try
             {
-                //  bl.AddStation(station);
-
-                //bl.AddStudent(student); 
-                //student = new BE.Student(); 
-                //this.DataContext = student;
-
+              //  bl.AddStation(station);
+              
+               // station = new BO.Station();
+                station = (BO.Station)this.DataContext;
                 bl.AddStation(station);
-                station = new BO.Station();
-                this.DataContext = station;
-            }
+            } 
             catch (Exception ex) //change it!!
             {
                 MessageBox.Show(ex.Message);
