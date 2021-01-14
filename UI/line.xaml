@@ -10,11 +10,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="line">
 
-    <Page.Resources>
-
-        <CollectionViewSource x:Key="busViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Bus}, CreateList=True}"/>
-
-    </Page.Resources>
+    
     <Page.Background>
         <ImageBrush ImageSource="bus1.jpg" Opacity="0.5"/>
     </Page.Background>
@@ -36,7 +32,7 @@
             <Button Name="delete_line" Content="delete current line" Grid.Column="1" HorizontalAlignment="Left" Margin="24.8,10,0,0" Grid.Row="0" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" RenderTransformOrigin="0.365,1.225" Background="#FFDC2E28"/>
         </Grid>
         <ListBox HorizontalAlignment="Left" Height="387" Margin="10,9.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200"/>
-        <Grid x:Name="grid1" DataContext="{StaticResource busViewSource}" HorizontalAlignment="Left" Margin="432,121.8,0,0" Grid.Row="1" VerticalAlignment="Top">
+        <Grid x:Name="grid1" DataContext="{Binding}" HorizontalAlignment="Left" Margin="379,52.8,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>

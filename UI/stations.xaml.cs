@@ -27,7 +27,6 @@ namespace UI
         {
             InitializeComponent();
             allStations.DataContext = bl.GetAllStations();
-
         }
 
 
@@ -59,10 +58,12 @@ namespace UI
 
         private void allStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            /*
+            
             station = (allStations.SelectedItem as BO.Station);
             gridOneStation.DataContext = station; // = (allStations.SelectedItem as BO.Station);
             previousStations.DataContext = bl.GetAllPrevCusStations(station);
+            nextStations.DataContext = bl.GetAllNextCusStations(station);
+            busPassesTrough.DataContext = bl.GetAllLinesPassThrough(station);
         }
     }
 }
