@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using DLAPI;
 using System.Collections.Generic;
-using BO;
+using BL.BO;
 
 namespace BL
 {
