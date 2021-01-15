@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using DLAPI;
 using System.Collections.Generic;
-using BL.BO;
+using BO;
 
 namespace BL
 {
@@ -160,10 +160,6 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        IEnumerable<int> IBL.GetAllLinesPassThrough(Station station)
-        {
-            throw new NotImplementedException();
-        }
         #endregion
 
 
@@ -212,10 +208,9 @@ namespace BL
             throw new NotImplementedException();
         }
 
-
-
-
-
-
+        public IEnumerable<int> GetAllLinesIdPassThrough(Station station)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
