@@ -80,6 +80,9 @@
     <Compile Include="stations.xaml.cs">
       <DependentUpon>stations.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateStation.xaml.cs">
+      <DependentUpon>UpdateStation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="users.xaml.cs">
       <DependentUpon>users.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UpdateStation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="users.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -169,19 +176,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\BO.AdjacentStations.datasource" />
-    <None Include="Properties\DataSources\BO.Bus.datasource" />
-    <None Include="Properties\DataSources\BO.BusOnTrip.datasource" />
-    <None Include="Properties\DataSources\BO.Enums+Area.datasource" />
-    <None Include="Properties\DataSources\BO.Enums+BusStatus.datasource" />
-    <None Include="Properties\DataSources\BO.Enums.datasource" />
-    <None Include="Properties\DataSources\BO.Line.datasource" />
-    <None Include="Properties\DataSources\BO.LineStation.datasource" />
-    <None Include="Properties\DataSources\BO.LineTrip.datasource" />
-    <None Include="Properties\DataSources\BO.myExceptions.datasource" />
-    <None Include="Properties\DataSources\BO.Station.datasource" />
-    <None Include="Properties\DataSources\BO.Trip.datasource" />
-    <None Include="Properties\DataSources\BO.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -207,6 +201,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\bus1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BL\Bl.csproj">
