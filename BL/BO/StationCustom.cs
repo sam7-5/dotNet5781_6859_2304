@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BL.BO
 {
-    class StationCustom
+    public class StationCustom
     {
 
     }
