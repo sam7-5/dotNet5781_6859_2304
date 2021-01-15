@@ -27,6 +27,7 @@ namespace UI
         {
             InitializeComponent();
             allStations.DataContext = bl.GetAllStations();
+           // BO.StationCustom station = new BO.StationCustom();
         }
 
 
