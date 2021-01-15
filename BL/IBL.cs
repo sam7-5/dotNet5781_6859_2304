@@ -15,7 +15,7 @@ namespace BL
         void UpdateStation(int stationCode, Action<BO.Station> update); // updt specific fields in Station
         void DeleteStation(int stationCode);
         //---------------------------//
-        IEnumerable<int> GetAllLinesPassThrough(BO.Station station);
+        IEnumerable<int> GetAllLinesIdPassThrough(BO.Station station);
         IEnumerable<BO.StationCustom> GetAllPrevCusStations(BO.Station station);
         IEnumerable<BO.StationCustom> GetAllNextCusStations(BO.Station station);
         IEnumerable<BO.Station> GetAllStationsOfArea(BO.Enums.Area area);
