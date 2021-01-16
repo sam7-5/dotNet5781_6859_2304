@@ -20,10 +20,18 @@ namespace UI
     /// </summary>
     public partial class line : Page
     {
+        BL.IBL bl = BL.BLFactory.GetBL();
+        BO.Line lines;
         public line()
         {
             InitializeComponent();
-            
+            allLines.DataContext= bl.GetAllLines();
+        }
+
+        private void allLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lines = (allLines.SelectedItem as BO.Line);
+            stationCustomDataGrid.DataContext = lines;
         }
     }
 }

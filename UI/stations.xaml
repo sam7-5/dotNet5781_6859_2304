@@ -69,8 +69,8 @@
             <TextBlock HorizontalAlignment="Left" Margin="368,20,0,0" TextWrapping="Wrap" Text="{Binding Longitude}" VerticalAlignment="Top" Height="36" Width="104" Foreground="#FFDDDD84"  FontSize="20"/>
             <TextBlock HorizontalAlignment="Left" Margin="369,67,0,-4" TextWrapping="Wrap" Text="{Binding Lattitude}" VerticalAlignment="Top" RenderTransformOrigin="-0.147,0.681" Height="37" Width="108" Foreground="#FFDDDD84"  FontSize="20"/>
         </Grid>
-        <ListBox x:Name="nextStations" HorizontalAlignment="Left" Height="102" Margin="310,180.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="222" >
-            <!--ItemsSource="{Binding Source={StaticResource adjacentStationsViewSource}}"-->
+        <ListBox x:Name="nextStations" HorizontalAlignment="Left" Height="102" Margin="310,180.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="222"  >
+          
             <ListBox.ItemTemplate>
                 <DataTemplate >
                     <Border Name="border" BorderBrush="MediumPurple" BorderThickness="2"  Padding="2" Margin="5" Width="50">

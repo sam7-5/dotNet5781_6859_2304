@@ -9,13 +9,15 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="line">
-
     
+
+
+
     <Page.Background>
         <ImageBrush ImageSource="bus1.jpg" Opacity="0.5"/>
     </Page.Background>
 
-    <Grid>
+    <Grid DataContext="{Binding}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -31,31 +33,29 @@
             <Button Name="add_line" Content="add line" HorizontalAlignment="Left" Margin="31,10,0,0" Grid.Row="0" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" Background="#FF49D44B"/>
             <Button Name="delete_line" Content="delete current line" Grid.Column="1" HorizontalAlignment="Left" Margin="24.8,10,0,0" Grid.Row="0" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" RenderTransformOrigin="0.365,1.225" Background="#FFDC2E28"/>
         </Grid>
-        <ListBox HorizontalAlignment="Left" Height="387" Margin="10,9.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200"/>
-        <Grid x:Name="grid1" DataContext="{Binding}" HorizontalAlignment="Left" Margin="379,52.8,0,0" Grid.Row="1" VerticalAlignment="Top">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Label Content="From Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <DatePicker x:Name="fromDateDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" SelectedDate="{Binding FromDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
-            <Label Content="Fuel Remain:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox x:Name="fuelRemainTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding FuelRemain, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="License Num:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-            <TextBox x:Name="licenseNumTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding LicenseNum, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="Status:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-            <TextBox x:Name="statusTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="Total Trip:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-            <TextBox x:Name="totalTripTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding TotalTrip, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="100" Margin="715,52.8,-15,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
+        <ListBox x:Name="allLines" HorizontalAlignment="Left" Height="382" Margin="10,9.8,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="268" Background="Transparent" Foreground="#FFF9F6F6"  FontSize="15" SelectionMode="Single" SelectedItem="" ItemsSource="{Binding}"  SelectionChanged="allLines_SelectionChanged"   >
+            <ListBox.ItemTemplate>
+                <DataTemplate >
+                    <Border Name="border" BorderBrush="#FFDDDD84" BorderThickness="1"  Padding="5" Margin="5" Width="250">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=Id}" />
+                            <TextBlock Text="{Binding Path=Area}"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <DataGrid x:Name="stationCustomDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding }" Margin="298,9.8,10,14.6" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="lineStationIndexColumn" Binding="{Binding LineStationIndex}" Header="Line Station Index" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Code}" Header="Code" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="timeColumn" Binding="{Binding Time}" Header="Time" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="distanceColumn" Binding="{Binding Distance}" Header="Distance" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="lattitudeColumn" Binding="{Binding Lattitude}" Header="Lattitude" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="longitudeColumn" Binding="{Binding Longitude}" Header="Longitude" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
 
     </Grid>
