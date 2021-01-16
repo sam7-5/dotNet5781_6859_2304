@@ -27,21 +27,20 @@ namespace UI
             update_stat.DataContext = station;
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        { 
-        //{
+        {
+            //{
 
-        //  //  System.Windows.Data.CollectionViewSource stationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("stationViewSource")));
-        //    // Charger les données en définissant la propriété CollectionViewSource.Source :
-        //    // stationViewSource.Source = [source de données générique]
+            //  //  System.Windows.Data.CollectionViewSource stationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("stationViewSource")));
+            //    // Charger les données en définissant la propriété CollectionViewSource.Source :
+            //    // stationViewSource.Source = [source de données générique]
         }
 
 
         private void station_update_Click(object sender, RoutedEventArgs e) //jette error
         {
             BO.Station station1;
-           station1= (update_stat.DataContext as BO.Station );
+            station1 = (update_stat.DataContext as BO.Station);
             bl.UpdateStation(station1);
-            update_stat.DataContext = station;
             this.Close();
 
         }

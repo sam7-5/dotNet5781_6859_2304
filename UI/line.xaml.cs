@@ -21,17 +21,37 @@ namespace UI
     public partial class line : Page
     {
         BL.IBL bl = BL.BLFactory.GetBL();
-        BO.Line lines;
+        BO.Line myLine;
         public line()
         {
             InitializeComponent();
-            allLines.DataContext= bl.GetAllLines();
+            allLines.DataContext = bl.GetAllLines();
         }
 
         private void allLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            lines = (allLines.SelectedItem as BO.Line);
-            stationCustomDataGrid.DataContext = lines;
+
+            myLine = (allLines.SelectedItem as BO.Line);
+            stationCustomDataGrid.DataContext = bl.GetAllCusStationOfLine(myLine);
+        }
+
+        private void delete_line_Click(object sender, RoutedEventArgs e)
+        {
+            myLine = (allLines.SelectedItem as BO.Line);
+            bl.DeleteLine(myLine);
+            allLines.DataContext = bl.GetAllLines();
+        }
+
+        private void add_line_Click(object sender, RoutedEventArgs e)
+        {
+            addLine addLine = new addLine();
+            addLine.Show();
+        }
+
+        private void update_line_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateLine update = new UpdateLine(myLine);
+            update.Show();
         }
     }
 }

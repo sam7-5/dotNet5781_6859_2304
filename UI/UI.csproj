@@ -71,6 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddStationLine.xaml.cs">
+      <DependentUpon>AddStationLine.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Bus.xaml.cs">
       <DependentUpon>Bus.xaml</DependentUpon>
     </Compile>
@@ -80,8 +83,14 @@
     <Compile Include="stations.xaml.cs">
       <DependentUpon>stations.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateLine.xaml.cs">
+      <DependentUpon>UpdateLine.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateStation.xaml.cs">
       <DependentUpon>UpdateStation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateTimeDistance.xaml.cs">
+      <DependentUpon>UpdateTimeDistance.xaml</DependentUpon>
     </Compile>
     <Compile Include="users.xaml.cs">
       <DependentUpon>users.xaml</DependentUpon>
@@ -95,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="addStation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddStationLine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,7 +151,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UpdateLine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UpdateStation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateTimeDistance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

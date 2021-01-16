@@ -41,7 +41,7 @@ namespace UI
 
         private void delete_station_Click(object sender, RoutedEventArgs e)
         {
-
+            //bonus
         }
 
         private void update_station_Click(object sender, RoutedEventArgs e)

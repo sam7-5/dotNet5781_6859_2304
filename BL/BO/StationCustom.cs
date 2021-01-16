@@ -8,6 +8,8 @@ namespace BO
 {
     public class StationCustom
     {
+       
+
         public int LineStationIndex { get; set; }
         public int Code { get; set; }
         public string Name { get; set; }
