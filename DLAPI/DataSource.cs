@@ -25,8 +25,7 @@ namespace DS
         }
 
         /// <summary>
-        /// return a List of 50 Station with 5 properties
-        /// return 10 available buses
+        /// initalise all our Data in Lists
         /// </summary>
         static void InitAllLists()
         {

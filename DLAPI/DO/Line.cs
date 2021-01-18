@@ -16,12 +16,13 @@ namespace DO
         public int FirstStation { get; set; }
         public int LastStation { get; set; }
         #endregion
-
-        Line() 
+        /*
+        public Line() 
         {
             linesOnTrip = new List<LineTrip>();
             buses = new List<BusOnTrip>();
         }
+        */
 
         public Line(int iD, int code, Enums.Area area, int firstStation, int lastStation):this()
         {
@@ -30,7 +31,10 @@ namespace DO
             Area = area;
             FirstStation = firstStation;
             LastStation = lastStation;
+            linesOnTrip = new List<LineTrip>();
+            buses = new List<BusOnTrip>();
         }
+        public Line() { }
 
         internal IEnumerable<LineTrip> GetTrips()
         {

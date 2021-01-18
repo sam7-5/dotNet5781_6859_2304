@@ -49,11 +49,6 @@ namespace BL
             dl.AddStation(stationDO);
         }
 
-        public void DeleteStation(int stationCode)
-        {
-            throw new NotImplementedException();
-        }
-
         // DONE
         public IEnumerable<BO.Station> GetAllStations()
         {
@@ -94,11 +89,35 @@ namespace BL
             }
         }
 
+        // DONE ! --> to test
+        public IEnumerable<BO.Station> GetAllStationsOfArea(Enums.Area area)
+        {
+            foreach (var LineDO in dl.GetAllLines())
+            {
+               
+                if (LineDO.Area.CompareTo(area) == 0)
+                {
+                    int from, to = 0;
+                    from = LineDO.FirstStation;
+                    to = LineDO.LastStation;
+
+                    for (int i = from; i < to; i++)
+                    {
+                        yield return GetStation(i);
+                    }
+                }
+            }
+        }
+
         public void UpdateStation(int stationCode, Action<Station> update)
         {
             throw new NotImplementedException();
         }
 
+        public void DeleteStation(int stationCode)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region Line
@@ -135,14 +154,79 @@ namespace BL
             return lineDoBoAdapter(lineDO);
         }
 
-        public void AddLine(Line line)
+        // DONE ! --> to test
+        public void AddLine(Line lineBO)
         {
-            throw new NotImplementedException();
+            DO.Line lineDO = new DO.Line();
+
+            lineDO.Area = (DO.Enums.Area)lineBO.Area;
+            lineDO.Code = lineBO.Code;
+            lineDO.FirstStation = lineBO.FirstStation;
+            lineDO.LastStation = lineBO.LastStation;
+            lineDO.ID = lineBO.Id;
+
+            dl.AddLine(lineDO);
         }
 
-        public void UpdateLine(Line line)
+        // DONE ! --> to test
+        public void UpdateLine(Line lineBO)
         {
-            throw new NotImplementedException();
+            DO.Line lineDO = new DO.Line();
+            lineBO.CopyPropertiesTo(lineDO);
+            //dl.AddLine(lineDO);
+            try
+            {
+                dl.UpdateLine(lineDO);
+            }
+            catch (Exception)
+            {
+                throw; // fail to update the new line
+            }
+        }
+
+        // DONE ! --> to test
+        public IEnumerable<BO.Line> GetAllLinesPassThrough(BO.Station station)
+        {
+            int stationCode = station.Code;
+            List<Line> allLines = (List<Line>)GetAllLines();
+            int from = 0, to = 0;
+
+            for (int i = 1; i <= 10; i++)
+            {
+                from = allLines.ElementAt(i).FirstStation;
+                to = allLines.ElementAt(i).LastStation;
+
+                for (int j = from;  j < to; j++)
+                {
+                    if (j == stationCode)
+                    {
+                        yield return allLines.ElementAt(i);
+                    }
+                }
+            }
+
+        }
+
+        // DONE ! --> to test
+        public IEnumerable<int> GetAllLinesIdPassThrough(Station station)
+        {
+            int stationCode = station.Code;
+            List<Line> allLines = (List<Line>)GetAllLines();
+            int from = 0, to = 0;
+
+            for (int i = 1; i <= 10; i++)
+            {
+                from = allLines.ElementAt(i).FirstStation;
+                to = allLines.ElementAt(i).LastStation;
+
+                for (int j = from; j < to; j++)
+                {
+                    if (j == stationCode)
+                    {
+                        yield return i;
+                    }
+                }
+            }
         }
 
         public void UpdateLine(Line line, Action<Line> update)
@@ -155,25 +239,25 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Station> GetAllLinesPassThrough(Station staion)
+        public void DeleteStationOfLine(Line lineBO, Station stationBO)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteLine(Line line)
         {
             throw new NotImplementedException();
         }
 
         #endregion
 
-
+        #region StationCustom
         public IEnumerable<StationCustom> GetAllPrevCusStations(Station station)
         {
             throw new NotImplementedException();
         }
 
         public IEnumerable<StationCustom> GetAllNextCusStations(Station station)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Station> GetAllStationsOfArea(Enums.Area area)
         {
             throw new NotImplementedException();
         }
@@ -198,19 +282,39 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public void DeleteLine(Line line)
+        #endregion
+
+        #region adjacentStation
+
+        // DONE ! --> to test
+        private BO.AdjacentStations adjStationDoBoAdapter(DO.AdjacentStations adjStationDO)
         {
-            throw new NotImplementedException();
+            BO.AdjacentStations adjStationBO = new AdjacentStations();
+            DO.AdjacentStations stationToTest;
+            int stationCode1 = adjStationDO.Station1, stationCode2 = adjStationDO.Station2;
+
+            try
+            {
+                stationToTest = dl.GetAdjtStation(stationCode1, stationCode2);
+            }
+            catch (Exception/*DO.BadAdjStationException*/)
+            {
+                throw;
+            }
+
+            adjStationDO.CopyPropertiesTo(adjStationBO);
+
+            return adjStationBO;
         }
 
-        public void DeleteStationOfLine(Line line, Station station)
+        // DONE ! --> to test
+        public IEnumerable<BO.AdjacentStations> GetAllAdjStations(BO.Station stationBO)
         {
-            throw new NotImplementedException();
+            return from adjStation in dl.GetAllAdjStation()
+                   where adjStation.Station2 == stationBO.Code
+                   select adjStationDoBoAdapter(adjStation);
         }
-
-        public IEnumerable<int> GetAllLinesIdPassThrough(Station station)
-        {
-            throw new NotImplementedException();
-        }
+        
+        #endregion
     }
 }
