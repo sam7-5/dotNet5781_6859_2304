@@ -41,11 +41,15 @@ namespace UI
 
         private void delete_station_Click(object sender, RoutedEventArgs e)
         {
-
+            //bonus
         }
 
         private void update_station_Click(object sender, RoutedEventArgs e)
         {
+
+            UpdateStation updateStation = new UpdateStation(station);
+            updateStation.Show();
+            allStations.DataContext = bl.GetAllStations();
             //try
             //{
             //    if (station != null)
@@ -61,11 +65,13 @@ namespace UI
         {
             
             station = (allStations.SelectedItem as BO.Station);
-            gridOneStation.DataContext = station; // = (allStations.SelectedItem as BO.Station);
-            previousStations.DataContext = bl.GetAllPrevCusStations(station);
-            nextStations.DataContext = bl.GetAllNextCusStations(station);
-            busPassesTrough.DataContext = bl.GetAllLinesPassThrough(station);
+            gridOneStation.DataContext = station; 
+         //   previousStations.DataContext = bl.GetAllPrevCusStations(station);
+           // nextStations.DataContext = bl.GetAllNextCusStations(station);
+           // busPassesTrough.DataContext = bl.GetAllLinesPassThrough(station);
         }
+
+      
     }
 }
             

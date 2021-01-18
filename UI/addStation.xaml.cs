@@ -41,9 +41,6 @@ namespace UI
         {
             try
             {
-              //  bl.AddStation(station);
-              
-               // station = new BO.Station();
                 station = (BO.Station)this.DataContext;
                 bl.AddStation(station);
             } 

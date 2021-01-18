@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALObject.cs" />
+    <Compile Include="DalXml.cs" />
     <Compile Include="DataSource.cs" />
     <Compile Include="DLFactory.cs" />
     <Compile Include="DO\AdjacentStations.cs" />
@@ -54,8 +55,10 @@
     <Compile Include="DO\Station.cs" />
     <Compile Include="DO\Trip.cs" />
     <Compile Include="DO\User.cs" />
+    <Compile Include="DO\XMLFileLoadCreateException.cs" />
     <Compile Include="IDL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlTools.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
