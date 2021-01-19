@@ -171,6 +171,14 @@ namespace DS
                 },
                 new Station
                 {
+                    Code = 96,
+                    Name = "פרויקט בסי שרפ זה גשמק !",
+                    Address = "רחוב:דרך בית לחם הישנה  עיר: ירושלים",
+                    Lattitude = 31.763321,
+                    Longitude = 35.668559
+                },
+                new Station
+                {
                     Code = 97,
                     Name = "שכונת בזבז 2",
                     Address = " רחוב:דרך בית לחם הישנה  עיר: ירושלים",
@@ -423,6 +431,14 @@ namespace DS
                     Address = "רחוב:הרב הרצוג  עיר: ירושלים רציף",
                     Lattitude = 31.761447,
                     Longitude = 35.199936
+                },
+                new Station
+                {
+                    Code = 1513,
+                    Name = "הציונים !",
+                    Address = "רחוב:הרצל  עיר: ירושלים",
+                    Lattitude = 31.765432,
+                    Longitude = 35.123456
                 },
                 new Station
                 {

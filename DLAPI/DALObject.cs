@@ -124,9 +124,9 @@ namespace DLAPI
         {
             return DataSource.listLineStations;
         }
-        public DO.LineStation GetLineStation(int lineId)
+        public DO.LineStation GetLineStation(int stationCode)
         {
-            return DataSource.listLineStations.Find(lst => lst.LineId == lineId);
+            return DataSource.listLineStations.Find(lst => lst.Station == stationCode);
         }
         public void AddLineStation(DO.LineStation lineStation)
         {
