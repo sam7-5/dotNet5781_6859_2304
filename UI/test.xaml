@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UI"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="UI.test"
         mc:Ignorable="d"
-        Title="test" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="test" Height="450" Width="800" >
    
     <Grid DataContext="{Binding}">
 

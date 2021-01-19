@@ -12,6 +12,7 @@ namespace BL
     {
         IDL dl = DLFactory.GetDL();
 
+
         #region station
 
         //DONE
@@ -155,6 +156,15 @@ namespace BL
                 listBO.Add(lineDoBoAdapter(item));
             }
 
+            // each line object has a list of station code index
+            foreach (var item in listBO)
+            {
+                for (int i = item.FirstStation; i < item.LastStation; i++)
+                {
+                    item.stationOfThisLine.Add(i);
+                }
+            }
+
             return listBO.OrderBy(x => x.Id);
         }
 
@@ -272,9 +282,8 @@ namespace BL
 
         #region StationCustom
 
-
-
-        public IEnumerable<StationCustom> GetAllCustomStations()
+        // TO TEST !
+        private IEnumerable<StationCustom> GetAllCustomStations()
         {
             var stationList = GetAllStations();
             var lineStationList = GetAllLineStations();
@@ -287,8 +296,8 @@ namespace BL
             {
                 customStationList.Add(new StationCustom
                 { Code = stationList.ElementAt(i).Code,
-                Name = stationList.ElementAt(i).Name, Distance = adjStationList.ElementAt(i).Distance,
-                Time = adjStationList.ElementAt(i).Time, Lattitude = stationList.ElementAt(i).Lattitude,
+                Name = stationList.ElementAt(i).Name, Distance = adjStationList.ElementAt(i/2).Distance,
+                Time = adjStationList.ElementAt(i/2).Time, Lattitude = stationList.ElementAt(i).Lattitude,
                 Longitude = stationList.ElementAt(i).Longitude, LineStationIndex = lineStationList.ElementAt(i).LineStationIndex,
                 });
             }
@@ -318,13 +327,25 @@ namespace BL
 
         public IEnumerable<StationCustom> GetAllCusStationOfLine(Line line)
         {
-            throw new NotImplementedException();
+            var customStationList = GetAllCustomStations();
+            var cusStatToRet = new List<StationCustom>();
+
+            for (int i = line.FirstStation; i < line.LastStation; i++)
+            {
+                cusStatToRet.Add(customStationList.ElementAt(i));
+            }
+            return cusStatToRet;
         }
 
         public IEnumerable<StationCustom> GetAllCusStationOfLine(int line)
         {
             throw new NotImplementedException();
         }
+
+
+        
+
+
 
         #endregion
 
@@ -423,9 +444,6 @@ namespace BL
 
             return prevLinesStation;
         }
-
-
-
 
         #endregion
     }

@@ -27,12 +27,5 @@ namespace UI
             stationCustomDataGrid.DataContext = bl.GetAllCustomStations();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            System.Windows.Data.CollectionViewSource stationCustomViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("stationCustomViewSource")));
-            // Charger les données en définissant la propriété CollectionViewSource.Source :
-            // stationCustomViewSource.Source = [source de données générique]
-        }
     }
 }
