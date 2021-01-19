@@ -347,9 +347,11 @@ namespace BL
 
         public IEnumerable<BO.LineStation> GetAllPrevLineStations(Station stationBO)
         {
+            /*
             int stationCode = stationBO.Code;
             List<BO.LineStation> allLinesStations = (List<LineStation>)GetAllLineStations();
-
+            */
+            throw new NotImplementedException();
         }
         #endregion
     }
