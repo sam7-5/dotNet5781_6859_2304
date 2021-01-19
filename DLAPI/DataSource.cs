@@ -432,6 +432,22 @@ namespace DS
                     Lattitude = 31.759186,
                     Longitude = 35.189336
                 },
+                 new Station
+                {
+                    Code = 1515,
+                    Name = " תל אביב יה חביבי/תל אביב",
+                    Address = "oui on peut rigoler de temps en temps",
+                    Lattitude = 31.759789,
+                    Longitude = 35.189336
+                },
+                 new Station
+                {
+                    Code = 1516,
+                    Name = " bon j'ai plus d'idées",
+                    Address = "la non plus",
+                    Lattitude = 31.759186,
+                    Longitude = 35.189336
+                },
 
 
              new Station
@@ -477,7 +493,7 @@ namespace DS
                 },
                 new Station
                 {
-                    Code = 123,
+                    Code = 122,
                     Name = "אוהל דוד/סורוצקין ",
                     Address = "  רחוב:הרב סורוצקין 9 עיר: ירושלים",
                     Lattitude = 31.794958,
@@ -485,7 +501,7 @@ namespace DS
                 },
                 new Station
                 {
-                    Code = 122,
+                    Code = 123,
                     Name = "מרכז סולם/סורוצקין ",
                     Address = "  רחוב:הרב סורוצקין 28 עיר: ירושלים",
                     Lattitude = 31.79617,

@@ -78,24 +78,25 @@ namespace BL
         {
             DO.Station stationDO = new DO.Station();
             stationBO.CopyPropertiesTo(stationDO);
-            try
-            {
                 dl.UpdateStation(stationDO);
-            }
-            catch (Exception)
-            {
+            //try
+            //{
+            //}
+            //catch (Exception)
+            //{
 
-                throw; // fail to update the new station
-            }
+            //    throw; // fail to update the new station
+            //}
         }
 
         // DONE ! --> to test
         public IEnumerable<BO.Station> GetAllStationsOfArea(Enums.Area area)
         {
+            //List<BO.Station> listBO = new List<Station>();
             foreach (var LineDO in dl.GetAllLines())
             {
                
-                if (LineDO.Area.CompareTo(area) == 0)
+                if (LineDO.Area.CompareTo((DO.Enums.Area)area) == 0)
                 {
                     int from, to = 0;
                     from = LineDO.FirstStation;
@@ -104,9 +105,11 @@ namespace BL
                     for (int i = from; i < to; i++)
                     {
                         yield return GetStation(i);
+                        //listBO.Add(GetStation(i));
                     }
                 }
             }
+            //return listBO;
         }
 
         public void UpdateStation(int stationCode, Action<Station> update)
@@ -126,7 +129,12 @@ namespace BL
         {
             // we can add more func. by getting the lineDO.Id
             BO.Line lineBO = new BO.Line();
-            lineDO.CopyPropertiesTo(lineBO);
+            lineBO.Area = (Enums.Area)lineDO.Area;
+            lineBO.Code = lineDO.Code;
+            lineBO.FirstStation=lineDO.FirstStation;
+            lineBO.LastStation = lineDO.LastStation;
+            lineBO.Id = lineDO.ID;
+           // lineDO.CopyPropertiesTo(lineBO);
 
             return lineBO;
         }

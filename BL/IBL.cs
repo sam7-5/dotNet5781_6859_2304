@@ -8,7 +8,7 @@ namespace BL
     {
         #region Station
         IEnumerable<BO.Station> GetAllStations();
-        IEnumerable<BO.Station> GetAllLinesPassThrough(BO.Station staion);
+        IEnumerable<BO.Line> GetAllLinesPassThrough(BO.Station staion);
         BO.Station GetStation(int stationCode);
         void AddStation(BO.Station station);
         void UpdateStation(BO.Station station);
@@ -22,6 +22,10 @@ namespace BL
         void AddStation(BO.StationCustom station);
         void UpdateStation(BO.StationCustom station);
         //--------------------------//
+        //****//
+        //IEnumerable<BO.Adjacent>
+        //****//
+        IEnumerable<BO.AdjacentStations> GetAllAdjStations(BO.Station stationBO);
         #endregion
 
 

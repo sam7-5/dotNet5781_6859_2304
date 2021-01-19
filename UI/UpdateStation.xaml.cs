@@ -20,7 +20,7 @@ namespace UI
     public partial class UpdateStation : Window
     {
         BL.IBL bl = BL.BLFactory.GetBL();
-        BO.Station station;
+     //   BO.Station station;
         public UpdateStation(BO.Station station)
         {
             InitializeComponent();

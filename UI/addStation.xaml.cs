@@ -26,22 +26,15 @@ namespace UI
             InitializeComponent();
             station = new BO.Station();
             this.DataContext = station;
-            //bl = BL.BLFactory.GetBL();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            System.Windows.Data.CollectionViewSource stationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("stationViewSource")));
-            // Charger les données en définissant la propriété CollectionViewSource.Source :
-            // stationViewSource.Source = [source de données générique]
-        }
+  
 
         private void bkbaddStation_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                station = (BO.Station)this.DataContext;
+              //  station = this.DataContext;
                 bl.AddStation(station);
             } 
             catch (Exception ex) //change it!!

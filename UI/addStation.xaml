@@ -6,13 +6,11 @@
         xmlns:local="clr-namespace:UI"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="UI.addStation"
         mc:Ignorable="d"
-        Title="addStation" Height="259.067" Width="292.809" Loaded="Window_Loaded">
-    <Window.Resources>
-        <CollectionViewSource x:Key="stationViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
-    </Window.Resources>
+        Title="addStation" Height="259.067" Width="292.809" >
+   
     <Grid Margin="0,0,3.4,-0.6">
 
-        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="29,15,0,0" HorizontalAlignment="Left" DataContext="{StaticResource stationViewSource}" Height="145">
+        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="29,15,0,0" HorizontalAlignment="Left" DataContext="{Binding}" Height="145">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>

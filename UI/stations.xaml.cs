@@ -35,7 +35,7 @@ namespace UI
         private void add_station_Click(object sender, RoutedEventArgs e)
         {
             addStation station = new addStation();
-            station.Show();
+            station.ShowDialog();
             allStations.DataContext = bl.GetAllStations();
         }
 
@@ -48,8 +48,9 @@ namespace UI
         {
 
             UpdateStation updateStation = new UpdateStation(station);
-            updateStation.Show();
+            updateStation.ShowDialog();
             allStations.DataContext = bl.GetAllStations();
+            
             //try
             //{
             //    if (station != null)

@@ -6,9 +6,7 @@ namespace DO
 {
     public class Line
     {      
-        private List<LineTrip> linesOnTrip;
-        private List<BusOnTrip> buses;
-
+        
         #region properties
         public int ID{ get; set; }
         public int Code { get; set; }
@@ -24,27 +22,18 @@ namespace DO
         }
         */
 
-        public Line(int iD, int code, Enums.Area area, int firstStation, int lastStation):this()
+        public Line(int iD, int code, Enums.Area area, int firstStation, int lastStation)
         {
             ID = iD;
             Code = code;
             Area = area;
             FirstStation = firstStation;
             LastStation = lastStation;
-            linesOnTrip = new List<LineTrip>();
-            buses = new List<BusOnTrip>();
+            
         }
         public Line() { }
 
-        internal IEnumerable<LineTrip> GetTrips()
-        {
-            return this.linesOnTrip;
-        }
-
-        internal IEnumerable<BusOnTrip> GetBusOnTrip()
-        {
-            return this.buses;
-        }
+       
    
         //internal static Line GetLine(int lineID)
         //{
