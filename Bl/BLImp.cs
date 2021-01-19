@@ -445,7 +445,9 @@ namespace BL
             {
                 if (allLinesStations.ElementAt(i).Station == stationCode)
                 {
-                    prevLinesStation.Add(allLinesStations.ElementAt(i-1));
+                    prevLinesStation.Add(allLinesStations.ElementAt(0));
+                    if (i > 0)
+                        prevLinesStation.Add(allLinesStations.ElementAt(i-1));
                 }
             }
 

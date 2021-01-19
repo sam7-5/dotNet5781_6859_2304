@@ -47,9 +47,9 @@
         </ListBox>
         <DataGrid x:Name="stationCustomDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding }" Margin="298,9.8,10,14.6" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Row="1">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="lineStationIndexColumn" Binding="{Binding LineStationIndex}" Header="Line Station Index" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="lineStationIndexColumn" Binding="{Binding LineStationIndex}" Header="Station Index" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Code}" Header="Code" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="240"/>
                 <DataGridTextColumn x:Name="timeColumn" Binding="{Binding Time}" Header="Time" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="distanceColumn" Binding="{Binding Distance}" Header="Distance" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="lattitudeColumn" Binding="{Binding Lattitude}" Header="Lattitude" Width="SizeToHeader"/>
