@@ -366,11 +366,31 @@ namespace BL
 
         public IEnumerable<BO.LineStation> GetAllPrevLineStations(Station stationBO)
         {
-            /*
+            
             int stationCode = stationBO.Code;
-            List<BO.LineStation> allLinesStations = (List<LineStation>)GetAllLineStations();
-            */
-            throw new NotImplementedException();
+            //List<BO.LineStation> allLinesStations = (List<LineStation>)GetAllLineStations();
+            var allLinesStations = GetAllLineStations();
+            var prevLinesStation = new List<BO.LineStation>();
+
+
+            //foreach (var lineBO in allLinesStations)
+            //{
+            //    if (lineBO.Station == stationCode)
+            //    {
+            //        prevLinesStation.Add(lineBO);
+            //    }
+            //}
+            int numOfLines = allLinesStations.Count();
+
+            for (int i = 0; i < numOfLines; i++)
+            {
+                if (allLinesStations.ElementAt(i).Station == stationCode)
+                {
+                    prevLinesStation.Add(allLinesStations.ElementAt(i-1));
+                }
+            }
+
+            return prevLinesStation;
         }
         #endregion
     }
