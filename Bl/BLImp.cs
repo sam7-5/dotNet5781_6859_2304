@@ -207,7 +207,7 @@ namespace BL
         public IEnumerable<BO.Line> GetAllLinesPassThrough(BO.Station station)
         {
             int stationCode = station.Code;
-            List<Line> allLines = (List<Line>)GetAllLines();
+            var allLines = GetAllLines();
             int from = 0, to = 0;
 
             for (int i = 0; i < 10; i++)
