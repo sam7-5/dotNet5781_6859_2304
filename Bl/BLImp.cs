@@ -314,7 +314,43 @@ namespace BL
                    where adjStation.Station2 == stationBO.Code
                    select adjStationDoBoAdapter(adjStation);
         }
-        
+
+        #endregion
+
+        #region LineStation
+
+        private BO.LineStation lineStationBoDoAdapter(DO.LineStation lineStationDO)
+        {
+            BO.LineStation lineStationBO = new LineStation();
+            DO.LineStation lineStationTest;
+            int stationCode = lineStationDO.Station;
+
+            try
+            {
+               lineStationTest = dl.GetLineStation(stationCode);
+            }
+            catch (Exception) // not found !
+            {
+                throw;
+            }
+            lineStationDO.CopyPropertiesTo(lineStationBO);
+
+            return lineStationBO;
+        }
+
+        public IEnumerable<BO.LineStation> GetAllLineStations()
+        {
+            return from lStationDO in dl.GetAllLineStation()
+                   orderby lStationDO.LineId
+                   select lineStationBoDoAdapter(lStationDO);
+        }
+
+        public IEnumerable<BO.LineStation> GetAllPrevLineStations(Station stationBO)
+        {
+            int stationCode = stationBO.Code;
+            List<BO.LineStation> allLinesStations = (List<LineStation>)GetAllLineStations();
+
+        }
         #endregion
     }
 }
