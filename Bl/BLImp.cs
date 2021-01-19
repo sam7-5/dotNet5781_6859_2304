@@ -271,6 +271,31 @@ namespace BL
         #endregion
 
         #region StationCustom
+
+
+
+        public IEnumerable<StationCustom> GetAllCustomStations()
+        {
+            var stationList = GetAllStations();
+            var lineStationList = GetAllLineStations();
+            var adjStationList = GetAllAdjStations();
+            var customStationList = new List<BO.StationCustom>();
+
+            int numberOfElement = stationList.Count();
+
+            for (int i = 0; i < numberOfElement; i++)
+            {
+                customStationList.Add(new StationCustom
+                { Code = stationList.ElementAt(i).Code,
+                Name = stationList.ElementAt(i).Name, Distance = adjStationList.ElementAt(i).Distance,
+                Time = adjStationList.ElementAt(i).Time, Lattitude = stationList.ElementAt(i).Lattitude,
+                Longitude = stationList.ElementAt(i).Longitude, LineStationIndex = lineStationList.ElementAt(i).LineStationIndex,
+                });
+            }
+
+            return customStationList;
+        }
+
         public IEnumerable<StationCustom> GetAllPrevCusStations(Station station)
         {
             throw new NotImplementedException();
@@ -334,6 +359,12 @@ namespace BL
                    select adjStationDoBoAdapter(adjStation);
         }
 
+        // DONE ! --> to test
+        public IEnumerable<AdjacentStations> GetAllAdjStations()
+        {
+            return from adjStation in dl.GetAllAdjStation()
+                   select adjStationDoBoAdapter(adjStation);
+        }
         #endregion
 
         #region LineStation
@@ -392,6 +423,10 @@ namespace BL
 
             return prevLinesStation;
         }
+
+
+
+
         #endregion
     }
 }
