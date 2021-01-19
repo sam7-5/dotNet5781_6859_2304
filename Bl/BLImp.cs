@@ -142,9 +142,20 @@ namespace BL
         // DONE
         public IEnumerable<Line> GetAllLines()
         {
+            /*
             return from lDo in dl.GetAllLines()
                    orderby lDo.Code
                    select lineDoBoAdapter(lDo);
+            */
+
+            var listBO = new List<BO.Line>();
+
+            foreach (var item in dl.GetAllLines())
+            {
+                listBO.Add(lineDoBoAdapter(item));
+            }
+
+            return listBO.OrderBy(x => x.Id);
         }
 
         // DONE
@@ -199,7 +210,7 @@ namespace BL
             List<Line> allLines = (List<Line>)GetAllLines();
             int from = 0, to = 0;
 
-            for (int i = 1; i <= 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 from = allLines.ElementAt(i).FirstStation;
                 to = allLines.ElementAt(i).LastStation;
