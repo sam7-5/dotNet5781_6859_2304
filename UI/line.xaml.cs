@@ -45,7 +45,8 @@ namespace UI
         private void add_line_Click(object sender, RoutedEventArgs e)
         {
             addLine addLine = new addLine();
-            addLine.Show();
+            addLine.ShowDialog();
+            allLines.DataContext = bl.GetAllLines();
         }
 
         private void update_line_Click(object sender, RoutedEventArgs e)

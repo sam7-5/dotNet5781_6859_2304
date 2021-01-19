@@ -67,9 +67,9 @@ namespace UI
             
             station = (allStations.SelectedItem as BO.Station);
             gridOneStation.DataContext = station; 
-         //   previousStations.DataContext = bl.GetAllPrevCusStations(station);
-           // nextStations.DataContext = bl.GetAllNextCusStations(station);
-           // busPassesTrough.DataContext = bl.GetAllLinesPassThrough(station);
+         //  previousStations.DataContext = bl.GetAllPrevCusStations(station);
+         //   nextStations.DataContext = bl.GetAllNextCusStations(station);
+            busPassesTrough.DataContext = bl.GetAllLinesPassThrough(station);
         }
 
       
