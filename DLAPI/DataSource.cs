@@ -464,6 +464,14 @@ namespace DS
                     Lattitude = 31.759186,
                     Longitude = 35.189336
                 },
+                  new Station
+                {
+                    Code = 1517,
+                    Name = " גלילי גלילאו",
+                    Address = "פיסיקה א",
+                    Lattitude = 31.759186,
+                    Longitude = 35.189336
+                },
 
 
              new Station

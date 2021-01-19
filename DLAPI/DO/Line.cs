@@ -6,6 +6,10 @@ namespace DO
 {
     public class Line
     {
+        public Line()
+        {
+
+        }
         public int ID { get; set; }
         public int Code { get; set; }
         public Enums.Area Area { get; set; }
