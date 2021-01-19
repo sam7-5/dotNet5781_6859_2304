@@ -157,8 +157,11 @@ namespace BL
             }
 
             // each line object has a list of station code index
+
             foreach (var item in listBO)
             {
+                item.stationOfThisLine = new List<int>();
+
                 for (int i = item.FirstStation; i < item.LastStation; i++)
                 {
                     item.stationOfThisLine.Add(i);
@@ -283,7 +286,7 @@ namespace BL
         #region StationCustom
 
         // TO TEST !
-        private IEnumerable<StationCustom> GetAllCustomStations()
+        public IEnumerable<StationCustom> GetAllCustomStations()
         {
             var stationList = GetAllStations();
             var lineStationList = GetAllLineStations();
@@ -325,15 +328,19 @@ namespace BL
             throw new NotImplementedException();
         }
 
+        // TO TEST
         public IEnumerable<StationCustom> GetAllCusStationOfLine(Line line)
         {
-            var customStationList = GetAllCustomStations();
+            var customStationList = new List<StationCustom>();
+            customStationList = (List<StationCustom>)GetAllCustomStations();
             var cusStatToRet = new List<StationCustom>();
 
             for (int i = line.FirstStation; i < line.LastStation; i++)
             {
-                cusStatToRet.Add(customStationList.ElementAt(i));
+                var toAdd = customStationList.Find(y => y.Code == i);
+                cusStatToRet.Add(toAdd);
             }
+
             return cusStatToRet;
         }
 

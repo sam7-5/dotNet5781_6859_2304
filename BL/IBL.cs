@@ -18,7 +18,6 @@ namespace BL
         IEnumerable<int> GetAllLinesIdPassThrough(BO.Station station);
         IEnumerable<BO.StationCustom> GetAllPrevCusStations(BO.Station station);
         IEnumerable<BO.StationCustom> GetAllNextCusStations(BO.Station station);
-        IEnumerable<BO.StationCustom> GetAllCustomStations();
         IEnumerable<BO.Station> GetAllStationsOfArea(BO.Enums.Area area);
         void AddStation(BO.StationCustom station);
         void UpdateStation(BO.StationCustom station);

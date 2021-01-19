@@ -10,9 +10,8 @@ namespace BO
         public int FirstStation { get; set; }
         public int LastStation { get; set; }
 
-        public override string ToString()
-        {
-            return $"{Id}";
-        }
+        public override string ToString() { return $"{Id}"; }
+
+        public List<int> stationOfThisLine = null;
     }
 }

@@ -24,7 +24,7 @@ namespace UI
         public test()
         {
             InitializeComponent();
-            stationCustomDataGrid.DataContext = bl.GetAllCustomStations();
+            //stationCustomDataGrid.DataContext = bl.GetAllCustomStations();
         }
 
     }
