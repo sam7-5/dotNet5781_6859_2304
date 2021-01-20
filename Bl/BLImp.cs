@@ -12,7 +12,6 @@ namespace BL
     {
         IDL dl = DLFactory.GetDL();
 
-
         #region station
 
         //DONE
@@ -111,6 +110,15 @@ namespace BL
                 }
             }
             //return listBO;
+        }
+
+        // a tester !
+        public IEnumerable<BO.Station> GetStationsOfLine(BO.Line line)
+        {
+            for (int i = line.FirstStation; i < line.LastStation; i++)
+            {
+                yield return GetStation(i);
+            }
         }
 
         public void UpdateStation(int stationCode, Action<Station> update)
@@ -308,7 +316,7 @@ namespace BL
                 Longitude = stationList.ElementAt(i).Longitude, LineStationIndex = lineStationList.ElementAt(i).LineStationIndex,
                 });
             }
-
+            //customStationList.RemoveAt(customStationList.Count()-1);
             return customStationList;
         }
 
@@ -381,7 +389,7 @@ namespace BL
             {
                 if (allStations.ElementAt(i).Code == stationBO.Code)
                 {
-                    if (i  < allStations.Count() + 1)
+                    if (i  < allStations.Count() + 2) // + 1
                         nextCustomStation.Add(stationToCustom(allStations.ElementAt(i + 1)));
                 }
             }
@@ -405,6 +413,17 @@ namespace BL
             var customStationList = new List<StationCustom>();
             customStationList = (List<StationCustom>)GetAllCustomStations();
             var cusStatToRet = new List<StationCustom>();
+
+            
+            if(Math.Abs(line.FirstStation - line.LastStation) >= 32)
+            {
+                var toAdd1 = customStationList.Find(x => x.Code == line.FirstStation);
+                var toAdd2 = customStationList.Find(x => x.Code == line.LastStation);
+                cusStatToRet.Add(toAdd1);
+                cusStatToRet.Add(toAdd2);
+
+                return cusStatToRet;
+            }
 
 
             if (line.FirstStation <= line.LastStation)
@@ -464,7 +483,6 @@ namespace BL
         {
             DO.AdjacentStations adjacentStationsDO = new DO.AdjacentStations();
 
-            
             int code1 = stationBO.Code - 1, code2 = stationBO.Code;
 
             try

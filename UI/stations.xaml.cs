@@ -63,19 +63,20 @@ namespace UI
         }
 
         private void allStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-            station = (allStations.SelectedItem as BO.Station);
+        {  
+            station = allStations.SelectedItem as BO.Station;
             gridOneStation.DataContext = station;
-            previousStations.DataContext = bl.GetAllPrevCusStations(station);/*bl.GetAllPrevLineStations(station)*/
+            /*
+            previousStations.DataContext = bl.GetAllPrevCusStations(station);
             nextStations.DataContext = bl.GetAllNextCusStations(station);
-            
-         //  bl.GetAllPrevCusStations(station);
-         //   nextStations.DataContext = bl.GetAllNextCusStations(station);
+            */
             busPassesTrough.DataContext = bl.GetAllLinesPassThrough(station);
         }
 
-      
+        private void nextStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
             
