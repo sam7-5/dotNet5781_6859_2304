@@ -4,7 +4,7 @@ namespace BO
 {
     public class Line
     {
-        public int Id { get; set; }
+        public int Id { get; set; } // number of line like bus 6 to JCT, Line.Id = 6
         public int Code { get; set; }
         public Enums.Area Area { get; set; }
         public int FirstStation { get; set; }
