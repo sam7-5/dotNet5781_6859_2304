@@ -8,21 +8,7 @@ namespace DO
     public class Station
     {
 
-        private List<BusOnTrip> OnTripBuses;
-        private List<Line> lines;
-        private List<LineStation> lineStations;
-        private List<Trip> trips;
-        private List<AdjacentStations> adjacentStations;
-
-        public Station()
-        {
-            OnTripBuses = new List<BusOnTrip>();
-            lines = new List<Line>();
-            lineStations = new List<LineStation>();
-            trips = new List<Trip>();
-            adjacentStations = new List<AdjacentStations>();
-        }
-
+        public Station() {}
         public Station(int code, string name, double longitude, double lattitude, string address) : this()
         {
             Code = code;
@@ -31,7 +17,6 @@ namespace DO
             Lattitude = lattitude;
             Address = address;
         }
-
 
         public int Code { get; set; }
         public string Name { get; set; }

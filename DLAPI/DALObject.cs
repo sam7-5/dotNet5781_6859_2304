@@ -167,7 +167,7 @@ namespace DLAPI
         }
         public DO.AdjacentStations GetAdjtStation(int station1, int station2)
         {
-            return DataSource.listAdjacentStations.Find(st => st.Station1 == station1 && st.Station2 == station2);
+            return DataSource.listAdjacentStations.Find(st => st.Station1 == station1 || st.Station2 == station2);
         }
         public void AddAdjacentStation(DO.AdjacentStations AdjStation)
         {

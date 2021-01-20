@@ -67,7 +67,8 @@ namespace UI
             
             station = (allStations.SelectedItem as BO.Station);
             gridOneStation.DataContext = station;
-            previousStations.DataContext = bl.GetAllPrevLineStations(station);
+            previousStations.DataContext = bl.GetAllPrevCusStations(station);/*bl.GetAllPrevLineStations(station)*/
+            nextStations.DataContext = bl.GetAllNextCusStations(station);
             
          //  bl.GetAllPrevCusStations(station);
          //   nextStations.DataContext = bl.GetAllNextCusStations(station);
