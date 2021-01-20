@@ -36,10 +36,10 @@
             <Button Name="delete_station" Content="delete current station" Grid.Column="1" HorizontalAlignment="Left" Margin="24.8,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" RenderTransformOrigin="0.365,1.225" Background="#FFDC2E28" Click="delete_station_Click"/>
         </Grid>
 
-        <ListBox x:Name="allStations" HorizontalAlignment="Left" Height="382" Margin="10,9.333,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="255" Background="Transparent" Foreground="#FFF9F6F6"  FontSize="15" SelectionMode="Single" SelectedItem="" ItemsSource="{Binding}"  SelectionChanged="allStations_SelectionChanged"   >
+        <ListBox x:Name="allStations" HorizontalAlignment="Left" Height="380" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="290" Background="Transparent" Foreground="#FFF9F6F6"  FontSize="15" SelectionMode="Single" SelectedItem="" ItemsSource="{Binding}"  SelectionChanged="allStations_SelectionChanged"   >
             <ListBox.ItemTemplate>
                 <DataTemplate >
-                    <Border Name="border" BorderBrush="#FFDDDD84" BorderThickness="1"  Padding="5" Margin="5" Width="250">
+                    <Border Name="border" BorderBrush="#FFDDDD84" BorderThickness="1"  Padding="5" Margin="5" Width="280">
                         <StackPanel>
                             <TextBlock Text="{Binding Path=Name}" />
                             <TextBlock Text="{Binding Path=Code}"/>
@@ -69,14 +69,14 @@
             <TextBlock HorizontalAlignment="Left" Margin="368,20,0,0" TextWrapping="Wrap" Text="{Binding Longitude}" VerticalAlignment="Top" Height="36" Width="104" Foreground="#FFDDDD84"  FontSize="20"/>
             <TextBlock HorizontalAlignment="Left" Margin="369,67,0,-4" TextWrapping="Wrap" Text="{Binding Lattitude}" VerticalAlignment="Top" RenderTransformOrigin="-0.147,0.681" Height="37" Width="108" Foreground="#FFDDDD84"  FontSize="20"/>
         </Grid>
-        <ListBox x:Name="nextStations" HorizontalAlignment="Left" Height="102" Margin="310,180.8,0,0"   ItemsSource="{Binding}" Grid.Row="1" VerticalAlignment="Top" Width="222"  >
+        <ListBox x:Name="nextStations" HorizontalAlignment="Center" Height="100" Margin="30,50,10,0"   ItemsSource="{Binding}" Grid.Row="1" VerticalAlignment="Center" Width="200" SelectionChanged="nextStations_SelectionChanged"  >
           
             <ListBox.ItemTemplate>
                 <DataTemplate >
-                    <Border Name="border" BorderBrush="MediumPurple" BorderThickness="2"  Padding="2" Margin="5" Width="50">
+                    <Border Name="border" BorderBrush="MediumPurple" BorderThickness="2"  Padding="2" Margin="5" Width="150">
                         <StackPanel>
-                            <TextBlock Text="{Binding Path=Station1}" />
-                            <TextBlock Text="{Binding Path=Station2}"/>
+                            <TextBlock Text="{Binding Path=Name}" />
+                            <TextBlock Text="{Binding Path=Code}"/>
                             <TextBlock Text="{Binding Path=Distance}" />
                             <TextBlock Text="{Binding Path=Time}"/>
                         </StackPanel>
@@ -85,16 +85,16 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <ListBox x:Name="previousStations" HorizontalAlignment="Left"  ItemsSource="{Binding}" Height="100" Margin="577,180.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164" >
+        <ListBox x:Name="previousStations" HorizontalAlignment="Right" VerticalAlignment="Center"  ItemsSource="{Binding}" Height="100" Margin="30,50,30,0" Grid.Row="1"  Width="200" >
             <!--ItemsSource="{Binding Source={StaticResource adjacentStationsViewSource}}"-->
             <ListBox.ItemTemplate>
                 <DataTemplate >
-                    <Border Name="border" BorderBrush="MediumPurple" BorderThickness="2"  Padding="2" Margin="5" Width="50" >
+                    <Border Name="border" BorderBrush="MediumPurple" BorderThickness="2"  Padding="2" Margin="5" Width="150" >
                         <StackPanel>
-                            <TextBlock Text="{Binding Path=Station}" />
-                            <TextBlock Text="{Binding Path=LineId}"/>
-                            <TextBlock Text="{Binding Path=PrevStation}" />
-                            <TextBlock Text="{Binding Path=NextStation}"/>
+                            <TextBlock Text="{Binding Path=Name}" />
+                            <TextBlock Text="{Binding Path=Code}"/>
+                            <TextBlock Text="{Binding Path=Distance}" />
+                            <TextBlock Text="{Binding Path=Time}"/>
                            
 
                         </StackPanel>

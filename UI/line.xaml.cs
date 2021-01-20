@@ -32,7 +32,7 @@ namespace UI
         {
 
             myLine = (allLines.SelectedItem as BO.Line);
-            stationCustomDataGrid.DataContext = bl.GetAllCusStationOfLine(myLine);
+            stationCustomDataGrid.DataContext = /*bl.GetStationsOfLine(myLine);*/bl.GetAllCusStationOfLine(myLine);
         }
 
         private void delete_line_Click(object sender, RoutedEventArgs e)

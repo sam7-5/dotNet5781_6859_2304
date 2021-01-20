@@ -12,7 +12,6 @@ namespace BL
     {
         IDL dl = DLFactory.GetDL();
 
-
         #region station
 
         //DONE
@@ -111,6 +110,15 @@ namespace BL
                 }
             }
             //return listBO;
+        }
+
+        // a tester !
+        public IEnumerable<BO.Station> GetStationsOfLine(BO.Line line)
+        {
+            for (int i = line.FirstStation; i < line.LastStation; i++)
+            {
+                yield return GetStation(i);
+            }
         }
 
         public void UpdateStation(int stationCode, Action<Station> update)
@@ -381,7 +389,7 @@ namespace BL
             {
                 if (allStations.ElementAt(i).Code == stationBO.Code)
                 {
-                    if (i  < allStations.Count() + 1)
+                    if (i  < allStations.Count() + 2) // + 1
                         nextCustomStation.Add(stationToCustom(allStations.ElementAt(i + 1)));
                 }
             }
@@ -452,7 +460,6 @@ namespace BL
         {
             DO.AdjacentStations adjacentStationsDO = new DO.AdjacentStations();
 
-            
             int code1 = stationBO.Code - 1, code2 = stationBO.Code;
 
             try
