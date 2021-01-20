@@ -414,13 +414,24 @@ namespace BL
             customStationList = (List<StationCustom>)GetAllCustomStations();
             var cusStatToRet = new List<StationCustom>();
 
-            for (int i = line.FirstStation; i < line.LastStation; i++)
+            if (line.FirstStation <= line.LastStation)
             {
-                var toAdd = customStationList.Find(y => y.Code == i);
-                cusStatToRet.Add(toAdd);
+                for (int i = line.FirstStation; i < line.LastStation; i++)
+                {
+                    var toAdd = customStationList.Find(y => y.Code == i);
+                    cusStatToRet.Add(toAdd);
+                }
+                return cusStatToRet;
             }
-
-            return cusStatToRet;
+            else
+            {
+                for (int i = line.LastStation; i < line.FirstStation; i++)
+                {
+                    var toAdd = customStationList.Find(y => y.Code == i);
+                    cusStatToRet.Add(toAdd);
+                }
+                return cusStatToRet;
+            }
         }
 
         public IEnumerable<StationCustom> GetAllCusStationOfLine(int line)
