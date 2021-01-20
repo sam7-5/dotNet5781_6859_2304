@@ -29,10 +29,7 @@ namespace UI
             gridLine.DataContext = myLine;
             areaCbBox.ItemsSource = Enum.GetValues(typeof(BO.Enums.Area));
 
-            //firstStationTextBox.ItemsSource = bl.GetAllStations();
-            //this.firstStationTextBox.SelectedValuePath = "Code";
-            //lastStationTextBox.ItemsSource = bl.GetAllStations();
-            //this.lastStationTextBox.SelectedValuePath = "Code";
+       
         }
 
 

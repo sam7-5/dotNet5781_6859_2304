@@ -30,11 +30,9 @@ namespace UI
 
         private void allLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
             myLine = (allLines.SelectedItem as BO.Line);
             if (myLine != null)
             {
-
                 stationCustomDataGrid.DataContext = bl.GetAllCusStationOfLine(myLine);
             }
         }

@@ -406,6 +406,7 @@ namespace BL
             customStationList = (List<StationCustom>)GetAllCustomStations();
             var cusStatToRet = new List<StationCustom>();
 
+
             if (line.FirstStation <= line.LastStation)
             {
                 for (int i = line.FirstStation; i < line.LastStation; i++)

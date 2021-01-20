@@ -323,6 +323,15 @@ namespace DS
                     Lattitude = 31.797829,
                     Longitude = 35.205601
                 },
+                 new Station
+                {
+                    Code = 120,
+                    Name = "ארקיטקט /שנירר",
+                    Address = "  רחוב:הרב סורוצקין 38 עיר: ירושלים",
+                    Lattitude = 31.797829,
+                    Longitude = 35.205601
+                },
+                 
 
                 //#endregion //30
                 new Station
@@ -544,7 +553,7 @@ namespace DS
             listLines.Add(new Line(5, 565, Enums.Area.Galil, 1510, 1518));
             listLines.Add(new Line(6, 753, Enums.Area.Galil, 88, 97));
             listLines.Add(new Line(7, 324, Enums.Area.Golan, 121, 123));
-            listLines.Add(new Line(8, 492, Enums.Area.Golan, 108, 119));
+            listLines.Add(new Line(8, 492, Enums.Area.Golan, 108, 120));
             listLines.Add(new Line(9, 759, Enums.Area.South, 1490, 1494));
             listLines.Add(new Line(10, 298, Enums.Area.South, 1522, 1524));
             #endregion
@@ -572,7 +581,7 @@ namespace DS
             {
                 listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 90, new TimeSpan(0, i - 85, 32)));
             }
-            for (int i = 108; i < 119; i++)
+            for (int i = 108; i < 121; i++)
             {
                 listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 100.3, new TimeSpan(0, i - 98, 45)));
             }
@@ -669,7 +678,9 @@ namespace DS
             listLineStations.Add(new LineStation(8, 116, 8, 115, 117));
             listLineStations.Add(new LineStation(8, 117, 9, 116, 118));
             listLineStations.Add(new LineStation(8, 118, 10, 117, 119));
-            listLineStations.Add(new LineStation(8, 119, 11, 118, 0));
+            listLineStations.Add(new LineStation(8, 119, 11, 118, 120));
+            listLineStations.Add(new LineStation(8, 120, 12, 119, 121));
+            listLineStations.Add(new LineStation(8, 121, 13, 120, 0));
 
             listLineStations.Add(new LineStation(9, 1490, 0, 0, 1491));
             listLineStations.Add(new LineStation(9, 1491, 1, 1490, 1492));
