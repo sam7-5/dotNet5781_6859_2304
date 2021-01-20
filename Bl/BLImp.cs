@@ -316,7 +316,7 @@ namespace BL
                 Longitude = stationList.ElementAt(i).Longitude, LineStationIndex = lineStationList.ElementAt(i).LineStationIndex,
                 });
             }
-
+            //customStationList.RemoveAt(customStationList.Count()-1);
             return customStationList;
         }
 
@@ -413,6 +413,18 @@ namespace BL
             var customStationList = new List<StationCustom>();
             customStationList = (List<StationCustom>)GetAllCustomStations();
             var cusStatToRet = new List<StationCustom>();
+
+            
+            if(Math.Abs(line.FirstStation - line.LastStation) >= 32)
+            {
+                var toAdd1 = customStationList.Find(x => x.Code == line.FirstStation);
+                var toAdd2 = customStationList.Find(x => x.Code == line.LastStation);
+                cusStatToRet.Add(toAdd1);
+                cusStatToRet.Add(toAdd2);
+
+                return cusStatToRet;
+            }
+
 
             if (line.FirstStation <= line.LastStation)
             {

@@ -8,9 +8,7 @@ namespace BL
     {
         #region Station
         IEnumerable<BO.Station> GetAllStations();
-        IEnumerable<BO.Station> GetStationsOfLine(BO.Line line);
-
-
+        
         BO.Station GetStation(int stationCode);
         void AddStation(BO.Station station);
         void UpdateStation(BO.Station station);

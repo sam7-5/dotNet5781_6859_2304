@@ -12,7 +12,7 @@
         public  TimeSpan timeWithPrevious; -> adjacent station
         */
 
-        public int LineId { get; set; }
+        public int LineId { get; set; }  
         public int Station { get; set; }
         public int LineStationIndex { get; set; }
         public int PrevStation { get; set; }
