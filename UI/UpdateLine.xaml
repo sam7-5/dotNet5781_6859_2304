@@ -8,7 +8,7 @@
         Title="UpdateLine" Height="463.75" Width="647.5">
     <Grid>
 
-        <Grid x:Name="line_update" VerticalAlignment="Top" Margin="316,59,0,0" HorizontalAlignment="Left" DataContext="{Binding}">
+        <Grid x:Name="line_update" VerticalAlignment="Top" Margin="241,59,0,0" HorizontalAlignment="Left" DataContext="{Binding}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -19,15 +19,15 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Area:"/>
-            <ComboBox x:Name="areaComboBox" Width="120" VerticalAlignment="Center" Text="{Binding Area, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3"  HorizontalAlignment="Left" Grid.Column="0" Content="Area:"/>
+            <TextBox x:Name="areaComboBox" Width="120" IsReadOnly="True" VerticalAlignment="Center" Text="{Binding Area, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Id:"/>
-            <TextBox x:Name="idTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox x:Name="idTextBox" Width="120" IsReadOnly="True" VerticalAlignment="Center" Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
         </Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="126,143,0,0" TextWrapping="Wrap" Text="line stops:" VerticalAlignment="Top" Width="92"/>
+        <TextBlock HorizontalAlignment="Left" Margin="27,143,0,0" TextWrapping="Wrap" Text="line stops:" VerticalAlignment="Top" Width="92"/>
         <Button x:Name="addStation" Content="add station" HorizontalAlignment="Left" Margin="372,396,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.35,0.445" Click="addStation_Click" />
-        <Button x:Name="save" Content="close and save" HorizontalAlignment="Left" Margin="110,396,0,0" VerticalAlignment="Top" Width="108" Click="save_Click"/>
-        <DataGrid x:Name="line_stations_datagd" HorizontalAlignment="Left" AutoGenerateColumns="False" EnableRowVirtualization="True" Height="232" Margin="267,143,0,0" ItemsSource="{Binding }" VerticalAlignment="Top" Width="284">
+        <Button x:Name="close" Content="close " HorizontalAlignment="Left" Margin="110,396,0,0" VerticalAlignment="Top" Width="108" Click="save_Click"/>
+        <DataGrid x:Name="line_stations_datagd" HorizontalAlignment="Left" AutoGenerateColumns="False" EnableRowVirtualization="True" Height="232" Margin="110,143,0,0" ItemsSource="{Binding }" VerticalAlignment="Top" Width="441">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Name }" Header="Name" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Code}" Header="Code" Width="SizeToHeader"/>
@@ -45,7 +45,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-               
+
             </DataGrid.Columns>
         </DataGrid>
 
