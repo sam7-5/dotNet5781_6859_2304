@@ -31,8 +31,8 @@ namespace UI
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            myLine = (BO.Line)this.DataContext;
-            bl.UpdateLine(myLine);
+           // myLine = (BO.Line)this.DataContext;
+          //  bl.UpdateLine(myLine);
             this.Close();
         }
 
@@ -44,7 +44,10 @@ namespace UI
 
         private void update_timeDistance_Click(object sender, RoutedEventArgs e)
         {
-            station1 = (BO.StationCustom)this.DataContext;
+
+            station1 = line_stations_datagd.SelectedItem as BO.StationCustom;
+
+
             UpdateTimeDistance updateTimeDistance = new UpdateTimeDistance(station1);
             updateTimeDistance.ShowDialog();
         }

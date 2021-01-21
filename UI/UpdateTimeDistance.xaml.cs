@@ -20,8 +20,8 @@ namespace UI
     public partial class UpdateTimeDistance : Window
     {
         BL.IBL bl = BL.BLFactory.GetBL();
-        BO.Line myLine;
-        BO.StationCustom station;
+      //  BO.Line myLine;
+       // BO.StationCustom station;
         public UpdateTimeDistance(BO.StationCustom station1)
         {
             InitializeComponent();
