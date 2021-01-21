@@ -413,7 +413,7 @@ namespace BL
         public void UpdateStation(StationCustom stationCustom)
         {
             DO.AdjacentStations adjStationToUpdate = new DO.AdjacentStations();
-            adjStationToUpdate = dl.GetAdjtStation(stationCustom.Code - 1, stationCustom.Code);
+            adjStationToUpdate = dl.GetAdjtStation(stationCustom.Code, stationCustom.Code);
             adjStationToUpdate.Time = stationCustom.Time;
             adjStationToUpdate.Distance = stationCustom.Distance;
 
