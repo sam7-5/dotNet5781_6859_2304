@@ -308,15 +308,18 @@ namespace BL
             var lineStationList = GetAllLineStations();
             var adjStationList = GetAllAdjStations();
             var customStationList = new List<BO.StationCustom>();
-
             int numberOfElement = stationList.Count();
-
+           
             for (int i = 0; i < numberOfElement; i++)
             {
+               //TimeSpan time = adjStationList.Find(x => x.Station1 == stationList.ElementAt(i).Code).Time;
+                TimeSpan time = adjStationList.FirstOrDefault(x => x.Station1 == stationList.ElementAt(i).Code).Time;
+                double distance = adjStationList.FirstOrDefault(x => x.Station1 == stationList.ElementAt(i).Code).Distance;
+
                 customStationList.Add(new StationCustom
                 { Code = stationList.ElementAt(i).Code,
-                Name = stationList.ElementAt(i).Name, Distance = adjStationList.ElementAt(i/2).Distance,
-                Time = adjStationList.ElementAt(i/2).Time, Lattitude = stationList.ElementAt(i).Lattitude,
+                Name = stationList.ElementAt(i).Name, Distance = distance,
+                Time = time/*adjStationList.ElementAt(i/2).Time*/, Lattitude = stationList.ElementAt(i).Lattitude,
                 Longitude = stationList.ElementAt(i).Longitude, LineStationIndex = lineStationList.ElementAt(i).LineStationIndex,
                 });
             }
@@ -540,9 +543,23 @@ namespace BL
         // DONE ! --> to test
         public IEnumerable<BO.AdjacentStations> GetAllAdjStations(BO.Station stationBO)
         {
+            
             return from adjStation in dl.GetAllAdjStation()
                    where adjStation.Station2 == stationBO.Code
                    select adjStationDoBoAdapter(adjStation);
+            
+            /*
+            var listAdjDO = dl.GetAllAdjStation();
+            var listToreturn = new List<AdjacentStations>();
+
+            foreach (var item in listAdjDO)
+            {
+                if (item.Station2 == stationBO.Code)
+                {
+                    listToreturn.Add(item);
+                }
+            }
+            */
         }
 
         // DONE ! --> to test

@@ -67,7 +67,8 @@ namespace UI
         private void update_line_Click(object sender, RoutedEventArgs e)
         {
             UpdateLine update = new UpdateLine(myLine);
-            update.Show();
+            update.ShowDialog();
+            stationCustomDataGrid.DataContext = bl.GetAllCusStationOfLine(myLine);
         }
     }
 }
