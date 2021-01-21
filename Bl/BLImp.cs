@@ -314,6 +314,12 @@ namespace BL
             {
                //TimeSpan time = adjStationList.Find(x => x.Station1 == stationList.ElementAt(i).Code).Time;
                 var adj = adjStationList.FirstOrDefault(x => x.Station1 == stationList.ElementAt(i).Code);
+                if (adj == null)
+                {
+                    adj = new AdjacentStations();
+                    adj.Time =  new TimeSpan();
+                    adj.Distance = 0;
+                }
 
                 customStationList.Add(new StationCustom
                 { Code = stationList.ElementAt(i).Code,
