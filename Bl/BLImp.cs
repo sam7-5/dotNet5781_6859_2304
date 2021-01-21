@@ -313,13 +313,12 @@ namespace BL
             for (int i = 0; i < numberOfElement; i++)
             {
                //TimeSpan time = adjStationList.Find(x => x.Station1 == stationList.ElementAt(i).Code).Time;
-                TimeSpan time = adjStationList.FirstOrDefault(x => x.Station1 == stationList.ElementAt(i).Code).Time;
-                double distance = adjStationList.FirstOrDefault(x => x.Station1 == stationList.ElementAt(i).Code).Distance;
+                var adj = adjStationList.FirstOrDefault(x => x.Station1 == stationList.ElementAt(i).Code);
 
                 customStationList.Add(new StationCustom
                 { Code = stationList.ElementAt(i).Code,
-                Name = stationList.ElementAt(i).Name, Distance = distance,
-                Time = time/*adjStationList.ElementAt(i/2).Time*/, Lattitude = stationList.ElementAt(i).Lattitude,
+                Name = stationList.ElementAt(i).Name, Distance = adj.Distance,
+                Time = adj.Time/*adjStationList.ElementAt(i/2).Time*/, Lattitude = stationList.ElementAt(i).Lattitude,
                 Longitude = stationList.ElementAt(i).Longitude, LineStationIndex = lineStationList.ElementAt(i).LineStationIndex,
                 });
             }
