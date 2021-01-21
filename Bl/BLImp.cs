@@ -400,7 +400,7 @@ namespace BL
             {
                 if (allStations.ElementAt(i).Code == stationBO.Code)
                 {
-                    if (i  < allStations.Count() + 2) // + 1
+                    if (i  < allStations.Count()-1 ) 
                         nextCustomStation.Add(stationToCustom(allStations.ElementAt(i + 1)));
                 }
             }
