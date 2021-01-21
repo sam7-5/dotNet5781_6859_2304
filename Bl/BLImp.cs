@@ -425,7 +425,10 @@ namespace BL
             var customStationList = new List<StationCustom>();
             customStationList = (List<StationCustom>)GetAllCustomStations();
             var cusStatToRet = new List<StationCustom>();
-
+            if (line==null)
+            {
+                return new List<StationCustom>();
+            }
             if(Math.Abs(line.FirstStation - line.LastStation) >= 32)
             {
                 var toAdd1 = customStationList.Find(x => x.Code == line.FirstStation);
