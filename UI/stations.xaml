@@ -4,10 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UI"
-        xmlns:BO="clr-namespace:BO;assembly=Bl"
+      xmlns:BO="clr-namespace:BO;assembly=Bl"
       mc:Ignorable="d" 
-       d:DesignHeight="450"
-      Title="stations" Width="800" >
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="stations" >
 
     <!--<Page.Resources>
         <CollectionViewSource x:Key="lineViewSource"  d:DesignSource="{d:DesignInstance {x:Type BO:Station}, CreateList=True}"/>
@@ -17,7 +17,7 @@
     <Page.Background>
         <ImageBrush ImageSource="bus1.jpg" Opacity="0.5"/>
     </Page.Background>
-    <Grid    >
+    <Grid Margin="0,0,10,-0.4"    >
         <!--DataContext="{StaticResource adjacentStationsViewSource}"-->
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -36,7 +36,7 @@
             <Button Name="delete_station" Content="delete current station" Grid.Column="1" HorizontalAlignment="Left" Margin="24.8,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" RenderTransformOrigin="0.365,1.225" Background="#FFDC2E28" Click="delete_station_Click"/>
         </Grid>
 
-        <ListBox x:Name="allStations" SelectedIndex="0" HorizontalAlignment="Left" Height="380" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="290" Background="Transparent" Foreground="#FFF9F6F6"  FontSize="15" SelectionMode="Single" SelectedItem="" ItemsSource="{Binding}"  SelectionChanged="allStations_SelectionChanged"   >
+        <ListBox x:Name="allStations" SelectedIndex="0" HorizontalAlignment="Left" Height="380" Margin="0,9.8,0,0" Grid.Row="1" VerticalAlignment="Top"  Width="270" Background="Transparent" Foreground="#FFF9F6F6"  FontSize="15" SelectionMode="Single" SelectedItem="" ItemsSource="{Binding}"  SelectionChanged="allStations_SelectionChanged"   >
             <ListBox.ItemTemplate>
                 <DataTemplate >
                     <Border Name="border" BorderBrush="#FFDDDD84" BorderThickness="1"  Padding="5" Margin="5" Width="280">
@@ -49,17 +49,17 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Rectangle Fill="Transparent" HorizontalAlignment="Left" Height="182" Margin="291,128.8,0,0" Grid.Row="1" Stroke="#FFF4F0F0" StrokeThickness="4" VerticalAlignment="Top" Width="498"/>
-        <Rectangle Fill="Transparent" HorizontalAlignment="Left" Height="81" Margin="291,315.8,0,0" Grid.Row="1" Stroke="#FFF4F0F0" StrokeThickness="4" VerticalAlignment="Top" Width="498"/>
+        <Rectangle Fill="Transparent" HorizontalAlignment="Center" Height="182" Margin="291,128.8,0,0" Grid.Row="1" Stroke="#FFF4F0F0" StrokeThickness="4" VerticalAlignment="Top" Width="498"/>
+        <Rectangle Fill="Transparent" HorizontalAlignment="Center" Height="81" Margin="291,315.8,0,0" Grid.Row="1" Stroke="#FFF4F0F0" StrokeThickness="4" VerticalAlignment="Top" Width="498"/>
 
-        <Rectangle Fill="Transparent" HorizontalAlignment="Left" Height="100" Margin="291,9.8,0,0" Grid.Row="1" Stroke="#FFF4F0F0" VerticalAlignment="Top" Width="498" StrokeThickness="4"  />
+        <Rectangle Fill="Transparent" HorizontalAlignment="Center" Height="100" Margin="291,9.8,0,0" Grid.Row="1" Stroke="#FFF4F0F0" VerticalAlignment="Top" Width="498" StrokeThickness="4"  />
 
-        <Label Content="stations after:" HorizontalAlignment="Left" Margin="310,138.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="170" Foreground="#FFF9F6F6"  FontSize="20" RenderTransformOrigin="0.496,0.101"/>
-        <Label Content="stations before:" HorizontalAlignment="Left" Margin="577,138.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164" Foreground="#FFF9F6F6"  FontSize="20"/>
-        <ListBox x:Name="busPassesTrough" HorizontalAlignment="Left" Height="33" Margin="310,345.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="466" ItemsSource="{Binding }"/>
-        <Label Content="bus lines that passes through:" HorizontalAlignment="Left" Margin="310,310.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="280" Height="35" Foreground="#FFFCF9F9" FontSize="20"/>
+        <Label Content="stations after:" HorizontalAlignment="Center" Margin="310,133.8,310,0" Grid.Row="1" VerticalAlignment="Top" Width="170" Foreground="#FFF9F6F6"  FontSize="20" RenderTransformOrigin="0.496,0.101"/>
+        <Label Content="stations before:" HorizontalAlignment="Center" Margin="576,133.8,50,0" Grid.Row="1" VerticalAlignment="Top" Width="164" Foreground="#FFF9F6F6"  FontSize="20"/>
+        <ListBox x:Name="busPassesTrough" HorizontalAlignment="Center" Height="33" Margin="310,356.8,14,0" Grid.Row="1" VerticalAlignment="Top" Width="466" ItemsSource="{Binding }" />
+        <Label Content="bus lines that passes through:" HorizontalAlignment="Center" Margin="310,316.8,200,0" Grid.Row="1" VerticalAlignment="Top" Width="280" Height="35" Foreground="#FFFCF9F9" FontSize="20"/>
 
-        <Grid x:Name="gridOneStation" HorizontalAlignment="Left" Height="100" Margin="291,4.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="499">
+        <Grid x:Name="gridOneStation" HorizontalAlignment="Center" Height="100" Margin="291,4.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="499">
             <Label Content="number:" HorizontalAlignment="Left" Margin="26,63,0,0" VerticalAlignment="Top" Width="97" Foreground="#FFF9F6F6"  FontSize="20" RenderTransformOrigin="-1.132,0.764"/>
             <Label Content="longitude:" HorizontalAlignment="Left" Margin="256,20,0,0" VerticalAlignment="Top" Width="112" Foreground="#FFF9F6F6"  FontSize="20" RenderTransformOrigin="0.256,0.448"/>
             <Label Content="name:" HorizontalAlignment="Left" Margin="26,20,0,0" VerticalAlignment="Top" Width="97" Foreground="#FFF9F6F6"  FontSize="20"/>
@@ -69,8 +69,8 @@
             <TextBlock HorizontalAlignment="Left" Margin="368,20,0,0" TextWrapping="Wrap" Text="{Binding Longitude}" VerticalAlignment="Top" Height="36" Width="104" Foreground="#FFDDDD84"  FontSize="20"/>
             <TextBlock HorizontalAlignment="Left" Margin="369,67,0,-4" TextWrapping="Wrap" Text="{Binding Lattitude}" VerticalAlignment="Top" RenderTransformOrigin="-0.147,0.681" Height="37" Width="108" Foreground="#FFDDDD84"  FontSize="20"/>
         </Grid>
-        <ListBox x:Name="nextStations" HorizontalAlignment="Center" Height="100" Margin="30,50,10,0"   ItemsSource="{Binding}" Grid.Row="1" VerticalAlignment="Center" Width="200" SelectionChanged="nextStations_SelectionChanged"  >
-          
+        <ListBox x:Name="nextStations" HorizontalAlignment="Center" Height="100" Margin="310,175.8,280,0"   ItemsSource="{Binding}" Grid.Row="1" VerticalAlignment="Top" Width="200" SelectionChanged="nextStations_SelectionChanged"  >
+
             <ListBox.ItemTemplate>
                 <DataTemplate >
                     <Border Name="border" BorderBrush="MediumPurple" BorderThickness="2"  Padding="2" Margin="5" Width="150">
@@ -85,7 +85,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <ListBox x:Name="previousStations" HorizontalAlignment="Right" VerticalAlignment="Center"  ItemsSource="{Binding}" Height="100" Margin="30,50,30,0" Grid.Row="1"  Width="200" >
+        <ListBox x:Name="previousStations" HorizontalAlignment="Center" VerticalAlignment="Top"  ItemsSource="{Binding}" Height="100" Margin="576,175.8,14,0" Grid.Row="1"  Width="200" >
             <!--ItemsSource="{Binding Source={StaticResource adjacentStationsViewSource}}"-->
             <ListBox.ItemTemplate>
                 <DataTemplate >
@@ -95,7 +95,7 @@
                             <TextBlock Text="{Binding Path=Code}"/>
                             <TextBlock Text="{Binding Path=Distance}" />
                             <TextBlock Text="{Binding Path=Time}"/>
-                           
+
 
                         </StackPanel>
                     </Border>
