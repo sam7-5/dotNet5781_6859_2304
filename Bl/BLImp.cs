@@ -425,6 +425,10 @@ namespace BL
             var customStationList = new List<StationCustom>();
             customStationList = (List<StationCustom>)GetAllCustomStations();
             var cusStatToRet = new List<StationCustom>();
+            if (line==null)
+            {
+                return new List<StationCustom>();
+            }
 
             // if the two stations selected are not from the same Line
             if(Math.Abs(line.FirstStation - line.LastStation) >= 32)
