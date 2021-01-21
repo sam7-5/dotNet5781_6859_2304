@@ -45,7 +45,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <DataGrid x:Name="stationCustomDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding }" Margin="298,9.8,10,14.6" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Row="1">
+        <DataGrid x:Name="stationCustomDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding }" Margin="298,9.8,10,14.6" IsReadOnly="True" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Row="1"  >
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="lineStationIndexColumn" Binding="{Binding LineStationIndex}" Header="Station Index" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Code}" Header="Code" Width="SizeToHeader"/>
@@ -56,7 +56,7 @@
                 <DataGridTextColumn x:Name="longitudeColumn" Binding="{Binding Longitude}" Header="Longitude" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
-
+        
 
     </Grid>
 </Page>

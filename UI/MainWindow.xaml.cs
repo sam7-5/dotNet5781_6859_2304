@@ -28,10 +28,6 @@ namespace UI
             new admin().ShowDialog();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            test test = new test();
-            test.Show();
-        }
+        
     }
 }
