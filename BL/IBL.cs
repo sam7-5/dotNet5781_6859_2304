@@ -17,8 +17,6 @@ namespace BL
 
         IEnumerable<int> GetAllLinesIdPassThrough(BO.Station station);
         IEnumerable<BO.Station> GetAllStationsOfArea(BO.Enums.Area area);
-        void AddStation(BO.StationCustom station);
-        void UpdateStation(BO.StationCustom station);
         #endregion
 
         #region AdjaSttion
@@ -54,6 +52,9 @@ namespace BL
         IEnumerable<BO.StationCustom> GetAllCusStationOfLine(int line);
         IEnumerable<BO.StationCustom> GetAllPrevCusStations(BO.Station station);
         IEnumerable<BO.StationCustom> GetAllNextCusStations(BO.Station station);
+
+        void AddStation(BO.StationCustom station);
+        void UpdateStation(BO.StationCustom station);
 
         #endregion
 
