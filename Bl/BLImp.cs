@@ -426,8 +426,10 @@ namespace BL
             customStationList = (List<StationCustom>)GetAllCustomStations();
             var cusStatToRet = new List<StationCustom>();
 
+            // if the two stations selected are not from the same Line
             if(Math.Abs(line.FirstStation - line.LastStation) >= 32)
             {
+                // search for the customStation code thad fit to line code
                 var toAdd1 = customStationList.Find(x => x.Code == line.FirstStation);
                 var toAdd2 = customStationList.Find(x => x.Code == line.LastStation);
                 cusStatToRet.Add(toAdd1);
@@ -436,7 +438,7 @@ namespace BL
                 return cusStatToRet;
             }
 
-
+            // else does the first station is located before last station selected
             if (line.FirstStation <= line.LastStation)
             {
                 for (int i = line.FirstStation; i < line.LastStation; i++)
