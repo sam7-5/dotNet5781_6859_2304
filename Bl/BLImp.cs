@@ -304,7 +304,6 @@ namespace BL
 
         #region StationCustom
 
-        // TO TEST !
         /// <summary>
         /// create a list of CustomStation wich contain all the informations we could need
         /// </summary>
@@ -370,7 +369,6 @@ namespace BL
         }
         */
 
-        // TO TEST
         public IEnumerable<StationCustom> GetAllPrevCusStations(Station stationBO)
         {
             var allStations = GetAllStations();
@@ -390,7 +388,6 @@ namespace BL
             return prevCustomStation;
         }
 
-        // TO TEST
         public IEnumerable<StationCustom> GetAllNextCusStations(Station stationBO)
         {
             var allStations = GetAllStations();
@@ -413,12 +410,16 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public void UpdateStation(StationCustom station)
+        public void UpdateStation(StationCustom stationCustom)
         {
-            throw new NotImplementedException();
+            DO.AdjacentStations adjStationToUpdate = new DO.AdjacentStations();
+            adjStationToUpdate = dl.GetAdjtStation(stationCustom.Code - 1, stationCustom.Code);
+            adjStationToUpdate.Time = stationCustom.Time;
+            adjStationToUpdate.Distance = stationCustom.Distance;
+
+            dl.UpdateAdjStation(adjStationToUpdate);
         }
 
-        // TO TEST
         public IEnumerable<StationCustom> GetAllCusStationOfLine(Line line)
         {
             var customStationList = new List<StationCustom>();
@@ -499,6 +500,24 @@ namespace BL
             DO.AdjacentStations adjacentStationsDO = new DO.AdjacentStations();
 
             int code1 = stationBO.Code - 1, code2 = stationBO.Code;
+
+            try
+            {
+                adjacentStationsDO = dl.GetAdjtStation(code1, code2);
+            }
+            // to implemente...
+            catch (Exception)
+            {
+                throw;
+            }
+            return adjStationDoBoAdapter(adjacentStationsDO);
+        }
+
+        private BO.AdjacentStations GetAdjacent(int stationCode)
+        {
+            DO.AdjacentStations adjacentStationsDO = new DO.AdjacentStations();
+
+            int code1 = stationCode - 1, code2 = stationCode;
 
             try
             {
