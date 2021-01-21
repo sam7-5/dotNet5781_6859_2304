@@ -40,7 +40,7 @@ namespace UI
         private void delete_line_Click(object sender, RoutedEventArgs e)
         {
             myLine = (allLines.SelectedItem as BO.Line);
-            bl.DeleteLine(myLine);
+            bl.DeleteLine(myLine.Id);
             allLines.DataContext = bl.GetAllLines();
         }
 

@@ -279,7 +279,15 @@ namespace BL
 
         public void DeleteLine(int lineId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                dl.DeleteLine(lineId);
+            }
+            catch (Exception/*DO.exception*/)
+            {
+
+                throw; // new BO.exception
+            }
         }
 
         public void DeleteStationOfLine(Line lineBO, Station stationBO)
