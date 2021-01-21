@@ -228,7 +228,9 @@ namespace BL
         public IEnumerable<BO.Line> GetAllLinesPassThrough(BO.Station station)
         {
             if (station == null)
-                throw new Exception("probleme with station !");
+            {
+                yield break;
+            }
             
             int stationCode = station.Code;
             var allLines = GetAllLines();
@@ -279,15 +281,7 @@ namespace BL
 
         public void DeleteLine(int lineId)
         {
-            try
-            {
-                dl.DeleteLine(lineId);
-            }
-            catch (Exception/*DO.exception*/)
-            {
-
-                throw; // new BO.exception
-            }
+            dl.DeleteLine(lineId);
         }
 
         public void DeleteStationOfLine(Line lineBO, Station stationBO)
@@ -375,7 +369,10 @@ namespace BL
         {
             var allStations = GetAllStations();
             var prevCustomStation = new List<BO.StationCustom>();
-
+            if(stationBO==null)
+            {
+                return new List<StationCustom>(); 
+            }
             for (int i = 0; i < allStations.Count(); i++)
             {
                 if (allStations.ElementAt(i).Code == stationBO.Code)
@@ -395,7 +392,10 @@ namespace BL
         {
             var allStations = GetAllStations();
             var nextCustomStation = new List<BO.StationCustom>();
-
+            if (stationBO == null)
+            {
+                return new List<StationCustom>();
+            }
             for (int i = 0; i < allStations.Count(); i++)
             {
                 if (allStations.ElementAt(i).Code == stationBO.Code)
@@ -533,6 +533,11 @@ namespace BL
 
         private BO.LineStation lineStationBoDoAdapter(DO.LineStation lineStationDO)
         {
+
+            if(lineStationDO==null)
+            {
+                return new BO.LineStation();
+            }
             BO.LineStation lineStationBO = new LineStation();
             DO.LineStation lineStationTest;
             int stationCode = lineStationDO.Station;

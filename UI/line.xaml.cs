@@ -40,7 +40,19 @@ namespace UI
         private void delete_line_Click(object sender, RoutedEventArgs e)
         {
             myLine = (allLines.SelectedItem as BO.Line);
-            bl.DeleteLine(myLine.Id);
+            try
+            {
+                if (myLine == null)
+                    throw new NullReferenceException();
+               
+            }
+            catch(NullReferenceException )
+            {
+                    MessageBox.Show("you have to select a line", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
+            }
+               bl.DeleteLine(myLine.Id);
+
             allLines.DataContext = bl.GetAllLines();
         }
 
