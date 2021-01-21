@@ -227,6 +227,9 @@ namespace BL
         // DONE ! --> to test
         public IEnumerable<BO.Line> GetAllLinesPassThrough(BO.Station station)
         {
+            if (station == null)
+                throw new Exception("probleme with station !");
+            
             int stationCode = station.Code;
             var allLines = GetAllLines();
             int from = 0, to = 0;
@@ -414,7 +417,6 @@ namespace BL
             customStationList = (List<StationCustom>)GetAllCustomStations();
             var cusStatToRet = new List<StationCustom>();
 
-            
             if(Math.Abs(line.FirstStation - line.LastStation) >= 32)
             {
                 var toAdd1 = customStationList.Find(x => x.Code == line.FirstStation);
@@ -459,6 +461,11 @@ namespace BL
         // DONE ! --> to test
         private BO.AdjacentStations adjStationDoBoAdapter(DO.AdjacentStations adjStationDO)
         {
+            if (adjStationDO == null)
+            {
+                //throw new Exception("probleme with stationDO");
+                return new BO.AdjacentStations();
+            }
             BO.AdjacentStations adjStationBO = new AdjacentStations();
             DO.AdjacentStations stationToTest;
 
