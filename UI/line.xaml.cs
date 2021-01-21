@@ -61,6 +61,7 @@ namespace UI
             addLine addLine = new addLine();
             addLine.ShowDialog();
             allLines.DataContext = bl.GetAllLines();
+            stationCustomDataGrid.DataContext = bl.GetAllCusStationOfLine(myLine);
         }
 
         private void update_line_Click(object sender, RoutedEventArgs e)

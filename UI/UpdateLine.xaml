@@ -26,11 +26,13 @@
         </Grid>
         <TextBlock HorizontalAlignment="Left" Margin="27,143,0,0" TextWrapping="Wrap" Text="line stops:" VerticalAlignment="Top" Width="92"/>
         <Button x:Name="addStation" Content="add station" HorizontalAlignment="Left" Margin="372,396,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.35,0.445" Click="addStation_Click" />
-        <Button x:Name="close" Content="close " HorizontalAlignment="Left" Margin="110,396,0,0" VerticalAlignment="Top" Width="108" Click="save_Click"/>
-        <DataGrid x:Name="line_stations_datagd" HorizontalAlignment="Left" AutoGenerateColumns="False" EnableRowVirtualization="True" Height="232" Margin="110,143,0,0" ItemsSource="{Binding }" VerticalAlignment="Top" Width="441">
+        <Button x:Name="close" Content="close and save" HorizontalAlignment="Left" Margin="92,396,0,0" VerticalAlignment="Top" Width="108" Click="save_Click"/>
+        <DataGrid x:Name="line_stations_datagd" HorizontalAlignment="Left" AutoGenerateColumns="False" EnableRowVirtualization="True" Height="232" Margin="110,143,0,0" ItemsSource="{Binding }" VerticalAlignment="Top" Width="500">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Name }" Header="Name" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Code}" Header="Code" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Name }" Header="Name" Width="200"/>
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Code}" Header="Code" Width="50"/>
+                 <DataGridTextColumn x:Name="distColumn" Binding="{Binding Distance }" Header="distance" Width="50"/>
+                <DataGridTextColumn x:Name="timeColumn" Binding="{Binding Time}" Header="time" Width="50"/>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
