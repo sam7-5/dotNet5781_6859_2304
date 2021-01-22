@@ -34,7 +34,7 @@ namespace UI
         {
             
             var line = gridLine_id.DataContext as BO.Line;
-            bl.addStationToLine(station, line);
+            bl.AddStationToLine(station, line);
         }
 
     }
