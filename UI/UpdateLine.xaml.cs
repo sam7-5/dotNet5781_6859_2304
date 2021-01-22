@@ -38,15 +38,15 @@ namespace UI
         private void addStation_Click(object sender, RoutedEventArgs e)
         {
             var line = line_update.DataContext as BO.Line;
-            AddStationLine addStationLine = new AddStationLine(line);
+            station = line_stations_datagd.SelectedItem as BO.StationCustom;
+
+            AddStationLine addStationLine = new AddStationLine(line,station.LineStationIndex);
             addStationLine.ShowDialog();
         }
 
         private void update_timeDistance_Click(object sender, RoutedEventArgs e)
         {
-
             station1 = line_stations_datagd.SelectedItem as BO.StationCustom;
-
 
             UpdateTimeDistance updateTimeDistance = new UpdateTimeDistance(station1);
             updateTimeDistance.ShowDialog();

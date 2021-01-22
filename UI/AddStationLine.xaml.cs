@@ -19,13 +19,14 @@ namespace UI
     /// </summary>
     public partial class AddStationLine : Window
     {
-        BO.StationCustom station;
+        BO.StationCustom station=new BO.StationCustom();
         BL.IBL bl = BL.BLFactory.GetBL();
 
-        public AddStationLine(BO.Line line)
+        public AddStationLine(BO.Line line,int index)
         {
             InitializeComponent();
             gridLine_id.DataContext = line;
+            station.LineStationIndex = index+1;
             add_station_to_line.DataContext = station;
         }
 
@@ -37,5 +38,6 @@ namespace UI
             bl.AddStationToLine(station, line);
         }
 
+       
     }
 }
