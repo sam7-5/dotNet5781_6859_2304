@@ -10,6 +10,7 @@
             PrevStation = prevStation;
             NextStation = nextStation;
         }
+        public LineStation() { }
 
         public int LineId { get; set; }
         public int Station { get; set; }
