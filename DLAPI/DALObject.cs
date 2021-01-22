@@ -19,7 +19,6 @@ namespace DLAPI
         #endregion
 
         // implement IDL with CRUD Logic
-        // ======= IMPORTANT : IMPLEMENTE STATIC CLONE TOOL ======= //
         #region Station
         public DO.Station GetStation(int codeStation)
         {
@@ -152,7 +151,7 @@ namespace DLAPI
         }
         public void DeleteLineStation(int lineId)
         {
-            DO.LineStation lstToDlt = DataSource.listLineStations.Find(lst => lst.LineId == lineId);
+            DO.LineStation lstToDlt = DataSource.listLineStations.Find(lst => lst.Station == lineId);
             if (lstToDlt != null)
                 DataSource.listLineStations.Remove(lstToDlt);
             else
