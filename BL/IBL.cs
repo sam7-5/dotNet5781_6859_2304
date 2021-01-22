@@ -23,13 +23,14 @@ namespace BL
 
         IEnumerable<BO.AdjacentStations> GetAllAdjStations(BO.Station stationBO);
         IEnumerable<BO.AdjacentStations> GetAllAdjStations();
+        void AddAdjStation(BO.AdjacentStations adjacentStations);
         #endregion
 
         #region LineStation
 
         IEnumerable<BO.LineStation> GetAllPrevLineStations(BO.Station stationBO);
         IEnumerable<BO.LineStation> GetAllLineStations();
-
+        void AddLineStation(BO.LineStation lineStation);
         #endregion
 
         #region Line
@@ -53,7 +54,7 @@ namespace BL
         IEnumerable<BO.StationCustom> GetAllPrevCusStations(BO.Station station);
         IEnumerable<BO.StationCustom> GetAllNextCusStations(BO.Station station);
 
-        void AddStation(BO.StationCustom station);
+        void AddStationToLine(BO.StationCustom station, BO.Line line);
         void UpdateStation(BO.StationCustom station);
 
         #endregion
