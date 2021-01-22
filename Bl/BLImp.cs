@@ -286,7 +286,17 @@ namespace BL
 
         public void DeleteStationOfLine(Line lineBO, Station stationBO)
         {
-            throw new NotImplementedException();
+            int from = lineBO.FirstStation;
+            int to = lineBO.LastStation;
+
+            for (int i = from; i < to; i++)
+            {
+                if (i == stationBO.Code)
+                {
+                    dl.DeleteLineStation(i);
+                    lineBO.stationOfThisLine.Remove(i);
+                }
+            }
         }
 
         public void DeleteLine(Line line)
