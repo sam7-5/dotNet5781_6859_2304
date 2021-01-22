@@ -32,14 +32,13 @@ namespace UI
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-           // myLine = (BO.Line)this.DataContext;
-          //  bl.UpdateLine(myLine);
             this.Close();
         }
 
         private void addStation_Click(object sender, RoutedEventArgs e)
         {
-            AddStationLine addStationLine = new AddStationLine();
+            var line = line_update.DataContext as BO.Line;
+            AddStationLine addStationLine = new AddStationLine(line);
             addStationLine.ShowDialog();
         }
 
@@ -60,6 +59,12 @@ namespace UI
             bl.DeleteStationOfLine(line, station);
             line_stations_datagd.DataContext = bl.GetAllCusStationOfLine(line);
 
+        }
+
+        private void line_stations_datagd_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            station = line_stations_datagd.SelectedItem as BO.StationCustom;
+            afterStationText.DataContext = station.Name;
         }
     }
 }
