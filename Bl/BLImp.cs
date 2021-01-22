@@ -136,6 +136,10 @@ namespace BL
         // DONE
         private BO.Line lineDoBoAdapter(DO.Line lineDO)
         {
+            if (lineDO == null)
+                return new BO.Line();
+
+            
             // we can add more func. by getting the lineDO.Id
             BO.Line lineBO = new BO.Line();
             lineBO.Area = (Enums.Area)lineDO.Area;
@@ -281,6 +285,37 @@ namespace BL
 
         public void DeleteLine(int lineId)
         {
+            Line lineToDelete = GetLine(lineId);
+
+            // each line has a list<int> of code station
+            if (lineToDelete != null)
+            {
+                lineToDelete.stationOfThisLine.Clear();
+            }
+
+            // deleteing all linestation of the selected line
+            var allLineStations = (List<LineStation>)GetAllLineStations();
+
+            if (allLineStations != null)
+            {
+                for (int i = 0; i < allLineStations.Count(); i++)
+                {
+                    if (allLineStations.ElementAt(i).LineId == lineId)
+                    {
+                        allLineStations.RemoveAt(i);
+                    }
+                }
+                /*
+                foreach (var item in allLineStations)
+                {
+                    if (item.LineId == lineId)
+                    {
+                        allLineStations.Remove(item);
+                    }
+                }
+                */
+            }
+         
             dl.DeleteLine(lineId);
         }
 
@@ -288,6 +323,11 @@ namespace BL
         {
             int from = lineBO.FirstStation;
             int to = lineBO.LastStation;
+
+            if(lineBO.stationOfThisLine.Count()==1)
+            {
+                DeleteLine(lineBO.Code);
+            }
 
             for (int i = from; i < to; i++)
             {
@@ -639,9 +679,9 @@ namespace BL
 
         public IEnumerable<BO.LineStation> GetAllLineStations()
         {
-            return from lStationDO in dl.GetAllLineStation()
+            return (from lStationDO in dl.GetAllLineStation()
                    orderby lStationDO.LineId
-                   select lineStationBoDoAdapter(lStationDO);
+                   select lineStationBoDoAdapter(lStationDO)).ToList();
         }
 
         public IEnumerable<BO.LineStation> GetAllPrevLineStations(Station stationBO)

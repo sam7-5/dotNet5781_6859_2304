@@ -12,6 +12,6 @@ namespace BO
 
         public override string ToString() { return $"{Id}"; }
 
-        public List<int> stationOfThisLine = null;
+        public List<int> stationOfThisLine = new List<int>();
     }
 }
