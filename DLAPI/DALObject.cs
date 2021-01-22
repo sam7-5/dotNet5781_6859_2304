@@ -171,7 +171,7 @@ namespace DLAPI
         public void AddAdjacentStation(DO.AdjacentStations AdjStation)
         {
             if (DataSource.listAdjacentStations.Find(adjSt => adjSt.Station1 == AdjStation.Station1 && adjSt.Station2 == AdjStation.Station2) != null)
-                throw new NotImplementedException();
+                throw new NotImplementedException(); // already exist !
             else
                 DataSource.listAdjacentStations.Add(AdjStation);
         }

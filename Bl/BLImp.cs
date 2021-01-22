@@ -133,7 +133,7 @@ namespace BL
         #endregion
 
         #region Line
-        // DONE
+
         private BO.Line lineDoBoAdapter(DO.Line lineDO)
         {
             if (lineDO == null)
@@ -151,8 +151,6 @@ namespace BL
 
             return lineBO;
         }
-
-        // DONE
         public IEnumerable<Line> GetAllLines()
         {
             /*
@@ -182,53 +180,6 @@ namespace BL
 
             return listBO.OrderBy(x => x.Id);
         }
-
-        // DONE
-        public BO.Line GetLine(int lineId)
-        {
-            DO.Line lineDO;
-            try // if lineId exist in our ds
-            {
-                lineDO = dl.GetLine(lineId);
-            }
-            catch (Exception) // DO.exception to imp.
-            {
-                throw; // BO.exception
-            }
-            return lineDoBoAdapter(lineDO);
-        }
-
-        // DONE ! --> to test
-        public void AddLine(Line lineBO)
-        {
-            DO.Line lineDO = new DO.Line();
-
-            lineDO.Area = (DO.Enums.Area)lineBO.Area;
-            lineDO.Code = lineBO.Code;
-            lineDO.FirstStation = lineBO.FirstStation;
-            lineDO.LastStation = lineBO.LastStation;
-            lineDO.ID = lineBO.Id;
-
-            dl.AddLine(lineDO);
-        }
-
-        // DONE ! --> to test
-        public void UpdateLine(Line lineBO)
-        {
-            DO.Line lineDO = new DO.Line();
-            lineBO.CopyPropertiesTo(lineDO);
-            //dl.AddLine(lineDO);
-            try
-            {
-                dl.UpdateLine(lineDO);
-            }
-            catch (Exception)
-            {
-                throw; // fail to update the new line
-            }
-        }
-
-        // DONE ! --> to test
         public IEnumerable<BO.Line> GetAllLinesPassThrough(BO.Station station)
         {
             if (station == null)
@@ -255,8 +206,6 @@ namespace BL
             }
 
         }
-
-        // DONE ! --> to test
         public IEnumerable<int> GetAllLinesIdPassThrough(Station station)
         {
             int stationCode = station.Code;
@@ -277,12 +226,49 @@ namespace BL
                 }
             }
         }
+        public BO.Line GetLine(int lineId)
+        {
+            DO.Line lineDO;
+            try // if lineId exist in our ds
+            {
+                lineDO = dl.GetLine(lineId);
+            }
+            catch (Exception) // DO.exception to imp.
+            {
+                throw; // BO.exception
+            }
+            return lineDoBoAdapter(lineDO);
+        }
+        public void AddLine(Line lineBO)
+        {
+            DO.Line lineDO = new DO.Line();
 
+            lineDO.Area = (DO.Enums.Area)lineBO.Area;
+            lineDO.Code = lineBO.Code;
+            lineDO.FirstStation = lineBO.FirstStation;
+            lineDO.LastStation = lineBO.LastStation;
+            lineDO.ID = lineBO.Id;
+
+            dl.AddLine(lineDO);
+        }
+        public void UpdateLine(Line lineBO)
+        {
+            DO.Line lineDO = new DO.Line();
+            lineBO.CopyPropertiesTo(lineDO);
+            //dl.AddLine(lineDO);
+            try
+            {
+                dl.UpdateLine(lineDO);
+            }
+            catch (Exception)
+            {
+                throw; // fail to update the new line
+            }
+        }
         public void UpdateLine(Line line, Action<Line> update)
         {
             throw new NotImplementedException();
         }
-
         public void DeleteLine(int lineId)
         {
             Line lineToDelete = GetLine(lineId);
@@ -318,7 +304,6 @@ namespace BL
          
             dl.DeleteLine(lineId);
         }
-
         public void DeleteStationOfLine(Line lineBO, StationCustom stationBO)
         {
             int from = lineBO.FirstStation;
@@ -338,7 +323,6 @@ namespace BL
                 }
             }
         }
-
         public void DeleteLine(Line line)
         {
             throw new NotImplementedException();
@@ -376,6 +360,7 @@ namespace BL
                 Name = stationList.ElementAt(i).Name, Distance = adj.Distance,
                 Time = adj.Time/*adjStationList.ElementAt(i/2).Time*/, Lattitude = stationList.ElementAt(i).Lattitude,
                 Longitude = stationList.ElementAt(i).Longitude, LineStationIndex = lineStationList.ElementAt(i).LineStationIndex,
+                Adress = stationList.ElementAt(i).Address // essai
                 });
             }
             //customStationList.RemoveAt(customStationList.Count()-1);
@@ -463,9 +448,38 @@ namespace BL
             return nextCustomStation;
         }
 
-        public void AddStation(StationCustom station)
+        // ********************** to test ! ****************************//
+        public void AddStationToLine(StationCustom station, Line line)
         {
-            throw new NotImplementedException();
+            var stationToAdd = new Station();
+            var lineStationToAdd = new LineStation();
+            var adjStationToAdd1 = new AdjacentStations();
+            var adjStationToAdd2 = new AdjacentStations();
+
+            stationToAdd.Address = station.Adress;
+            stationToAdd.Code = station.Code;
+            stationToAdd.Lattitude = station.Lattitude;
+            stationToAdd.Longitude = station.Longitude;
+            AddStation(stationToAdd);
+
+            lineStationToAdd.Station = station.Code;
+            lineStationToAdd.LineStationIndex = station.LineStationIndex;
+            lineStationToAdd.NextStation = GetStation(station.LineStationIndex + 1).Code; // tres foireux: le plus un fait flipper
+            lineStationToAdd.PrevStation = GetStation(station.LineStationIndex - 1).Code;
+            lineStationToAdd.LineId = line.Id;
+            AddLineStation(lineStationToAdd);
+
+            adjStationToAdd1.Time = station.Time;
+            adjStationToAdd1.Distance = station.Distance;
+            adjStationToAdd1.Station1 = GetStation(station.LineStationIndex - 1).Code;
+            adjStationToAdd1.Station2 = GetStation(station.LineStationIndex).Code;
+            AddAdjStation(adjStationToAdd1);
+           
+            adjStationToAdd2.Station1 = GetStation(station.LineStationIndex).Code;
+            adjStationToAdd2.Station2 = GetStation(station.LineStationIndex + 1).Code;
+            adjStationToAdd2.Time = new TimeSpan(00,12,34);
+            adjStationToAdd2.Distance = station.Distance * 0.95 + 1;
+            AddAdjStation(adjStationToAdd2);
         }
 
         public void UpdateStation(StationCustom stationCustom)
@@ -541,7 +555,6 @@ namespace BL
 
         #region adjacentStation
 
-        // DONE ! --> to test
         private BO.AdjacentStations adjStationDoBoAdapter(DO.AdjacentStations adjStationDO)
         {
             if (adjStationDO == null)
@@ -605,7 +618,6 @@ namespace BL
             return adjStationDoBoAdapter(adjacentStationsDO);
         }
 
-        // DONE ! --> to test
         public IEnumerable<BO.AdjacentStations> GetAllAdjStations(BO.Station stationBO)
         {
             
@@ -627,13 +639,22 @@ namespace BL
             */
         }
 
-        // DONE ! --> to test
         public IEnumerable<AdjacentStations> GetAllAdjStations()
         {
             return from adjStation in dl.GetAllAdjStation()
                    select adjStationDoBoAdapter(adjStation);
         }
 
+        public void AddAdjStation(BO.AdjacentStations adjacentStations)
+        {
+            DO.AdjacentStations adjToAdd = new DO.AdjacentStations();
+            adjToAdd.Distance = adjacentStations.Distance;
+            adjToAdd.Time = adjacentStations.Time;
+            adjToAdd.Station1 = adjacentStations.Station1;
+            adjToAdd.Station2 = adjacentStations.Station2;
+
+            dl.AddAdjacentStation(adjToAdd);
+        }
         #endregion
 
         #region LineStation
@@ -713,6 +734,19 @@ namespace BL
             }
 
             return prevLinesStation;
+        }
+
+        public void AddLineStation(BO.LineStation lineStation)
+        {
+            var lineStToAdd = new DO.LineStation();
+
+            lineStToAdd.LineId = lineStation.LineId;
+            lineStToAdd.LineStationIndex = lineStation.LineStationIndex;
+            lineStToAdd.NextStation = lineStation.NextStation;
+            lineStToAdd.PrevStation = lineStation.PrevStation;
+            lineStToAdd.Station = lineStation.Station;
+
+            dl.AddLineStation(lineStToAdd);
         }
 
         #endregion
