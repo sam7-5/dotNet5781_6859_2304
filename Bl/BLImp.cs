@@ -448,6 +448,8 @@ namespace BL
                 return new List<StationCustom>();
             }
 
+            
+
             // if the two stations selected are not from the same Line
             if(Math.Abs(line.FirstStation - line.LastStation) >= 32)
             {
@@ -463,19 +465,27 @@ namespace BL
             // else does the first station is located before last station selected
             if (line.FirstStation <= line.LastStation)
             {
-                for (int i = line.FirstStation; i < line.LastStation; i++)
+                for (int i = line.FirstStation, j = 0; i < line.LastStation && j < line.stationOfThisLine.Count(); i++)
                 {
-                    var toAdd = customStationList.Find(y => y.Code == i);
-                    cusStatToRet.Add(toAdd);
+                    if (line.stationOfThisLine.ElementAt(j) == i)
+                    {
+                        var toAdd = customStationList.Find(y => y.Code == i);
+                        cusStatToRet.Add(toAdd);
+                        j++;
+                    }
                 }
                 return cusStatToRet;
             }
             else
             {
-                for (int i = line.LastStation; i < line.FirstStation; i++)
+                for (int i = line.LastStation, j = 0; i < line.FirstStation && j < line.stationOfThisLine.Count(); i++)
                 {
-                    var toAdd = customStationList.Find(y => y.Code == i);
-                    cusStatToRet.Add(toAdd);
+                    if (line.stationOfThisLine.ElementAt(j) == i)
+                    {
+                        var toAdd = customStationList.Find(y => y.Code == i);
+                        cusStatToRet.Add(toAdd);
+                        j++;
+                    }
                 }
                 return cusStatToRet;
             }

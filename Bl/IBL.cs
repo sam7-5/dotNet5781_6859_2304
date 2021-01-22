@@ -42,7 +42,7 @@ namespace BL
 
         IEnumerable<BO.Line> GetAllLinesPassThrough(BO.Station staion);
         void DeleteLine(BO.Line line);
-        void DeleteStationOfLine(BO.Line line, BO.Station station);
+        void DeleteStationOfLine(BO.Line line, BO.StationCustom station);
 
         #endregion
 

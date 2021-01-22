@@ -58,6 +58,8 @@ namespace UI
             var line=line_update.DataContext as BO.Line;
             station = line_stations_datagd.SelectedItem as BO.StationCustom;
             bl.DeleteStationOfLine(line, station);
+            line_stations_datagd.DataContext = bl.GetAllCusStationOfLine(line);
+
         }
     }
 }

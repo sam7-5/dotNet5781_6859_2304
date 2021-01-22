@@ -152,7 +152,7 @@ namespace DLAPI
         }
         public void DeleteLineStation(int lineId)
         {
-            DO.LineStation lstToDlt = DataSource.listLineStations.Find(lst => lst.LineId == lineId);
+            DO.LineStation lstToDlt = DataSource.listLineStations.Find(lst => lst.Station == lineId);
             if (lstToDlt != null)
                 DataSource.listLineStations.Remove(lstToDlt);
             else
