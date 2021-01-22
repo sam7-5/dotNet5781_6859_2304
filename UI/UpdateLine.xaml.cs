@@ -20,10 +20,11 @@ namespace UI
     public partial class UpdateLine : Window
     {
         BL.IBL bl = BL.BLFactory.GetBL();
-        BO.Line myLine;
         BO.StationCustom station1;
+        BO.StationCustom station;
         public UpdateLine(BO.Line myLine)
         {
+            
             InitializeComponent();
             line_update.DataContext = myLine;
             line_stations_datagd.DataContext = bl.GetAllCusStationOfLine(myLine);
@@ -54,8 +55,9 @@ namespace UI
         
         private void delete_station_Click(object sender, RoutedEventArgs e)
         {
-            BO.Station station = ((sender as Button).DataContext as BO.Station);
-            bl.DeleteStationOfLine(myLine, station);
+            var line=line_update.DataContext as BO.Line;
+            station = line_stations_datagd.SelectedItem as BO.StationCustom;
+            bl.DeleteStationOfLine(line, station);
         }
     }
 }

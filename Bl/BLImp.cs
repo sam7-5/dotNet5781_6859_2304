@@ -284,7 +284,7 @@ namespace BL
             dl.DeleteLine(lineId);
         }
 
-        public void DeleteStationOfLine(Line lineBO, Station stationBO)
+        public void DeleteStationOfLine(Line lineBO, StationCustom stationBO)
         {
             int from = lineBO.FirstStation;
             int to = lineBO.LastStation;
