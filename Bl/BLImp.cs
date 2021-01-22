@@ -284,9 +284,9 @@ namespace BL
             dl.DeleteLine(lineId);
         }
 
-        public void DeleteStationOfLine(Line lineBO, Station stationBO)
+        public void DeleteStationOfLine(Line lineBO, StationCustom stationBO)
         {
-            throw new NotImplementedException();
+
         }
 
         public void DeleteLine(Line line)
