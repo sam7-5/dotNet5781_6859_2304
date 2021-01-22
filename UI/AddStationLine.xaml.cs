@@ -31,13 +31,14 @@ namespace UI
         }
 
        
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-            var line = gridLine_id.DataContext as BO.Line;
-           // bl.addStationToLine(station, line);
-        }
+      
 
-       
+        private void addStation_Click(object sender, RoutedEventArgs e)
+        {
+            var line = gridLine_id.DataContext as BO.Line;
+           bl.AddStationToLine(station, line);
+            this.Close();
+
+        }
     }
 }
