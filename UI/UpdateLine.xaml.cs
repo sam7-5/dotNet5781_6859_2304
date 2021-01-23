@@ -23,8 +23,7 @@ namespace UI
         BO.StationCustom station1;
         BO.StationCustom station;
         public UpdateLine(BO.Line myLine)
-        {
-            
+        {  
             InitializeComponent();
             line_update.DataContext = myLine;
             line_stations_datagd.DataContext = bl.GetAllCusStationOfLine(myLine);
@@ -57,9 +56,11 @@ namespace UI
         {
             var line=line_update.DataContext as BO.Line;
             station = line_stations_datagd.SelectedItem as BO.StationCustom;
-            bl.DeleteStationOfLine(line, station);
+            
+            try { bl.DeleteStationOfLine(line, station); }
+            catch (BO.BadLineIDException ex) { MessageBox.Show(ex.Message); }
             //afterStationText.DataContext = "  ";
-            line_stations_datagd.DataContext = bl.GetAllCusStationOfLine(line);
+            finally { line_stations_datagd.DataContext = bl.GetAllCusStationOfLine(line); }
 
         }
 

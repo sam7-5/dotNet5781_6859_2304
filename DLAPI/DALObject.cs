@@ -22,30 +22,18 @@ namespace DLAPI
         #region Station
         public DO.Station GetStation(int codeStation)
         {
-            //------------------- This is the best way, not for now --------------//
-            /*
-            DO.Station station = ds.listStations.Find(st => st.Code == codeStation);
+            DO.Station station = DataSource.listStations.Find(st => st.Code == codeStation);
             if (station != null)
-                return station.Clone();
+                return new Station(station); // copy mechanism
             else
-                throw new DO.BadStationIdException(codeStation, "bad station code: {codeStation}");
-            */
+                throw new DO.BadStationCodeException(codeStation, $"bad Station code: {codeStation}");
+        }
+        public IEnumerable<DO.Station> GetAllStations() => DataSource.listStations;
 
-            return DataSource.listStations.Find(st => st.Code == codeStation);
-        }
-        public IEnumerable<DO.Station> GetAllStations()
-        {
-            //------------------- This is the best way, not for now --------------//
-            /*
-            return from station in ds.listStations
-                   select station.Clone();
-            */
-            return DataSource.listStations;
-        }
         public void AddStation(DO.Station station)
         {
             if (DataSource.listStations.FirstOrDefault(st => st.Code == station.Code) != null)
-                throw new NotImplementedException(); // already in
+                throw new BadStationCodeException(station.Code, $"Station with the same code already exist"); // already in
             else
                 DataSource.listStations.Add(station);
         }
@@ -56,15 +44,12 @@ namespace DLAPI
             if (station != null)
             {
                 DataSource.listStations.Remove(station);
-                DataSource.listStations.Add(stationToAdd/*.Clone()*/);
+                DataSource.listStations.Add(new Station(stationToAdd));
             }
             else
-                throw new NotImplementedException();
+                throw new BadStationCodeException(station.Code, $"bad station code: {station.Code}");
         }
-        public void UpdateStation(int stationCode, Action<DO.Station> update)
-        {
-            throw new NotImplementedException();
-        }
+
         public void DeleteStation(int stationCode)
         {
             DO.Station stationToDlt = DataSource.listStations.Find(st => st.Code == stationCode);
@@ -72,7 +57,7 @@ namespace DLAPI
             if (stationToDlt != null)
                 DataSource.listStations.Remove(stationToDlt);
             else
-                throw new NotImplementedException();
+                throw new DO.BadStationCodeException(stationCode, $"bad station code: {stationCode}");
         }
         #endregion
 
@@ -84,13 +69,17 @@ namespace DLAPI
         public void AddLine(DO.Line line)
         {
             if (DataSource.listLines.FirstOrDefault(st => st.ID == line.ID) != null)
-                throw new NotImplementedException();
+                throw new BadLineIDException(line.ID, $"problem: for the moment we can't have two lines with the same ID");
             else
                 DataSource.listLines.Add(line);
         }
         public DO.Line GetLine(int lineId)
         {
-            return DataSource.listLines.Find(ln => ln.ID == lineId);
+            DO.Line line = DataSource.listLines.Find(ln => ln.ID == lineId);
+            if (line != null)
+                return new Line(line);
+            else
+                throw new BadLineIDException(lineId, $"bade Line ID {lineId}");
         }
         public void UpdateLine(DO.Line line)
         {
@@ -102,11 +91,7 @@ namespace DLAPI
                 DataSource.listLines.Add(line/*.Clone()*/);
             }
             else
-                throw new NotImplementedException();
-        }
-        public void UpdateLine(DO.Line line, Action<DO.Line> update)
-        {
-            throw new NotImplementedException();
+                throw new BadLineIDException(line.ID, $"bade Line ID {line.ID}");
         }
         public void DeleteLine(int lineId)
         {
@@ -114,10 +99,9 @@ namespace DLAPI
             if (lineToDlt != null)
                 DataSource.listLines.Remove(lineToDlt);
             else
-                throw new NotImplementedException();
+                throw new BadLineIDException(lineId, $"bade Line ID {lineId}");
         }
         #endregion
-
 
         #region LineStation
         public IEnumerable<DO.LineStation> GetAllLineStation()
@@ -126,12 +110,16 @@ namespace DLAPI
         }
         public DO.LineStation GetLineStation(int stationCode)
         {
-            return DataSource.listLineStations.Find(lst => lst.Station == stationCode);
+            DO.LineStation lineStation = DataSource.listLineStations.Find(lst => lst.Station == stationCode);
+            if (lineStation != null)
+                return new LineStation(lineStation);
+            else
+                throw new BadStationCodeException(stationCode, $"bad Station code: {stationCode}");
         }
         public void AddLineStation(DO.LineStation lineStation)
         {
             if (DataSource.listLineStations.FirstOrDefault(lst => lst.Station == lineStation.Station) != null)
-                throw new NotImplementedException(); // not find
+                throw new BadStationCodeException(lineStation.Station, $"Station with the same code already exist");
             else
                 DataSource.listLineStations.Add(lineStation);
         }
@@ -144,11 +132,7 @@ namespace DLAPI
                 DataSource.listLineStations.Add(lineStation);
             }
             else
-                throw new NotImplementedException();
-        }
-        public void UpdateLineStation(DO.LineStation line, Action<DO.LineStation> update)
-        {
-            throw new NotImplementedException();
+                throw new BadStationCodeException(lineStation.Station, $"bad Station code: {lineStation.Station}");
         }
         public void DeleteLineStation(int lineId)
         {
@@ -156,7 +140,7 @@ namespace DLAPI
             if (lstToDlt != null)
                 DataSource.listLineStations.Remove(lstToDlt);
             else
-                throw new NotImplementedException();
+                throw new BadStationCodeException(lineId, $"bad Station code: {lineId}");
         }
         #endregion
 
@@ -167,12 +151,19 @@ namespace DLAPI
         }
         public DO.AdjacentStations GetAdjtStation(int station1, int station2)
         {
-            return DataSource.listAdjacentStations.Find(st => st.Station1 == station1 || st.Station2 == station2);
+            DO.AdjacentStations adjacentStations = DataSource.listAdjacentStations.Find(st => st.Station1 == station1 || st.Station2 == station2);
+            if (adjacentStations != null)
+                return new AdjacentStations(adjacentStations);
+            else
+                /*
+                throw new BadAdjStationCodeException(station1, station2, $"bad stations codes: {station1}, {station2}");
+                */
+                return new AdjacentStations();
         }
         public void AddAdjacentStation(DO.AdjacentStations AdjStation)
         {
             if (DataSource.listAdjacentStations.Find(adjSt => adjSt.Station1 == AdjStation.Station1 && adjSt.Station2 == AdjStation.Station2) != null)
-                throw new NotImplementedException(); // already exist !
+                throw new BadAdjStationCodeException(AdjStation.Station1, AdjStation.Station2, $"thise pair of station already exist");
             else
                 DataSource.listAdjacentStations.Add(AdjStation);
         }
@@ -185,23 +176,22 @@ namespace DLAPI
                 DataSource.listAdjacentStations.Add(AdjStation);
             }
             else
-                throw new NotImplementedException();
+                throw new BadAdjStationCodeException(AdjStation.Station1, AdjStation.Station2, "bad codes");
         }
-        public void UpdateAdjStation(DO.AdjacentStations AdjStation, Action<DO.LineStation> update)
-        {
-            throw new NotImplementedException();
-        }
+
         public void DeleteAdjStation(int station1, int station2)
         {
             DO.AdjacentStations adjToDlt = DataSource.listAdjacentStations.Find(st => st.Station1 == station1 && st.Station2 == station2);
             if (adjToDlt != null)
                 DataSource.listAdjacentStations.Remove(adjToDlt);
             else
-                throw new NotImplementedException();
+                throw new BadAdjStationCodeException(station1, station2, "bad codes");
         }
+
         #endregion
 
         #region LineTrip
+
         public IEnumerable<DO.LineTrip> GetAllLineTrip()
         {
             return DataSource.listLineTrip;
@@ -242,4 +232,5 @@ namespace DLAPI
         }
         #endregion
     }
-}
+
+} // namespace DLApi

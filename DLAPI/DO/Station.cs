@@ -17,6 +17,14 @@ namespace DO
             Lattitude = lattitude;
             Address = address;
         }
+        public Station(Station station)
+        {
+            Code = station.Code;
+            Name = station.Name;
+            Longitude = station.Longitude;
+            Lattitude = station.Lattitude;
+            Address = station.Address;
+        }
 
         public int Code { get; set; }
         public string Name { get; set; }

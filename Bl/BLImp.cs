@@ -14,7 +14,7 @@ namespace BL
 
         #region station
 
-        //DONE
+        // ---
         private BO.Station stationDoBoAdapter(DO.Station stationDO)
         {
             BO.Station stationBO = new BO.Station();
@@ -23,15 +23,15 @@ namespace BL
             {
                 return stationBO;
             }
-            int stationCode = stationDO.Code;
 
+            int stationCode = stationDO.Code;
             try
             {
                 stationToTest = dl.GetStation(stationCode);
             }
-            catch (Exception/*DO.BadStationException*/)
+            catch (DO.BadStationCodeException ex)
             {
-                throw;
+                throw new BO.BadStationCodeException("station code is illegal", ex);
             }
 
             stationDO.CopyPropertiesTo(stationBO);
@@ -39,7 +39,7 @@ namespace BL
             return stationBO;
         }
 
-        // DONE
+        // ---
         public void AddStation(BO.Station station)
         {
             DO.Station stationDO = new DO.Station();
@@ -49,8 +49,14 @@ namespace BL
             stationDO.Lattitude = station.Lattitude;
             stationDO.Longitude = station.Longitude;
             stationDO.Name = station.Name;
-
-            dl.AddStation(stationDO);
+            try
+            {
+                dl.AddStation(stationDO);
+            }
+            catch (DO.BadStationCodeException ex)
+            {
+                throw new BO.BadStationCodeException("problem with adding this station", ex);
+            }
         }
 
         // DONE
@@ -61,7 +67,7 @@ namespace BL
                    select stationDoBoAdapter(stationDO);
         }
 
-        // DONE
+        // ---
         public Station GetStation(int stationCode)
         {
             DO.Station stationDO;
@@ -69,28 +75,26 @@ namespace BL
             {
                 stationDO = dl.GetStation(stationCode);
             }
-            // to implemente...
-            catch (Exception)
+            catch (DO.BadStationCodeException ex)
             {
-                throw;
+                throw new BO.BadStationCodeException("Station code does not exist", ex);
             }
             return stationDoBoAdapter(stationDO);
         }
 
-        // DONE
+        // ---
         public void UpdateStation(BO.Station stationBO)
         {
             DO.Station stationDO = new DO.Station();
             stationBO.CopyPropertiesTo(stationDO);
-            dl.UpdateStation(stationDO);
-            //try
-            //{
-            //}
-            //catch (Exception)
-            //{
-
-            //    throw; // fail to update the new station
-            //}
+            try
+            {
+                dl.UpdateStation(stationDO);
+            }
+            catch (DO.BadStationCodeException ex)
+            {
+                throw new BO.BadStationCodeException("station code is illegal", ex);
+            }
         }
 
         // DONE
@@ -116,7 +120,6 @@ namespace BL
             //return listBO;
         }
 
-        // a tester !
         public IEnumerable<BO.Station> GetStationsOfLine(BO.Line line)
         {
             for (int i = line.FirstStation; i < line.LastStation; i++)
@@ -143,7 +146,6 @@ namespace BL
             if (lineDO == null)
                 return new BO.Line();
 
-
             // we can add more func. by getting the lineDO.Id
             BO.Line lineBO = new BO.Line();
             lineBO.Area = (Enums.Area)lineDO.Area;
@@ -151,7 +153,6 @@ namespace BL
             lineBO.FirstStation = lineDO.FirstStation;
             lineBO.LastStation = lineDO.LastStation;
             lineBO.Id = lineDO.ID;
-            // lineDO.CopyPropertiesTo(lineBO);
 
             return lineBO;
         }
@@ -237,9 +238,9 @@ namespace BL
             {
                 lineDO = dl.GetLine(lineId);
             }
-            catch (Exception) // DO.exception to imp.
+            catch (DO.BadLineIDException ex)
             {
-                throw; // BO.exception
+                throw new BO.BadLineIDException("line id is not exist", ex);
             }
             return lineDoBoAdapter(lineDO);
         }
@@ -252,8 +253,14 @@ namespace BL
             lineDO.FirstStation = lineBO.FirstStation;
             lineDO.LastStation = lineBO.LastStation;
             lineDO.ID = lineBO.Id;
-
-            dl.AddLine(lineDO);
+            try
+            {
+                dl.AddLine(lineDO);
+            }
+            catch(DO.BadLineIDException ex)
+            {
+                throw new BO.BadLineIDException("fail to add the new line", ex);
+            }
         }
         public void UpdateLine(Line lineBO)
         {
@@ -264,9 +271,9 @@ namespace BL
             {
                 dl.UpdateLine(lineDO);
             }
-            catch (Exception)
+            catch (DO.BadLineIDException ex)
             {
-                throw; // fail to update the new line
+                throw new BO.BadLineIDException("fail to update the new line", ex); // fail to update the new line
             }
         }
         public void UpdateLine(Line line, Action<Line> update)
@@ -295,18 +302,16 @@ namespace BL
                         allLineStations.RemoveAt(i);
                     }
                 }
-                /*
-                foreach (var item in allLineStations)
-                {
-                    if (item.LineId == lineId)
-                    {
-                        allLineStations.Remove(item);
-                    }
-                }
-                */
             }
-
-            dl.DeleteLine(lineId);
+            // deleting from the Data source static file
+            try
+            {
+                dl.DeleteLine(lineId);
+            }
+            catch(DO.BadLineIDException ex)
+            {
+                throw new BO.BadLineIDException("fail to delete line", ex);
+            }
         }
         public void DeleteStationOfLine(Line lineBO, StationCustom stationBO)
         {
@@ -375,7 +380,7 @@ namespace BL
                     Adress = stationList.ElementAt(i).Address // essai
                 });
             }
-            //customStationList.RemoveAt(customStationList.Count()-1);
+           
             return customStationList;
         }
 
@@ -396,23 +401,6 @@ namespace BL
             stationCustom.Time = GetAdjacent(stationSimple).Time;
             stationCustom.LineStationIndex = GetLineStation(stationSimple).LineStationIndex;
             stationCustom.Distance = GetAdjacent(stationSimple).Distance;
-
-            return stationCustom;
-        }
-
-
-        private BO.StationCustom lineStationToCustom(BO.LineStation lineStation)
-        {
-            BO.StationCustom stationCustom = new StationCustom();
-
-            stationCustom.Code = lineStation.Station;
-            stationCustom.Lattitude = GetStation(lineStation.Station).Lattitude;
-            stationCustom.Longitude = GetStation(lineStation.Station).Longitude;
-            stationCustom.Name = GetStation(lineStation.Station).Name;
-
-            stationCustom.Time = GetAdjacent(lineStation.Station).Time;
-            stationCustom.LineStationIndex = lineStation.LineStationIndex;
-            stationCustom.Distance = GetAdjacent(lineStation.Station).Distance;
 
             return stationCustom;
         }
@@ -514,7 +502,6 @@ namespace BL
             adjStationToAdd2.Distance = station.Distance * 0.95 + 1;
             AddAdjStation(adjStationToAdd2);
         }
-
         public void UpdateStation(StationCustom stationCustom)
         {
             DO.AdjacentStations adjStationToUpdate = new DO.AdjacentStations();
@@ -534,6 +521,9 @@ namespace BL
             {
                 return new List<StationCustom>();
             }
+            if (Math.Abs(line.FirstStation - line.LastStation) >= 32)
+
+            // if the two stations selected are not from the same Line
             if (Math.Abs(line.FirstStation - line.LastStation) >= 32)
             {
                 // search for the customStation code thad fit to line code
@@ -630,7 +620,6 @@ namespace BL
             throw new NotImplementedException();
         }
 
-
         #endregion
 
         #region adjacentStation
@@ -668,15 +657,18 @@ namespace BL
 
             int code1 = stationBO.Code - 1, code2 = stationBO.Code;
 
+            adjacentStationsDO = dl.GetAdjtStation(code1, code2);
+            /*
             try
             {
                 adjacentStationsDO = dl.GetAdjtStation(code1, code2);
             }
-            // to implemente...
-            catch (Exception)
+            catch (DO.BadAdjStationCodeException ex)
             {
-                throw;
+                throw new BO.BadAdjStationCodeException("problem with this adjacent station", ex);
             }
+            */
+            
             return adjStationDoBoAdapter(adjacentStationsDO);
         }
 
@@ -690,11 +682,11 @@ namespace BL
             {
                 adjacentStationsDO = dl.GetAdjtStation(code1, code2);
             }
-            // to implemente...
-            catch (Exception)
+            catch (DO.BadAdjStationCodeException ex)
             {
-                throw;
+                throw new BO.BadAdjStationCodeException("problem with this adjacent station", ex);
             }
+
             return adjStationDoBoAdapter(adjacentStationsDO);
         }
 
@@ -733,7 +725,8 @@ namespace BL
             adjToAdd.Station1 = adjacentStations.Station1;
             adjToAdd.Station2 = adjacentStations.Station2;
 
-            dl.AddAdjacentStation(adjToAdd);
+            try { dl.AddAdjacentStation(adjToAdd); }
+            catch (DO.BadAdjStationCodeException ex) { throw new BO.BadAdjStationCodeException("problem with adding this adj. station", ex); }
         }
         #endregion
 
@@ -743,9 +736,8 @@ namespace BL
         {
 
             if (lineStationDO == null)
-            {
                 return new BO.LineStation();
-            }
+            
             BO.LineStation lineStationBO = new LineStation();
             DO.LineStation lineStationTest;
             int stationCode = lineStationDO.Station;
@@ -754,9 +746,9 @@ namespace BL
             {
                 lineStationTest = dl.GetLineStation(stationCode);
             }
-            catch (Exception) // not found !
+            catch (DO.BadStationCodeException ex) // not found !
             {
-                throw;
+                throw new BO.BadStationCodeException("station not found", ex);
             }
             lineStationDO.CopyPropertiesTo(lineStationBO);
 
@@ -770,9 +762,9 @@ namespace BL
             {
                 lineStationDO = dl.GetLineStation(stationBO.Code);
             }
-            catch (Exception) // if not found
+            catch (DO.BadStationCodeException ex) // if not found
             {
-                throw;
+                throw new BO.BadStationCodeException("station code does not exist", ex);
             }
 
             return lineStationBoDoAdapter(lineStationDO);
@@ -818,7 +810,8 @@ namespace BL
             lineStToAdd.PrevStation = lineStation.PrevStation;
             lineStToAdd.Station = lineStation.Station;
 
-            dl.AddLineStation(lineStToAdd);
+            try { dl.AddLineStation(lineStToAdd); }
+            catch (DO.BadStationCodeException ex) { throw new BO.BadStationCodeException("problem with adding this station", ex); }
         }
 
         #endregion

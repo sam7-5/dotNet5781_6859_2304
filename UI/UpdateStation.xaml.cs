@@ -20,7 +20,7 @@ namespace UI
     public partial class UpdateStation : Window
     {
         BL.IBL bl = BL.BLFactory.GetBL();
-     //   BO.Station station;
+        //   BO.Station station;
         public UpdateStation(BO.Station station)
         {
             InitializeComponent();
@@ -40,9 +40,18 @@ namespace UI
         {
             BO.Station station1;
             station1 = (update_stat.DataContext as BO.Station);
-            bl.UpdateStation(station1);
-            this.Close();
-
+            try
+            {
+                bl.UpdateStation(station1);
+            }
+            catch(BO.BadStationCodeException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {  
+                this.Close();
+            }
         }
     }
 }

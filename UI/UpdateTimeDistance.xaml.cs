@@ -39,8 +39,18 @@ namespace UI
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            bl.UpdateStation((timeDistance_Dg.DataContext as BO.StationCustom));
-            this.Close();
+            try
+            { 
+                bl.UpdateStation((timeDistance_Dg.DataContext as BO.StationCustom));
+            }
+            catch(BO.BadStationCodeException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            { 
+                this.Close();
+            }
         }
     }
 }

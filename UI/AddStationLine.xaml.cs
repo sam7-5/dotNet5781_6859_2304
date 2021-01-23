@@ -41,9 +41,18 @@ namespace UI
             int index = station1.LineStationIndex;
             int code = (int)stationCode.DataContext;
             var line = gridLine_id.DataContext as BO.Line;
-            station.LineStationIndex = index;
-            bl.AddStationToLine(station, line, code);
-            this.Close();
+            try
+            {
+                bl.AddStationToLine(station, line);
+            }
+            catch (BO.BadStationCodeException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.Close();
+            }
 
         }
 

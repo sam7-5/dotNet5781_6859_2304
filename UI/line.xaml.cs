@@ -40,20 +40,22 @@ namespace UI
         private void delete_line_Click(object sender, RoutedEventArgs e)
         {
             myLine = (allLines.SelectedItem as BO.Line);
-            try
-            {
-                if (myLine == null)
-                    throw new NullReferenceException();
-               
-            }
-            catch(NullReferenceException )
-            {
-                    MessageBox.Show("you have to select a line", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 
+            if (myLine == null)
+            {
+                MessageBox.Show("you have to select a line", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
             }
-               bl.DeleteLine(myLine.Id);
-
-            allLines.DataContext = bl.GetAllLines();
+ 
+            try { bl.DeleteLine(myLine.Id); }
+            catch (BO.BadLineIDException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            { 
+                allLines.DataContext = bl.GetAllLines();
+            }
         }
 
         private void add_line_Click(object sender, RoutedEventArgs e)
@@ -66,8 +68,16 @@ namespace UI
 
         private void update_line_Click(object sender, RoutedEventArgs e)
         {
-            UpdateLine update = new UpdateLine(myLine);
-            update.ShowDialog();
+            if (myLine != null)
+            {
+                UpdateLine update = new UpdateLine(myLine);
+                update.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("you have to select a line", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
             stationCustomDataGrid.DataContext = bl.GetAllCusStationOfLine(myLine);
         }
     }

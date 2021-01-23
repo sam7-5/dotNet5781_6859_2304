@@ -20,7 +20,6 @@ namespace DLAPI
         DO.Station GetStation(int stationCode);
         void AddStation(DO.Station station);
         void UpdateStation(DO.Station station);
-        void UpdateStation(int stationCode, Action<DO.Station> update); // updt specific fields in Stqation
         void DeleteStation(int stationCode);
         #endregion
 
@@ -34,7 +33,6 @@ namespace DLAPI
         DO.Line GetLine(int lineId);
         void AddLine(DO.Line line);
         void UpdateLine(DO.Line line);
-        void UpdateLine(DO.Line line, Action<DO.Line> update);
         void DeleteLine(int lineId);
         #endregion
 
@@ -44,7 +42,6 @@ namespace DLAPI
         DO.LineStation GetLineStation(int lineId);
         void AddLineStation(DO.LineStation lineStation);
         void UpdateLineStation(DO.LineStation lineStation);
-        void UpdateLineStation(DO.LineStation line, Action<DO.LineStation> update);
         void DeleteLineStation(int lineId);
         #endregion
 
@@ -54,18 +51,19 @@ namespace DLAPI
         DO.AdjacentStations GetAdjtStation(int station1, int station2);
         void AddAdjacentStation(DO.AdjacentStations AdjStation);
         void UpdateAdjStation(DO.AdjacentStations AdjStation);
-        void UpdateAdjStation(DO.AdjacentStations AdjStation, Action<DO.LineStation> update);
         void DeleteAdjStation(int station1, int station2);
         #endregion
 
         // Almost Done, strange pb in DLobject: can't acess to Properties
         #region LineTrip
+        /*
         IEnumerable<DO.LineTrip> GetAllLineTrip();
         DO.LineTrip GetLineTrip(int lineId);
         void AddLineTrip(DO.LineTrip line);
         void UpdateLineTrip(DO.LineTrip line);
         void UpdateLineTrip(DO.LineTrip line, Action<DO.LineTrip> update);
         void DeleteLineTrip(int lineId);
+        */
         #endregion
     }
 }

@@ -7,8 +7,8 @@ namespace DO
     public class Line
     {
         public Line() {}
-        public int ID { get; set; }
-        public int Code { get; set; }
+        public int ID { get; set; } // like bus 6 
+        public int Code { get; set; } // a unique number
         public Enums.Area Area { get; set; }
         public int FirstStation { get; set; }
         public int LastStation { get; set; }
@@ -20,6 +20,14 @@ namespace DO
             Area = area;
             FirstStation = firstStation;
             LastStation = lastStation;
+        }
+        public Line(Line line)
+        {
+            ID = line.ID;
+            Code = line.Code;
+            Area = line.Area;
+            FirstStation = line.FirstStation;
+            LastStation = line.LastStation;
         }
     }
 }

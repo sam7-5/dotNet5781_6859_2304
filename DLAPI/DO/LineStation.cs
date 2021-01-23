@@ -11,6 +11,14 @@
             NextStation = nextStation;
         }
         public LineStation() { }
+        public LineStation(LineStation lineStation)
+        {
+            LineId = lineStation.LineId;
+            Station = lineStation.Station;
+            LineStationIndex = lineStation.LineStationIndex;
+            PrevStation = lineStation.PrevStation;
+            NextStation = lineStation.NextStation;
+        }
 
         public int LineId { get; set; }
         public int Station { get; set; }

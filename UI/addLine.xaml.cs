@@ -28,8 +28,6 @@ namespace UI
           
             gridLine.DataContext = myLine;
             areaCbBox.ItemsSource = Enum.GetValues(typeof(BO.Enums.Area));
-
-       
         }
 
 
@@ -39,11 +37,20 @@ namespace UI
             myLine.FirstStation = Int32.Parse(firstStationTextBox.SelectedValue.ToString());
             myLine.LastStation = Int32.Parse(lastStationTextBox.SelectedValue.ToString());
 
-            bl.AddLine(myLine);
-            this.Close();
+            try
+            {
+                bl.AddLine(myLine);
+            }
+            catch(BO.BadLineIDException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            finally
+            {
+                this.Close();
+            }
         }
-
-
 
         private void areaCbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -52,7 +59,6 @@ namespace UI
             this.firstStationTextBox.SelectedValuePath = "Code";
             lastStationTextBox.ItemsSource = bl.GetAllStationsOfArea(area);
             this.lastStationTextBox.SelectedValuePath = "Code";
-
         }
     }
 }
