@@ -92,9 +92,6 @@
     <Compile Include="UpdateTimeDistance.xaml.cs">
       <DependentUpon>UpdateTimeDistance.xaml</DependentUpon>
     </Compile>
-    <Compile Include="users.xaml.cs">
-      <DependentUpon>users.xaml</DependentUpon>
-    </Compile>
     <Page Include="addBus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -160,10 +157,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UpdateTimeDistance.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="users.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

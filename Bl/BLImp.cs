@@ -19,7 +19,7 @@ namespace BL
         {
             BO.Station stationBO = new BO.Station();
             DO.Station stationToTest;
-            if(stationDO==null)
+            if (stationDO == null)
             {
                 return stationBO;
             }
@@ -30,7 +30,7 @@ namespace BL
                 stationToTest = dl.GetStation(stationCode);
             }
             catch (Exception/*DO.BadStationException*/)
-            {   
+            {
                 throw;
             }
 
@@ -82,7 +82,7 @@ namespace BL
         {
             DO.Station stationDO = new DO.Station();
             stationBO.CopyPropertiesTo(stationDO);
-                dl.UpdateStation(stationDO);
+            dl.UpdateStation(stationDO);
             //try
             //{
             //}
@@ -99,7 +99,7 @@ namespace BL
             //List<BO.Station> listBO = new List<Station>();
             foreach (var LineDO in dl.GetAllLines())
             {
-               
+
                 if (LineDO.Area.CompareTo((DO.Enums.Area)area) == 0)
                 {
                     int from, to = 0;
@@ -143,15 +143,15 @@ namespace BL
             if (lineDO == null)
                 return new BO.Line();
 
-            
+
             // we can add more func. by getting the lineDO.Id
             BO.Line lineBO = new BO.Line();
             lineBO.Area = (Enums.Area)lineDO.Area;
             lineBO.Code = lineDO.Code;
-            lineBO.FirstStation=lineDO.FirstStation;
+            lineBO.FirstStation = lineDO.FirstStation;
             lineBO.LastStation = lineDO.LastStation;
             lineBO.Id = lineDO.ID;
-           // lineDO.CopyPropertiesTo(lineBO);
+            // lineDO.CopyPropertiesTo(lineBO);
 
             return lineBO;
         }
@@ -190,7 +190,7 @@ namespace BL
             {
                 yield break;
             }
-            
+
             int stationCode = station.Code;
             var allLines = GetAllLines();
             int from = 0, to = 0;
@@ -200,7 +200,7 @@ namespace BL
                 from = allLines.ElementAt(i).FirstStation;
                 to = allLines.ElementAt(i).LastStation;
 
-                for (int j = from;  j < to; j++)
+                for (int j = from; j < to; j++)
                 {
                     if (j == stationCode)
                     {
@@ -305,7 +305,7 @@ namespace BL
                 }
                 */
             }
-         
+
             dl.DeleteLine(lineId);
         }
         public void DeleteStationOfLine(Line lineBO, StationCustom stationBO)
@@ -313,7 +313,7 @@ namespace BL
             int from = lineBO.FirstStation;
             int to = lineBO.LastStation;
 
-            if(lineBO.stationOfThisLine.Count()==1)
+            if (lineBO.stationOfThisLine.Count() == 1)
             {
                 DeleteLine(lineBO.Code);
             }
@@ -347,24 +347,32 @@ namespace BL
             var adjStationList = GetAllAdjStations();
             var customStationList = new List<BO.StationCustom>();
             int numberOfElement = stationList.Count();
-           
+
             for (int i = 0; i < numberOfElement; i++)
             {
-               //TimeSpan time = adjStationList.Find(x => x.Station1 == stationList.ElementAt(i).Code).Time;
-                var adj = adjStationList.FirstOrDefault(x => x.Station1 == stationList.ElementAt(i).Code);
+                var adj = adjStationList.FirstOrDefault(x => x.Station2 == stationList.ElementAt(i).Code);
                 if (adj == null)
                 {
                     adj = new AdjacentStations();
-                    adj.Time =  new TimeSpan();
+                    adj.Time = new TimeSpan();
                     adj.Distance = 0;
                 }
-
+                var statLine = lineStationList.FirstOrDefault(x => x.Station == stationList.ElementAt(i).Code);
+                if (statLine == null)
+                {
+                    statLine = new LineStation();
+                    statLine.LineStationIndex = 0;
+                }
                 customStationList.Add(new StationCustom
-                { Code = stationList.ElementAt(i).Code,
-                Name = stationList.ElementAt(i).Name, Distance = adj.Distance,
-                Time = adj.Time/*adjStationList.ElementAt(i/2).Time*/, Lattitude = stationList.ElementAt(i).Lattitude,
-                Longitude = stationList.ElementAt(i).Longitude, LineStationIndex = lineStationList.ElementAt(i).LineStationIndex,
-                Adress = stationList.ElementAt(i).Address // essai
+                {
+                    Code = stationList.ElementAt(i).Code,
+                    Name = stationList.ElementAt(i).Name,
+                    Distance = adj.Distance,
+                    Time = adj.Time/*adjStationList.ElementAt(i/2).Time*/,
+                    Lattitude = stationList.ElementAt(i).Lattitude,
+                    Longitude = stationList.ElementAt(i).Longitude,
+                    LineStationIndex = statLine.LineStationIndex,
+                    Adress = stationList.ElementAt(i).Address // essai
                 });
             }
             //customStationList.RemoveAt(customStationList.Count()-1);
@@ -392,7 +400,7 @@ namespace BL
             return stationCustom;
         }
 
-        /*
+
         private BO.StationCustom lineStationToCustom(BO.LineStation lineStation)
         {
             BO.StationCustom stationCustom = new StationCustom();
@@ -408,15 +416,15 @@ namespace BL
 
             return stationCustom;
         }
-        */
+
 
         public IEnumerable<StationCustom> GetAllPrevCusStations(Station stationBO)
         {
             var allStations = GetAllStations();
             var prevCustomStation = new List<BO.StationCustom>();
-            if(stationBO==null)
+            if (stationBO == null)
             {
-                return new List<StationCustom>(); 
+                return new List<StationCustom>();
             }
             for (int i = 0; i < allStations.Count(); i++)
             {
@@ -444,7 +452,7 @@ namespace BL
             {
                 if (allStations.ElementAt(i).Code == stationBO.Code)
                 {
-                    if (i  < allStations.Count()-1 ) 
+                    if (i < allStations.Count() - 1)
                         nextCustomStation.Add(stationToCustom(allStations.ElementAt(i + 1)));
                 }
             }
@@ -453,35 +461,56 @@ namespace BL
         }
 
         // ********************** to test ! ****************************//
-        public void AddStationToLine(StationCustom station, Line line)
+        public void AddStationToLine(StationCustom station, Line line, int code)
         {
             var stationToAdd = new Station();
             var lineStationToAdd = new LineStation();
             var adjStationToAdd1 = new AdjacentStations();
             var adjStationToAdd2 = new AdjacentStations();
 
+            station.Code = line.LastStation + 1;
+            line.LastStation++;
+            line.stationOfThisLine.Add(station.Code);
+            // int firstStation = line.FirstStation;
+            //   int lastStation = line.LastStation;
+            //  int size = line.stationOfThisLine.Count() + 1;
+            //line.stationOfThisLine.Clear();
+            //while (size != 0)
+            //{
+            //    line.stationOfThisLine.Add(firstStation);
+            //    firstStation++;
+            //    size--;
+            //}
+            //for (int i = code; i <= lastStation; i++)
+            //{
+            // BO.Station temp=   GetStation(i);
+            //    temp.Code++;
+            //  UpdateStation(temp);
+            //}
+
             stationToAdd.Address = station.Adress;
             stationToAdd.Code = station.Code;
             stationToAdd.Lattitude = station.Lattitude;
             stationToAdd.Longitude = station.Longitude;
+            stationToAdd.Name = station.Name;
             AddStation(stationToAdd);
 
             lineStationToAdd.Station = station.Code;
             lineStationToAdd.LineStationIndex = station.LineStationIndex;
-            lineStationToAdd.NextStation = GetStation(station.LineStationIndex + 1).Code; // tres foireux: le plus un fait flipper
-            lineStationToAdd.PrevStation = GetStation(station.LineStationIndex - 1).Code;
+            lineStationToAdd.NextStation = GetStation(code + 1).Code;
+            lineStationToAdd.PrevStation = GetStation(code - 1).Code;
             lineStationToAdd.LineId = line.Id;
             AddLineStation(lineStationToAdd);
 
             adjStationToAdd1.Time = station.Time;
             adjStationToAdd1.Distance = station.Distance;
-            adjStationToAdd1.Station1 = GetStation(station.LineStationIndex - 1).Code;
-            adjStationToAdd1.Station2 = GetStation(station.LineStationIndex).Code;
+            adjStationToAdd1.Station1 = GetStation(code).Code;
+            adjStationToAdd1.Station2 = GetStation(station.Code).Code;
             AddAdjStation(adjStationToAdd1);
-           
-            adjStationToAdd2.Station1 = GetStation(station.LineStationIndex).Code;
-            adjStationToAdd2.Station2 = GetStation(station.LineStationIndex + 1).Code;
-            adjStationToAdd2.Time = new TimeSpan(00,12,34);
+
+            adjStationToAdd2.Station1 = GetStation(station.Code).Code;
+            adjStationToAdd2.Station2 = GetStation(code + 1).Code;
+            adjStationToAdd2.Time = new TimeSpan(00, 12, 34);
             adjStationToAdd2.Distance = station.Distance * 0.95 + 1;
             AddAdjStation(adjStationToAdd2);
         }
@@ -495,21 +524,17 @@ namespace BL
 
             dl.UpdateAdjStation(adjStationToUpdate);
         }
-
         public IEnumerable<StationCustom> GetAllCusStationOfLine(Line line)
         {
             var customStationList = new List<StationCustom>();
             customStationList = (List<StationCustom>)GetAllCustomStations();
             var cusStatToRet = new List<StationCustom>();
-            if (line==null)
+            var temp = new List<StationCustom>(); ;
+            if (line == null)
             {
                 return new List<StationCustom>();
             }
-
-            
-
-            // if the two stations selected are not from the same Line
-            if(Math.Abs(line.FirstStation - line.LastStation) >= 32)
+            if (Math.Abs(line.FirstStation - line.LastStation) >= 32)
             {
                 // search for the customStation code thad fit to line code
                 var toAdd1 = customStationList.Find(x => x.Code == line.FirstStation);
@@ -519,35 +544,86 @@ namespace BL
 
                 return cusStatToRet;
             }
+            int i = 0;
+            Random r = new Random(DateTime.Now.Millisecond);
+            foreach (var stationCode in line.stationOfThisLine)
+            {
+                var toAdd = customStationList.Find(x => x.Code == stationCode);
+                string jj = toAdd.Name;
+                if (i == 0)
+                {
+                    toAdd.LineStationIndex = 0;
+                    toAdd.Time = new TimeSpan(0, 0, 0);
+                    toAdd.Distance = 0;
+                }
+                else if (toAdd.Distance == 0 || toAdd.Time == new TimeSpan(0, 0, 0))
+                {
+                    toAdd.Time = (new TimeSpan(0, r.Next(3, 10), r.Next(0, 50)));
+                    toAdd.Distance = r.Next(3, 10);
+                }
+                if (i != toAdd.LineStationIndex)
+                {
+                    toAdd.LineStationIndex = i;
+                }
+                cusStatToRet.Add(toAdd);
+                i++;
+            }
+            cusStatToRet.OrderBy(station => station.LineStationIndex).ToList();
 
-            // else does the first station is located before last station selected
-            if (line.FirstStation <= line.LastStation)
-            {
-                for (int i = line.FirstStation, j = 0; i < line.LastStation && j < line.stationOfThisLine.Count(); i++)
-                {
-                    if (line.stationOfThisLine.ElementAt(j) == i)
-                    {
-                        var toAdd = customStationList.Find(y => y.Code == i);
-                        cusStatToRet.Add(toAdd);
-                        j++;
-                    }
-                }
-                return cusStatToRet;
-            }
-            else
-            {
-                for (int i = line.LastStation, j = 0; i < line.FirstStation && j < line.stationOfThisLine.Count(); i++)
-                {
-                    if (line.stationOfThisLine.ElementAt(j) == i)
-                    {
-                        var toAdd = customStationList.Find(y => y.Code == i);
-                        cusStatToRet.Add(toAdd);
-                        j++;
-                    }
-                }
-                return cusStatToRet;
-            }
+            return cusStatToRet;
         }
+        //public IEnumerable<StationCustom> GetAllCusStationOfLine(Line line)
+        //{
+        //    var customStationList = new List<StationCustom>();
+        //    customStationList = (List<StationCustom>)GetAllCustomStations();
+        //    var cusStatToRet = new List<StationCustom>();
+        //    if (line == null)
+        //    {
+        //        return new List<StationCustom>();
+        //    }
+
+
+
+        //    // if the two stations selected are not from the same Line
+        //    if (Math.Abs(line.FirstStation - line.LastStation) >= 32)
+        //    {
+        //        // search for the customStation code thad fit to line code
+        //        var toAdd1 = customStationList.Find(x => x.Code == line.FirstStation);
+        //        var toAdd2 = customStationList.Find(x => x.Code == line.LastStation);
+        //        cusStatToRet.Add(toAdd1);
+        //        cusStatToRet.Add(toAdd2);
+
+        //        return cusStatToRet;
+        //    }
+
+        //    // else does the first station is located before last station selected
+        //    if (line.FirstStation <= line.LastStation)
+        //    {
+        //        for (int i = line.FirstStation, j = 0; i < line.LastStation && j < line.stationOfThisLine.Count(); i++)
+        //        {
+        //            if (line.stationOfThisLine.ElementAt(j) == i)
+        //            {
+        //                var toAdd = customStationList.Find(y => y.Code == i);
+        //                cusStatToRet.Add(toAdd);
+        //                j++;
+        //            }
+        //        }
+        //        return cusStatToRet;
+        //    }
+        //    else
+        //    {
+        //        for (int i = line.LastStation, j = 0; i < line.FirstStation && j < line.stationOfThisLine.Count(); i++)
+        //        {
+        //            if (line.stationOfThisLine.ElementAt(j) == i)
+        //            {
+        //                var toAdd = customStationList.Find(y => y.Code == i);
+        //                cusStatToRet.Add(toAdd);
+        //                j++;
+        //            }
+        //        }
+        //        return cusStatToRet;
+        //    }
+        //}
 
         public IEnumerable<StationCustom> GetAllCusStationOfLine(int line)
         {
@@ -624,11 +700,11 @@ namespace BL
 
         public IEnumerable<BO.AdjacentStations> GetAllAdjStations(BO.Station stationBO)
         {
-            
+
             return from adjStation in dl.GetAllAdjStation()
                    where adjStation.Station2 == stationBO.Code
                    select adjStationDoBoAdapter(adjStation);
-            
+
             /*
             var listAdjDO = dl.GetAllAdjStation();
             var listToreturn = new List<AdjacentStations>();
@@ -666,7 +742,7 @@ namespace BL
         private BO.LineStation lineStationBoDoAdapter(DO.LineStation lineStationDO)
         {
 
-            if(lineStationDO==null)
+            if (lineStationDO == null)
             {
                 return new BO.LineStation();
             }
@@ -676,7 +752,7 @@ namespace BL
 
             try
             {
-               lineStationTest = dl.GetLineStation(stationCode);
+                lineStationTest = dl.GetLineStation(stationCode);
             }
             catch (Exception) // not found !
             {
@@ -699,31 +775,23 @@ namespace BL
                 throw;
             }
 
-            return lineStationBoDoAdapter(lineStationDO);            
+            return lineStationBoDoAdapter(lineStationDO);
         }
 
         public IEnumerable<BO.LineStation> GetAllLineStations()
         {
             return (from lStationDO in dl.GetAllLineStation()
-                   orderby lStationDO.LineId
-                   select lineStationBoDoAdapter(lStationDO)).ToList();
+                    orderby lStationDO.LineId
+                    select lineStationBoDoAdapter(lStationDO)).ToList();
         }
 
         public IEnumerable<BO.LineStation> GetAllPrevLineStations(Station stationBO)
         {
-            
+
             int stationCode = stationBO.Code;
             //List<BO.LineStation> allLinesStations = (List<LineStation>)GetAllLineStations();
             var allLinesStations = GetAllLineStations();
             var prevLinesStation = new List<BO.LineStation>();
-
-            //foreach (var lineBO in allLinesStations)
-            //{
-            //    if (lineBO.Station == stationCode)
-            //    {
-            //        prevLinesStation.Add(lineBO);
-            //    }
-            //}
 
             int numOfLines = allLinesStations.Count();
 
@@ -733,7 +801,7 @@ namespace BL
                 {
                     prevLinesStation.Add(allLinesStations.ElementAt(0));
                     if (i > 0)
-                        prevLinesStation.Add(allLinesStations.ElementAt(i-1));
+                        prevLinesStation.Add(allLinesStations.ElementAt(i - 1));
                 }
             }
 

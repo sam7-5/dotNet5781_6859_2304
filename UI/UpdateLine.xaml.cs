@@ -40,8 +40,9 @@ namespace UI
             var line = line_update.DataContext as BO.Line;
             station = line_stations_datagd.SelectedItem as BO.StationCustom;
 
-            AddStationLine addStationLine = new AddStationLine(line,station.LineStationIndex);
+            AddStationLine addStationLine = new AddStationLine(line,station);
             addStationLine.ShowDialog();
+            line_stations_datagd.DataContext = bl.GetAllCusStationOfLine(line);
         }
 
         private void update_timeDistance_Click(object sender, RoutedEventArgs e)
@@ -68,7 +69,7 @@ namespace UI
 
             station = line_stations_datagd.SelectedItem as BO.StationCustom;
 
-            afterStationText.DataContext = station.Name;
+      //      afterStationText.DataContext = station.Name;
         }
     }
 }
