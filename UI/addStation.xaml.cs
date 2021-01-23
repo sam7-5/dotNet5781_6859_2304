@@ -28,16 +28,14 @@ namespace UI
             this.DataContext = station;
         }
 
-  
-
         private void bkbaddStation_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-              //  station = this.DataContext;
+                //  station = this.DataContext;
                 bl.AddStation(station);
             } 
-            catch (Exception ex) //change it!!
+            catch (BO.BadStationCodeException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -46,5 +44,6 @@ namespace UI
                 this.Close();
             }
         }
+
     }
 }

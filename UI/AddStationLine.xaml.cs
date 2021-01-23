@@ -33,8 +33,18 @@ namespace UI
         private void addStation_Click(object sender, RoutedEventArgs e)
         {
             var line = gridLine_id.DataContext as BO.Line;
-            bl.AddStationToLine(station, line);
-            this.Close();
+            try
+            {
+                bl.AddStationToLine(station, line);
+            }
+            catch (BO.BadStationCodeException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.Close();
+            }
 
         }
     }

@@ -640,7 +640,8 @@ namespace DS
             listLineStations.Add(new LineStation(4, 1485, 0, 0, 1486));
             listLineStations.Add(new LineStation(4, 1486, 1, 1485, 1487));
             listLineStations.Add(new LineStation(4, 1487, 2, 1486, 1488));
-            listLineStations.Add(new LineStation(4, 1488, 3, 1487, 0));
+            listLineStations.Add(new LineStation(4, 1488, 3, 1487, 1489));
+            listLineStations.Add(new LineStation(4, 1489, 4, 1488, 0));
 
             listLineStations.Add(new LineStation(5, 1510, 0, 0, 1511));
             listLineStations.Add(new LineStation(5, 1511, 1, 1510, 1512));
