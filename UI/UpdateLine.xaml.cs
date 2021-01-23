@@ -57,13 +57,17 @@ namespace UI
             var line=line_update.DataContext as BO.Line;
             station = line_stations_datagd.SelectedItem as BO.StationCustom;
             bl.DeleteStationOfLine(line, station);
+            //afterStationText.DataContext = "  ";
             line_stations_datagd.DataContext = bl.GetAllCusStationOfLine(line);
 
         }
 
         private void line_stations_datagd_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var line = line_update.DataContext as BO.Line;
+
             station = line_stations_datagd.SelectedItem as BO.StationCustom;
+
             afterStationText.DataContext = station.Name;
         }
     }

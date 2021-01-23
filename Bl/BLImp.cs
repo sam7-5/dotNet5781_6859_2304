@@ -19,6 +19,10 @@ namespace BL
         {
             BO.Station stationBO = new BO.Station();
             DO.Station stationToTest;
+            if(stationDO==null)
+            {
+                return stationBO;
+            }
             int stationCode = stationDO.Code;
 
             try

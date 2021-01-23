@@ -129,7 +129,7 @@ namespace DLAPI
         }
         public void AddLineStation(DO.LineStation lineStation)
         {
-            if (DataSource.listLineStations.FirstOrDefault(lst => lst.LineId == lineStation.LineId) != null)
+            if (DataSource.listLineStations.FirstOrDefault(lst => lst.Station == lineStation.Station) != null)
                 throw new NotImplementedException(); // not find
             else
                 DataSource.listLineStations.Add(lineStation);
