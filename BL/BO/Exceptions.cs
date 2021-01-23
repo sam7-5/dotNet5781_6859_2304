@@ -4,5 +4,6 @@ namespace BO
 {
     public class myExceptions : Exception
     {
+        
     }
 }
