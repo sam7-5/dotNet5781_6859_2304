@@ -39,11 +39,12 @@ namespace UI
         {
             var station1 = lineStationIndexTextBox.DataContext as BO.StationCustom;
             int index = station1.LineStationIndex;
+            station.LineStationIndex = index;
             int code = (int)stationCode.DataContext;
             var line = gridLine_id.DataContext as BO.Line;
             try
             {
-                bl.AddStationToLine(station, line, code);
+                bl.AddStationToLine(station, line,code);
             }
             catch (BO.BadStationCodeException ex)
             {
