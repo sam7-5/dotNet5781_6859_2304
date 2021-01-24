@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:UI"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="UI.UpdateTimeDistance"
         mc:Ignorable="d"
-        Title="UpdateTimeDistance" Height="293.75" Width="348.75" Loaded="Window_Loaded">
-  
+        Title="UpdateTimeDistance" Height="280" Width="300" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+
     <Grid>
-        <Grid x:Name="timeDistance_Dg" DataContext="{Binding}" HorizontalAlignment="Left" Margin="76,50,0,0" VerticalAlignment="Top">
+        <Grid x:Name="timeDistance_Dg" DataContext="{Binding}"  Margin="0,0,0,40" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -24,16 +24,20 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Code:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="codeTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" IsReadOnly="True" Text="{Binding Code, Mode=TwoWay,NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="codeTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="5,4,0,4" Grid.Row="0" IsReadOnly="True" Text="{Binding Code, Mode=TwoWay,NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"
+                     Background="#eee"/>
             <Label Content="Distance:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
-            <TextBox x:Name="distanceTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding Distance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="distanceTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding Distance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"
+                    PreviewTextInput="distanceTextBox_PreviewTextInput" />
             <Label Content="Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox x:Name="nameTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" IsReadOnly="True" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="nameTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" IsReadOnly="True" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"
+                     Background="#eee"/>
             <Label Content="Time:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
-            <TextBox x:Name="timeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding Time, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="timeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding Time, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"
+                     PreviewTextInput="timeTextBox_PreviewTextInput"/>
         </Grid>
-        <Button x:Name="back" Content="back" HorizontalAlignment="Left" Margin="55,202,0,0" VerticalAlignment="Top" Width="75" Click="back_Click"/>
-        <Button x:Name="save" Content="save" HorizontalAlignment="Left" Margin="191,202,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.525,-0.248" Click="save_Click"/>
+        <Button x:Name="back" Content="back" HorizontalAlignment="Left" Margin="50,10,10,20" VerticalAlignment="Bottom" Width="75" Click="back_Click"/>
+        <Button x:Name="save" Content="save" HorizontalAlignment="Right" Margin="10,10,50,20" VerticalAlignment="Bottom" Width="75" RenderTransformOrigin="0.525,-0.248" Click="save_Click"/>
 
     </Grid>
 </Window>

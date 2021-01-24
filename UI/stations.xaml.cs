@@ -29,8 +29,6 @@ namespace UI
             allStations.DataContext = bl.GetAllStations();
         }
 
-
-
         private void add_station_Click(object sender, RoutedEventArgs e)
         {
             addStation station = new addStation();
@@ -45,7 +43,6 @@ namespace UI
 
         private void update_station_Click(object sender, RoutedEventArgs e)
         {
-
             UpdateStation updateStation = new UpdateStation(station);
             updateStation.ShowDialog();
             allStations.DataContext = bl.GetAllStations();

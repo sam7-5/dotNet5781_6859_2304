@@ -31,7 +31,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Name="update_station" Content="Apply Changes on current station" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" Grid.Row="1" Margin="27.4,10,0,10.2" Width="211" Height="23" Grid.RowSpan="2" Background="#FFD9C51B" Click="update_station_Click" />
+            <Button Name="update_station" Content="update current station name" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" Grid.Row="1" Margin="27.4,10,0,10.2" Width="211" Height="23" Grid.RowSpan="2" Background="#FFD9C51B" Click="update_station_Click" />
             <Button Name="add_station" Content="add station" HorizontalAlignment="Left" Margin="31,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" Background="#FF49D44B" Click="add_station_Click"/>
             <Button Name="delete_station" Content="delete current station" Grid.Column="1" HorizontalAlignment="Left" Margin="24.8,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="23" Grid.RowSpan="2" RenderTransformOrigin="0.365,1.225" Background="#FFDC2E28" Click="delete_station_Click"/>
         </Grid>

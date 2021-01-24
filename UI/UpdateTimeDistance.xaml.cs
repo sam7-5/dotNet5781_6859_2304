@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace UI
 {
@@ -51,6 +52,28 @@ namespace UI
             { 
                 this.Close();
             }
+        }
+
+        // only number are allowed for distance
+        private void distanceTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex1 = new Regex("[a-zA-Z]");
+            e.Handled = regex1.IsMatch(e.Text);
+
+            // if user input = letter
+            if (e.Handled)
+                MessageBox.Show("only numbers are allowed");
+        }
+
+        // only number are allowed for time
+        private void timeTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex1 = new Regex("[a-zA-Z]");
+            e.Handled = regex1.IsMatch(e.Text);
+
+            // if user input = letter
+            if (e.Handled)
+                MessageBox.Show("only numbers are allowed");
         }
     }
 }

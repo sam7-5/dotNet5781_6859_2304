@@ -43,7 +43,7 @@ namespace UI
             var line = gridLine_id.DataContext as BO.Line;
             try
             {
-                bl.AddStationToLine(station, line);
+                bl.AddStationToLine(station, line, code);
             }
             catch (BO.BadStationCodeException ex)
             {
@@ -53,9 +53,6 @@ namespace UI
             {
                 this.Close();
             }
-
         }
-
-
     }
 }

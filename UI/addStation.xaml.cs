@@ -26,8 +26,8 @@ namespace UI
         {
             InitializeComponent();
             station = new BO.Station();
-            //this.DataContext = station;
-            this.DataContext = "";
+            this.DataContext = station;
+            //this.DataContext = "";
         }
 
         private void bkbaddStation_Click(object sender, RoutedEventArgs e)
