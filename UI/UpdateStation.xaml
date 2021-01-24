@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UI"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="UI.UpdateStation"
         mc:Ignorable="d"
-        Title="UpdateStation" Height="218.742" Width="291.071" Loaded="Window_Loaded">
+        Title="UpdateStation" Height="180" Width="315" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     
     <Grid Margin="0,0,3.8,3.4">
 
@@ -26,9 +26,10 @@
             <TextBox x:Name="codeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Code, Mode=OneWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsReadOnly="True" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"
                      Background="#eee"/>
             <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Name:"/>
-            <TextBox x:Name="nameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox x:Name="nameTextBox" Width="190" VerticalAlignment="Center" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"
+                     PreviewTextInput="nameTextBox_PreviewTextInput"/>
         </Grid>
-        <Button x:Name="station_update" Content="apply changes" HorizontalAlignment="Left" Margin="88,130,0,0" VerticalAlignment="Top" Width="105" Click="station_update_Click"/>
+        <Button x:Name="station_update" Content="apply changes" HorizontalAlignment="Center" Margin="10,0,0,0" VerticalAlignment="Bottom" Width="105" Click="station_update_Click"/>
 
     </Grid>
 </Window>

@@ -38,15 +38,20 @@ namespace UI
 
         private void delete_station_Click(object sender, RoutedEventArgs e)
         {
-            //bonus
+            MessageBox.Show("sorry not implemented yet");
         }
 
         private void update_station_Click(object sender, RoutedEventArgs e)
         {
+            if (station == null)
+            {
+                MessageBox.Show("please select a station to update");
+                return;
+            }
+
             UpdateStation updateStation = new UpdateStation(station);
             updateStation.ShowDialog();
             allStations.DataContext = bl.GetAllStations();
-
         }
 
         private void allStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
