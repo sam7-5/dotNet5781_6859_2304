@@ -13,11 +13,11 @@ namespace DS
         public static List<Bus> listBuses;
         public static List<Line> listLines;
         public static List<AdjacentStations> listAdjacentStations;
-        public static List<User> listUsers;
-        public static List<Trip> listTrips;
+       // public static List<User> listUsers;
+        //public static List<Trip> listTrips;
         public static List<LineStation> listLineStations;
         public static List<LineTrip> listLineTrip;
-        public static List<BusOnTrip> listBusOnTrips;
+       // public static List<BusOnTrip> listBusOnTrips;
 
         static DataSource()
         {
@@ -461,15 +461,15 @@ namespace DS
                 {
                     Code = 1515,
                     Name = " תל אביב יה חביבי/תל אביב",
-                    Address = "oui on peut rigoler de temps en temps",
+                    Address = "און פה ריגולה ",
                     Lattitude = 31.759789,
                     Longitude = 35.189336
                 },
                  new Station
                 {
                     Code = 1516,
-                    Name = " bon j'ai plus d'idées",
-                    Address = "la non plus",
+                    Name = " הלו הלו מה זה",
+                    Address = "זה מקום פרטי",
                     Lattitude = 31.759186,
                     Longitude = 35.189336
                 },
@@ -705,7 +705,7 @@ namespace DS
             listBuses = new List<Bus>();
             for (int i = 0; i < 10; i++)
             {
-                listBuses.Add(new Bus { License = (12345678 + i), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
+               // listBuses.Add(new Bus { License = (12345678 + i), Kilometrage = 0, FromDate = DateTime.Now, FuelRemain = 1200, Status = Enums.BusStatus.Available });
             }
         }
     }

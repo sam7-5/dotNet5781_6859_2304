@@ -4,7 +4,6 @@ namespace DO
 {
     public class LineTrip
     {
-        // ctor
         public LineTrip(int id, int lineId, TimeSpan startAt, TimeSpan frequency, TimeSpan finishAt)
         {
             Id = id;

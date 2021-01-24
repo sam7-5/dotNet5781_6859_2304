@@ -8,19 +8,11 @@ namespace DO
     public class User
     {
         /* menahel has no access to users info*/
-        private List<Trip> trips;
-        User() { trips = new List<Trip>(); }
-
-        public User(List<Trip> trips, string userName, string password, bool admin) : this()
+        public User(List<Trip> trips, string userName, string password, bool admin) 
         {
             UserName = userName;
             Password = password;
             Admin = admin;
-        }
-
-        internal IEnumerable<Trip> GetTrips()
-        {
-            return this.trips;
         }
 
         public string UserName { get; set; }

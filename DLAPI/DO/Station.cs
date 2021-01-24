@@ -7,7 +7,6 @@ namespace DO
     /// </summary>
     public class Station
     {
-
         public Station() {}
         public Station(int code, string name, double longitude, double lattitude, string address) : this()
         {

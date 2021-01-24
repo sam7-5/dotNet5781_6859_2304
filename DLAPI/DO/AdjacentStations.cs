@@ -12,6 +12,7 @@ namespace DO
             Distance = distance;
             Time = time;
         }
+
         public AdjacentStations(AdjacentStations adjacentStations)
         {
             Station1 = adjacentStations.Station1;
@@ -23,6 +24,6 @@ namespace DO
         public int Station1 { get; set; }
         public int Station2 { get; set;}
         public double Distance { get; set;}
-        public TimeSpan Time { get; set;} // distance from previous station
+        public TimeSpan Time { get; set;} 
     }
 }

@@ -5,12 +5,6 @@ namespace DO
 {
     public class Bus
     {
-        public List<BusOnTrip> busOnTrips;
-        public Bus()
-        {
-            busOnTrips = new List<BusOnTrip>();
-        }
-
         public Bus(int license, DateTime fromDate, double kilometrage, double fuelRemain, Enums.BusStatus status)
         {
             License = license;
