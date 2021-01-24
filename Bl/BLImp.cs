@@ -14,15 +14,13 @@ namespace BL
 
         #region station
 
-        // ---
         private BO.Station stationDoBoAdapter(DO.Station stationDO)
         {
             BO.Station stationBO = new BO.Station();
             DO.Station stationToTest;
+
             if (stationDO == null)
-            {
                 return stationBO;
-            }
 
             int stationCode = stationDO.Code;
             try
@@ -39,7 +37,6 @@ namespace BL
             return stationBO;
         }
 
-        // ---
         public void AddStation(BO.Station station)
         {
             DO.Station stationDO = new DO.Station();
@@ -49,6 +46,7 @@ namespace BL
             stationDO.Lattitude = station.Lattitude;
             stationDO.Longitude = station.Longitude;
             stationDO.Name = station.Name;
+
             try
             {
                 dl.AddStation(stationDO);
@@ -59,7 +57,6 @@ namespace BL
             }
         }
 
-        // DONE
         public IEnumerable<BO.Station> GetAllStations()
         {
             return from stationDO in dl.GetAllStations()
@@ -67,7 +64,6 @@ namespace BL
                    select stationDoBoAdapter(stationDO);
         }
 
-        // ---
         public Station GetStation(int stationCode)
         {
             DO.Station stationDO;
@@ -82,11 +78,11 @@ namespace BL
             return stationDoBoAdapter(stationDO);
         }
 
-        // ---
         public void UpdateStation(BO.Station stationBO)
         {
             DO.Station stationDO = new DO.Station();
             stationBO.CopyPropertiesTo(stationDO);
+
             try
             {
                 dl.UpdateStation(stationDO);
@@ -97,10 +93,8 @@ namespace BL
             }
         }
 
-        // DONE
         public IEnumerable<BO.Station> GetAllStationsOfArea(Enums.Area area)
         {
-            //List<BO.Station> listBO = new List<Station>();
             foreach (var LineDO in dl.GetAllLines())
             {
 
@@ -113,11 +107,9 @@ namespace BL
                     for (int i = from; i < to; i++)
                     {
                         yield return GetStation(i);
-                        //listBO.Add(GetStation(i));
                     }
                 }
             }
-            //return listBO;
         }
 
         public IEnumerable<BO.Station> GetStationsOfLine(BO.Line line)
