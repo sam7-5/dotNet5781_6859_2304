@@ -22,19 +22,20 @@ namespace UI
         BO.StationCustom station = new BO.StationCustom();
         BL.IBL bl = BL.BLFactory.GetBL();
 
+
+        //take info from updateLine window and send it to current window
         public AddStationLine(BO.Line line, BO.StationCustom station1)
         {
             InitializeComponent();
-            gridLine_id.DataContext = line;
 
+            gridLine_id.DataContext = line;
             station1.LineStationIndex = station1.LineStationIndex + 1;
             lineStationIndex.DataContext = station1;
             stationCode.DataContext = station1.Code;
             add_station_to_line.DataContext = station;
-
-            // lineStationIndexTextBox.DataContext = station1.LineStationIndex;
         }
 
+        //take back info from current window and send to AddStationToLine function
         private void addStation_Click(object sender, RoutedEventArgs e)
         {
             var station1 = lineStationIndexTextBox.DataContext as BO.StationCustom;
@@ -44,7 +45,7 @@ namespace UI
             var line = gridLine_id.DataContext as BO.Line;
             try
             {
-                bl.AddStationToLine(station, line,code);
+                bl.AddStationToLine(station, line, code);
             }
             catch (BO.BadStationCodeException ex)
             {

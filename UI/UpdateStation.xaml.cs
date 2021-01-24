@@ -21,23 +21,13 @@ namespace UI
     public partial class UpdateStation : Window
     {
         BL.IBL bl = BL.BLFactory.GetBL();
-        //   BO.Station station;
         public UpdateStation(BO.Station station)
         {
             InitializeComponent();
             update_stat.DataContext = station;
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            //{
 
-            //  //  System.Windows.Data.CollectionViewSource stationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("stationViewSource")));
-            //    // Charger les données en définissant la propriété CollectionViewSource.Source :
-            //    // stationViewSource.Source = [source de données générique]
-        }
-
-
-        private void station_update_Click(object sender, RoutedEventArgs e) //jette error
+        private void station_update_Click(object sender, RoutedEventArgs e)
         {
             BO.Station station1;
             station1 = (update_stat.DataContext as BO.Station);
@@ -45,12 +35,12 @@ namespace UI
             {
                 bl.UpdateStation(station1);
             }
-            catch(BO.BadStationCodeException ex)
+            catch (BO.BadStationCodeException ex)
             {
                 MessageBox.Show(ex.Message);
             }
             finally
-            {  
+            {
                 this.Close();
             }
         }

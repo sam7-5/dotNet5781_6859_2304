@@ -9,9 +9,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Bus">
 
-    <Page.Resources>
-        <CollectionViewSource x:Key="busViewSource"  d:DesignSource="{d:DesignInstance {x:Type BO:Bus}, CreateList=True}"/>
-    </Page.Resources>
+ 
 
     <Page.Background>
         <ImageBrush ImageSource="bus1.jpg" Opacity="0.5"/>

@@ -47,18 +47,19 @@ namespace UI
                 MessageBox.Show("you have to select a line", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;
             }
- 
+
             try { bl.DeleteLine(myLine.Id); }
             catch (BO.BadLineIDException ex)
             {
                 MessageBox.Show(ex.Message);
             }
             finally
-            { 
+            {
                 allLines.DataContext = bl.GetAllLines();
             }
         }
 
+        //add line and refresh
         private void add_line_Click(object sender, RoutedEventArgs e)
         {
             addLine addLine = new addLine();

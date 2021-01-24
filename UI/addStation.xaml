@@ -35,7 +35,7 @@
                      PreviewTextInput="nameTextBox_PreviewTextInput"/>
 
         </Grid>
-        <Button x:Name="bkbaddStation" Content="add station" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Bottom" Width="111" Click="bkbaddStation_Click"
+        <Button x:Name="btnAddStation" Content="add station" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Bottom" Width="111" Click="btnAddStation_Click"
                 />
 
 

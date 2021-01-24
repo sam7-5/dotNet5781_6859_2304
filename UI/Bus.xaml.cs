@@ -20,6 +20,7 @@ namespace UI
     /// </summary>
     public partial class Bus : Page
     {
+        //only demo not realy implemented
         public Bus()
         {
             InitializeComponent();
@@ -55,6 +56,6 @@ namespace UI
 
         }
 
-        
+
     }
 }
