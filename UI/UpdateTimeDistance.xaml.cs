@@ -21,16 +21,10 @@ namespace UI
     public partial class UpdateTimeDistance : Window
     {
         BL.IBL bl = BL.BLFactory.GetBL();
-      //  BO.Line myLine;
-       // BO.StationCustom station;
         public UpdateTimeDistance(BO.StationCustom station1)
         {
             InitializeComponent();
             timeDistance_Dg.DataContext = station1;
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
         }
 
         private void back_Click(object sender, RoutedEventArgs e)
@@ -41,15 +35,15 @@ namespace UI
         private void save_Click(object sender, RoutedEventArgs e)
         {
             try
-            { 
+            {
                 bl.UpdateStation((timeDistance_Dg.DataContext as BO.StationCustom));
             }
-            catch(BO.BadStationCodeException ex)
+            catch (BO.BadStationCodeException ex)
             {
                 MessageBox.Show(ex.Message);
             }
             finally
-            { 
+            {
                 this.Close();
             }
         }

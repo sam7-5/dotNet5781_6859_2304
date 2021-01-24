@@ -62,10 +62,5 @@ namespace UI
             nextStations.DataContext = bl.GetAllNextCusStations(station);
             busPassesTrough.DataContext = bl.GetAllLinesPassThrough(station);
         }
-
-        private void nextStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

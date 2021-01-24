@@ -23,7 +23,7 @@ namespace UI
         BO.StationCustom station1;
         BO.StationCustom station;
         public UpdateLine(BO.Line myLine)
-        {  
+        {
             InitializeComponent();
             line_update.DataContext = myLine;
             line_stations_datagd.DataContext = bl.GetAllCusStationOfLine(myLine);
@@ -39,7 +39,7 @@ namespace UI
             var line = line_update.DataContext as BO.Line;
             station = line_stations_datagd.SelectedItem as BO.StationCustom;
 
-            AddStationLine addStationLine = new AddStationLine(line,station);
+            AddStationLine addStationLine = new AddStationLine(line, station);
             addStationLine.ShowDialog();
             line_stations_datagd.DataContext = bl.GetAllCusStationOfLine(line);
         }
@@ -51,17 +51,17 @@ namespace UI
             UpdateTimeDistance updateTimeDistance = new UpdateTimeDistance(station1);
             updateTimeDistance.ShowDialog();
         }
-        
+
         private void delete_station_Click(object sender, RoutedEventArgs e)
         {
-            var line=line_update.DataContext as BO.Line;
+            var line = line_update.DataContext as BO.Line;
             station = line_stations_datagd.SelectedItem as BO.StationCustom;
-            
+
             try { bl.DeleteStationOfLine(line, station); }
             catch (BO.BadLineIDException ex) { MessageBox.Show(ex.Message); }
             finally
             {
-                line_stations_datagd.DataContext = bl.GetAllCusStationOfLine(line); 
+                line_stations_datagd.DataContext = bl.GetAllCusStationOfLine(line);
             }
         }
 

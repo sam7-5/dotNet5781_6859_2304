@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UI"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="UI.UpdateTimeDistance"
         mc:Ignorable="d"
-        Title="UpdateTimeDistance" Height="280" Width="300" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="UpdateTimeDistance" Height="280" Width="300" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid x:Name="timeDistance_Dg" DataContext="{Binding}"  Margin="0,0,0,40" VerticalAlignment="Center" HorizontalAlignment="Center">

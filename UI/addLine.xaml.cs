@@ -20,18 +20,19 @@ namespace UI
     public partial class addLine : Window
     {
         BL.IBL bl = BL.BLFactory.GetBL();
-        BO.Line myLine=new BO.Line();
+        BO.Line myLine = new BO.Line();
         BO.Enums.Area area;
+
         public addLine()
         {
             InitializeComponent();
-          
+
             gridLine.DataContext = myLine;
             areaCbBox.ItemsSource = Enum.GetValues(typeof(BO.Enums.Area));
         }
 
 
-
+        //take info from comboboxes and put it into myLine 
         private void add_line_Click(object sender, RoutedEventArgs e)
         {
             myLine.FirstStation = Int32.Parse(firstStationTextBox.SelectedValue.ToString());
@@ -41,7 +42,7 @@ namespace UI
             {
                 bl.AddLine(myLine);
             }
-            catch(BO.BadLineIDException ex)
+            catch (BO.BadLineIDException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -52,6 +53,7 @@ namespace UI
             }
         }
 
+        //put info into comboBoxes
         private void areaCbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             area = (BO.Enums.Area)areaCbBox.SelectedItem;

@@ -69,7 +69,7 @@
             <TextBlock HorizontalAlignment="Left" Margin="368,20,0,0" TextWrapping="Wrap" Text="{Binding Longitude}" VerticalAlignment="Top" Height="36" Width="104" Foreground="#FFDDDD84"  FontSize="20"/>
             <TextBlock HorizontalAlignment="Left" Margin="369,67,0,-4" TextWrapping="Wrap" Text="{Binding Lattitude}" VerticalAlignment="Top" RenderTransformOrigin="-0.147,0.681" Height="37" Width="108" Foreground="#FFDDDD84"  FontSize="20"/>
         </Grid>
-        <ListBox x:Name="nextStations" HorizontalAlignment="Center" Height="100" Margin="310,175.8,280,0"   ItemsSource="{Binding}" Grid.Row="1" VerticalAlignment="Top" Width="200" SelectionChanged="nextStations_SelectionChanged"  >
+        <ListBox x:Name="nextStations" HorizontalAlignment="Center" Height="100" Margin="310,175.8,280,0"   ItemsSource="{Binding}" Grid.Row="1" VerticalAlignment="Top" Width="200"   >
 
             <ListBox.ItemTemplate>
                 <DataTemplate >
