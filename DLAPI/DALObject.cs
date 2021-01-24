@@ -114,7 +114,9 @@ namespace DLAPI
             if (lineStation != null)
                 return new LineStation(lineStation);
             else
-                throw new BadStationCodeException(stationCode, $"bad Station code: {stationCode}");
+                return new LineStation();
+            //make station work when we add one 
+            // throw new BadStationCodeException(stationCode, $"bad Station code: {stationCode}");
         }
         public void AddLineStation(DO.LineStation lineStation)
         {

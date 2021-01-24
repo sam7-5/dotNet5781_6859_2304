@@ -46,20 +46,11 @@ namespace UI
             UpdateStation updateStation = new UpdateStation(station);
             updateStation.ShowDialog();
             allStations.DataContext = bl.GetAllStations();
-            
-            //try
-            //{
-            //    if (station != null)
-            //        bl.UpdateStation(station);
-            //}
-            //catch (BO.BadStationIdException ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
+
         }
 
         private void allStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {  
+        {
             station = allStations.SelectedItem as BO.Station;
             gridOneStation.DataContext = station;
             previousStations.DataContext = bl.GetAllPrevCusStations(station);
@@ -73,4 +64,3 @@ namespace UI
         }
     }
 }
-            

@@ -448,7 +448,6 @@ namespace BL
             return nextCustomStation;
         }
 
-        // ********************** to test ! ****************************//
         public void AddStationToLine(StationCustom station, Line line, int code)
         {
             var stationToAdd = new Station();
@@ -472,7 +471,7 @@ namespace BL
                     else
                         toUpdate.NextStation++;
                 }
-                else if(itemCode==code)
+                else if (itemCode == code)
                 {
                     toUpdate.NextStation = station.Code;
                 }
@@ -488,7 +487,7 @@ namespace BL
                     toUpdate.NextStation++;
                     toUpdate.PrevStation++;
                 }
-                    UpdateLineStation(toUpdate);
+                UpdateLineStation(toUpdate);
 
             }
             line.LastStation++;
@@ -584,7 +583,7 @@ namespace BL
                 cusStatToRet.Add(toAdd);
                 i++;
             }
-            cusStatToRet1= cusStatToRet.OrderBy(station => station.LineStationIndex).ToList();
+            cusStatToRet1 = cusStatToRet.OrderBy(station => station.LineStationIndex).ToList();
 
             i = 0;
             foreach (var item in cusStatToRet1)
@@ -716,14 +715,19 @@ namespace BL
         private BO.LineStation GetLineStation(BO.Station stationBO)
         {
             DO.LineStation lineStationDO;
-            try
+            lineStationDO = dl.GetLineStation(stationBO.Code);
+            if (stationBO == null)
             {
-                lineStationDO = dl.GetLineStation(stationBO.Code);
+                return new LineStation();
             }
-            catch (DO.BadStationCodeException ex) // if not found
-            {
-                throw new BO.BadStationCodeException("station code does not exist", ex);
-            }
+            //try
+            //{
+            //    lineStationDO = dl.GetLineStation(stationBO.Code);
+            //}
+            //catch (DO.BadStationCodeException ex) // if not found
+            //{
+            //    throw new BO.BadStationCodeException("station code does not exist", ex);
+            //}
 
             return lineStationBoDoAdapter(lineStationDO);
         }
