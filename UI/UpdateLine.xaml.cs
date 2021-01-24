@@ -59,9 +59,10 @@ namespace UI
             
             try { bl.DeleteStationOfLine(line, station); }
             catch (BO.BadLineIDException ex) { MessageBox.Show(ex.Message); }
-            //afterStationText.DataContext = "  ";
-            finally { line_stations_datagd.DataContext = bl.GetAllCusStationOfLine(line); }
-
+            finally
+            {
+                line_stations_datagd.DataContext = bl.GetAllCusStationOfLine(line); 
+            }
         }
 
         private void line_stations_datagd_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -30,6 +30,7 @@ namespace BL
 
         IEnumerable<BO.LineStation> GetAllPrevLineStations(BO.Station stationBO);
         IEnumerable<BO.LineStation> GetAllLineStations();
+        void UpdateLineStation(BO.LineStation station);
         void AddLineStation(BO.LineStation lineStation);
         #endregion
 
@@ -54,7 +55,7 @@ namespace BL
         IEnumerable<BO.StationCustom> GetAllPrevCusStations(BO.Station station);
         IEnumerable<BO.StationCustom> GetAllNextCusStations(BO.Station station);
 
-        void AddStationToLine(BO.StationCustom station, BO.Line line);
+        void AddStationToLine(BO.StationCustom station, BO.Line line,int code);
         void UpdateStation(BO.StationCustom station);
 
         #endregion
