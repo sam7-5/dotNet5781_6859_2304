@@ -4,8 +4,6 @@ namespace BO
 {
     public class Bus
     {
-     
-
         #region properties
         public int LicenseNum { get; set; } 
         public DateTime FromDate { get; set; }
