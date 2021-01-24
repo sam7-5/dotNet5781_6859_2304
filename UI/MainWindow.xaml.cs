@@ -17,10 +17,7 @@ namespace UI
 
         }
 
-        private void user_Click(object sender, RoutedEventArgs e)
-        {
-            new users().ShowDialog();
-        }
+      
 
 
         private void admin_Click(object sender, RoutedEventArgs e)

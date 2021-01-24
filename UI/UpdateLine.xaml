@@ -25,9 +25,9 @@
             <TextBox x:Name="idTextBox" Width="120" IsReadOnly="True" VerticalAlignment="Center" Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
         </Grid>
         <TextBlock HorizontalAlignment="Left" Margin="27,143,0,0" TextWrapping="Wrap" Text="line stops:" VerticalAlignment="Top" Width="92"/>
-        <Button x:Name="addStation" Content="add station after:" HorizontalAlignment="Left" Margin="367,396,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="1.35,0.445" Click="addStation_Click" />
+        <Button x:Name="addStation" Content="add station after selected one:" HorizontalAlignment="Left" Margin="367,396,0,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="1.35,0.445" Click="addStation_Click" />
         <Button x:Name="close" Content="close and save" HorizontalAlignment="Left" Margin="92,396,0,0" VerticalAlignment="Top" Width="108" Click="save_Click"/>
-        <DataGrid x:Name="line_stations_datagd"  IsReadOnly="True"  HorizontalAlignment="Left" AutoGenerateColumns="False"   EnableRowVirtualization="False" Height="232" Margin="110,143,0,0" ItemsSource="{Binding }" VerticalAlignment="Top" Width="500" SelectionChanged="line_stations_datagd_SelectionChanged">
+        <DataGrid x:Name="line_stations_datagd"  IsReadOnly="True" SelectionMode="Single" HorizontalAlignment="Left" AutoGenerateColumns="False"   EnableRowVirtualization="False" Height="232" Margin="110,143,0,0" ItemsSource="{Binding }" VerticalAlignment="Top" Width="500" SelectionChanged="line_stations_datagd_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Name }" Header="Name" Width="150"/>
                 <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Code}" Header="Code" Width="*"/>
@@ -50,7 +50,6 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="afterStationText" HorizontalAlignment="Left" Margin="471,396,0,0" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Width="139" Height="19"/>
 
     </Grid>
 </Window>
