@@ -14,6 +14,7 @@ namespace BL
 
         #region station
 
+        // tool for adapting DO.Station to BO.Station
         private BO.Station stationDoBoAdapter(DO.Station stationDO)
         {
             BO.Station stationBO = new BO.Station();
@@ -37,6 +38,7 @@ namespace BL
             return stationBO;
         }
 
+        // Add a station to DataSource through DAL layer
         public void AddStation(BO.Station station)
         {
             DO.Station stationDO = new DO.Station();
@@ -64,6 +66,7 @@ namespace BL
                    select stationDoBoAdapter(stationDO);
         }
 
+        // try to get a station form DataSource by his code through DAL layer
         public Station GetStation(int stationCode)
         {
             DO.Station stationDO;
@@ -97,7 +100,7 @@ namespace BL
         {
             foreach (var LineDO in dl.GetAllLines())
             {
-
+                // if it's the same area so get all the station from the are
                 if (LineDO.Area.CompareTo((DO.Enums.Area)area) == 0)
                 {
                     int from, to = 0;
@@ -133,6 +136,7 @@ namespace BL
 
         #region Line
 
+        // tool for adapting DO.Line to BO.Line
         private BO.Line lineDoBoAdapter(DO.Line lineDO)
         {
             if (lineDO == null)
@@ -150,21 +154,15 @@ namespace BL
         }
         public IEnumerable<Line> GetAllLines()
         {
-            /*
-            return from lDo in dl.GetAllLines()
-                   orderby lDo.Code
-                   select lineDoBoAdapter(lDo);
-            */
-
             var listBO = new List<BO.Line>();
 
+            // from list of DO.Line objects to BO.Line
             foreach (var item in dl.GetAllLines())
             {
                 listBO.Add(lineDoBoAdapter(item));
             }
 
             // each line object has a list of station code index
-
             foreach (var item in listBO)
             {
                 item.stationOfThisLine = new List<int>();
@@ -180,15 +178,15 @@ namespace BL
         public IEnumerable<BO.Line> GetAllLinesPassThrough(BO.Station station)
         {
             if (station == null)
-            {
                 yield break;
-            }
-
+            
             int stationCode = station.Code;
+            int numberOfLines = GetAllLines().Count();
             var allLines = GetAllLines();
             int from = 0, to = 0;
 
-            for (int i = 0; i < 10; i++)
+            //checking all station of all line if the station code match
+            for (int i = 0; i < numberOfLines; i++)
             {
                 from = allLines.ElementAt(i).FirstStation;
                 to = allLines.ElementAt(i).LastStation;
@@ -196,12 +194,9 @@ namespace BL
                 for (int j = from; j < to; j++)
                 {
                     if (j == stationCode)
-                    {
                         yield return allLines.ElementAt(i);
-                    }
                 }
             }
-
         }
         public IEnumerable<int> GetAllLinesIdPassThrough(Station station)
         {
@@ -223,6 +218,7 @@ namespace BL
                 }
             }
         }
+
         public BO.Line GetLine(int lineId)
         {
             DO.Line lineDO;
@@ -258,14 +254,14 @@ namespace BL
         {
             DO.Line lineDO = new DO.Line();
             lineBO.CopyPropertiesTo(lineDO);
-            //dl.AddLine(lineDO);
+
             try
             {
                 dl.UpdateLine(lineDO);
             }
             catch (DO.BadLineIDException ex)
             {
-                throw new BO.BadLineIDException("fail to update the new line", ex); // fail to update the new line
+                throw new BO.BadLineIDException("fail to update the new line", ex);
             }
         }
         public void UpdateLine(Line line, Action<Line> update)
@@ -295,6 +291,7 @@ namespace BL
                     }
                 }
             }
+
             // deleting from the Data source static file
             try
             {
@@ -305,16 +302,19 @@ namespace BL
                 throw new BO.BadLineIDException("fail to delete line", ex);
             }
         }
+
         public void DeleteStationOfLine(Line lineBO, StationCustom stationBO)
         {
             int from = lineBO.FirstStation;
             int to = lineBO.LastStation;
 
+            // if we have only one station in our Line to delete
             if (lineBO.stationOfThisLine.Count() == 1)
             {
                 DeleteLine(lineBO.Code);
             }
 
+            // deleting every station associed to our Line to delete
             for (int i = from; i < to; i++)
             {
                 if (i == stationBO.Code)
@@ -334,7 +334,7 @@ namespace BL
         #region StationCustom
 
         /// <summary>
-        /// create a list of CustomStation wich contain all the informations we could need
+        /// creating a list of CustomStation wich contain all the informations we could need
         /// </summary>
         /// <returns>a list of StationCustom</returns>
         public IEnumerable<StationCustom> GetAllCustomStations()
@@ -345,6 +345,7 @@ namespace BL
             var customStationList = new List<BO.StationCustom>();
             int numberOfElement = stationList.Count();
 
+            // getting all the informations relevant for our StationCustom...
             for (int i = 0; i < numberOfElement; i++)
             {
                 var adj = adjStationList.FirstOrDefault(x => x.Station2 == stationList.ElementAt(i).Code);
@@ -360,6 +361,7 @@ namespace BL
                     statLine = new LineStation();
                     statLine.LineStationIndex = 0;
                 }
+                // ... and putting them into a List
                 customStationList.Add(new StationCustom
                 {
                     Code = stationList.ElementAt(i).Code,
@@ -372,7 +374,6 @@ namespace BL
                     Adress = stationList.ElementAt(i).Address
                 });
             }
-
             return customStationList;
         }
 
@@ -397,37 +398,35 @@ namespace BL
             return stationCustom;
         }
 
-
+        // return all station that are located before the input station in this line
         public IEnumerable<StationCustom> GetAllPrevCusStations(Station stationBO)
         {
             var allStations = GetAllStations();
             var prevCustomStation = new List<BO.StationCustom>();
+
             if (stationBO == null)
-            {
                 return new List<StationCustom>();
-            }
+            
             for (int i = 0; i < allStations.Count(); i++)
             {
                 if (allStations.ElementAt(i).Code == stationBO.Code)
                 {
-                    //prevCustomStation.Add(stationToCustom(allStations.ElementAt(0)));
-
                     if (i > 0)
                         prevCustomStation.Add(stationToCustom(allStations.ElementAt(i - 1)));
                 }
             }
-
             return prevCustomStation;
         }
 
+        // return all station that are located after the input station in this line
         public IEnumerable<StationCustom> GetAllNextCusStations(Station stationBO)
         {
             var allStations = GetAllStations();
             var nextCustomStation = new List<BO.StationCustom>();
+
             if (stationBO == null)
-            {
                 return new List<StationCustom>();
-            }
+
             for (int i = 0; i < allStations.Count(); i++)
             {
                 if (allStations.ElementAt(i).Code == stationBO.Code)
@@ -436,10 +435,10 @@ namespace BL
                         nextCustomStation.Add(stationToCustom(allStations.ElementAt(i + 1)));
                 }
             }
-
             return nextCustomStation;
         }
 
+        // add a station to a Line
         public void AddStationToLine(StationCustom station, Line line, int code)
         {
             var stationToAdd = new Station();
@@ -449,6 +448,7 @@ namespace BL
             var lineStationList = GetAllLineStations();
 
             station.Code = line.LastStation + 5000;
+
             foreach (int itemCode in line.stationOfThisLine)
             {
                 var toUpdate = lineStationList.FirstOrDefault(x => x.Station == itemCode);
@@ -482,9 +482,9 @@ namespace BL
                 UpdateLineStation(toUpdate);
 
             }
+
             line.LastStation++;
             line.stationOfThisLine.Add(station.Code);
-
 
             stationToAdd.Address = station.Adress;
             stationToAdd.Code = station.Code;
@@ -512,6 +512,7 @@ namespace BL
             adjStationToAdd2.Distance = station.Distance * 0.95 + 1;
             AddAdjStation(adjStationToAdd2);
         }
+
         public void UpdateStation(StationCustom stationCustom)
         {
             DO.AdjacentStations adjStationToUpdate = new DO.AdjacentStations();
@@ -533,18 +534,17 @@ namespace BL
             dl.UpdateLineStation(lineStationToUpdate);
         }
 
+        // return all CustomStation of a Line
         public IEnumerable<StationCustom> GetAllCusStationOfLine(Line line)
         {
             var customStationList = new List<StationCustom>();
             customStationList = (List<StationCustom>)GetAllCustomStations();
             var cusStatToRet = new List<StationCustom>();
             var cusStatToRet1 = new List<StationCustom>();
-            var temp = new List<StationCustom>(); ;
-            if (line == null)
-            {
-                return new List<StationCustom>();
-            }
+            var temp = new List<StationCustom>();
 
+            if (line == null)
+                return new List<StationCustom>();
 
             // if the two stations selected are not from the same Line
             if (Math.Abs(line.FirstStation - line.LastStation) >= 32)
@@ -557,8 +557,10 @@ namespace BL
 
                 return cusStatToRet;
             }
+
             int i = 0;
-            Random r = new Random(DateTime.Now.Millisecond);
+            Random r = new Random(DateTime.Now.Millisecond); // to get a better simulation
+
             foreach (var stationCode in line.stationOfThisLine)
             {
                 var toAdd = customStationList.Find(x => x.Code == stationCode);
@@ -587,15 +589,11 @@ namespace BL
             return cusStatToRet1;
         }
 
-        public IEnumerable<StationCustom> GetAllCusStationOfLine(int line)
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
         #region adjacentStation
 
+        // tool for adapting DO.AdjacentStations to BO.AdjacentStations
         private BO.AdjacentStations adjStationDoBoAdapter(DO.AdjacentStations adjStationDO)
         {
             if (adjStationDO == null)
@@ -603,6 +601,7 @@ namespace BL
                 //throw new Exception("probleme with stationDO");
                 return new BO.AdjacentStations();
             }
+
             BO.AdjacentStations adjStationBO = new AdjacentStations();
             DO.AdjacentStations stationToTest;
 
@@ -627,6 +626,7 @@ namespace BL
         {
             DO.AdjacentStations adjacentStationsDO = new DO.AdjacentStations();
 
+            // adjacent station1 code is station2 minus one
             int code1 = stationBO.Code - 1, code2 = stationBO.Code;
 
             adjacentStationsDO = dl.GetAdjtStation(code1, code2);
@@ -652,6 +652,7 @@ namespace BL
             return adjStationDoBoAdapter(adjacentStationsDO);
         }
 
+        // return all adjacentStation of a donned station
         public IEnumerable<BO.AdjacentStations> GetAllAdjStations(BO.Station stationBO)
         {
 
@@ -681,9 +682,9 @@ namespace BL
 
         #region LineStation
 
+        // tool for adapting DO.LineStation to BO.LineStation
         private BO.LineStation lineStationBoDoAdapter(DO.LineStation lineStationDO)
         {
-
             if (lineStationDO == null)
                 return new BO.LineStation();
 
@@ -708,10 +709,10 @@ namespace BL
         {
             DO.LineStation lineStationDO;
             lineStationDO = dl.GetLineStation(stationBO.Code);
+
             if (stationBO == null)
-            {
                 return new LineStation();
-            }
+            
             //try
             //{
             //    lineStationDO = dl.GetLineStation(stationBO.Code);
@@ -731,11 +732,10 @@ namespace BL
                     select lineStationBoDoAdapter(lStationDO)).ToList();
         }
 
+        // return all LineStation 
         public IEnumerable<BO.LineStation> GetAllPrevLineStations(Station stationBO)
         {
-
             int stationCode = stationBO.Code;
-            //List<BO.LineStation> allLinesStations = (List<LineStation>)GetAllLineStations();
             var allLinesStations = GetAllLineStations();
             var prevLinesStation = new List<BO.LineStation>();
 
