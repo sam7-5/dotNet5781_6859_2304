@@ -41,6 +41,7 @@ namespace UI
         {
             myLine = (allLines.SelectedItem as BO.Line);
 
+            // if a line is not selected we can't delete anything
             if (myLine == null)
             {
                 MessageBox.Show("you have to select a line", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -68,11 +69,13 @@ namespace UI
 
         private void update_line_Click(object sender, RoutedEventArgs e)
         {
+
             if (myLine != null)
             {
                 UpdateLine update = new UpdateLine(myLine);
                 update.ShowDialog();
             }
+            // if a line is not selected we can't update any line
             else
             {
                 MessageBox.Show("you have to select a line", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
