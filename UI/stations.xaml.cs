@@ -38,28 +38,24 @@ namespace UI
 
         private void delete_station_Click(object sender, RoutedEventArgs e)
         {
-            //bonus
+            MessageBox.Show("sorry not implemented yet");
         }
 
         private void update_station_Click(object sender, RoutedEventArgs e)
         {
+            if (station == null)
+            {
+                MessageBox.Show("please select a station to update");
+                return;
+            }
+
             UpdateStation updateStation = new UpdateStation(station);
             updateStation.ShowDialog();
             allStations.DataContext = bl.GetAllStations();
-            
-            //try
-            //{
-            //    if (station != null)
-            //        bl.UpdateStation(station);
-            //}
-            //catch (BO.BadStationIdException ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
         }
 
         private void allStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {  
+        {
             station = allStations.SelectedItem as BO.Station;
             gridOneStation.DataContext = station;
             previousStations.DataContext = bl.GetAllPrevCusStations(station);
@@ -73,4 +69,3 @@ namespace UI
         }
     }
 }
-            

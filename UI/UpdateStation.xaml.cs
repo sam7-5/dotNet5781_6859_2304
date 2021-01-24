@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -52,6 +53,16 @@ namespace UI
             {  
                 this.Close();
             }
+        }
+
+        // only letters allowed for the station name
+        private void nameTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^a-zA-Z]");
+            e.Handled = regex.IsMatch(e.Text);
+
+            if (e.Handled)
+                MessageBox.Show("only letters are allowed for a station name");
         }
     }
 }
