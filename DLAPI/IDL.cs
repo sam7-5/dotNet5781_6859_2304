@@ -37,7 +37,7 @@ namespace DLAPI
         #endregion
 
         // DONE !
-        #region LineStation // difference with Station ?
+        #region LineStation 
         IEnumerable<DO.LineStation> GetAllLineStation();
         DO.LineStation GetLineStation(int lineId);
         void AddLineStation(DO.LineStation lineStation);
