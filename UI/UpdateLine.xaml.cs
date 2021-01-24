@@ -69,8 +69,6 @@ namespace UI
             var line = line_update.DataContext as BO.Line;
 
             station = line_stations_datagd.SelectedItem as BO.StationCustom;
-
-      //      afterStationText.DataContext = station.Name;
         }
     }
 }
