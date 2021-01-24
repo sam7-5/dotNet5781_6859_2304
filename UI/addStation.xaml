@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:UI"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="UI.addStation"
         mc:Ignorable="d"
-        Title="addStation" Height="259.067" Width="292.809" >
+        Title="addStation" Height="250" Width="290" WindowStartupLocation="CenterScreen" >
    
-    <Grid Margin="0,0,3.4,-0.6">
+    <Grid Margin="0">
 
-        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="29,15,0,0" HorizontalAlignment="Left" DataContext="{Binding}" Height="145">
+        <Grid x:Name="grid1" VerticalAlignment="Center" Margin="0" HorizontalAlignment="Center" DataContext="{Binding}" Height="145">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -22,16 +22,21 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Code:"/>
-            <TextBox x:Name="codeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox x:Name="codeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"
+                     PreviewTextInput="codeTextBox_PreviewTextInput" MaxLength="9"/>
             <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Lattitude:"/>
-            <TextBox x:Name="lattitudeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Lattitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox x:Name="lattitudeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Lattitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"
+                     PreviewTextInput="lattitudeTextBox_PreviewTextInput"/>
             <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Longitude:"/>
-            <TextBox x:Name="longitudeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Longitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox x:Name="longitudeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Longitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"
+                     PreviewTextInput="longitudeTextBox_PreviewTextInput"/>
             <Label VerticalAlignment="Center" Margin="3,4,0,7" HorizontalAlignment="Left" Grid.Column="0" Content="Name:"/>
-            <TextBox x:Name="nameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,10,0,6.2" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox x:Name="nameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,10,0,6.2" Height="23" HorizontalAlignment="Left" Grid.Column="1"
+                     PreviewTextInput="nameTextBox_PreviewTextInput"/>
 
         </Grid>
-        <Button x:Name="bkbaddStation" Content="add station" HorizontalAlignment="Left" Margin="82,181,0,0" VerticalAlignment="Top" Width="111" Click="bkbaddStation_Click" />
+        <Button x:Name="bkbaddStation" Content="add station" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Bottom" Width="111" Click="bkbaddStation_Click"
+                />
 
 
     </Grid>
