@@ -58,7 +58,7 @@ namespace UI
         // only letters allowed for the station name
         private void nameTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^a-zA-Z]");
+            Regex regex = new Regex("[0-9]");
             e.Handled = regex.IsMatch(e.Text);
 
             if (e.Handled)
