@@ -51,7 +51,6 @@ namespace BL
         #region StationCusrom
 
         IEnumerable<BO.StationCustom> GetAllCusStationOfLine(BO.Line line);
-        IEnumerable<BO.StationCustom> GetAllCusStationOfLine(int line);
         IEnumerable<BO.StationCustom> GetAllPrevCusStations(BO.Station station);
         IEnumerable<BO.StationCustom> GetAllNextCusStations(BO.Station station);
 
