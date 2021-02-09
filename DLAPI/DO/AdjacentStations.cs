@@ -12,7 +12,6 @@ namespace DO
             Distance = distance;
             Time = time;
         }
-
         public AdjacentStations(AdjacentStations adjacentStations)
         {
             Station1 = adjacentStations.Station1;

@@ -8,7 +8,7 @@ namespace DO
     public class Station
     {
         public Station() {}
-        public Station(int code, string name, double longitude, double lattitude, string address) : this()
+        public Station(int code, string name, double longitude, double lattitude, string address) 
         {
             Code = code;
             Name = name;

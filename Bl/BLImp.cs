@@ -61,9 +61,10 @@ namespace BL
 
         public IEnumerable<BO.Station> GetAllStations()
         {
-            return from stationDO in dl.GetAllStations()
+            var result =  from stationDO in dl.GetAllStations()
                    orderby stationDO.Code
                    select stationDoBoAdapter(stationDO);
+            return result;
         }
 
         // try to get a station form DataSource by his code through DAL layer
@@ -345,33 +346,36 @@ namespace BL
             var customStationList = new List<BO.StationCustom>();
             int numberOfElement = stationList.Count();
 
+        
             // getting all the informations relevant for our StationCustom...
             for (int i = 0; i < numberOfElement; i++)
             {
-                var adj = adjStationList.FirstOrDefault(x => x.Station2 == stationList.ElementAt(i).Code);
+                var tempStat = stationList.ElementAt(i);
+                var adj = adjStationList.FirstOrDefault(x => x.Station2 == tempStat.Code);
                 if (adj == null)
                 {
                     adj = new AdjacentStations();
                     adj.Time = new TimeSpan();
                     adj.Distance = 0;
                 }
-                var statLine = lineStationList.FirstOrDefault(x => x.Station == stationList.ElementAt(i).Code);
+                var statLine = lineStationList.FirstOrDefault(x => x.Station == tempStat.Code);
                 if (statLine == null)
                 {
                     statLine = new LineStation();
                     statLine.LineStationIndex = 0;
                 }
+              
                 // ... and putting them into a List
-                customStationList.Add(new StationCustom
+                customStationList.Add( new StationCustom
                 {
-                    Code = stationList.ElementAt(i).Code,
-                    Name = stationList.ElementAt(i).Name,
+                    Code = tempStat.Code,
+                    Name = tempStat.Name,
                     Distance = adj.Distance,
                     Time = adj.Time,
-                    Lattitude = stationList.ElementAt(i).Lattitude,
-                    Longitude = stationList.ElementAt(i).Longitude,
+                    Lattitude = tempStat.Lattitude,
+                    Longitude = tempStat.Longitude,
                     LineStationIndex = statLine.LineStationIndex,
-                    Adress = stationList.ElementAt(i).Address
+                    Adress = tempStat.Address
                 });
             }
             return customStationList;
@@ -559,7 +563,6 @@ namespace BL
             }
 
             int i = 0;
-            Random r = new Random(DateTime.Now.Millisecond); // to get a better simulation
 
             foreach (var stationCode in line.stationOfThisLine)
             {

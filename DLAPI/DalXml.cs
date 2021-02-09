@@ -10,7 +10,7 @@ using DO;
 
 namespace DLAPI
 {
-    sealed class DalXml //:idl
+    sealed class DalXml :IDL
     {
         #region singelton
         static readonly DalXml instance = new DalXml();
@@ -19,28 +19,20 @@ namespace DLAPI
         public static DalXml Instance { get => instance; }// The public Instance property to use
         #endregion
 
-        #region DS XML Files
-
-        string stations = @"StopsXml.xml"; //XElement
-        string lines = @"linesXml.xml"; //XMLSerializer
-        string adjacentStations = @"AdjacentStationsXml.xml"; //XMLSerializer
-        string lineStations = @"LineStationssXml.xml"; //XMLSerializer
-        string lineTrip = @"LineTripXml.xml";//XMLSerializer
-        #endregion
+      
 
         #region DS XML Files
 
-        string stationsPath = @"Stations.xml"; //XElement
-        string linesPath = @"lines.xml"; //XMLSerializer
-        string adjacentStationsPath = @"AdjacentStations.xml"; //XMLSerializer
-        string lineStationsPath = @"LineStations.xml"; //XMLSerializer
-        string lineTripPath = @"LineTripXml.xml";//XMLSerializer
+       static string stationsPath = @"Stations.xml"; //XElement
+       static string linesPath = @"lines.xml"; //XMLSerializer
+       static string adjacentStationsPath = @"AdjacentStations.xml"; //XMLSerializer
+       static string lineStationsPath = @"LineStations.xml"; //XMLSerializer
+        //string lineTripPath = @"LineTripXml.xml";//XMLSerializer
 
 
         #endregion
 
         #region Station 
-        //still  error throw and hebrew problem
         public IEnumerable<DO.Station> GetAllStations()
         {
             XElement stationRootElem = XmlTools.LoadListFromXMLElement(stationsPath);
@@ -146,8 +138,8 @@ namespace DLAPI
         {
 
             XElement lineRootElem = XmlTools.LoadListFromXMLElement(linesPath);
-            return (from p in lineRootElem.Elements()
-                    select new Line()
+            var result =  (from p in lineRootElem.Elements()
+                    select new Line
                     {
                         ID = Int32.Parse(p.Element("ID").Value),
                         Code = Int32.Parse(p.Element("Code").Value),
@@ -156,6 +148,7 @@ namespace DLAPI
                         LastStation = Int32.Parse(p.Element("LastStation").Value)
                     }
                    );
+            return result;
         }
         public DO.Line GetLine(int lineId)
         {

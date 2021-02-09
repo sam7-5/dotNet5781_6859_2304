@@ -23,17 +23,7 @@ namespace UI
         {
             InitializeComponent();
         }
-        #region window loading and closing
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            // new MainWindow().Show();//opens main window again
-        }
-        #endregion
+       
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
