@@ -565,18 +565,12 @@ namespace DS
             {
                 listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 70.3, new TimeSpan(0, i - 69, 18)));
             }
-            for (int i = 83; i < 86; i++)
+            for (int i = 83; i < 97; i++)
             {
                 listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 70.3, new TimeSpan(0, i - 69, 12)));
             }
-            for (int i = 88; i < 91; i++)
-            {
-                listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 70.4, new TimeSpan(0, i - 69, 32)));
-            }
-            for (int i = 93; i < 97; i++)
-            {
-                listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 80.8, new TimeSpan(0, i - 75, 18)));
-            }
+           
+            
             for (int i = 102; i < 106; i++)
             {
                 listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 90, new TimeSpan(0, i - 85, 32)));
@@ -589,7 +583,7 @@ namespace DS
             {
                 listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 1475, new TimeSpan(0, i - 1471, 26)));
             }
-            for (int i = 1510; i < 1514; i++)
+            for (int i = 1510; i < 1518; i++)
             {
                 listAdjacentStations.Add(new AdjacentStations(i, i + 1, i - 1503, new TimeSpan(0, i - 1497, 10)));
             }

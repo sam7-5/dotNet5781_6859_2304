@@ -567,11 +567,6 @@ namespace BL
                     toAdd.Time = new TimeSpan(0, 0, 0);
                     toAdd.Distance = 0;
                 }
-                else if (toAdd.Distance == 0 || toAdd.Time == new TimeSpan(0, 0, 0))
-                {
-                    toAdd.Time = (new TimeSpan(0, r.Next(3, 10), r.Next(0, 50)));
-                    toAdd.Distance = r.Next(3, 10);
-                }
                 cusStatToRet.Add(toAdd);
                 i++;
             }
