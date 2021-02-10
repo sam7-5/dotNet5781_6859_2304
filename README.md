@@ -10,7 +10,7 @@ bonuses:-- possibility to update time and distance between stations into a line
         -- bus on trip class in DO
         -- user class in DO
         -- we have implemented buses partly (ui +xml)
-        -- probably others in wpf but i can't say exactly which...
+        -- probably others in wpf but i can't say exactly which... maybe also the xml converter program link above
 
 software presentation:
 when you get into the software click on administration 
