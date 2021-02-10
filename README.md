@@ -7,7 +7,7 @@ the software is a transportation system based in israel including bus lines from
 bonus: we have implemented buses partly (ui +xml)
 
 software presentation:
-we you get into the software click on administration 
+when you get into the software click on administration 
 
 ![](img/1.PNG)
 
