@@ -4,12 +4,12 @@ written in c# based on three layer model with an xml database
 (by the way we made a program that convert a list of object knowing his class property into xml file. link:"https://github.com/sam9875/c-list-to-xml-converter")
 the software is a transportation system based in israel including bus lines from different areas and stations(with gps coordonates).
 
-bonus:-- possibility to update time and distance between stations into a line 
-      -- possibility to delete stations into a line 
-      -- bus class in DO
-      -- bus on trip class in DO
-      -- user class in DO
-      -- we have implemented buses partly (ui +xml)
+bonuses:-- possibility to update time and distance between stations into a line 
+        -- possibility to delete stations into a line 
+        -- bus class in DO
+        -- bus on trip class in DO
+        -- user class in DO
+        -- we have implemented buses partly (ui +xml)
 
 software presentation:
 when you get into the software click on administration 
