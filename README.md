@@ -8,7 +8,39 @@ bonus: we have implemented buses partly (ui +xml)
 
 software presentation:
 we you get into the software click on administration 
-https://github.com/sam9875/dotNet5781_6859_2304/issues/1#issuecomment-776826692
+![](img/1.PNG)
 
-then you can see our ui pages the first on is buse
-https://github.com/sam9875/dotNet5781_6859_2304/issues/1#issuecomment-776827014
+then you can see our ui pages, the first that appears is buse
+![](img/2.PNG)
+
+but you can navigate through others for axample line where you can see all the lines with for each one the stations with info about each station in the actual line
+![](img/3.PNG)
+
+you can add a line
+![](img/4.PNG)
+
+or update one meaning remove stations from the line or update time and distance between stations
+![](img/5.PNG)
+
+![](img/6.PNG)
+
+you can also go to stations page
+![](img/7.PNG)
+
+and add a station
+![](img/8.PNG)
+
+or update one
+![](img/9.PNG)
+
+all the data base are saved in xml files 
+![](img/10.PNG)
+
+![](img/Capture.PNG)
+
+
+
+
+
+
+
