@@ -15,10 +15,10 @@
         </Grid.RowDefinitions>
 
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <!--<TabItem Name="buses_global" Header="buses">
+            <TabItem Name="buses_global" Header="buses">
                 <Frame Source="bus.xaml"  Background="Transparent"/>
-            </TabItem>-->
-               <TabItem Name="lines_global" Header="lines">
+            </TabItem>
+            <TabItem Name="lines_global" Header="lines">
                 <Frame Source="line.xaml" Background="Transparent"/>
             </TabItem>
             <TabItem Name="stations_global" Header="stations">
