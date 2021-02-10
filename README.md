@@ -11,11 +11,11 @@ when you get into the software click on administration
 
 ![](img/1.PNG)
 
-then you can see our ui pages, the first that appears is buse
+then you can see our ui pages, the first that appears is buses
 
 ![](img/2.PNG)
 
-but you can navigate through others for axample line where you can see all the lines with for each one the stations with info about each station in the actual line
+but you can navigate through others for example line, where you can see all the lines with for each one the stations and info about each station in the actual line
 
 ![](img/3.PNG)
 
@@ -33,7 +33,7 @@ you can also go to stations page
 
 ![](img/7.PNG)
 
-and add a station
+add a station
 
 ![](img/8.PNG)
 
