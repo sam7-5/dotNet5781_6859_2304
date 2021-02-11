@@ -6,9 +6,6 @@ the software is a transportation system based in israel including bus lines from
 
 bonuses:-- possibility to update time and distance between stations into a line 
         -- possibility to delete stations into a line 
-        -- bus class in DO
-        -- bus on trip class in DO
-        -- user class in DO
         -- we have implemented buses partly (ui +xml)
         -- probably others in wpf but i can't say exactly which... maybe also the xml converter program (link above)
 
